@@ -8,6 +8,8 @@ source 'https://rubygems.org' do
   gem 'pundit'
   gem 'bcrypt'
 
+  gem 'valid_email'
+
   gem 'sass-rails', '~> 5.0'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'

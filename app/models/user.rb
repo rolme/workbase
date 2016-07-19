@@ -3,6 +3,7 @@ class User < ApplicationRecord
 
   has_secure_password
 
+  # validates :email, uniqueness: true, email: true, domain: true, allow_nil: true
   validates :password, length: { minimum: 4 }, allow_nil: true
 
   def full_name
