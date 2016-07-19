@@ -13,7 +13,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-            | Roland Parnaso
+            = current_user.full_name
             span.caret<
           ul.dropdown-menu.navbar-right#user-dropdown role="menu"
             li
@@ -28,7 +28,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
                 = fa_icon("user fw", text: "Members")
             li.divider
             li
-              a href=""
+              a href=logout_path
                 = fa_icon("sign-out fw", text: "Logout")
 
     - if content_for(:subnav)

@@ -1,24 +1,12 @@
 class ApplicationController < ActionController::Base
   include Pundit
+  include GateKeeper
   protect_from_forgery with: :exception
-  before_action :require_login
 
-  helper_method :current_user
-
-  def current_user
-    @_current_user ||= session[:current_user_id] && User.find_by_and_cast(id: session[:current_user_id])
-  end
-
-  def login_user
-    @_login_user ||= session[:login_user_id] && SuperAdmin.find_by(id: session[:login_user_id])
-  end
-
-private
-
-  def require_login
-    unless current_user
-      redirect_to login_index_path
-    end
+  # Public: Display an authentication error to the user
+  def auth_error(message)
+    @error_message = message
+    render 'errors/401', :layout => 'error', :status => 401
   end
 
 end

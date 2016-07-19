@@ -1,8 +1,9 @@
 class LoginController < ApplicationController
   layout 'info'
-  skip_before_action :require_login
+  skip_before_action :authenticate
 
   # GET /login
   def index
   end
+
 end
