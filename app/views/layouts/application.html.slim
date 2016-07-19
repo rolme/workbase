@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title Workbase
+    = csrf_meta_tags
+    = stylesheet_link_tag 'application', media: 'all'
+    = javascript_include_tag 'application'
+
+  body data-controller=controller_name data-action=action_name
+    = render "layouts/header"
+    #content.container-fluid class="#{"with-subnav" if content_for?(:subnav)}"
+      = yield
+    = render "layouts/footer"
