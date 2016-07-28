@@ -67,4 +67,15 @@ RSpec.describe RegistrationForm, type: :model do
     user = registration.submit(params)
     expect(user.confirmed).to eql(false)
   end
+
+  it 'should set a confirmation token' do
+    params = {
+      company_name: "Company",
+      email: "register@testmail.com",
+      password: "1234"
+    }
+
+    user = registration.submit(params)
+    expect(user.confirmation_token).to_not be_blank
+  end
 end

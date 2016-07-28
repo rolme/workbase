@@ -5,6 +5,7 @@ class CreateUsers < ActiveRecord::Migration[5.0]
       t.string :last_name
       t.string :email
       t.boolean :confirmed, default: false
+      t.string :confirmation_token
       t.string :phone
       t.references :company, foreign_key: true
       t.string :type

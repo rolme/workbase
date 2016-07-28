@@ -25,13 +25,14 @@ ActiveRecord::Schema.define(version: 20160717001822) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
-    t.boolean  "confirmed",       default: false
+    t.boolean  "confirmed",          default: false
+    t.string   "confirmation_token"
     t.string   "phone"
     t.integer  "company_id"
     t.string   "type"
     t.string   "password_digest"
-    t.datetime "created_at",                      null: false
-    t.datetime "updated_at",                      null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
   end
 
