@@ -8,10 +8,22 @@ class RegistrationController < ActionController::Base
   # POST /registration
   def create
     @registration_form = RegistrationForm.new
-    if @registration_form.submit(registration_params)
+    if user = @registration_form.submit(registration_params)
+      RegistrationMailer.confirmation(user).deliver
       redirect_to confirmation_registration_index_path
     else
       flash[:notice] = @registration_form.errors.full_messages.join(', ')
+      render :new
+    end
+  end
+
+  def confirm_email
+    @user = User.find_by(confirmation_token: params[:registration_id])
+    if @user.present?
+      @user.update_attributes(confirmed: true, confirmation_token: nil)
+      redirect_to root_path
+    else
+      flash[:notice] = "Confirmation link is not valid."
       render :new
     end
   end

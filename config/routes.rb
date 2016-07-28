@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
 
   resources :registration, only: [:create] do
+    get :confirm_email
     get :confirmation, on: :collection
   end
 

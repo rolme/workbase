@@ -4,6 +4,10 @@ class RegistrationForm
   attr_reader :company,
               :user
 
+  attr_accessor :email,
+                :password,
+                :name
+
   delegate :email,
            :password,
            to: :user,
@@ -22,10 +26,10 @@ validates_presence_of :user_email,
     @user    = User.new
   end
 
-  def submit(params)
-    @company.name  = params[:company_name]
-    @user.email    = params[:email]
-    @user.password = params[:password]
+  def submit(params={})
+    @company.name  = params[:company_name] || name
+    @user.email    = params[:email] || email
+    @user.password = params[:password] || password
     @user.company  = @company
 
     unless valid? && @user.save
