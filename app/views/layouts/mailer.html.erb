@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width = 800" />
+    <style type="text/css">
+      body {
+        width: 100%;
+        background-color: #E4E4E4;
+        font-family: "Myriad Set", "Myriad Pro", Myriad, "Lucida Grande", "Lucida Sans", "Lucida Sans Unicode", Arial, Helvetica, Verdana, sans-serif;
+        text-align: -webkit-auto;
+        text-indent: 0px;
+        text-transform: none;
+        white-space: normal;
+        widows: 2;
+        word-spacing: 0px;
+        -webkit-text-size-adjust: auto;
+        -webkit-text-stroke-width: 0px;
+        margin: 0 auto;
+        padding: 0px;
+        word-wrap: break-word;
+        -webkit-nbsp-mode: space;
+        -webkit-line-break: after-white-space;
+      }
+      .body {
+        background-color: #fff;
+        border-radius: 6px;
+        box-shadow: 0 2px 7px hsl(0,0%,75%);
+        margin: 30px auto 10px;
+        width: 700px;
+        padding-left: 30px;
+      }
+      .body .rounded-top {
+        margin: 0 auto;
+        width: 680px;
+        padding: 40px 10px 0px;
+        color: #fff;
+        border-top-left-radius: 6px;
+        border-top-right-radius: 6px;
+      }
+      .hr {
+        width: 90%;
+        height: 1px;
+        background-color: #c0c0c0;
+        margin: 20px 20px;
+      }
+      .body .rounded-top h1 {
+        margin: 2px 9px;
+        font-weight: normal;
+        color: #e37944;
+        font-size: 24px;
+        line-height: 24px;
+      }
+      .body .content {
+        padding: 0 20px 5px 20px;
+        margin: 0 auto;
+        width: 660px;
+        border-bottom-left-radius: 6px;
+        border-bottom-right-radius: 6px;
+        font-size: 14px;
+        line-height: 20px;
+        color: hsl(0, 0%, 47%);
+      }
+      .timestamp {
+        color: #c0c0c0;
+        font-size: 11px;
+        margin: 5px 0 0 0;
+        font-weight: normal;
+      }
+
+      .description { margin-bottom: 20px;}
+      .description .hr { height: 1px; background-color: #dfdfdf; width: 95%; margin: 10px 0;}
+      .footer .content_end { padding-bottom: 10px; }
+      .footer {
+        color: hsl(0,0%,30%);
+        text-align: left;
+        margin: 15px 0px 15px 40px;
+        font-size: 11px;
+        width: 700px;
+      }
+      .footer .content_end a { color: #e37944; }
+      .footer .confidential { font-weight: bold; }
+
+      ul.change {margin-top: 5px; margin-left: -30px; list-style: none;}
+      ul.change li { margin-bottom: 10px; font-weight: normal; color: hsl(0, 0%, 50%);}
+      ul.metachange {margin: 2px; margin-left: -10px; list-style: square;}
+      ul.metachange li { font-style: italic; margin-bottom: 2px; color: hsl(0, 0%, 50%);}
+
+      .clear { clear: both;}
+
+
+      .table {
+          width: 100%;
+          margin-bottom: 20px;
+      }
+
+      .table > thead > tr > th,
+      .table > thead > tr > td,
+      .table > tbody > tr > th,
+      .table > tbody > tr > td,
+      .table > tfoot > tr > th,
+      .table > tfoot > tr > td {
+          padding: 8px;
+          line-height: 1.428571429;
+          vertical-align: top;
+          font-size: 14px;
+          color: hsl(0, 0%, 47%);
+      }
+
+      .table > thead > tr > th {
+        text-align: left;
+      }
+
+      .table > thead > tr > th:last-child,
+      .table > tbody > tr > td:last-child {
+        text-align: right;
+      }
+
+      .table > thead > tr:first-child {
+        border-bottom: 1px solid hsl(0, 0%, 47%);
+      }
+
+      .table > caption + thead > tr:first-child > th,
+      .table > caption + thead > tr:first-child > td,
+      .table > colgroup + thead > tr:first-child > th,
+      .table > colgroup + thead > tr:first-child > td,
+      .table > thead:first-child > tr:first-child > th,
+      .table > thead:first-child > tr:first-child > td {
+          border-top: 0;
+      }
+
+      .table .table {
+          background-color: white;
+      }
+
+      .table-striped > tbody > tr:nth-child(odd) > td,
+      .table-striped > tbody > tr:nth-child(odd) > th {
+          background-color: #f9f9f9;
+      }
+
+      .table-hover > tbody > tr:hover > td,
+      .table-hover > tbody > tr:hover > th {
+          background-color: whitesmoke;
+      }
+
+      .text-left {
+        text-align: left;
+      }
+
+      .text-right {
+        text-align: right;
+      }
+
+      .text-center {
+        text-align: center;
+      }
+
+      .btn {
+        color: #fff;
+        background-color: #e37944;
+        border-color: #e0692e;
+        display: inline-block;
+        padding: 6px 12px;
+        margin-bottom: 0;
+        font-size: 14px;
+        font-weight: normal;
+        line-height: 1.42857143;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        cursor: pointer;
+        text-decoration: none;
+        background-image: none;
+        border: 1px solid transparent;
+        border-radius: 4px;
+      }
+    </style>
+    </head>
+    <body>
+    <table align="center" width="800px"><tr><td>
+    <section class="body">
+        <%= yield %>
+    </section>
+    <footer class="footer">
+      <div class="content_end">For questions or support please email <%= mail_to "support@gworkbase.com" %>.</div>
+      <span class="confidential">Apple Need to Know Confidential</span>&nbsp;-&nbsp;<span class="copyright">Copyright &copy; <%= Time.now.year %> Spark Lab LLC</p>
+    </footer>
+    </td></tr></table>
+  </body>
+</html>

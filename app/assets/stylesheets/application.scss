@@ -22,7 +22,7 @@
 body {
   padding-top: 40px;
   padding-bottom: 75px;
-  background-image: asset-url('photo-1432821596592-e2c18b78144f.jpg');
+  // background-image: asset-url('photo-1432821596592-e2c18b78144f.jpg');
   background-repeat: no-repeat;
   background-color: white;
   background-size: cover;
@@ -40,4 +40,12 @@ body {
     font-size: 12rem;
     white-space: nowrap;
   }
+}
+
+.register {
+  position: absolute;
+  top: 35rem;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
 }

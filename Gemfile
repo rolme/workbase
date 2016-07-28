@@ -33,6 +33,7 @@ source 'https://rubygems.org' do
 
   group :development, :test do
     gem 'better_errors'
+    gem 'binding_of_caller'
     gem 'byebug', platform: :mri
     gem 'parallel_tests'
     gem 'pry'

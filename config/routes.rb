@@ -1,10 +1,16 @@
 Rails.application.routes.draw do
+
+  resources :registration, only: [:create] do
+    get :confirmation, on: :collection
+  end
+
   resources :workbase, only: [:index]
 
   resources :login, only: [:index]
-  post "/login",   to: "session#create"
   post "/emulate", to: "session#emulate"
-  get "/logout",   to: "session#destroy", as: "logout"
+  post "/login",   to: "session#create"
+  get "/logout",   to: "session#destroy"
+  get "/register", to: "registration#new"
 
   root to: "workbase#index"
 end
