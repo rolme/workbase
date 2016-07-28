@@ -38,6 +38,6 @@ validates_presence_of :user_email,
       end
       return false
     end
-    true
+    @user
   end
 end

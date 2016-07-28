@@ -6,7 +6,7 @@ RSpec.describe RegistrationForm, type: :model do
   it 'should not save without an email' do
     params = {
       company_name: "",
-      user_email: "register@testmail.com",
+      email: "register@testmail.com",
       password: "1234"
     }
 
@@ -16,7 +16,7 @@ RSpec.describe RegistrationForm, type: :model do
   it 'should not save without a password' do
     params = {
       company_name: "New Company",
-      user_email: "register@testmail.com",
+      email: "register@testmail.com",
       password: ""
     }
 
@@ -28,7 +28,7 @@ RSpec.describe RegistrationForm, type: :model do
 
     params = {
       company_name: "Company",
-      user_email: "register@testmail.com",
+      email: "register@testmail.com",
       password: "1234"
     }
 
@@ -50,10 +50,21 @@ RSpec.describe RegistrationForm, type: :model do
   it 'should save with a new company, email, and password' do
     params = {
       company_name: "Company",
-      user_email: "register@testmail.com",
+      email: "register@testmail.com",
       password: "1234"
     }
 
-    expect(registration.submit(params)).to eql(false)
+    expect(!!registration.submit(params)).to eql(true)
+  end
+
+  it 'should show that user is unconfirmed right after registering' do
+    params = {
+      company_name: "Company",
+      email: "register@testmail.com",
+      password: "1234"
+    }
+
+    user = registration.submit(params)
+    expect(user.confirmed).to eql(false)
   end
 end
