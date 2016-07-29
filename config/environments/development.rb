@@ -26,8 +26,20 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Don't care if the mailer can't send.
-  config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.raise_delivery_errors = true
+
+  if Rails.application.secrets.enable_mailer
+    config.action_mailer.smtp_settings = {
+      :user_name => Rails.application.secrets.mailer_username,
+      :password => Rails.application.secrets.mailer_password,
+      :domain => Rails.application.secrets.domain,
+      :address => Rails.application.secrets.smtp_address,
+      :port => Rails.application.secrets.smtp_port,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+    }
+  end
 
   config.action_mailer.perform_caching = false
 

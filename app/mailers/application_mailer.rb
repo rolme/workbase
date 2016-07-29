@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'donotrespond@workbase.com'
+  default from: 'no-reply@eworkbase.com'
+
   layout 'mailer'
 end

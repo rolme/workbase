@@ -5,17 +5,21 @@ source 'https://rubygems.org' do
   gem 'pg', '~> 0.18'
   gem 'puma', '~> 3.0'
 
+  # User authorization and authentication
   gem 'pundit'
   gem 'bcrypt'
 
+  # Email
   gem 'valid_email'
 
+  # CSS
   gem 'sass-rails', '~> 5.0'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
   gem 'uglifier', '>= 1.3.0'
   gem 'font-awesome-rails'
 
+  # Javascript
   gem 'jquery-rails'
   gem 'turbolinks', '~> 5'
   gem 'jbuilder', '~> 2.5'

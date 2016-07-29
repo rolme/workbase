@@ -1,5 +1,4 @@
 ActionMailer::Base.default_url_options = {
-  protocol: 'https',
   host: Rails.application.secrets.email_hostname
 }
 
