@@ -14,5 +14,5 @@
 //= require jquery_ujs
 //= require jquery
 //= require bootstrap-sprockets
-//= require turbolinks
+//= require select2-full
 //= require_tree .

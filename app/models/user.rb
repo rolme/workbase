@@ -15,6 +15,10 @@ class User < ApplicationRecord
 
   before_create :set_confirmation_token
 
+  def is_workbase?
+    type == 'WorkbaseUser'
+  end
+
   def full_name
     "#{first_name} #{last_name}"
   end

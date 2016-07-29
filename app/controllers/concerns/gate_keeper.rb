@@ -26,7 +26,7 @@ module GateKeeper
   end
 
   def login_user
-    @_login_user ||= session[:login_user_id] && Admin.find_by(id: session[:login_user_id])
+    @_login_user ||= session[:login_user_id] && User.find_by(id: session[:login_user_id])
   end
 
 end

@@ -28,8 +28,8 @@ class SessionController < ApplicationController
 
   # POST /emulate
   def emulate
-    if login_user.admin? && params[:id].present?
-      user                      = User.find(params[:id])
+    if login_user.is_workbase? && params[:email].present?
+      user                      = User.find_by(email: params[:email])
       session[:current_user_id] = user.id
 
       # TODO: Once we have memcached we will not need to wait for session store

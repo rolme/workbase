@@ -12,6 +12,9 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       a href=register_path
         button.navbar-btn.btn.btn-primary Register Now
 
+br
+= render "layouts/flash"
+
 .login
   h1 Do more.
   = form_for :login, {class: "form-inline"} do |f|

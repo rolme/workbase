@@ -4,6 +4,7 @@ source 'https://rubygems.org' do
   gem 'rails', '~> 5.0.0'
   gem 'pg', '~> 0.18'
   gem 'puma', '~> 3.0'
+  gem 'slim-rails'
 
   # User authorization and authentication
   gem 'pundit'
@@ -21,9 +22,8 @@ source 'https://rubygems.org' do
 
   # Javascript
   gem 'jquery-rails'
-  gem 'turbolinks', '~> 5'
   gem 'jbuilder', '~> 2.5'
-  gem 'slim-rails'
+  gem 'select2-rails'
 
   group :production do
     gem 'rails_stdout_logging'
