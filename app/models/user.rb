@@ -1,6 +1,8 @@
 class User < ApplicationRecord
   belongs_to :company
 
+  has_many :areas, foreign_key: :created_by_id
+
   has_secure_password
 
   validates_associated :company
