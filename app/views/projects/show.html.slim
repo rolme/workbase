@@ -57,10 +57,6 @@
                   - if attachment.image?
                     a.enlarge-image href=attachment.asset.url data-description=attachment.description
                       img src=attachment.asset.url(:thumb)
-                  - elsif attachment.audio?
-                    audio controls="" style="width: 90%"
-                      source src=attachment.asset.url type=attachment.asset.content_type
-                      | Your browser does not support HTML5 audio playback.
                   - elsif attachment.video?
                     a.video-playback href=attachment.asset.url data-content-type=attachment.content_type data-description=attachment.description
                       img src=attachment.asset.url(:still)
