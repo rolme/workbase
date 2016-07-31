@@ -3,6 +3,10 @@ class ClientsController < ApplicationController
     @clients = clients.sorted
   end
 
+  def new
+    @client = Client.new(company_id: current_user.company_id)
+  end
+
   def edit
     @client = clients.find params[:id]
   end
