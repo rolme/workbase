@@ -1,0 +1,59 @@
+= render "layouts/flash"
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    = form_for client, html: {class: 'form-horizontal'} do |f|
+      .panel.panel-default
+        .panel-heading Contact
+        .panel-body
+          .form-group
+            = f.label(:company_name, nil, class: "col-sm-2 control-label #{'error' if client.errors[:company_name]}")
+            .col-sm-10
+              = f.text_field(:company_name, placeholder: 'company name', class: 'form-control')
+          .form-group
+            = f.label(:first_name, nil, class: "col-sm-2 control-label #{'error' if client.errors[:first_name]}")
+            .col-sm-4
+              = f.text_field(:first_name, placeholder: 'first name', class: 'form-control')
+            = f.label(:last_name, nil, class: "col-sm-2 control-label #{'error' if client.errors[:last_name]}")
+            .col-sm-4
+              = f.text_field(:last_name, placeholder: 'Last name', class: 'form-control')
+
+          .form-group
+            = f.label(:phone, nil, class: "col-sm-2 control-label #{'error' if client.errors[:phone]}")
+            .col-sm-10
+              = f.text_field(:phone, placeholder: 'Phone', class: 'form-control')
+
+          .form-group
+            = f.label(:fax, nil, class: "col-sm-2 control-label #{'error' if client.errors[:fax]}")
+            .col-sm-10
+              = f.text_field(:fax, placeholder: 'Fax', class: 'form-control')
+
+          .form-group
+            = f.label(:email, nil, class: "col-sm-2 control-label #{'error' if client.errors[:email]}")
+            .col-sm-10
+              = f.text_field(:email, placeholder: 'Email', class: 'form-control')
+
+      .panel.panel-default
+        .panel-heading Address
+        .panel-body
+          .form-group
+            = f.label(:street, nil, class: "col-sm-2 control-label #{'error' if client.errors[:street]}")
+            .col-sm-10
+              = f.text_field(:street, placeholder: '12 St. #A', class: 'form-control')
+
+          .form-group
+            = f.label(:city, nil, class: "col-sm-2 control-label #{'error' if client.errors[:city]}")
+            .col-sm-10
+              = f.text_field(:city, placeholder: 'City', class: 'form-control')
+
+          .form-group
+            = f.label(:state, nil, class: "col-sm-2 control-label #{'error' if client.errors[:state]}")
+            .col-sm-4
+              = f.select(:state, State.all.collect{ |s| [s.name, s.abbreviation] }, { include_blank: true }, { class: 'form-control' })
+            = f.label(:zipcode, nil, class: "col-sm-2 control-label #{'error' if client.errors[:zipcode]}")
+            .col-sm-4
+              = f.text_field(:zipcode, placeholder: '55555', class: 'form-control')
+      .form-group
+        .col-sm-offset-2.col-sm-10.text-right
+          = f.submit nil, class: 'btn btn-primary'
+          =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

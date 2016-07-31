@@ -12,7 +12,7 @@ class RegistrationController < ActionController::Base
       RegistrationMailer.confirmation(user).deliver
       redirect_to confirmation_registration_index_path
     else
-      flash[:notice] = @registration_form.errors.full_messages.join(', ')
+      flash[:error] = @registration_form.errors.full_messages
       render :new
     end
   end
@@ -23,7 +23,7 @@ class RegistrationController < ActionController::Base
       @user.update_attributes(confirmed: true, confirmation_token: nil)
       redirect_to root_path
     else
-      flash[:notice] = "Confirmation link is not valid."
+      flash[:error] = "Confirmation link is not valid."
       render :new
     end
   end

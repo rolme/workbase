@@ -74,8 +74,8 @@ puts ""
 puts ">> Setup City101 demo"
 company = Company.create({name: 'City101'})
 puts ">> adding users..."
-admin   = Admin.create(first_name: 'Michael', last_name: 'Aguda', email: "demo-admin@sparklab.io", password: "test", password_confirmation: "test", company: company)
-user    = User.create(first_name: 'Joseph', last_name: 'Estrella', email: "demo-user@sparklab.io", password: "test", password_confirmation: "test", company: company)
+admin   = Admin.create(first_name: 'Michael', last_name: 'Aguda', email: "demo-admin@sparklab.io", password: "demo", password_confirmation: "demo", company: company)
+user    = User.create(first_name: 'Joseph', last_name: 'Estrella', email: "demo-user@sparklab.io", password: "demo", password_confirmation: "demo", company: company)
 User.update_all(confirmed: true, confirmation_token: nil)
 
 puts ">> adding locations..."
