@@ -18,8 +18,11 @@
 @import "bootswatch/flatly/bootswatch";
 @import "select2-bootstrap";
 
+// custom controller based styles
+@import "projects";
 @import "workbase";
 
+// global styles
 body {
   padding-top: 70px;
   padding-bottom: 75px;

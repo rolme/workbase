@@ -1,0 +1,5 @@
+body[data-controller='projects'][data-action='index'] {
+  table tbody tr:hover {
+    cursor: pointer;
+  }
+}

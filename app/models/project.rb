@@ -12,6 +12,7 @@ class Project < ApplicationRecord
             :company_name,
             :contact_name,
             :email,
+            :fax,
             :phone,
             to: :client,
             prefix: true
