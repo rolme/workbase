@@ -12,7 +12,14 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
           span.label.label-default Admin Mode
 
     #main-nav-collapse.collapse.navbar-collapse
-      
+
+      ul.nav.navbar-nav.nav-pills
+        = nav_link "Clients",  clients_path,  is_active: /clients/ =~ request.fullpath
+        = nav_link "Projects", projects_path,  is_active: /projects/ =~ request.fullpath
+        = nav_link "Inventory", inventory_index_path,  is_active: /inventory/ =~ request.fullpath
+        = nav_link "Procurement", procurement_index_path,  is_active: /procurement/ =~ request.fullpath
+
+
       ul.nav.navbar-nav.navbar-right
         li.dropdown
           a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
