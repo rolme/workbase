@@ -45,3 +45,12 @@ To start the app run the following.
 foreman start
 ```
 Then visit [localhost:5000](http://localhost:5000)
+
+## Heroku Setup
+If deploying to Heroku, you will need to need to add the following add-ons:
+* postgres
+* bucketeer
+* SendGrid
+
+You will also need to install the following buildpack:
+https://github.com/akomic/heroku-buildpack-ffmpegthumbnailer.git
