@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160731153933) do
+ActiveRecord::Schema.define(version: 20160731223152) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,21 @@ ActiveRecord::Schema.define(version: 20160731153933) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["company_id"], name: "index_areas_on_company_id", using: :btree
+  end
+
+  create_table "attachments", force: :cascade do |t|
+    t.integer  "project_id"
+    t.string   "asset"
+    t.string   "tags"
+    t.string   "description"
+    t.string   "content_type"
+    t.integer  "file_size"
+    t.integer  "width"
+    t.integer  "height"
+    t.integer  "length"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+    t.index ["project_id"], name: "index_attachments_on_project_id", using: :btree
   end
 
   create_table "clients", force: :cascade do |t|
@@ -124,6 +139,7 @@ ActiveRecord::Schema.define(version: 20160731153933) do
   end
 
   add_foreign_key "areas", "companies"
+  add_foreign_key "attachments", "projects"
   add_foreign_key "clients", "companies"
   add_foreign_key "projects", "clients"
   add_foreign_key "projects", "companies"

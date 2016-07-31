@@ -4,7 +4,11 @@ Rails.application.routes.draw do
   resources :inventory
   resources :locations, except: [:index]
   resources :procurement
-  resources :projects
+
+  resources :projects do
+    resources :attachments, only: [:index, :create, :update, :destroy]
+  end
+
   resources :registration, only: [:create] do
     get :confirm_email
     get :confirmation, on: :collection

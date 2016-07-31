@@ -38,19 +38,44 @@
               dt Address
               dd = @project.client_address
             hr
-            button.btn.btn-default.btn-xs.pull-right
+            a.btn.btn-default.btn-xs.pull-right href=edit_client_path(@project.client)
               = fa_icon('edit', text: 'Edit')
 
-      / SURVEY
+      / ATTACHMENTS
       .panel.panel-default
-        .panel-heading role="tab" id="survey"
+        .panel-heading role="tab" id="attachments"
           h4.panel-title
-            a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-survey" aria-expanded="true" aria-controls="collapse-survey" Site Survey
-        #collapse-survey.panel-collapse.collapse role="tabpanel" aria-labelledby="survey"
+            a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-attachments" aria-expanded="true" aria-controls="collapse-attachments" Site Survey
+        #collapse-attachments.panel-collapse.collapse role="tabpanel" aria-labelledby="attachments"
+          - @project.attachments.each_slice(4).each do |attachment_slice|
+            .row
+              - attachment_slice.each do |attachment|
+                .col-sm-3.text-center.js-media-item
+                  a href=project_attachment_path(@project, attachment) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+                    span.remove-media
+                      i.fa.fa-icon.fa-times.close.red
+                  - if attachment.image?
+                    a.enlarge-image href=attachment.asset.url data-description=attachment.description
+                      img src=attachment.asset.url(:thumb)
+                  - elsif attachment.audio?
+                    audio controls="" style="width: 90%"
+                      source src=attachment.asset.url type=attachment.asset.content_type
+                      | Your browser does not support HTML5 audio playback.
+                  - elsif attachment.video?
+                    a.video-playback href=attachment.asset.url data-content-type=attachment.content_type data-description=attachment.description
+                      img src=attachment.asset.url(:still)
+                  - else
+                    a href=attachment.asset.url
+                      = fa_icon('file-o 2x')
+                  br
+                  = truncate(attachment.description, length: 25)
           .panel-body
             hr
-            button.btn.btn-default.btn-xs.pull-right
-              = fa_icon('edit', text: 'Edit')
+            = form_for @attachment, url: project_attachments_path(@project), html: { multipart: true } do |f|
+              .form-group
+                = f.file_field :asset, class: 'form-control'
+                = f.text_field :description, placeholder: "short description", class: 'form-control'
+              = f.button "Upload", class: "btn btn-default btn-sm"
 
       / SPEC
       .panel.panel-default

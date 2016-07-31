@@ -11,6 +11,12 @@ source 'https://rubygems.org' do
   gem 'bcrypt'
   gem 'rqrcode_png'
 
+  # Image manipulation
+  gem 'fog-aws'
+  gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+  gem 'carrierwave-video-thumbnailer'
+  gem 'mini_magick'
+
   # Email
   gem 'valid_email'
 

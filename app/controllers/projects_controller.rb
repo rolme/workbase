@@ -1,9 +1,16 @@
 class ProjectsController < ApplicationController
   def index
-    @projects = Project.with_company_id(current_user.company_id).sorted
+    @projects = projects.sorted
   end
 
   def show
-    @project = Project.with_company_id(current_user.company_id).find params[:id]
+    @project    = projects.find params[:id]
+    @attachment = Attachment.new
+  end
+
+private
+
+  def projects
+    Project.with_company_id(current_user.company_id)
   end
 end

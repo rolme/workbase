@@ -3,3 +3,9 @@ body[data-controller='clients'][data-action='index'] {
     cursor: pointer;
   }
 }
+
+body[data-controller='clients'][data-action='show'] {
+  table tbody tr:hover {
+    cursor: pointer;
+  }
+}
