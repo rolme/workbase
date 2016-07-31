@@ -1,0 +1,34 @@
+.row
+  .col-sm-12
+    h1 = fa_icon('th-list', text: "Projects")
+
+    ul.list-inline
+      li
+        a data-toggle="modal" data-placement="top" title="add profile" href="#modal-find-client"
+          = fa_icon('plus-square', text: "Add")
+    hr
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th company
+          th name
+          th created at
+          th start date
+          th end date
+          th value
+          th
+      tbody
+        - @projects.each do |project|
+          tr
+            td = project.client_company_name
+            td = project.name
+            td = project.created_at
+            td = project.start_date
+            td = project.end_date
+            td.text-center = project.total_material_cost
+            td.text-right
+              =  fa_icon('edit')
+              =< fa_icon('trash')

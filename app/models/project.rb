@@ -4,6 +4,18 @@ class Project < ApplicationRecord
 
   has_many :units
 
+  scope :sorted, -> {
+    order(:created_at)
+  }
+
+   delegate :address,
+            :company_name,
+            :contact_name,
+            :email,
+            :phone,
+            to: :client,
+            prefix: true
+
   def materials
     grouped_unit_totals = units.group(:unit_hash).count
     grouped_unit_keys   = grouped_unit_totals.keys

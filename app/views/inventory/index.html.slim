@@ -1,0 +1,32 @@
+.row
+  .col-sm-12
+    h1 = fa_icon('barcode', text: "Inventory")
+
+    ul.list-inline
+      li
+        a data-toggle="modal" data-placement="top" title="add profile" href="#modal-find-client"
+          = fa_icon('plus-square', text: "Add Units")
+    hr
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th count
+          th manufacturer
+          th model
+          th description
+          th cost
+          th
+      tbody
+        - @units.each do |unit|
+          tr
+            td = unit.count
+            td = unit.manufacturer
+            td = unit.model
+            td = unit.description
+            td = unit.cost
+            td.text-right
+              =  fa_icon('edit')
+              =< fa_icon('trash')
