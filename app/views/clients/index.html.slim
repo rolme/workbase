@@ -1,0 +1,34 @@
+.row
+  .col-sm-12
+    h1 = fa_icon('user', text: "Clients")
+
+    ul.list-inline
+      li
+        a data-toggle="modal" data-placement="top" title="add profile" href="#modal-find-client"
+          = fa_icon('plus-square', text: "Add")
+    hr
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th company
+          th contact
+          th phone
+          th email
+          th address
+          th projects
+          th
+      tbody
+        - @clients.each do |client|
+          tr
+            td = client.company_name
+            td = client.contact_name
+            td = client.phone
+            td = client.email
+            td = client.address
+            td.text-center = client.projects.count
+            td.text-right
+              =  fa_icon('edit')
+              =< fa_icon('trash')
