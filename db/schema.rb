@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160729042928) do
+ActiveRecord::Schema.define(version: 20160730213511) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -30,10 +30,76 @@ ActiveRecord::Schema.define(version: 20160729042928) do
     t.index ["company_id"], name: "index_areas_on_company_id", using: :btree
   end
 
+  create_table "clients", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "company_name"
+    t.string   "street"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zipcode"
+    t.string   "contact_email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.string   "phone"
+    t.string   "fax"
+    t.string   "email"
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
+  end
+
   create_table "companies", force: :cascade do |t|
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "projects", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "client_id"
+    t.string   "name"
+    t.datetime "start_date"
+    t.datetime "end_date"
+    t.text     "summary"
+    t.text     "labor"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
+    t.index ["company_id"], name: "index_projects_on_company_id", using: :btree
+  end
+
+  create_table "registries", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "name"
+    t.string   "type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["company_id"], name: "index_registries_on_company_id", using: :btree
+  end
+
+  create_table "units", force: :cascade do |t|
+    t.integer  "company_id"
+    t.string   "uuid"
+    t.string   "unit_hash",                                  null: false
+    t.string   "qrcode"
+    t.string   "procurement_status"
+    t.integer  "unit_type_id"
+    t.string   "name"
+    t.string   "manufacturer"
+    t.string   "model"
+    t.string   "description"
+    t.string   "client_description"
+    t.decimal  "cost",               precision: 8, scale: 2
+    t.integer  "location_id"
+    t.integer  "project_id"
+    t.datetime "created_at",                                 null: false
+    t.datetime "updated_at",                                 null: false
+    t.index ["company_id"], name: "index_units_on_company_id", using: :btree
+    t.index ["location_id"], name: "index_units_on_location_id", using: :btree
+    t.index ["manufacturer"], name: "index_units_on_manufacturer", using: :btree
+    t.index ["project_id"], name: "index_units_on_project_id", using: :btree
+    t.index ["unit_hash"], name: "index_units_on_unit_hash", using: :btree
+    t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
@@ -52,5 +118,10 @@ ActiveRecord::Schema.define(version: 20160729042928) do
   end
 
   add_foreign_key "areas", "companies"
+  add_foreign_key "clients", "companies"
+  add_foreign_key "projects", "clients"
+  add_foreign_key "projects", "companies"
+  add_foreign_key "registries", "companies"
+  add_foreign_key "units", "companies"
   add_foreign_key "users", "companies"
 end

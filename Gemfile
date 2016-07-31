@@ -9,6 +9,7 @@ source 'https://rubygems.org' do
   # User authorization and authentication
   gem 'pundit'
   gem 'bcrypt'
+  gem 'rqrcode_png'
 
   # Email
   gem 'valid_email'
