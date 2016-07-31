@@ -1,16 +1,4 @@
-.page-header
-  h1
-    = fa_icon('user', text: "Client: #{@client.contact_name}")
-    small< = @client.company_name
-
-  ul.list-inline
-    li
-      a href=edit_client_path(@client)
-        = fa_icon('edit', text: "Edit")
-    li
-      a href=clients_path
-        = fa_icon('list', text: "List")
-  hr
+= render "page_header", header: @client.contact_name, client: @client, links: [:new, :edit, :index]
 
 .row
   .col-sm-12.col-md-offset-2.col-md-8

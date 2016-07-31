@@ -1,11 +1,4 @@
-.page-header
-  h1 = fa_icon('user', text: "Clients")
-
-  ul.list-inline
-    li
-      a href=new_client_path
-        = fa_icon('plus-square', text: "Add")
-  hr
+= render "page_header", header: 'Clients', links: [:new]
 
 .row
   .col-sm-12
