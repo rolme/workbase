@@ -1,4 +1,4 @@
-= render 'inventory/page_header', header: "Inventory: #{@units.first.model}", links: [:index, :new_location]
+= render 'inventory/page_header', header: "Inventory: #{@units.first.manufacturer}", links: [:index, :new_location]
 
 .row
   .col-sm-12
@@ -19,7 +19,7 @@
             td = unit.manufacturer
             td = unit.model
             td = unit.description
-            td = unit.cost
+            td = number_to_currency(unit.cost, format: "%n")
             td = unit.area_name
             td.text-right
               a href=edit_unit_path(unit)

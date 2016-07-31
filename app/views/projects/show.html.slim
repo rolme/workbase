@@ -66,7 +66,7 @@
                   th manufacturer
                   th model
                   th description
-                  th cost
+                  th subtotal
                   th in inventory?
               tbody
                 - @project.materials.each do |material|
@@ -75,8 +75,8 @@
                     td = material[:manufacturer]
                     td = material[:model]
                     td = material[:description]
-                    td.text-right = number_to_currency(material[:cost], format: "%n")
-                    td = material[:in_inventory] ? 'Yes' : 'No'
+                    td.text-right = number_to_currency(material[:subtotal], format: "%n")
+                    td = !!material[:location_id] ? 'Yes' : 'No'
             hr
             button.btn.btn-default.btn-xs.pull-right>
               = fa_icon('edit', text: 'Edit')

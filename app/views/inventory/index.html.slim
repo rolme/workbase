@@ -9,7 +9,7 @@
           th manufacturer
           th model
           th description
-          th cost
+          th subtotal
           th
       tbody
         - @units.each do |unit|
@@ -18,7 +18,7 @@
             td = unit.manufacturer
             td = unit.model
             td = unit.description
-            td.text-right = number_to_currency(unit.cost, format: "%n")
+            td.text-right = number_to_currency(unit.subtotal, format: "%n")
             td.text-right
               a href=list_unit_path(unit.unit_hash)
               =  fa_icon('search-plus')

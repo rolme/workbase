@@ -1,5 +1,5 @@
 class InventoryController < ApplicationController
   def index
-    @units = Unit.with_company_id(current_user.company_id).in_inventory.grouped.sorted
+    @units = Unit.group_units(current_user.company_id, true).sort_by{ |u| [u.manufacturer, u.model]}
   end
 end

@@ -10,17 +10,25 @@ class Unit < ApplicationRecord
     where.not(location_id: nil)
   }
 
-  scope :grouped, -> {
-    # SELECT max(description), max(manufacturer), avg(cost), unit_hash, count(unit_hash) FROM units GROUP BY unit_hash;
-    select('
-      unit_hash,
-      count(unit_hash) AS count,
-      max(manufacturer) AS manufacturer,
-      max(model) AS model,
-      max(description) AS description,
-      max(cost) AS cost,
-      max(id) AS id
-    ').group(:unit_hash)
+  scope :group_units, ->(company_id, in_inventory=false) {
+    query = <<-SQL
+      SELECT
+        unit_hash,
+        count(unit_hash) AS count,
+        max(manufacturer) AS manufacturer,
+        max(model) AS model,
+        max(description) AS description,
+        sum(cost) AS subtotal,
+        CASE WHEN MAX(CASE WHEN location_id IS NULL THEN 1 ELSE 0 END) = 0
+        THEN MAX(location_id) END AS location_id,
+        max(client_description) AS client_description,
+        max(id) AS id
+      FROM units
+      WHERE company_id = #{company_id}
+      #{' AND location_id IS NOT NULL ' if in_inventory}
+      GROUP BY unit_hash
+    SQL
+    self.find_by_sql(query)
   }
 
   scope :sorted, -> {
