@@ -1,0 +1,80 @@
+.page-header
+  h1
+    = fa_icon('user', text: "Client: #{@client.company_name}")
+    small< = @client.contact_name
+
+  ul.list-inline
+    li
+      a href=edit_client_path(@client)
+        = fa_icon('edit', text: "Edit")
+    li
+      a href=clients_path
+        = fa_icon('list', text: "List")
+  hr
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    .row
+      .panel.panel-default
+        .panel-heading Contact
+        .panel-body
+          .row
+            label.col-sm-offset-2.col-sm-2 Company
+            .col-sm-8
+              = @client.company_name
+          .row
+            label.col-sm-offset-2.col-sm-2 Name
+            .col-sm-8
+              = @client.contact_name
+
+          .row
+            label.col-sm-offset-2.col-sm-2 Phone
+            .col-sm-8
+              = @client.phone
+
+          .row
+            label.col-sm-offset-2.col-sm-2 Fax
+            .col-sm-8
+              = @client.fax
+
+          .row
+            label.col-sm-offset-2.col-sm-2 Email
+            .col-sm-8
+              = mail_to @client.email
+
+
+          .row
+            label.col-sm-offset-2.col-sm-2 Adress
+            .col-sm-8 = @client.street
+
+          .row
+            .col-sm-offset-4.col-sm-8 #{@client.city}, #{@client.state}
+
+          .row
+            .col-sm-offset-4.col-sm-8 = @client.zipcode
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    .row
+      .panel.panel-default
+        .panel-heading Projects
+        .panel-body
+          table.table.table-striped.table-hover
+            thead
+              tr
+                th name
+                th created at
+                th start date
+                th end date
+                th value
+                th
+            tbody
+              - @client.projects.each do |project|
+                tr data-url=project_path(project)
+                  td = project.name
+                  td = project.created_at
+                  td = project.start_date
+                  td = project.end_date
+                  td.text-center = project.total_material_cost
+                  td.text-right
+                    =  fa_icon('search-plus')

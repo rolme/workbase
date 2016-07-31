@@ -1,5 +1,20 @@
 class ClientsController < ApplicationController
   def index
-    @clients = Client.with_company_id(current_user.company_id).sorted
+    @clients = clients.sorted
   end
+
+  def edit
+    @client = clients.find params[:id]
+  end
+
+  def show
+    @client = clients.find params[:id]
+  end
+
+private
+
+  def clients
+    Client.with_company_id(current_user.company_id)
+  end
+
 end

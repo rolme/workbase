@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160730213511) do
+ActiveRecord::Schema.define(version: 20160731153933) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -37,14 +37,13 @@ ActiveRecord::Schema.define(version: 20160730213511) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
-    t.string   "contact_email"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone"
     t.string   "fax"
     t.string   "email"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
   end
 
@@ -77,6 +76,13 @@ ActiveRecord::Schema.define(version: 20160730213511) do
     t.index ["company_id"], name: "index_registries_on_company_id", using: :btree
   end
 
+  create_table "states", force: :cascade do |t|
+    t.string   "name"
+    t.string   "abbreviation"
+    t.datetime "created_at",   null: false
+    t.datetime "updated_at",   null: false
+  end
+
   create_table "units", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "uuid"
@@ -84,7 +90,6 @@ ActiveRecord::Schema.define(version: 20160730213511) do
     t.string   "qrcode"
     t.string   "procurement_status"
     t.integer  "unit_type_id"
-    t.string   "name"
     t.string   "manufacturer"
     t.string   "model"
     t.string   "description"

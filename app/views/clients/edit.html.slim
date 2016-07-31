@@ -1,0 +1,71 @@
+.page-header
+  h1
+    = fa_icon('user', text: "Client: #{@client.company_name}")
+    small< = @client.contact_name
+
+  ul.list-inline
+    li
+      a href=client_path(@client)
+        = fa_icon('search-plus', text: "Details")
+    li
+      a href=clients_path
+        = fa_icon('list', text: "List")
+  hr
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    = form_for @client, html: {class: 'form-horizontal'} do |f|
+      .panel.panel-default
+        .panel-heading Contact
+        .panel-body
+          .form-group
+            = f.label(:company_name, nil, class: 'col-sm-2 control-label')
+            .col-sm-10
+              = f.text_field(:company_name, placeholder: 'company name', class: 'form-control')
+          .form-group
+            = f.label(:first_name, nil, class: 'col-sm-2 control-label')
+            .col-sm-4
+              = f.text_field(:first_name, placeholder: 'first name', class: 'form-control')
+            = f.label(:last_name, nil, class: 'col-sm-2 control-label')
+            .col-sm-4
+              = f.text_field(:last_name, placeholder: 'Last name', class: 'form-control')
+
+          .form-group
+            = f.label(:phone, nil, class: 'col-sm-2 control-label')
+            .col-sm-10
+              = f.text_field(:phone, placeholder: 'Phone', class: 'form-control')
+
+          .form-group
+            = f.label(:fax, nil, class: 'col-sm-2 control-label')
+            .col-sm-10
+              = f.text_field(:fax, placeholder: 'Fax', class: 'form-control')
+
+          .form-group
+            = f.label(:email, nil, class: 'col-sm-2 control-label')
+            .col-sm-10
+              = f.text_field(:email, placeholder: 'Email', class: 'form-control')
+
+      .panel.panel-default
+        .panel-heading Address
+        .panel-body
+          .form-group
+            = f.label(:street, nil, class: 'col-sm-2 control-label')
+            .col-sm-10
+              = f.text_field(:street, placeholder: '12 St. #A', class: 'form-control')
+
+          .form-group
+            = f.label(:city, nil, class: 'col-sm-2 control-label')
+            .col-sm-10
+              = f.text_field(:city, placeholder: 'City', class: 'form-control')
+
+          .form-group
+            = f.label(:state, nil, class: 'col-sm-2 control-label')
+            .col-sm-4
+              = f.select(:state, State.all.collect{ |s| [s.name, s.abbreviation] }, { include_blank: true }, { class: 'form-control' })
+            = f.label(:zipcode, nil, class: 'col-sm-2 control-label')
+            .col-sm-4
+              = f.text_field(:zipcode, placeholder: '55555', class: 'form-control')
+      .form-group
+        .col-sm-offset-2.col-sm-10.text-right
+          = f.submit nil, class: 'btn btn-primary'
+          =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

@@ -7,7 +7,6 @@ class CreateUnits < ActiveRecord::Migration[5.0]
       t.string :qrcode
       t.string :procurement_status
       t.integer :unit_type_id, index: true
-      t.string :name
       t.string :manufacturer, index: true
       t.string :model
       t.string :description

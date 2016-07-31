@@ -1,12 +1,11 @@
-.row
-  .col-sm-12
-    h1 = fa_icon('user', text: "Clients")
+.page-header
+  h1 = fa_icon('user', text: "Clients")
 
-    ul.list-inline
-      li
-        a data-toggle="modal" data-placement="top" title="add profile" href="#modal-find-client"
-          = fa_icon('plus-square', text: "Add")
-    hr
+  ul.list-inline
+    li
+      a data-toggle="modal" data-placement="top" title="add profile" href="#modal-find-client"
+        = fa_icon('plus-square', text: "Add")
+  hr
 
 .row
   .col-sm-12
@@ -22,7 +21,7 @@
           th
       tbody
         - @clients.each do |client|
-          tr
+          tr data-url=client_path(client)
             td = client.company_name
             td = client.contact_name
             td = client.phone
@@ -30,5 +29,5 @@
             td = client.address
             td.text-center = client.projects.count
             td.text-right
-              =  fa_icon('edit')
-              =< fa_icon('trash')
+              a href=edit_client_path(client)
+                = fa_icon('edit')
