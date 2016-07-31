@@ -25,8 +25,9 @@ ActiveRecord::Schema.define(version: 20160731153933) do
     t.string   "state"
     t.string   "zipcode"
     t.integer  "parent_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.string   "cached_warehouse_name"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.index ["company_id"], name: "index_areas_on_company_id", using: :btree
   end
 

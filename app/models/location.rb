@@ -4,11 +4,19 @@ class Location < Area
 
   has_many :units
 
-  delegate :name,
-           to: :warehouse,
-           prefix: true
+  before_save :update_cache
 
   def area_name
     "#{name}, #{warehouse_name}"
+  end
+
+  def warehouse_name
+    cached_warehouse_name
+  end
+
+private
+
+  def update_cache
+    self.cached_warehouse_name = warehouse.name
   end
 end

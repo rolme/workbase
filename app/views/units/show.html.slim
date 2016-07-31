@@ -1,0 +1,33 @@
+= render 'inventory/page_header', header: "Inventory: #{@unit.uuid}", unit: @unit, links: [:unit_index, :new_units, :edit_unit]
+
+.row
+  .col-sm-offset-2.col-sm-8
+    .row
+      .col-sm-8
+        dl.dl-horizontal
+          dt UUID
+          dd = @unit.uuid
+          dt Model
+          dd = @unit.model
+          dt Manufacturer
+          dd = @unit.manufacturer
+          - if @unit.location_id.blank? && @unit.procurement_status.present?
+            dt Procuement Status
+            dd = @unit.procurement_status
+          dt Unit Type
+          dd = @unit.unit_type_name
+          dt Description
+          dd = @unit.description
+          dt Client Description
+          dd = @unit.client_description
+          dt cost
+          dd = number_to_currency(@unit.cost)
+          dt location
+          dd
+            - if @unit.location.present?
+              a href=location_path(@unit.location) = @unit.area_name
+            - else
+              | n/a
+
+      .col-sm-4
+        = image_tag @unit.qrcode

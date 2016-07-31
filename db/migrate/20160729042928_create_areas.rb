@@ -10,6 +10,7 @@ class CreateAreas < ActiveRecord::Migration[5.0]
       t.string :state
       t.string :zipcode
       t.integer :parent_id
+      t.string :cached_warehouse_name
 
       t.timestamps
     end

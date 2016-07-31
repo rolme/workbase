@@ -1,0 +1,3 @@
+= render 'inventory/page_header', header: "Inventory: #{@unit.uuid}", unit: @unit, links: [:show_unit, :new_location]
+
+= render 'form', unit: @unit, unit_types: @unit_types, locations: @locations

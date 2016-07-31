@@ -1,4 +1,6 @@
 class Unit < ApplicationRecord
+  attr_accessor :location_required
+
   belongs_to :company
   belongs_to :location, optional: true
   belongs_to :project, optional: true
@@ -34,9 +36,16 @@ class Unit < ApplicationRecord
            to: :unit_type,
            prefix: true
 
+  validates :cost, numericality: true, presence: true
+  validates :manufacturer, presence: true
+  validates :location_id, presence: true, if: :location_required?
+
   before_create :generate_qrcode
   before_save   :generate_unit_hash
 
+  def location_required?
+    !!location_required
+  end
 
 private
 
