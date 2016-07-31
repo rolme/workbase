@@ -1,6 +1,6 @@
 require 'faker'
 
-puts "Add default companies"
+print "Adminstrative Setup... "
 Company.create([
   {name: "Workbase"},
   {name: "Spark Lab"}
@@ -13,14 +13,15 @@ sparklab = Company.find_by(name: 'Spark Lab')
 Admin.create(email: "admin@sparklab.io", password: "test", password_confirmation: "test", first_name: 'Admin', last_name: 'SparkLab.io', company: sparklab)
 User.create(email: "roland@sparklab.io", password: "test", password_confirmation: "test", first_name: 'Roland', last_name: 'SparkLab.io', company: sparklab)
 User.update_all(confirmed: true, confirmation_token: nil)
+puts "done"
 
-puts ""
 puts ""
 puts ">> Setup City101 demo"
 company = Company.create({name: 'City101'})
 puts ">> adding users..."
 admin   = Admin.create(first_name: 'Michael', last_name: 'Aguda', email: "demo-admin@sparklab.io", password: "test", password_confirmation: "test", company: company)
 user    = User.create(first_name: 'Joseph', last_name: 'Estrella', email: "demo-user@sparklab.io", password: "test", password_confirmation: "test", company: company)
+User.update_all(confirmed: true, confirmation_token: nil)
 
 puts ">> adding locations..."
 warehouse = Warehouse.create(
@@ -70,3 +71,4 @@ puts ">> adding materials to project..."
 company.units.each do |unit|
   unit.update_attribute(:project_id, project.id)
 end
+puts ">> ... done"

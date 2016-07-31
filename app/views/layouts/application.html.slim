@@ -10,4 +10,5 @@ html
     = render "layouts/header"
     #content.container-fluid class="#{"with-subnav" if content_for?(:subnav)}"
       = yield
+
     = render "layouts/footer"

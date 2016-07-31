@@ -1,0 +1,14 @@
+body[data-controller='workbase'][data-action='index'] {
+  .thumbnail {
+    min-height: 355px;
+
+    img {
+      padding-top: 5px;
+    }
+
+    &:hover {
+      cursor:pointer;
+      background-color: $gray-lighter;
+    }
+  }
+}
