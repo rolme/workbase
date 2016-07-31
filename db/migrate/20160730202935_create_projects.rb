@@ -4,8 +4,8 @@ class CreateProjects < ActiveRecord::Migration[5.0]
       t.references :company, foreign_key: true
       t.references :client, foreign_key: true
       t.string :name
-      t.datetime :start_date
-      t.datetime :end_date
+      t.date :start_date
+      t.date :end_date
       t.text :summary
       t.text :labor
 

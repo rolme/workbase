@@ -1,0 +1,20 @@
+.page-header
+  h1 = fa_icon('barcode', text: header)
+
+  ul.list-inline
+    - if links.include?(:new_units)
+      li
+        a href=new_unit_path
+          = fa_icon('plus-square', text: "Add Units")
+
+    - if links.include?(:new_location)
+      li
+        a href=new_location_path
+          = fa_icon('plus-square', text: "Add Location")
+
+    - if links.include?(:index)
+      li
+        a href=inventory_index_path
+          = fa_icon('list', text: "List")
+
+  hr

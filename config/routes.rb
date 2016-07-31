@@ -2,14 +2,16 @@ Rails.application.routes.draw do
 
   resources :clients
   resources :inventory
+  resources :locations, except: [:index]
   resources :procurement
   resources :projects
-
   resources :registration, only: [:create] do
     get :confirm_email
     get :confirmation, on: :collection
   end
-
+  resources :units, except: [:index] do
+    get :list, on: :member
+  end
   resources :workbase, only: [:index]
 
   resources :login, only: [:index]

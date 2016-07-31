@@ -1,24 +1,26 @@
-= render "page_header", header: 'Inventory', links: [:new_units, :new_location]
+= render 'inventory/page_header', header: "Inventory: #{@units.first.model}", links: [:index, :new_location]
 
 .row
   .col-sm-12
     table.table.table-striped.table-hover
       thead
         tr
-          th count
+          th uuid
           th manufacturer
           th model
           th description
           th cost
+          th location
           th
       tbody
         - @units.each do |unit|
-          tr data-url=list_unit_path(unit.unit_hash)
-            td = unit.count
+          tr data-url=unit_path(unit)
+            td = unit.uuid
             td = unit.manufacturer
             td = unit.model
             td = unit.description
-            td.text-right = number_to_currency(unit.cost, format: "%n")
+            td = unit.cost
+            td = unit.area_name
             td.text-right
-              a href=list_unit_path(unit.unit_hash)
-              =  fa_icon('search-plus')
+              a href=edit_unit_path(unit)
+              =  fa_icon('edit')

@@ -75,7 +75,7 @@
                     td = material[:manufacturer]
                     td = material[:model]
                     td = material[:description]
-                    td = material[:cost]
+                    td.text-right = number_to_currency(material[:cost], format: "%n")
                     td = material[:in_inventory] ? 'Yes' : 'No'
             hr
             button.btn.btn-default.btn-xs.pull-right>

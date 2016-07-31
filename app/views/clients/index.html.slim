@@ -17,7 +17,7 @@
           tr data-url=client_path(client)
             td = client.company_name
             td = client.contact_name
-            td = client.phone
+            td = number_to_phone(client.phone)
             td = client.email
             td = client.address
             td.text-center = client.projects.count

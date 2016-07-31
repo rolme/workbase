@@ -11,6 +11,7 @@ class Unit < ApplicationRecord
   scope :grouped, -> {
     # SELECT max(description), max(manufacturer), avg(cost), unit_hash, count(unit_hash) FROM units GROUP BY unit_hash;
     select('
+      unit_hash,
       count(unit_hash) AS count,
       max(manufacturer) AS manufacturer,
       max(model) AS model,
@@ -24,9 +25,10 @@ class Unit < ApplicationRecord
     order('manufacturer, model')
   }
 
-  delegate :name,
-           to: :location,
-           prefix: true
+  delegate :area_name,
+           :location_name,
+           :warehouse_name,
+           to: :location
 
   delegate :name,
            to: :unit_type,

@@ -18,12 +18,12 @@
           .row
             label.col-sm-offset-2.col-sm-2 Phone
             .col-sm-8
-              = @client.phone
+              = number_to_phone @client.phone
 
           .row
             label.col-sm-offset-2.col-sm-2 Fax
             .col-sm-8
-              = @client.fax
+              = number_to_phone @client.fax
 
           .row
             label.col-sm-offset-2.col-sm-2 Email

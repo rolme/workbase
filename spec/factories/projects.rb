@@ -3,8 +3,8 @@ FactoryGirl.define do
     company { Company.first || association(:company) }
     client { Client.first || association(:client) }
     name "Installation"
-    start_date "2016-07-30 13:29:36"
-    end_date "2016-07-30 13:29:36"
+    start_date { Date.current + 14.days }
+    end_date { Date.current + 17.days }
     summary "Summary text goes here."
     labor "Labor text goes here."
   end

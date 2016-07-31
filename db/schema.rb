@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20160731153933) do
     t.integer  "company_id"
     t.integer  "client_id"
     t.string   "name"
-    t.datetime "start_date"
-    t.datetime "end_date"
+    t.date     "start_date"
+    t.date     "end_date"
     t.text     "summary"
     t.text     "labor"
     t.datetime "created_at", null: false

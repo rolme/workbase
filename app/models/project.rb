@@ -24,6 +24,7 @@ class Project < ApplicationRecord
 
     grouped_units.map do |gu|
       {
+        unit_hash: gu.unit_hash,
         count: grouped_unit_totals[gu.unit_hash],
         manufacturer: gu.manufacturer,
         model: gu.model,
