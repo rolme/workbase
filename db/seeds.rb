@@ -132,6 +132,8 @@ client = Client.create(company_name: 'Freight King, Inc.', street: '1143 Pacific
 
 puts ">> creating project for client..."
 project  = Project.create(name: 'Video Surveillance Installation', start_date: DateTime.now, end_date: nil, client: client, company: company)
+
+puts ">> add proposal to project..."
 proposal = Proposal.create(project: project, company: company, created_by: admin, updated_by: user, title: 'Surveillance Installation')
 
 Section.create(

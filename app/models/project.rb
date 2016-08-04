@@ -3,7 +3,7 @@ class Project < ApplicationRecord
 
   belongs_to :client
   belongs_to :company
-  belongs_to :proposal
+  belongs_to :proposal, optional: true
 
   has_many :attachments
   has_many :units
