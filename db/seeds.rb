@@ -131,10 +131,11 @@ puts ">> adding client..."
 client = Client.create(company_name: 'Freight King, Inc.', street: '1143 Pacific St.', city: 'Union City', state: 'CA', zipcode: '94587', first_name: 'Kuldip', last_name: 'Badwal', phone: '4085995730', fax: '4084251616', email: 'info@freightking.us', company: company)
 
 puts ">> creating project for client..."
-project  = Project.create(name: 'Video Surveillance Installation', start_date: DateTime.now, end_date: nil, client: client, company: company)
-proposal = Proposal.create(project: project, company: company, created_by: admin, updated_by: user, title: 'Surveillance Installation')
+project = Project.create(name: 'Video Surveillance Installation', start_date: DateTime.now, end_date: nil, client: client, company: company)
+project.create_proposal(company: company, created_by: admin, updated_by: user, title: 'Surveillance Installation')
+project.save!
 
-proposal.sections.create(
+project.proposal.sections.create(
   header: 'Project Scope & Summary',
   section_type: SectionType.find_by(label: 'WYSIWYG'),
   data: "<ol><li>Complete wiring, mounting, positioning, lens optimization, channel-by-channel programming and testing of (6) Professional Grade Security Cameras: (3) High Definition 2.0 Megapixel HD1080P IR Vandal Dome Camera &amp; (3) High Definition 2.0 Megapixel HD1080P IR Large Bullet Camera. All cameras will have their own unique presets which will be programmed individually including motion detection, privacy masking, point patrol (if capable), etc. Installation covers various interior and exterior areas of the property (refer to Overview Map)</li><li>All cameras will be hard wired to their assigned Video Server/Power Supply using Coax/CAT6 cabling with specific end-to-end connectors/adapters/terminations. Existing wiring will be utilized or repaired when possible. New wiring will be installed only as necessary</li><li>Custom Configuration of (1) 16-Channel Network Video Server w/ total of 4 Terabytes of Storage – more cameras, video servers, storage and optional peripherals may be added in the future</li><li>Installation and Configuration of (1) Uninterruptible Power Supply Battery Backup Unit for system extended runtime in case of power outage</li><li>Installation and Configuration of (1) 8-Port Power Supply Box to power cameras</li><li>Installation and Configuration of up to (1) Network Gigabit Switch/WAP for network connectivity</li><li>Installation of up to (6) Special Camera Mounts for cameras as necessary</li><li>Installation and Configuration of Power Adapter(s) as necessary</li><li>Installation and configuration of Client Software (included for up to (5) devices – PC, Mac, Laptop, iPhone, Android, Tablets, etc.) for management/staff/authorized users. Please contact your Account Manager if additional devices and/or users need to be setup or added. The program can be used to view live feeds, playback videos, take pictures and other custom control*</li></ol>"
