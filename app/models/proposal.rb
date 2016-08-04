@@ -43,7 +43,7 @@ private
   end
 
   def create_proposal_status
-    self.proposal_status_id = ProposalStatus.find_by(label: Proposal::DEFAULT_STATUS)
+    self.proposal_status_id = ProposalStatus.find_by(label: Proposal::DEFAULT_STATUS).id
   end
 
   def update_cache
