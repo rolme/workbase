@@ -18,6 +18,8 @@ class Proposal < ApplicationRecord
   before_create :create_uuid,
                 :create_proposal_status
 
+  after_create :create_association_on_project
+
   before_save :update_cache
 
   def status
@@ -30,7 +32,7 @@ class Proposal < ApplicationRecord
     saved_proposal.current = false
 
     saved_proposal.save!
-
+    saved_proposal
     # TODO: we need to create versions of sections also.
     # sections.each { |s| s.version!(saved_proposal.id) }
     # saved_proposal
@@ -44,6 +46,10 @@ private
 
   def create_proposal_status
     self.proposal_status_id = ProposalStatus.find_by(label: Proposal::DEFAULT_STATUS).id
+  end
+
+  def create_association_on_project
+    project.update_attribute(:proposal_id, id) if project.proposal_id.nil?
   end
 
   def update_cache

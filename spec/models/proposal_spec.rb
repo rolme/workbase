@@ -20,7 +20,7 @@ RSpec.describe Proposal, type: :model do
     end
   end
 
-  contexgt '#version! should create a copy' do
+  context '#version! should create a copy' do
     it "with a versioned date" do
       saved_proposal = proposal.version!
       expect(saved_proposal.versioned_at).to_not eql(1)
@@ -28,22 +28,22 @@ RSpec.describe Proposal, type: :model do
 
     it "that is not current" do
       saved_proposal = proposal.version!
-      expect(saved_proposal.current).to eql(true)
+      expect(saved_proposal.current).to eql(false)
     end
 
     it "that points to current's project" do
       saved_proposal = proposal.version!
-      expect(saved_proposal.project_id).to_not eql(proposal.project_id)
+      expect(saved_proposal.project_id).to eql(proposal.project_id)
     end
 
     it "with the same uuid" do
       saved_proposal = proposal.version!
-      expect(saved_proposal.uuid).to_not eql(proposal.uuid)
+      expect(saved_proposal.uuid).to eql(proposal.uuid)
     end
 
     it "which project does not point to" do
       saved_proposal = proposal.version!
-      expect(saved_proposal.project.proposal_id).to eql(saved_proposal.project_id)
+      expect(saved_proposal.project.proposal_id).to_not eql(saved_proposal.project_id)
     end
   end
 end
