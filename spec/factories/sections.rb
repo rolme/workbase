@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :section do
-    proposal nil
-    section_type_id 1
-    data "MyText"
+    proposal { Proposal.first || association(:proposal) }
+    section_type { SectionType.first || association(:section_type) }
+    data "My data stuffs"
   end
 end

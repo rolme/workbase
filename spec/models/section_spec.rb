@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Section, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  let(:section) { FactoryGirl.build(:section) }
+
+  context '#create' do
+    it "should set cache" do
+      expect(section.style).to_not eql(nil)
+    end
+  end
 end
