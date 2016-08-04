@@ -4,7 +4,7 @@ class Proposal < ApplicationRecord
   belongs_to :company, optional: true
   belongs_to :created_by, class_name: User
   belongs_to :project
-  belongs_to :proposal_status
+  belongs_to :proposal_status, optional: true
   belongs_to :updated_by, class_name: User, optional: true
 
   has_many :sections

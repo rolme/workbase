@@ -9,15 +9,7 @@ class Section < ApplicationRecord
            to: :section_type,
            prefix: true
 
-  before_save :update_cache
-
   def style
-    cached_section_type
-  end
-
-private
-
-  def update_cache
-    self.cached_section_type = section_type_label
+    section_type_label
   end
 end
