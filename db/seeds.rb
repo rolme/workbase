@@ -131,8 +131,8 @@ puts ">> adding client..."
 client = Client.create(company_name: 'Freight King, Inc.', street: '1143 Pacific St.', city: 'Union City', state: 'CA', zipcode: '94587', first_name: 'Kuldip', last_name: 'Badwal', phone: '4085995730', fax: '4084251616', email: 'info@freightking.us', company: company)
 
 puts ">> creating project for client..."
-project = Project.new(name: 'Video Surveillance Installation', start_date: DateTime.now, end_date: nil, client: client, company: company)
-project.build_proposal(company: company, created_by: admin, updated_by: user, title: 'Surveillance Installation')
+project = Project.create(name: 'Video Surveillance Installation', start_date: DateTime.now, end_date: nil, client: client, company: company)
+project.create_proposal(company: company, created_by: admin, updated_by: user, title: 'Surveillance Installation')
 project.save!
 
 project.proposal.sections.create(
