@@ -109,10 +109,10 @@
   .col-md-8.col-sm-5
     .row
       .col-sm-9
-        h3 Proposal
+        h3 Proposal: #{@project.proposal_title}
       .col-sm-3.text-right
         h3
-          span.label.label-default Draft
+          span.label.label-default = @project.proposal_status
 
     .panel-group id="accordion" role="tablist"
 
@@ -145,25 +145,19 @@
               = fa_icon('edit', text: 'Edit')
 
       / SUMMARY
+      - section = @project.proposal.sections.first
       .panel.panel-default
         .panel-heading role="tab" id="summary"
           h4.panel-title
-            a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-summary" aria-expanded="true" aria-controls="collapse-summary" Project Scope &amp; Summary
+            a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-summary" aria-expanded="true" aria-controls="collapse-summary" = section.header
         #collapse-summary.panel-collapse.collapse role="tabpanel" aria-labelledby="summary"
           .panel-body
-            ol
-              li Complete wiring, mounting, positioning, lens optimization, channel-by-channel programming and testing of (6) Professional Grade Security Cameras: (3) High Definition 2.0 Megapixel HD1080P IR Vandal Dome Camera & (3) High Definition 2.0 Megapixel HD1080P IR Large Bullet Camera. All cameras will have their own unique presets which will be programmed individually including motion detection, privacy masking, point patrol (if capable), etc. Installation covers various interior and exterior areas of the property (refer to Overview Map)
-              li All cameras will be hard wired to their assigned Video Server/Power Supply using Coax/CAT6 cabling with specific end-to-end connectors/adapters/terminations. Existing wiring will be utilized or repaired when possible. New wiring will be installed only as necessary
-              li Custom Configuration of (1) 16-Channel Network Video Server w/ total of 4 Terabytes of Storage – more cameras, video servers, storage and optional peripherals may be added in the future
-              li Installation and Configuration of (1) Uninterruptible Power Supply Battery Backup Unit for system extended runtime in case of power outage
-              li Installation and Configuration of (1) 8-Port Power Supply Box to power cameras
-              li Installation and Configuration of up to (1) Network Gigabit Switch/WAP for network connectivity
-              li Installation of up to (6) Special Camera Mounts for cameras as necessary
-              li Installation and Configuration of Power Adapter(s) as necessary
-              li Installation and configuration of Client Software (included for up to (5) devices – PC, Mac, Laptop, iPhone, Android, Tablets, etc.) for management/staff/authorized users. Please contact your Account Manager if additional devices and/or users need to be setup or added. The program can be used to view live feeds, playback videos, take pictures and other custom control*
-            hr
-            button.btn.btn-default.btn-xs.pull-right
-              = fa_icon('edit', text: 'Edit')
+            - if section.style == 'WYSIWYG'
+              = form_for [@project, @project.proposal, section] do |f|
+                = f.bootsy_area :data, class: 'form-control'
+  
+                hr
+                  = f.submit nil, class: 'button btn btn-primary btn-xs pull-right'
 
       / MATERIALS
       .panel.panel-default
@@ -265,3 +259,14 @@
             hr
             button.btn.btn-default.btn-xs.pull-right
               = fa_icon('edit', text: 'Edit')
+
+
+              li Complete wiring, mounting, positioning, lens optimization, channel-by-channel programming and testing of (6) Professional Grade Security Cameras: (3) High Definition 2.0 Megapixel HD1080P IR Vandal Dome Camera & (3) High Definition 2.0 Megapixel HD1080P IR Large Bullet Camera. All cameras will have their own unique presets which will be programmed individually including motion detection, privacy masking, point patrol (if capable), etc. Installation covers various interior and exterior areas of the property (refer to Overview Map)
+              li All cameras will be hard wired to their assigned Video Server/Power Supply using Coax/CAT6 cabling with specific end-to-end connectors/adapters/terminations. Existing wiring will be utilized or repaired when possible. New wiring will be installed only as necessary
+              li Custom Configuration of (1) 16-Channel Network Video Server w/ total of 4 Terabytes of Storage – more cameras, video servers, storage and optional peripherals may be added in the future
+              li Installation and Configuration of (1) Uninterruptible Power Supply Battery Backup Unit for system extended runtime in case of power outage
+              li Installation and Configuration of (1) 8-Port Power Supply Box to power cameras
+              li Installation and Configuration of up to (1) Network Gigabit Switch/WAP for network connectivity
+              li Installation of up to (6) Special Camera Mounts for cameras as necessary
+              li Installation and Configuration of Power Adapter(s) as necessary
+              li Installation and configuration of Client Software (included for up to (5) devices – PC, Mac, Laptop, iPhone, Android, Tablets, etc.) for management/staff/authorized users. Please contact your Account Manager if additional devices and/or users need to be setup or added. The program can be used to view live feeds, playback videos, take pictures and other custom control*

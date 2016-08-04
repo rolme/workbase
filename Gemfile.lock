@@ -63,6 +63,9 @@ GEM
       sass (>= 3.3.4)
     bootswatch-rails (3.3.5)
       railties (>= 3.1)
+    bootsy (2.3.0)
+      carrierwave (~> 0.11)
+      mini_magick (~> 4.5)
     builder (3.2.2)
     byebug (9.0.5)
     capybara (2.7.1)
@@ -277,6 +280,7 @@ DEPENDENCIES
   binding_of_caller!
   bootstrap-sass!
   bootswatch-rails!
+  bootsy!
   byebug!
   capybara!
   carrierwave!

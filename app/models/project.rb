@@ -3,6 +3,7 @@ class Project < ApplicationRecord
 
   belongs_to :client
   belongs_to :company
+  belongs_to :proposal
 
   has_many :attachments
   has_many :units
@@ -19,6 +20,11 @@ class Project < ApplicationRecord
             :phone,
             to: :client,
             prefix: true
+
+  delegate :title,
+           :status,
+           to: :proposal,
+           prefix: true
 
   def materials
     units.group_units(company_id, { project_id: id })

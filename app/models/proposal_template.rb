@@ -1,0 +1,2 @@
+class ProposalTemplate < Proposal
+end

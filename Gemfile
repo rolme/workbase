@@ -20,6 +20,9 @@ source 'https://rubygems.org' do
   gem 'carrierwave-video-thumbnailer'
   gem 'mini_magick'
 
+  # WYSIWYG
+  gem 'bootsy'
+
   # Email
   gem 'valid_email'
 

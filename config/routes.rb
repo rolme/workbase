@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :clients
   resources :inventory
@@ -7,6 +8,9 @@ Rails.application.routes.draw do
 
   resources :projects do
     resources :attachments, only: [:index, :create, :update, :destroy]
+    resources :proposals do
+      resources :sections
+    end
   end
 
   resources :registration, only: [:create] do

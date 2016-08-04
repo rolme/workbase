@@ -15,4 +15,5 @@
 //= require jquery
 //= require bootstrap-sprockets
 //= require select2-full
+//= require bootsy
 //= require_tree .
