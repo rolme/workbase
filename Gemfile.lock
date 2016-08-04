@@ -142,8 +142,6 @@ GEM
     parallel (1.9.0)
     parallel_tests (2.7.0)
       parallel
-    paranoia (1.2.0)
-      activerecord (>= 3.0.0)
     pg (0.18.4)
     pkg-config (1.1.7)
     pry (0.10.4)
@@ -293,7 +291,6 @@ DEPENDENCIES
   listen (~> 3.0.5)!
   mini_magick!
   parallel_tests!
-  paranoia!
   pg (~> 0.18)!
   pry!
   pry-byebug!

@@ -1,4 +1,6 @@
 class Company < ApplicationRecord
+  include SoftDeletable
+
   has_many :areas
   has_many :warehouses
   has_many :locations

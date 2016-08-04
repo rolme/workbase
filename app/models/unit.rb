@@ -1,4 +1,6 @@
 class Unit < ApplicationRecord
+  include SoftDeletable
+
   attr_accessor :location_required
 
   belongs_to :company

@@ -8,7 +8,6 @@ source 'https://rubygems.org' do
 
   # helper gems
   gem 'ranked-model'
-  gem 'paranoia'
 
   # User authorization and authentication
   gem 'pundit'

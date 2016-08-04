@@ -1,4 +1,6 @@
 class Project < ApplicationRecord
+  include SoftDeletable
+
   belongs_to :client
   belongs_to :company
 
