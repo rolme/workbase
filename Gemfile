@@ -6,6 +6,10 @@ source 'https://rubygems.org' do
   gem 'puma', '~> 3.0'
   gem 'slim-rails'
 
+  # helper gems
+  gem 'ranked-model'
+  gem 'paranoia'
+
   # User authorization and authentication
   gem 'pundit'
   gem 'bcrypt'
