@@ -14,6 +14,9 @@ class CreateUnits < ActiveRecord::Migration[5.0]
       t.decimal :cost, precision: 8, scale: 2
       t.integer :location_id, index: true
       t.integer :project_id, index: true
+      t.integer :unit_status_id, index: true
+      t.string :cached_status
+      t.datetime :deleted_at
 
       t.timestamps
     end

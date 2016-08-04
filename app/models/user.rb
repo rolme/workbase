@@ -1,9 +1,7 @@
 class User < ApplicationRecord
-  belongs_to :company
-
-  has_many :areas, foreign_key: :created_by_id
-
   has_secure_password
+
+  belongs_to :company
 
   validates_associated :company
   validates :email, uniqueness: true, email: true, domain: true
@@ -15,8 +13,8 @@ class User < ApplicationRecord
 
   before_create :set_confirmation_token
 
-  def is_workbase?
-    type == 'WorkbaseUser'
+  def is_employee?
+    type == 'WorkbaseEmployee'
   end
 
   def full_name

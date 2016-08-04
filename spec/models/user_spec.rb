@@ -15,13 +15,8 @@ RSpec.describe User, type: :model do
     expect(user.save).to eql(false)
   end
 
-  it "Should not save without a company" do
-    user.password = user.password_confirmation = ""
-    expect(user.save).to eql(false)
-  end
-
   it "Should not save without a password" do
-    user.company = nil
+    user.password = user.password_confirmation = ""
     expect(user.save).to eql(false)
   end
 

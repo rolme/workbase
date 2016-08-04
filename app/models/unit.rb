@@ -45,7 +45,7 @@ class Unit < ApplicationRecord
            :warehouse_name,
            to: :location
 
-  delegate :name,
+  delegate :label,
            to: :unit_type,
            prefix: true
 
@@ -68,6 +68,6 @@ private
   end
 
   def generate_unit_hash
-    self.unit_hash = Digest::MD5.hexdigest("#{unit_type_name}|#{manufacturer}|#{model}")
+    self.unit_hash = Digest::MD5.hexdigest("#{unit_type_label}|#{manufacturer}|#{model}")
   end
 end

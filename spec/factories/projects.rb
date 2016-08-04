@@ -5,8 +5,6 @@ FactoryGirl.define do
     name "Installation"
     start_date { Date.current + 14.days }
     end_date { Date.current + 17.days }
-    summary "Summary text goes here."
-    labor "Labor text goes here."
   end
 
   trait :with_units do

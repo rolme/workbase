@@ -1,0 +1,2 @@
+class CompanyStatus < Registry
+end

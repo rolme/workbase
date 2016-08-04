@@ -26,6 +26,7 @@ ActiveRecord::Schema.define(version: 20160731223152) do
     t.string   "zipcode"
     t.integer  "parent_id"
     t.string   "cached_warehouse_name"
+    t.datetime "deleted_at"
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["company_id"], name: "index_areas_on_company_id", using: :btree
@@ -58,35 +59,48 @@ ActiveRecord::Schema.define(version: 20160731223152) do
     t.string   "phone"
     t.string   "fax"
     t.string   "email"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "client_status_id"
+    t.string   "cached_status"
+    t.datetime "deleted_at"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.index ["client_status_id"], name: "index_clients_on_client_status_id", using: :btree
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
   end
 
   create_table "companies", force: :cascade do |t|
     t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "company_status_id"
+    t.string   "cached_status"
+    t.datetime "deleted_at"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+    t.index ["company_status_id"], name: "index_companies_on_company_status_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "client_id"
+    t.integer  "created_by_id"
+    t.integer  "update_by_id"
     t.string   "name"
     t.date     "start_date"
     t.date     "end_date"
-    t.text     "summary"
-    t.text     "labor"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.integer  "project_status_id"
+    t.string   "cached_project_status"
+    t.string   "cached_client_name"
+    t.datetime "deleted_at"
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
     t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
     t.index ["company_id"], name: "index_projects_on_company_id", using: :btree
   end
 
   create_table "registries", force: :cascade do |t|
     t.integer  "company_id"
-    t.string   "name"
-    t.string   "type"
+    t.string   "label"
+    t.string   "position"
+    t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_registries_on_company_id", using: :btree
@@ -113,6 +127,9 @@ ActiveRecord::Schema.define(version: 20160731223152) do
     t.decimal  "cost",               precision: 8, scale: 2
     t.integer  "location_id"
     t.integer  "project_id"
+    t.integer  "unit_status_id"
+    t.string   "cached_status"
+    t.datetime "deleted_at"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.index ["company_id"], name: "index_units_on_company_id", using: :btree
@@ -120,22 +137,27 @@ ActiveRecord::Schema.define(version: 20160731223152) do
     t.index ["manufacturer"], name: "index_units_on_manufacturer", using: :btree
     t.index ["project_id"], name: "index_units_on_project_id", using: :btree
     t.index ["unit_hash"], name: "index_units_on_unit_hash", using: :btree
+    t.index ["unit_status_id"], name: "index_units_on_unit_status_id", using: :btree
     t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
+    t.integer  "company_id"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
     t.boolean  "confirmed",          default: false
     t.string   "confirmation_token"
     t.string   "phone"
-    t.integer  "company_id"
     t.string   "type"
     t.string   "password_digest"
+    t.integer  "user_status_id"
+    t.string   "cached_status"
+    t.datetime "deleted_at"
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
+    t.index ["user_status_id"], name: "index_users_on_user_status_id", using: :btree
   end
 
   add_foreign_key "areas", "companies"
@@ -143,7 +165,6 @@ ActiveRecord::Schema.define(version: 20160731223152) do
   add_foreign_key "clients", "companies"
   add_foreign_key "projects", "clients"
   add_foreign_key "projects", "companies"
-  add_foreign_key "registries", "companies"
   add_foreign_key "units", "companies"
   add_foreign_key "users", "companies"
 end

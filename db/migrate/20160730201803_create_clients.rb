@@ -12,6 +12,9 @@ class CreateClients < ActiveRecord::Migration[5.0]
       t.string :phone
       t.string :fax
       t.string :email
+      t.integer :client_status_id, index: true
+      t.string :cached_status
+      t.datetime :deleted_at
 
       t.timestamps
     end

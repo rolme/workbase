@@ -1,0 +1,2 @@
+class WorkbaseEmployee < User
+end
