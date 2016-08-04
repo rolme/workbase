@@ -13,7 +13,7 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit       = Unit.new
-    @unit_types = unit_types
+    @unit_categories = unit_categories
     @locations  = locations
   end
 
@@ -24,7 +24,7 @@ class UnitsController < ApplicationController
     if @unit.save
       redirect_to @unit
     else
-      @unit_types = unit_types
+      @unit_categories = unit_categories
       @locations  = locations
       flash[:error] = @unit.errors.full_messages
       render 'new'
@@ -33,9 +33,9 @@ class UnitsController < ApplicationController
 
   # GET /units/:id
   def edit
-    @unit       = units.find params[:id]
-    @unit_types = unit_types
-    @locations  = locations
+    @unit            = units.find params[:id]
+    @unit_categories = unit_categories
+    @locations       = locations
   end
 
   # PATCH /units/:id
@@ -45,7 +45,7 @@ class UnitsController < ApplicationController
     if @unit.update(unit_params)
       redirect_to @unit
     else
-      @unit_types = unit_types
+      @unit_categories = unit_categories
       @locations  = locations
       flash[:error] = @unit.errors.full_messages
       render 'edit'
@@ -58,8 +58,8 @@ private
     Unit.with_company_id(current_user.company_id)
   end
 
-  def unit_types
-    UnitType.with_company_id(current_user.company_id).order(:name)
+  def unit_categories
+    UnitCategory.with_company_id(current_user.company_id).ordered
   end
 
   def locations
@@ -75,7 +75,7 @@ private
         :location_id,
         :manufacturer,
         :model,
-        :unit_type_id
+        :unit_category_id
       )
   end
 end

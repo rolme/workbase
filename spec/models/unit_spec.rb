@@ -2,12 +2,12 @@ require 'rails_helper'
 
 RSpec.describe Unit, type: :model do
   let(:company)   { FactoryGirl.create(:company) }
-  let(:unit_type) { FactoryGirl.create(:unit_type) }
+  let(:unit_category) { FactoryGirl.create(:unit_category) }
   let(:location)  { FactoryGirl.create(:location) }
   let(:unit) do
     Unit.new(
       company: company,
-      unit_type: unit_type,
+      unit_category: unit_category,
       cost: 45.2,
       manufacturer: "manufacturer"
     )

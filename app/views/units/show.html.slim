@@ -14,8 +14,8 @@
           - if @unit.location_id.blank? && @unit.procurement_status.present?
             dt Procuement Status
             dd = @unit.procurement_status
-          dt Unit Type
-          dd = @unit.unit_type_name
+          dt Unit Category
+          dd = @unit.unit_category_label
           dt Description
           dd = @unit.description
           dt Client Description

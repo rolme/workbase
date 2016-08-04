@@ -90,7 +90,7 @@ warehouse = Warehouse.create(
 location = Location.create(name: 'storage', warehouse: warehouse, created_by_id: admin.id, company: company)
 
 puts ">> adding inventory..."
-UnitType.create([
+UnitCategory.create([
   { label: 'camera', company: company },
   { label: 'dvr', company: company },
   { label: 'switch', company: company },
@@ -101,18 +101,18 @@ UnitType.create([
 ])
 
 Unit.create([
-  { unit_type_id: UnitType.find_by(label: 'dvr').id, manufacturer: 'Hikvision', model: 'DS-7316HQHI-SH 4TB', description: '16+2 ip ch hd-tvi dvr w/ 4TB', client_description: 'Professional Grade 16-Channel Network Turbo HD Video Server w/ 4TB of Storage', cost: 600.0, procurement_status: 'ordering', company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D5T-AVPIR3', description: '2mp hd-tvi 1080p vf wdr dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Vandal Dome Camera w/ 130’ IR', cost: 140.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D5T-AVPIR3', description: '2mp hd-tvi 1080p vf wdr dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Vandal Dome Camera w/ 130’ IR', cost: 140.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D5T-AVPIR3', description: '2mp hd-tvi 1080p vf wdr dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Vandal Dome Camera w/ 130’ IR', cost: 140.0, procurement_status: 'ordering', company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE16D5T-AVFIT3', description: '2mp hd-tvi 1080p vf wdr bullet camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Large Bullet Camera w/ 150’ IR', cost: 140.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE16D5T-AVFIT3', description: '2mp hd-tvi 1080p vf wdr bullet camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Large Bullet Camera w/ 150’ IR', cost: 140.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE16D5T-AVFIT3', description: '2mp hd-tvi 1080p vf wdr bullet camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Large Bullet Camera w/ 150’ IR', cost: 140.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D1T-VPIR 2.8mm', description: '2mp hd-tvi 1080p 2.8mm fixed lens dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Fixed Dome Camera', cost: 80.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'switch').id, manufacturer: 'TRENDnet', model: 'TEG-S80g', description: '8 port Gb Switch', client_description: '8/4-Port Network Gigabit Switch/WAP', cost: 40.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'battery backup').id, manufacturer: 'Cyberpower', model: nil, description: '500va UPS battery backup floor unit', client_description: 'UPS Battery Backup Unit', cost: 50.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'power supply box').id, manufacturer: 'WBOX', model: '0E-1205AD9', description: '8-port power supply box AC 12V ptc', client_description: '8-Port Power Supply Box', cost: 50.0, location_id: location.id, company: company },
-  { unit_type_id: UnitType.find_by(label: 'mouse').id, manufacturer: 'Hp', model: nil, description: 'Wireless Optical Laser Mouse', client_description: 'Wireless Optical Laser Mouse', cost: 20.0, procurement_status: 'processing', company: company }
+  { unit_category_id: UnitCategory.find_by(label: 'dvr').id, manufacturer: 'Hikvision', model: 'DS-7316HQHI-SH 4TB', description: '16+2 ip ch hd-tvi dvr w/ 4TB', client_description: 'Professional Grade 16-Channel Network Turbo HD Video Server w/ 4TB of Storage', cost: 600.0, procurement_status: 'ordering', company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D5T-AVPIR3', description: '2mp hd-tvi 1080p vf wdr dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Vandal Dome Camera w/ 130’ IR', cost: 140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D5T-AVPIR3', description: '2mp hd-tvi 1080p vf wdr dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Vandal Dome Camera w/ 130’ IR', cost: 140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D5T-AVPIR3', description: '2mp hd-tvi 1080p vf wdr dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Vandal Dome Camera w/ 130’ IR', cost: 140.0, procurement_status: 'ordering', company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE16D5T-AVFIT3', description: '2mp hd-tvi 1080p vf wdr bullet camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Large Bullet Camera w/ 150’ IR', cost: 140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE16D5T-AVFIT3', description: '2mp hd-tvi 1080p vf wdr bullet camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Large Bullet Camera w/ 150’ IR', cost: 140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE16D5T-AVFIT3', description: '2mp hd-tvi 1080p vf wdr bullet camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Varifocal WDR Large Bullet Camera w/ 150’ IR', cost: 140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'camera').id, manufacturer: 'Hikvision', model: 'DS-2CE56D1T-VPIR 2.8mm', description: '2mp hd-tvi 1080p 2.8mm fixed lens dome camera', client_description: 'High Definition 2.0 Megapixel Full HD1080P Fixed Dome Camera', cost: 80.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'switch').id, manufacturer: 'TRENDnet', model: 'TEG-S80g', description: '8 port Gb Switch', client_description: '8/4-Port Network Gigabit Switch/WAP', cost: 40.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'battery backup').id, manufacturer: 'Cyberpower', model: nil, description: '500va UPS battery backup floor unit', client_description: 'UPS Battery Backup Unit', cost: 50.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'power supply box').id, manufacturer: 'WBOX', model: '0E-1205AD9', description: '8-port power supply box AC 12V ptc', client_description: '8-Port Power Supply Box', cost: 50.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'mouse').id, manufacturer: 'Hp', model: nil, description: 'Wireless Optical Laser Mouse', client_description: 'Wireless Optical Laser Mouse', cost: 20.0, procurement_status: 'processing', company: company }
 ])
 
 puts ">> adding client..."

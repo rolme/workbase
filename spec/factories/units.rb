@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :unit do
     company { Company.first || association(:company) }
-    unit_type
+    unit_category
     manufacturer "manufacturer"
     procurement_status "ordering"
     model "01-model-A"

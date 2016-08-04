@@ -1,0 +1,2 @@
+class SectionType < Registry
+end

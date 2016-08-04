@@ -6,7 +6,7 @@ class Unit < ApplicationRecord
   belongs_to :company
   belongs_to :location, optional: true
   belongs_to :project, optional: true
-  belongs_to :unit_type
+  belongs_to :unit_category
 
   scope :in_inventory, -> {
     where.not(location_id: nil)
@@ -48,7 +48,7 @@ class Unit < ApplicationRecord
            to: :location
 
   delegate :label,
-           to: :unit_type,
+           to: :unit_category,
            prefix: true
 
   validates :cost, numericality: true, presence: true
@@ -70,6 +70,6 @@ private
   end
 
   def generate_unit_hash
-    self.unit_hash = Digest::MD5.hexdigest("#{unit_type_label}|#{manufacturer}|#{model}")
+    self.unit_hash = Digest::MD5.hexdigest("#{unit_category_label}|#{manufacturer}|#{model}")
   end
 end

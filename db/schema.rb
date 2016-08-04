@@ -99,6 +99,7 @@ ActiveRecord::Schema.define(version: 20160731223152) do
   create_table "registries", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "label"
+    t.string   "type"
     t.integer  "position"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
@@ -119,7 +120,7 @@ ActiveRecord::Schema.define(version: 20160731223152) do
     t.string   "unit_hash",                                  null: false
     t.string   "qrcode"
     t.string   "procurement_status"
-    t.integer  "unit_type_id"
+    t.integer  "unit_category_id"
     t.string   "manufacturer"
     t.string   "model"
     t.string   "description"
@@ -136,9 +137,9 @@ ActiveRecord::Schema.define(version: 20160731223152) do
     t.index ["location_id"], name: "index_units_on_location_id", using: :btree
     t.index ["manufacturer"], name: "index_units_on_manufacturer", using: :btree
     t.index ["project_id"], name: "index_units_on_project_id", using: :btree
+    t.index ["unit_category_id"], name: "index_units_on_unit_category_id", using: :btree
     t.index ["unit_hash"], name: "index_units_on_unit_hash", using: :btree
     t.index ["unit_status_id"], name: "index_units_on_unit_status_id", using: :btree
-    t.index ["unit_type_id"], name: "index_units_on_unit_type_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|

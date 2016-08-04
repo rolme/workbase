@@ -28,7 +28,7 @@ class SessionController < ApplicationController
 
   # POST /emulate
   def emulate
-    if login_user.is_workbase? && params[:email].present?
+    if login_user.employee? && params[:email].present?
       user                      = User.find_by(email: params[:email])
       session[:current_user_id] = user.id
 

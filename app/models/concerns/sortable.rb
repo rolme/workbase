@@ -6,6 +6,6 @@ module Sortable
 
     ranks :position
 
-    scope :ordered, -> { rank(:sort_order) }
+    scope :ordered, -> { rank(:position) }
   end
 end

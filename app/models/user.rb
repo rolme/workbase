@@ -15,7 +15,7 @@ class User < ApplicationRecord
 
   before_create :set_confirmation_token
 
-  def is_employee?
+  def employee?
     type == 'WorkbaseEmployee'
   end
 

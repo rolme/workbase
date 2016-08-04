@@ -15,9 +15,9 @@
             .col-sm-10
               = f.text_field(:manufacturer, placeholder: 'Manufacturer', class: 'form-control')
           .form-group
-            = f.label(:unit_type_id, nil, class: "col-sm-2 control-label #{'error' if unit.errors[:unit_type_id]}")
+            = f.label(:unit_category_id, nil, class: "col-sm-2 control-label #{'error' if unit.errors[:unit_category_id]}")
             .col-sm-10
-              = f.select(:unit_type_id, unit_types.collect{ |ut| [ut.name, ut.id] }, { include_blank: true }, { class: 'form-control' })
+              = f.select(:unit_category_id, unit_categories.collect{ |ut| [ut.label, ut.id] }, { include_blank: true }, { class: 'form-control' })
           .form-group
             = f.label(:description, nil, class: "col-sm-2 control-label #{'error' if unit.errors[:description]}")
             .col-sm-10
