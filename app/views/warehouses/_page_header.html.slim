@@ -1,0 +1,26 @@
+.page-header
+  h1 = fa_icon('cube', text: header)
+
+  ul.list-inline
+    - if links.include?(:index)
+      li
+        a href=warehouses_path
+          = fa_icon('list', text: "Warehouse List")
+
+    - if links.include?(:edit)
+      li
+        a href=edit_warehouse_path
+          = fa_icon('pencil', text: "Edit Warehouse")
+
+    - if links.include?(:new_warehouse)
+      li
+        a href=new_warehouse_path
+          = fa_icon('plus-square', text: "Add Warehouse")
+
+    - if links.include?(:new_location)
+      li
+        a href=new_warehouse_location_path(warehouse.id)
+          = fa_icon('plus-square', text: "Add Location")
+
+
+  hr

@@ -1,0 +1,15 @@
+= render "page_header", header: 'Warehouses', links: [:new_warehouse]
+
+.row
+  .col-xs-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Name
+          th
+      tbody
+        - @warehouses.each do |warehouse|
+          tr data-url=warehouse_path(warehouse.id)
+            td = warehouse.name
+            td.text-right
+              = fa_icon('search-plus')

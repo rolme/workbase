@@ -1,0 +1,31 @@
+= render "page_header", header: "Inventory: #{@area.name}", links: [:new_units, :index]
+
+.row
+  .col-sm-12
+    - unless @units.empty?
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th count
+            th manufacturer
+            th model
+            th description
+            th subtotal
+            - if @area_is_warehouse
+              th location
+            th
+        tbody
+          - @units.each do |unit|
+            tr data-url=list_unit_path(unit.unit_hash)
+              td = unit.count
+              td = unit.manufacturer
+              td = unit.model
+              td = unit.description
+              td.text-right = number_to_currency(unit.subtotal, format: "%n")
+              - if @area_is_warehouse
+                td = unit.location.name
+              td.text-right
+                a href=list_unit_path(unit.unit_hash)
+                =  fa_icon('search-plus')
+    - else
+      p Empty

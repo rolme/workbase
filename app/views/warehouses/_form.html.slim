@@ -1,0 +1,32 @@
+= render "layouts/flash"
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    = form_for warehouse, html: {class: 'form-horizontal'} do |f|
+      .panel.panel-default
+        .panel-heading Warehouse Information
+        .panel-body
+          .form-group
+            = f.label(:name, nil, class: "col-sm-2 control-label #{'error' if warehouse.errors[:name]}")
+            .col-sm-10
+              = f.text_field(:name, placeholder: 'name', class: 'form-control')
+          .form-group
+            = f.label(:street, nil, class: "col-sm-2 control-label #{'error' if warehouse.errors[:street]}")
+            .col-sm-10
+              = f.text_field(:street, placeholder: 'street', class: 'form-control')
+          .form-group
+            = f.label(:city, nil, class: "col-sm-2 control-label #{'error' if warehouse.errors[:city]}")
+            .col-sm-10
+              = f.text_field(:city, placeholder: 'city', class: 'form-control')
+          .form-group
+            = f.label(:state, nil, class: "col-sm-2 control-label #{'error' if warehouse.errors[:state]}")
+            .col-sm-10
+              = f.select(:state, State.all.collect{ |s| [s.name, s.abbreviation] }, { include_blank: true }, { class: 'form-control' })
+          .form-group
+            = f.label(:zipcode, nil, class: "col-sm-2 control-label #{'error' if warehouse.errors[:zipcode]}")
+            .col-sm-10
+              = f.text_field(:zipcode, placeholder: 'zipcode', class: 'form-control')
+      .form-group
+        .col-sm-offset-2.col-sm-10.text-right
+          = f.submit nil, class: 'btn btn-primary'
+          =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

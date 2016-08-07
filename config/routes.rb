@@ -3,7 +3,9 @@ Rails.application.routes.draw do
 
   resources :clients
   resources :inventory
-  resources :locations, except: [:index]
+  resources :warehouses do
+    resources :locations, except: [:index]
+  end
   resources :procurement
 
   resources :projects do

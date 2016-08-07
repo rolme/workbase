@@ -1,24 +1,26 @@
-= render "page_header", header: 'Inventory', links: [:new_units, :new_location]
+= render "page_header", header: 'Inventory', links: []
+.row
+  .col-xs-12
+    h4 Find Inventory
+    form.form-inline
+      .form-group
+        input#search.form-control type="text" placeholder="Term"
+      button.btn.btn-default type="submit" Search
 
 .row
-  .col-sm-12
+  .col-xs-12
+    h4 Browse a Warehouse
     table.table.table-striped.table-hover
       thead
         tr
-          th count
-          th manufacturer
-          th model
-          th description
-          th subtotal
+          th Name
           th
       tbody
-        - @units.each do |unit|
-          tr data-url=list_unit_path(unit.unit_hash)
-            td = unit.count
-            td = unit.manufacturer
-            td = unit.model
-            td = unit.description
-            td.text-right = number_to_currency(unit.subtotal, format: "%n")
+        - @warehouses.each do |warehouse|
+          tr data-url=inventory_path(warehouse.id)
+            td = warehouse.name
             td.text-right
-              a href=list_unit_path(unit.unit_hash)
-              =  fa_icon('search-plus')
+              = fa_icon('search-plus')
+
+
+

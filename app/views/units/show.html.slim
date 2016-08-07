@@ -25,7 +25,7 @@
           dt location
           dd
             - if @unit.location.present?
-              a href=location_path(@unit.location) = @unit.area_name
+              a href=inventory_path(@unit.location) = @unit.area_name
             - else
               | n/a
 
