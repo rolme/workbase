@@ -16,7 +16,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       ul.nav.navbar-nav.nav-pills
         = nav_link "Clients",  clients_path,  is_active: /clients/ =~ request.fullpath, icon: 'users'
         = nav_link "Projects", projects_path,  is_active: /projects/ =~ request.fullpath, icon: 'th-list'
-        = nav_link "Inventory", inventory_index_path,  is_active: /inventory|units|locations/ =~ request.fullpath, icon: 'barcode'
+        = nav_link "Inventory", inventory_index_path,  is_active: /inventory|units/ =~ request.fullpath, icon: 'barcode'
         = nav_link "Warehouses", warehouses_path,  is_active: /warehouse|location/ =~ request.fullpath, icon: 'cube'
         = nav_link "Procurement", procurement_index_path,  is_active: /procurement/ =~ request.fullpath, icon: 'cart-plus'
 
