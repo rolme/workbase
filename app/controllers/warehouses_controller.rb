@@ -26,6 +26,16 @@ class WarehousesController < ApplicationController
     @warehouse = Warehouse.find params[:id]
   end
 
+  def update
+    @warehouse = Warehouse.find params[:id]
+    if @warehouse.update(warehouse_params)
+      redirect_to @warehouse
+    else
+      flash[:error] = @warehouse.errors.full_messages
+      render 'edit'
+    end
+  end
+
 private
 
   def warehouse_params
