@@ -70,6 +70,10 @@ class Unit < ApplicationRecord
     !!location_required
   end
 
+  def check_in!
+    update_attribute(:checkin_at, DateTime.current)
+  end
+
 private
 
   def generate_qrcode

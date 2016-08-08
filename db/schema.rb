@@ -193,6 +193,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.integer  "unit_status_id"
     t.string   "cached_status"
     t.datetime "deleted_at"
+    t.datetime "checkin_at"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.index ["company_id"], name: "index_units_on_company_id", using: :btree
