@@ -1,0 +1,25 @@
+.page-header
+  h1 = fa_icon('barcode', text: header)
+
+  ul.list-inline
+    - if links.include?(:unit_index)
+      li
+        a href=list_unit_path(unit.unit_hash)
+          = fa_icon('list', text: "Unit List")
+
+    - if links.include?(:new_units)
+      li
+        a href=new_unit_path
+          = fa_icon('edit', text: "Add Unit")
+
+    - if links.include?(:edit_unit)
+      li
+        a href=edit_unit_path
+          = fa_icon('edit', text: "Edit Unit")
+
+    - if links.include?(:show_unit)
+      li
+        a href=unit_path(unit)
+          = fa_icon('search-plus', text: "Details Unit")
+
+  hr
