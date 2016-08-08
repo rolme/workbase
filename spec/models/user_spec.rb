@@ -10,18 +10,20 @@ RSpec.describe User, type: :model do
     )
   end
 
-  it "Should not save without an email" do
-    user.email = ""
-    expect(user.save).to eql(false)
-  end
+  context '.create' do
+    it "Should not save without an email" do
+      user.email = ""
+      expect(user.save).to eql(false)
+    end
 
-  it "Should not save without a password" do
-    user.password = user.password_confirmation = ""
-    expect(user.save).to eql(false)
-  end
+    it "Should not save without a password" do
+      user.password = user.password_confirmation = ""
+      expect(user.save).to eql(false)
+    end
 
-  it "Should save with an email, a company, and password" do
-    expect(user.save).to eql(true)
+    it "Should save with an email, a company, and password" do
+      expect(user.save).to eql(true)
+    end
   end
 
   context '#security_answer_verified?' do
