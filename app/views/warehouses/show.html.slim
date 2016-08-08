@@ -5,11 +5,11 @@
     table.table.table-striped.table-hover
       thead
         tr
-          th locations
+          th Locations
           th
       tbody
         - @locations.each do |location|
-          tr data-url='#'
+          tr data-url=inventory_path(location)
             td = location.name
             td.text-right
-              = fa_icon('search-plus')
+              = fa_icon('barcode')
