@@ -6,7 +6,7 @@ class CreateRegistries < ActiveRecord::Migration[5.0]
       t.string :label
       t.string :type
       t.integer :position
-      t.integer :count
+      t.integer :count, default: 0
       t.datetime :deleted_at
 
       t.timestamps

@@ -146,10 +146,10 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.string   "label"
     t.string   "type"
     t.integer  "position"
-    t.integer  "count"
+    t.integer  "count",      default: 0
     t.datetime "deleted_at"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
     t.index ["company_id"], name: "index_registries_on_company_id", using: :btree
     t.index ["slug"], name: "index_registries_on_slug", using: :btree
   end

@@ -2,6 +2,21 @@
   h1 = fa_icon('barcode', text: header)
 
   ul.list-inline
+    - if links.include?(:manage_categories)
+      li
+        a href=unit_categories_path
+          = fa_icon('th-large', text: "Categories")
+
+    - if links.include?(:add_category)
+      li
+        a href=new_unit_category_path
+          = fa_icon('plus-square', text: "Add Category")
+
+    - if links.include?(:edit_category)
+      li
+        a href=edit_unit_category_path(unit_category)
+          = fa_icon('edit', text: "Edit Category")
+
     - if links.include?(:new_units)
       li
         a href=new_unit_path
@@ -31,10 +46,5 @@
       li
         a href=unit_path(unit)
           = fa_icon('search-plus', text: "Details Unit")
-
-    - if links.include?(:manage_categories)
-      li
-        a href=unit_categories_path
-          = fa_icon('th-large', text: "Categories")
 
   hr
