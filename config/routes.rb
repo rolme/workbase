@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :clients, param: :slug
   resources :inventory, param: :slug do
     collection do
-      get :search, on: :collection
+      get :search
 
       resources :unit_categories, except: [:show], param: :slug do
         get :restore, on: :member
