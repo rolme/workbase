@@ -1,6 +1,14 @@
 = render "page_header", header: 'Inventory', links: [:new_units, :new_location, :manage_categories]
 
 .row
+  .col-xs-12
+    h4 Find Inventory
+    = form_tag search_inventory_index_path, method: :get, class: 'form-inline'
+      .form-group
+        input#q.form-control name="q" type="text" placeholder="Term"
+      button.btn.btn-default type="submit" Search
+
+.row
   .col-sm-12
     table.table.table-striped.table-hover
       thead

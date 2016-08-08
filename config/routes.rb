@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :clients, param: :slug
   resources :inventory, param: :slug do
     collection do
+      get :search, on: :collection
+
       resources :unit_categories, except: [:show], param: :slug do
         get :restore, on: :member
       end
@@ -11,7 +13,6 @@ Rails.application.routes.draw do
   end
   resources :locations, param: :slug, except: [:index]
   resources :procurement
-
   resources :projects, param: :slug do
     resources :attachments, param: :slug, only: [:index, :create, :update, :destroy]
     resources :proposals, param: :slug do
