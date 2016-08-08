@@ -1,6 +1,6 @@
 class SectionsController < ApplicationController
 
-  # PATCH /projects/:slug/proposals/:proposal_slug/sections/:id
+  # PATCH /projects/:project_slug/proposals/:proposal_slug/sections/:id
   def update
     @section = Project.find(params[:project_slug]).proposal.sections.find params[:id]
 
