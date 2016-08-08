@@ -1,4 +1,4 @@
-= render "page_header", header: 'Inventory', links: [:new_units, :new_location]
+= render "page_header", header: 'Inventory', links: [:new_units, :new_location, :manage_categories]
 
 .row
   .col-sm-12
@@ -14,7 +14,7 @@
           th
       tbody
         - @units.each do |unit|
-          tr data-url=list_unit_path(unit.unit_hash)
+          tr data-url=list_units_path(h: unit.unit_hash)
             td = unit.unit_category_label
             td = unit.count
             td = unit.manufacturer
@@ -22,5 +22,5 @@
             td = unit.description
             td.text-right = number_to_currency(unit.subtotal, format: "%n")
             td.text-right
-              a href=list_unit_path(unit.unit_hash)
+              a href=list_units_path(h: unit.unit_hash)
               =  fa_icon('search-plus')

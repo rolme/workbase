@@ -1,12 +1,12 @@
 class AttachmentsController < ApplicationController
   before_filter :set_project
 
-  # GET /projects/:project_id/attachments
+  # GET /projects/:project_slug/attachments
   def index
     @attachment = Attachment.new
   end
 
-  # POST /projects/:project_id/attachments
+  # POST /projects/:project_slug/attachments
   def create
     @project.attachments.build(attachment_params)
     @project.save!
@@ -14,13 +14,13 @@ class AttachmentsController < ApplicationController
     redirect_to project_path(@project)
   end
 
-  # PUT /projects/:project_id/attachments/:id
+  # PUT /projects/:project_slug/attachments/:slug
   def update
   end
 
-  # DELETE /projects/:project_id/attachments/:id
+  # DELETE /projects/:project_slug/attachments/:slug
   def destroy
-    attachment = @project.attachments.find{ |a| a.slug == params[:id] }
+    attachment = @project.attachments.find{ |a| a.slug == params[:slug] }
     attachment.destroy
     redirect_to project_path(@project)
   end
@@ -28,7 +28,7 @@ class AttachmentsController < ApplicationController
 private
 
   def set_project
-    @project = Project.includes(:attachments).find_by slug: params[:project_id]
+    @project = Project.includes(:attachments).find_by slug: params[:project_slug]
   end
 
   def attachment_params

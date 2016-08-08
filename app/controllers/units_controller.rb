@@ -1,11 +1,11 @@
 class UnitsController < ApplicationController
 
-  # GET /units/:unit_hash/list
+  # GET /units/list
   def list
-    @units = units.where(unit_hash: params[:id]).in_inventory
+    @units = units.where(unit_hash: params[:h]).in_inventory
   end
 
-  # GET /units/:id
+  # GET /units/:slug
   def show
     @unit = unit
   end
@@ -31,14 +31,14 @@ class UnitsController < ApplicationController
     end
   end
 
-  # GET /units/:id
+  # GET /units/:slug
   def edit
     @unit            = unit
     @unit_categories = unit_categories
     @locations       = locations
   end
 
-  # PATCH /units/:id
+  # PATCH /units/:slug
   def update
     @unit = unit
     @unit.location_required = true
@@ -59,7 +59,7 @@ private
   end
 
   def unit
-    units.find_by slug: params[:id]
+    units.find_by slug: params[:slug]
   end
 
   def unit_categories

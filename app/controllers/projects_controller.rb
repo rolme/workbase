@@ -15,6 +15,6 @@ private
   end
 
   def project
-    projects.find_by slug: params[:id]
+    projects.find_by slug: params[:slug]
   end
 end

@@ -7,7 +7,7 @@ class Unit < ApplicationRecord
   belongs_to :company
   belongs_to :location, optional: true
   belongs_to :project, optional: true
-  belongs_to :unit_category
+  belongs_to :unit_category, counter_cache: :count
 
   scope :in_inventory, -> {
     where.not(location_id: nil)

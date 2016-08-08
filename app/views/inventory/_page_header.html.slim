@@ -19,7 +19,7 @@
 
     - if links.include?(:unit_index)
       li
-        a href=list_unit_path(unit.unit_hash)
+        a href=list_units_path(h: unit.unit_hash)
           = fa_icon('list', text: "Unit List")
 
     - if links.include?(:edit_unit)
@@ -34,7 +34,7 @@
 
     - if links.include?(:manage_categories)
       li
-        a href=unit_path(unit)
-          = fa_icon('search-plus', text: "Details Unit")
+        a href=unit_categories_path
+          = fa_icon('th-large', text: "Categories")
 
   hr

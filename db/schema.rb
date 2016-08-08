@@ -142,13 +142,16 @@ ActiveRecord::Schema.define(version: 20160804052808) do
 
   create_table "registries", force: :cascade do |t|
     t.integer  "company_id"
+    t.string   "slug"
     t.string   "label"
     t.string   "type"
     t.integer  "position"
+    t.integer  "count"
     t.datetime "deleted_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["company_id"], name: "index_registries_on_company_id", using: :btree
+    t.index ["slug"], name: "index_registries_on_slug", using: :btree
   end
 
   create_table "sections", force: :cascade do |t|

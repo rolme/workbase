@@ -42,7 +42,7 @@ private
   end
 
   def client
-    clients.find_by slug: params[:id]
+    clients.find_by slug: params[:slug]
   end
 
   def client_params
