@@ -23,4 +23,20 @@ RSpec.describe User, type: :model do
   it "Should save with an email, a company, and password" do
     expect(user.save).to eql(true)
   end
+
+  context '#security_answer_verified?' do
+    it 'should return true if matches existing security answer' do
+      answer = 'This is the Answer.'
+      user.security_answer = answer
+      expect(user.security_answer_verified?(answer)).to eql(true)
+    end
+  end
+
+  context '#security_answer' do
+    it 'should return a hash and not the answer' do
+      answer = 'This is the Answer.'
+      user.security_answer = answer
+      expect(user.security_answer).to_not eql(answer)
+    end
+  end
 end

@@ -3,6 +3,7 @@ class User < ApplicationRecord
   include SoftDeletable
 
   has_secure_password
+  mount_uploader :avatar, AvatarUploader
 
   belongs_to :company
 
@@ -16,12 +17,24 @@ class User < ApplicationRecord
 
   before_create :set_confirmation_token
 
+  def avatar?
+    avatar.file.present?
+  end
+
   def employee?
     type == 'WorkbaseEmployee'
   end
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def security_answer=(answer)
+    self[:security_answer] = Digest::MD5.hexdigest(answer.to_s.downcase)
+  end
+
+  def security_answer_verified?(answer)
+    security_answer == Digest::MD5.hexdigest(answer.downcase)
   end
 
 private
