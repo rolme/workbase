@@ -18,6 +18,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
   create_table "areas", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "created_by_id"
+    t.string   "slug"
     t.string   "type"
     t.string   "name"
     t.string   "street"
@@ -30,10 +31,12 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "created_at",            null: false
     t.datetime "updated_at",            null: false
     t.index ["company_id"], name: "index_areas_on_company_id", using: :btree
+    t.index ["slug"], name: "index_areas_on_slug", using: :btree
   end
 
   create_table "attachments", force: :cascade do |t|
     t.integer  "project_id"
+    t.string   "slug"
     t.string   "asset"
     t.string   "tags"
     t.string   "description"
@@ -45,6 +48,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "created_at",   null: false
     t.datetime "updated_at",   null: false
     t.index ["project_id"], name: "index_attachments_on_project_id", using: :btree
+    t.index ["slug"], name: "index_attachments_on_slug", using: :btree
   end
 
   create_table "bootsy_image_galleries", force: :cascade do |t|
@@ -63,6 +67,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
 
   create_table "clients", force: :cascade do |t|
     t.integer  "company_id"
+    t.string   "slug"
     t.string   "company_name"
     t.string   "street"
     t.string   "city"
@@ -80,6 +85,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "updated_at",       null: false
     t.index ["client_status_id"], name: "index_clients_on_client_status_id", using: :btree
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
+    t.index ["slug"], name: "index_clients_on_slug", using: :btree
   end
 
   create_table "companies", force: :cascade do |t|
@@ -95,6 +101,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
   create_table "projects", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "client_id"
+    t.string   "slug"
     t.integer  "proposal_id"
     t.integer  "created_by_id"
     t.integer  "update_by_id"
@@ -109,12 +116,14 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "updated_at",            null: false
     t.index ["client_id"], name: "index_projects_on_client_id", using: :btree
     t.index ["company_id"], name: "index_projects_on_company_id", using: :btree
+    t.index ["slug"], name: "index_projects_on_slug", using: :btree
   end
 
   create_table "proposals", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "project_id"
     t.boolean  "current",                default: true
+    t.string   "slug"
     t.string   "type"
     t.integer  "created_by_id"
     t.integer  "updated_by_id"
@@ -128,6 +137,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "updated_at",                            null: false
     t.index ["company_id"], name: "index_proposals_on_company_id", using: :btree
     t.index ["project_id"], name: "index_proposals_on_project_id", using: :btree
+    t.index ["slug"], name: "index_proposals_on_slug", using: :btree
   end
 
   create_table "registries", force: :cascade do |t|
@@ -144,6 +154,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
   create_table "sections", force: :cascade do |t|
     t.integer  "proposal_id"
     t.integer  "section_type_id"
+    t.string   "slug"
     t.string   "cached_section_type"
     t.string   "header"
     t.text     "data"
@@ -151,6 +162,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "updated_at",          null: false
     t.index ["proposal_id"], name: "index_sections_on_proposal_id", using: :btree
     t.index ["section_type_id"], name: "index_sections_on_section_type_id", using: :btree
+    t.index ["slug"], name: "index_sections_on_slug", using: :btree
   end
 
   create_table "states", force: :cascade do |t|
@@ -163,6 +175,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
   create_table "units", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "uuid"
+    t.string   "slug"
     t.string   "unit_hash",                                  null: false
     t.string   "qrcode"
     t.string   "procurement_status"
@@ -183,6 +196,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.index ["location_id"], name: "index_units_on_location_id", using: :btree
     t.index ["manufacturer"], name: "index_units_on_manufacturer", using: :btree
     t.index ["project_id"], name: "index_units_on_project_id", using: :btree
+    t.index ["slug"], name: "index_units_on_slug", using: :btree
     t.index ["unit_category_id"], name: "index_units_on_unit_category_id", using: :btree
     t.index ["unit_hash"], name: "index_units_on_unit_hash", using: :btree
     t.index ["unit_status_id"], name: "index_units_on_unit_status_id", using: :btree
@@ -190,6 +204,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
 
   create_table "users", force: :cascade do |t|
     t.integer  "company_id"
+    t.string   "slug"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
@@ -204,6 +219,7 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "created_at",                         null: false
     t.datetime "updated_at",                         null: false
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
+    t.index ["slug"], name: "index_users_on_slug", using: :btree
     t.index ["user_status_id"], name: "index_users_on_user_status_id", using: :btree
   end
 

@@ -1,5 +1,6 @@
 class Unit < ApplicationRecord
   include SoftDeletable
+  include Sluggable
 
   attr_accessor :location_required
 
@@ -22,6 +23,7 @@ class Unit < ApplicationRecord
         count(unit_hash) AS count,
         max(description) AS description,
         max(id) AS id,
+        max(unit_category_id) AS unit_category_id,
         CASE WHEN MAX(CASE WHEN location_id IS NULL THEN 1 ELSE 0 END) = 0
         THEN MAX(location_id) END AS location_id,
         max(manufacturer) AS manufacturer,

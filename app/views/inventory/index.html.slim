@@ -5,6 +5,7 @@
     table.table.table-striped.table-hover
       thead
         tr
+          th category
           th count
           th manufacturer
           th model
@@ -14,6 +15,7 @@
       tbody
         - @units.each do |unit|
           tr data-url=list_unit_path(unit.unit_hash)
+            td = unit.unit_category_label
             td = unit.count
             td = unit.manufacturer
             td = unit.model

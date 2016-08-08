@@ -1,4 +1,6 @@
 class Section < ApplicationRecord
+  include Sluggable
+
   # TODO: Should we allow uploading of images here?
   # include Bootsy::Container
 

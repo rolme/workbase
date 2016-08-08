@@ -1,4 +1,5 @@
 class Area < ApplicationRecord
+  include Sluggable
   include SoftDeletable
 
   belongs_to :company

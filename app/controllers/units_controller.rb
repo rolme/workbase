@@ -7,7 +7,7 @@ class UnitsController < ApplicationController
 
   # GET /units/:id
   def show
-    @unit = units.find params[:id]
+    @unit = unit
   end
 
   # GET /units/new
@@ -33,14 +33,14 @@ class UnitsController < ApplicationController
 
   # GET /units/:id
   def edit
-    @unit            = units.find params[:id]
+    @unit            = unit
     @unit_categories = unit_categories
     @locations       = locations
   end
 
   # PATCH /units/:id
   def update
-    @unit = units.find params[:id]
+    @unit = unit
     @unit.location_required = true
     if @unit.update(unit_params)
       redirect_to @unit
@@ -56,6 +56,10 @@ private
 
   def units
     Unit.with_company_id(current_user.company_id)
+  end
+
+  def unit
+    units.find_by slug: params[:id]
   end
 
   def unit_categories

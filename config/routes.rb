@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :clients
-  resources :inventory
+  resources :inventory do
+    resources :unit_categories
+  end
   resources :locations, except: [:index]
   resources :procurement
 

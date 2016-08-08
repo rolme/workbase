@@ -20,7 +20,7 @@ class AttachmentsController < ApplicationController
 
   # DELETE /projects/:project_id/attachments/:id
   def destroy
-    attachment = @project.attachments.find{ |a| a.id == params[:id].to_i }
+    attachment = @project.attachments.find{ |a| a.slug == params[:id] }
     attachment.destroy
     redirect_to project_path(@project)
   end
@@ -28,7 +28,7 @@ class AttachmentsController < ApplicationController
 private
 
   def set_project
-    @project = Project.includes(:attachments).find params[:project_id]
+    @project = Project.includes(:attachments).find_by slug: params[:project_id]
   end
 
   def attachment_params

@@ -3,6 +3,7 @@ class CreateUnits < ActiveRecord::Migration[5.0]
     create_table :units do |t|
       t.references :company, foreign_key: true
       t.string :uuid
+      t.string :slug, index: true
       t.string :unit_hash, null: false, index: true
       t.string :qrcode
       t.string :procurement_status

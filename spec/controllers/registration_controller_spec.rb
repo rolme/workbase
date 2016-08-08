@@ -6,7 +6,7 @@ RSpec.describe RegistrationController, type: :controller do
       registration = FactoryGirl.build(:registration_form)
       user = registration.submit
       get :confirm_email, params: { registration_id: user.confirmation_token }
-      user = User.find user.id
+      user = User.find user.slug
       expect(user.confirmed).to eql(true)
     end
 
@@ -14,7 +14,7 @@ RSpec.describe RegistrationController, type: :controller do
       registration = FactoryGirl.build(:registration_form)
       user = registration.submit
       get :confirm_email, params: { registration_id: user.confirmation_token + "invalid" }
-      user = User.find user.id
+      user = User.find user.slug
       expect(user.confirmed).to eql(false)
     end
   end
