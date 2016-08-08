@@ -1,8 +1,9 @@
 class Location < Area
   belongs_to :company
   belongs_to :warehouse, class_name: Warehouse, foreign_key: :parent_id
-
   has_many :units
+
+  validates :name, uniqueness: { scope: :parent_id }
 
   before_save :update_cache
 
