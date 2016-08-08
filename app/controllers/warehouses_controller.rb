@@ -1,10 +1,10 @@
 class WarehousesController < ApplicationController
   def index
-    @warehouses = Warehouse.all
+    @warehouses = Warehouse.where(company_id: current_user.company_id).all
   end
 
   def show
-    @warehouse = Warehouse.find params[:id]
+    @warehouse = Warehouse.where(company_id: current_user.company_id).find params[:id]
     @locations = Location.where(parent_id: @warehouse.id)
   end
 
@@ -23,11 +23,11 @@ class WarehousesController < ApplicationController
   end
 
   def edit
-    @warehouse = Warehouse.find params[:id]
+    @warehouse = Warehouse.where(company_id: current_user.company_id).find params[:id]
   end
 
   def update
-    @warehouse = Warehouse.find params[:id]
+    @warehouse = Warehouse.where(company_id: current_user.company_id).find params[:id]
     if @warehouse.update(warehouse_params)
       redirect_to @warehouse
     else
