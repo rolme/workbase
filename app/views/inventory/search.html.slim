@@ -14,12 +14,12 @@
             th
         tbody
           - @units.each do |unit|
-            tr data-url=list_unit_path(unit.unit_hash)
+            tr data-url=list_units_path(h: unit.unit_hash)
               td = unit.count
               td = unit.manufacturer
               td = unit.model
               td = unit.description
               td = unit.location.present? ? unit.area_name : 'n/a'
               td.text-right
-                a href=unit_path(unit)
+                a href=list_units_path(h: unit.unit_hash)
                 =  fa_icon('search-plus')

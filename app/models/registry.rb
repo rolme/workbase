@@ -1,4 +1,5 @@
 class Registry < ApplicationRecord
+  include Sluggable
   include SoftDeletable
   include Sortable
 

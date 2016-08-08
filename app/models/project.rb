@@ -1,4 +1,5 @@
 class Project < ApplicationRecord
+  include Sluggable
   include SoftDeletable
 
   belongs_to :client

@@ -4,6 +4,7 @@ class CreateProposals < ActiveRecord::Migration[5.0]
       t.references :company, foreign_key: true
       t.references :project, foreign_key: true
       t.boolean :current, default: true
+      t.string :slug, index: true
       t.string :type
       t.integer :created_by_id
       t.integer :updated_by_id

@@ -18,11 +18,11 @@ class ClientsController < ApplicationController
   end
 
   def edit
-    @client = clients.find params[:id]
+    @client = client
   end
 
   def update
-    @client = clients.find params[:id]
+    @client = client
     if @client.update(client_params)
       redirect_to @client
     else
@@ -32,13 +32,17 @@ class ClientsController < ApplicationController
   end
 
   def show
-    @client = clients.find params[:id]
+    @client = client
   end
 
 private
 
   def clients
     Client.with_company_id(current_user.company_id)
+  end
+
+  def client
+    clients.find_by slug: params[:slug]
   end
 
   def client_params

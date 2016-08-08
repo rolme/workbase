@@ -1,4 +1,5 @@
 class Proposal < ApplicationRecord
+  include Sluggable
   include SoftDeletable
 
   belongs_to :company, optional: true
@@ -30,6 +31,7 @@ class Proposal < ApplicationRecord
     saved_proposal = self.dup
     saved_proposal.versioned_at = DateTime.current
     saved_proposal.current = false
+    saved_proposal.slug = nil
 
     saved_proposal.save!
     saved_proposal

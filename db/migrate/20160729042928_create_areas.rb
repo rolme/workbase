@@ -3,6 +3,7 @@ class CreateAreas < ActiveRecord::Migration[5.0]
     create_table :areas do |t|
       t.references :company, foreign_key: true
       t.integer :created_by_id
+      t.string :slug, index: true
       t.string :type
       t.string :name
       t.string :street
