@@ -32,7 +32,7 @@ hr
             th added
         tbody
           - @units.each do |unit|
-            tr data-url=list_units_path(h: unit.unit_hash)
+            tr data-url=unit_path(unit)
               td = truncate(unit.uuid, length: 15)
               td = unit.manufacturer
               td = unit.model

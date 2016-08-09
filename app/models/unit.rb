@@ -53,17 +53,13 @@ class Unit < ApplicationRecord
     order('manufacturer, model')
   }
 
-  delegate :name,               # area_name
-           to: :area,
-           prefix: true
-
   delegate :name,               # location_name
            to: :location,
            prefix: true
 
-  delegate :name,               # warehouse_name
-           to: :warehouse,
-           prefix: true
+  delegate :warehouse_name,
+           :area_name,
+           to: :location
 
   delegate :label,              # unit_category_label
            to: :unit_category,
