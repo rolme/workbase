@@ -21,7 +21,7 @@
           th cost
       tbody
         - @units.each do |unit|
-          tr data-url=list_units_path(h: unit.unit_hash)
+          tr data-url=unit_path(unit)
             td = unit.unit_category_label
             td = unit.manufacturer
             td = unit.model
