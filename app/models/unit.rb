@@ -16,6 +16,7 @@ class Unit < ApplicationRecord
   scope :group_units, ->(company_id, options) {
     filter_inventory = 'AND location_id IS NOT NULL' if !!options[:in_inventory]
     filter_project   = "AND project_id = #{options[:project_id]}" if options[:project_id].present?
+    filter_location  = "AND location_id IN (#{options[:location_ids]})" if options[:location_ids].present?
     filter_search    = "
       AND (LOWER(units.manufacturer) LIKE '%#{options[:search]}%'
       OR LOWER(units.model) LIKE '%#{options[:search]}%'
@@ -28,6 +29,7 @@ class Unit < ApplicationRecord
         count(unit_hash) AS count,
         max(description) AS description,
         max(id) AS id,
+        max(slug) AS slug,
         max(unit_category_id) AS unit_category_id,
         CASE WHEN MAX(CASE WHEN location_id IS NULL THEN 1 ELSE 0 END) = 0
         THEN MAX(location_id) END AS location_id,
@@ -39,6 +41,7 @@ class Unit < ApplicationRecord
       WHERE company_id = #{company_id}
       #{filter_inventory}
       #{filter_project}
+      #{filter_location}
       #{filter_search}
       GROUP BY unit_hash
     SQL

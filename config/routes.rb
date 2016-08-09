@@ -11,7 +11,9 @@ Rails.application.routes.draw do
       end
     end
   end
-  resources :locations, param: :slug, except: [:index]
+  resources :warehouses, param: :slug do
+    resources :locations, param: :slug, except: [:index]
+  end
   resources :procurement
   resources :projects, param: :slug do
     resources :attachments, param: :slug, only: [:index, :create, :update, :destroy]

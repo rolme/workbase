@@ -1,0 +1,15 @@
+= render "page_header", header: "Warehouse: #{@warehouse.name}", warehouse: @warehouse, links: [:index, :edit, :new_location]
+
+.row
+  .col-xs-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Locations
+          th
+      tbody
+        - @locations.each do |location|
+          tr data-url=inventory_path(location)
+            td = location.name
+            td.text-right
+              = fa_icon('barcode')
