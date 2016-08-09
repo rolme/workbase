@@ -1,0 +1,17 @@
+= render "layouts/flash"
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    = form_for [warehouse, location], html: {class: 'form-horizontal'} do |f|
+      .panel.panel-default
+        .panel-heading Location Information
+        .panel-body
+          .form-group
+            = f.label(:name, nil, class: "col-sm-2 control-label #{'error' if location.errors[:name]}")
+            .col-sm-10
+              = f.text_field(:name, placeholder: 'name', class: 'form-control')
+
+      .form-group
+        .col-sm-offset-2.col-sm-10.text-right
+          = f.submit nil, class: 'btn btn-primary'
+          =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

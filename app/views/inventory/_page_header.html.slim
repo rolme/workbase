@@ -17,11 +17,6 @@
         a href=edit_unit_category_path(unit_category)
           = fa_icon('edit', text: "Edit Category")
 
-    - if links.include?(:new_units)
-      li
-        a href=new_unit_path
-          = fa_icon('plus-square', text: "Add Units")
-
     - if links.include?(:new_location)
       li
         a href=new_location_path
@@ -42,9 +37,9 @@
         a href=edit_unit_path
           = fa_icon('edit', text: "Edit Unit")
 
-    - if links.include?(:show_unit)
+    - if links.include?(:new_units)
       li
-        a href=unit_path(unit)
-          = fa_icon('search-plus', text: "Details Unit")
+        a href=new_unit_path
+          = fa_icon('plus-square', text: "Add Units")
 
   hr
