@@ -1,0 +1,46 @@
+= render "page_header", header: "Inventory: #{@area.name} - Check In", area: @area, links: [:new_units, :index]
+
+.row
+  .col-sm-offset-2.col-sm-8
+    .panel.panel-default
+      .panel-heading Location Check In
+      .panel-body
+        .row
+          .col-sm-8
+            input.form-control type="text"
+          .col-sm-4
+            select.form-control name="location_id"
+              - @locations.each do |location|
+                option value=location.id = location.name
+
+hr
+
+.row
+  .col-sm-12
+    - unless @units.empty?
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th uuid
+            th manufacturer
+            th model
+            th description
+            th cost
+            - if @area.warehouse?
+              th location
+              th check-in
+            th added
+        tbody
+          - @units.each do |unit|
+            tr data-url=list_units_path(h: unit.unit_hash)
+              td = truncate(unit.uuid, length: 15)
+              td = unit.manufacturer
+              td = unit.model
+              td = unit.description
+              td.text-right = number_to_currency(unit.cost, format: "%n")
+              - if @area.warehouse?
+                td = unit.location_name
+              td = unit.created_at
+              td = unit.checkin_at
+    - else
+      p Empty

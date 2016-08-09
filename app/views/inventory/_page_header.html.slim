@@ -42,4 +42,10 @@
         a href=new_unit_path
           = fa_icon('plus-square', text: "Add Units")
 
+    - if links.include?(:checkin_units)
+      li
+        a href=checkin_inventory_path(area)
+          = fa_icon('check', text: "Checkin Units")
+
+
   hr

@@ -53,12 +53,19 @@ class Unit < ApplicationRecord
     order('manufacturer, model')
   }
 
-  delegate :area_name,
-           :location_name,
-           :warehouse_name,
-           to: :location
+  delegate :name,               # area_name
+           to: :area,
+           prefix: true
 
-  delegate :label,
+  delegate :name,               # location_name
+           to: :location,
+           prefix: true
+
+  delegate :name,               # warehouse_name
+           to: :warehouse,
+           prefix: true
+
+  delegate :label,              # unit_category_label
            to: :unit_category,
            prefix: true
 
@@ -67,7 +74,9 @@ class Unit < ApplicationRecord
   validates :location_id, presence: true, if: :location_required?
 
   before_create :generate_qrcode
-  before_save   :generate_unit_hash
+
+  before_save   :generate_unit_hash,
+                :checkin_unit
 
   def location_required?
     !!location_required
@@ -82,6 +91,10 @@ private
   def generate_qrcode
     self.uuid   = SecureRandom.uuid
     self.qrcode = RQRCode::QRCode.new(uuid).to_img.resize(200, 200).to_data_url
+  end
+
+  def checkin_unit
+    self.checkin_at = created_at if checkin_at.nil?
   end
 
   def generate_unit_hash

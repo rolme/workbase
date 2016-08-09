@@ -4,4 +4,8 @@ class Area < ApplicationRecord
 
   belongs_to :company
   belongs_to :created_by, class_name: User
+
+  def warehouse?
+    type == 'Warehouse'
+  end
 end
