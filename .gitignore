@@ -13,3 +13,4 @@
 /tmp
 dump.rdb
 .DS_Store
+/public/uploads/**

@@ -5,7 +5,6 @@ Rails.application.routes.draw do
   resources :inventory, param: :slug do
     collection do
       get :search
-
       resources :unit_categories, except: [:show], param: :slug do
         get :restore, on: :member
       end
@@ -28,6 +27,11 @@ Rails.application.routes.draw do
   end
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection
+  end
+  resources :users, only: [:index, :update, :destroy], param: :slug do
+    member do
+      get :profile
+    end
   end
   resources :workbase, only: [:index]
 
