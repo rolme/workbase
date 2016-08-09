@@ -6,6 +6,7 @@ class User < ApplicationRecord
   mount_uploader :avatar, AvatarUploader
 
   belongs_to :company
+  belongs_to :security_question
 
   validates_associated :company
   validates :email, uniqueness: true, email: true, domain: true

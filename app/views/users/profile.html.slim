@@ -1,0 +1,60 @@
+.row
+  .col-sm-offset-2.col-sm-8
+    .row
+      .col-sm-8
+        .panel.panel-default
+          .panel-heading Contact Info
+          .panel-body
+            dl.dl-horizontal
+              dt Name
+              dd = @user.full_name
+              dt Company
+              dd = @user.company_name
+              dt Account
+              dd = @user.type
+              dt Email
+              dd = @user.email
+              - if @user.phone.present?
+                dt Phone
+                dd = number_to_phone(@user.phone)
+
+        .panel.panel-default
+          .panel-heading Security
+          .panel-body
+            - if @user.security_answer.nil?
+              = form_for @user, url: user_path(@user), html: { class: 'form-horizontal' } do |f|
+                .form-group
+                  = f.label :security_question_id, 'Question', class: 'col-sm-2 control-label'
+                  .col-sm-10
+                    = f.select(:security_question_id, SecurityQuestion.all.collect{ |q| [q.label, q.id] }, { include_blank: true }, { class: 'form-control' })
+                .form-group
+                  = f.label :security_answer, 'Answer', class: 'col-sm-2 control-label'
+                  .col-sm-10
+                    = f.text_field :security_answer, class: 'form-control'
+                .form-group
+                  .col-sm-offset-2.col-sm-10
+                    = f.submit "Save", class: 'btn btn-primary btn-sm'
+
+            - else
+              ul.list-group
+                li.list-group-item Change password
+                li.list-group-item Change email
+                li.list-group-item Change security question/answer
+                li.list-group-item Change phone
+      .col-sm-4
+        .panel.panel-default
+          .panel-heading Avatar
+          .panel-body
+            - if @user.avatar?
+              .text-center
+                = image_tag @user.avatar.thumb
+            - else
+              = form_for @user, url: user_path(@user), html: { class: 'form' } do |f|
+                .form-group
+                  = f.label :avatar, nil, class: 'col-sm-12 control-label'
+                  .col-sm-12
+                    = f.file_field :avatar, class: 'form-control'
+                .form-group
+                  .col-sm-12
+                    br
+                    = f.submit "Save", class: 'btn btn-primary btn-sm'

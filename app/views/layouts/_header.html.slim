@@ -27,15 +27,16 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             span.caret<
           ul.dropdown-menu.navbar-right#user-dropdown role="menu"
             li
-              a href="" Profile
+              a href=profile_user_path(current_user)
+                = fa_icon("user hw", text: "Profile")
             li.divider
-            li.dropdown-header role="presentation" Workbase
+            li.dropdown-header role="presentation" = current_user.company_name
             li
               a href=""
-                = fa_icon("flask hw", text: "Settings")
+                = fa_icon("users fw", text: "Team")
             li
               a href=""
-                = fa_icon("user fw", text: "Members")
+                = fa_icon("gear fw", text: "Settings")
             li.divider
             li
               a href=logout_path
