@@ -21,7 +21,7 @@
           th cost
       tbody
         - @units.each do |unit|
-          tr data-url=list_unit_path(unit)
+          tr data-url=list_units_path(h: unit.unit_hash)
             td = unit.unit_category_label
             td = unit.manufacturer
             td = unit.model
@@ -38,7 +38,7 @@
           th
       tbody
         - @warehouses.each do |warehouse|
-          tr data-url=inventory_path(warehouse.id)
+          tr data-url=inventory_path(warehouse)
             td = warehouse.name
             td.text-right
               =  fa_icon('search-plus')

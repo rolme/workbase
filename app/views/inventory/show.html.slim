@@ -16,7 +16,7 @@
             th
         tbody
           - @units.each do |unit|
-            tr data-url=list_unit_path(unit)
+            tr data-url=list_units_path(h: unit.unit_hash)
               td = unit.count
               td = unit.manufacturer
               td = unit.model

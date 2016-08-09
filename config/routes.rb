@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     get :confirmation, on: :collection
   end
   resources :units, param: :slug, except: [:index] do
-    get :list, on: :member
+    get :list, on: :collection
   end
   resources :workbase, only: [:index]
 

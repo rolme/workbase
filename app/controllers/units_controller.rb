@@ -2,7 +2,7 @@ class UnitsController < ApplicationController
 
   # GET /units/list
   def list
-    @units = units.where(slug: params[:slug]).in_inventory
+    @units = units.where(unit_hash: params[:h]).in_inventory
   end
 
   # GET /units/:slug
