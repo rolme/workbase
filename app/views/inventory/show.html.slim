@@ -1,4 +1,4 @@
-= render "page_header", header: "Inventory: #{@area.name}", links: [:new_units, :index]
+= render "page_header", header: "Inventory: #{@area.name}", area: @area, links: [:new_units, :index, :checkin_units]
 
 .row
   .col-sm-12
@@ -11,7 +11,7 @@
             th model
             th description
             th subtotal
-            - if @area_is_warehouse
+            - if @area.warehouse?
               th location
             th
         tbody
@@ -22,7 +22,7 @@
               td = unit.model
               td = unit.description
               td.text-right = number_to_currency(unit.subtotal, format: "%n")
-              - if @area_is_warehouse
+              - if @area.warehouse?
                 td = unit.location.name
               td.text-right
                 =  fa_icon('search-plus')

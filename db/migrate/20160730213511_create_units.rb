@@ -18,7 +18,7 @@ class CreateUnits < ActiveRecord::Migration[5.0]
       t.integer :unit_status_id, index: true
       t.string :cached_status
       t.datetime :deleted_at
-
+      t.datetime :checkin_at
       t.timestamps
     end
   end
