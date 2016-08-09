@@ -1,6 +1,7 @@
 class InventoryController < ApplicationController
   def index
     @warehouses = Warehouse.select(:name, :id).where(company_id: current_user.company_id)
+    @recent_units = Unit.where(company_id: current_user.company_id).order(created_at: :desc).limit(10)
   end
 
   # We can view the inventory of Warehouses or Locations

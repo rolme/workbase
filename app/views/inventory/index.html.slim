@@ -9,6 +9,26 @@
 
 .row
   .col-xs-12
+    h4 Recent Units
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th uuid
+          th manufacturer
+          th model
+          th description
+          th cost
+      tbody
+        - @recent_units.each do |unit|
+          tr data-url=unit_path(unit)
+            td = unit.uuid
+            td = unit.manufacturer
+            td = unit.model
+            td = unit.description
+            td.text-right = number_to_currency(unit.cost, format: "%n")
+
+.row
+  .col-xs-12
     h4 Browse a Warehouse
     table.table.table-striped.table-hover
       thead
