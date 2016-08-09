@@ -7,7 +7,7 @@ cache:
 addons:
   postgresql: "9.4"
 
-bundler_args: --without test --jobs 1 --retry 3
+bundler_args: --without test --jobs 3 --retry 3
 
 before_install:
   - "rm ${BUNDLE_GEMFILE}.lock"
