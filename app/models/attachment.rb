@@ -1,4 +1,5 @@
 class Attachment < ApplicationRecord
+  include Sluggable
   mount_uploader :asset, AssetUploader
 
   belongs_to :project

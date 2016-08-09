@@ -1,16 +1,23 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
-  resources :clients
-  resources :inventory
-  resources :warehouses do
-    resources :locations, except: [:index]
+  resources :clients, param: :slug
+  resources :inventory, param: :slug do
+    collection do
+      get :search
+
+      resources :unit_categories, except: [:show], param: :slug do
+        get :restore, on: :member
+      end
+    end
+  end
+  resources :warehouses, param: :slug do
+    resources :locations, param: :slug, except: [:index]
   end
   resources :procurement
-
-  resources :projects do
-    resources :attachments, only: [:index, :create, :update, :destroy]
-    resources :proposals do
+  resources :projects, param: :slug do
+    resources :attachments, param: :slug, only: [:index, :create, :update, :destroy]
+    resources :proposals, param: :slug do
       resources :sections
     end
   end
@@ -19,7 +26,7 @@ Rails.application.routes.draw do
     get :confirm_email
     get :confirmation, on: :collection
   end
-  resources :units, except: [:index] do
+  resources :units, param: :slug, except: [:index] do
     get :list, on: :member
   end
   resources :workbase, only: [:index]

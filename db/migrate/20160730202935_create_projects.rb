@@ -3,6 +3,7 @@ class CreateProjects < ActiveRecord::Migration[5.0]
     create_table :projects do |t|
       t.references :company, foreign_key: true
       t.references :client, foreign_key: true
+      t.string :slug, index: true
       t.integer :proposal_id
       t.integer :created_by_id
       t.integer :update_by_id

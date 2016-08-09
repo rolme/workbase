@@ -1,0 +1,11 @@
+.row
+  .col-md-offset-3.col-md-6
+    = form_for unit_category, html: {class: 'form-horizontal'} do |f|
+      .form-group
+        = f.label :label, 'Category Name', class: 'col-sm-2 col-md-1 control-label'
+        = f.text_field :label, class: 'form-control'
+      .form-group
+        = f.submit nil, class: 'btn btn-primary btn-sm'
+        - if unit_category.id.present? && unit_category.count == 0
+          a.btn.btn-warning.btn-sm< href=unit_category_path(unit_category) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+            =  fa_icon('trash', text: 'DELETE')

@@ -9,7 +9,7 @@
           th
       tbody
         - @warehouses.each do |warehouse|
-          tr data-url=warehouse_path(warehouse.id)
+          tr data-url=warehouse_path(warehouse)
             td = warehouse.name
             td.text-right
               = fa_icon('search-plus')

@@ -1,11 +1,11 @@
 class LocationsController < ApplicationController
   def new
-    @warehouse = Warehouse.where(company_id: current_user.company_id).find params[:warehouse_id]
+    @warehouse = Warehouse.where(company_id: current_user.company_id, slug: params[:warehouse_slug]).first
     @location = Location.new
   end
 
   def create
-    @warehouse = Warehouse.where(company_id: current_user.company_id).find params[:warehouse_id]
+    @warehouse = Warehouse.where(company_id: current_user.company_id, slug: params[:warehouse_slug]).first
     @location = Location.new(location_params.merge(company_id: current_user.company_id, created_by_id: current_user.id, parent_id: @warehouse.id))
 
     if @location.save

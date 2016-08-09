@@ -1,4 +1,5 @@
 class User < ApplicationRecord
+  include Sluggable
   include SoftDeletable
 
   has_secure_password

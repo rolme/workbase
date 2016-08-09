@@ -1,10 +1,11 @@
-= render "page_header", header: 'Inventory', links: []
+= render "page_header", header: 'Inventory', links: [:new_units, :manage_categories]
+
 .row
   .col-xs-12
     h4 Find Inventory
-    form.form-inline
+    = form_tag search_inventory_index_path, method: :get, class: 'form-inline'
       .form-group
-        input#search.form-control type="text" placeholder="Term"
+        input#q.form-control name="q" type="text" placeholder="Term"
       button.btn.btn-default type="submit" Search
 
 .row
@@ -13,15 +14,15 @@
     table.table.table-striped.table-hover
       thead
         tr
-          th uuid
+          th category
           th manufacturer
           th model
           th description
           th cost
       tbody
-        - @recent_units.each do |unit|
-          tr data-url=unit_path(unit)
-            td = unit.uuid
+        - @units.each do |unit|
+          tr data-url=list_unit_path(unit)
+            td = unit.unit_category_label
             td = unit.manufacturer
             td = unit.model
             td = unit.description
@@ -40,7 +41,4 @@
           tr data-url=inventory_path(warehouse.id)
             td = warehouse.name
             td.text-right
-              = fa_icon('search-plus')
-
-
-
+              =  fa_icon('search-plus')

@@ -1,0 +1,42 @@
+= render "inventory/page_header", header: 'Inventory: Categories', links: [:add_category, :index]
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th name
+          th count
+          th created
+          th
+      tbody
+        - @unit_categories.active.each do |uc|
+          tr data-url=edit_unit_category_path(uc)
+            td = uc.label
+            td = uc.count
+            td = uc.created_at
+            td.text-right
+              a.btn.btn-default.btn-sm> href=edit_unit_category_path(uc)
+                =  fa_icon('edit')
+
+- if @unit_categories.deleted.present?
+  .row
+    .col-sm-12
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th name
+            th count
+            th deleted
+            th
+        tbody
+          - @unit_categories.deleted.each do |uc|
+            tr
+              td = uc.label
+              td = uc.count
+              td = uc.deleted_at
+              td.text-right
+                a.btn.btn-default.btn-sm> href=restore_unit_category_path(uc)
+                  =  fa_icon('arrow-up')
+                a.btn.btn-warning.btn-sm< href=unit_category_path(uc) data-confirm="This will permanently delete this item. Are you sure?" data-method="delete" rel="nofollow"
+                  =  fa_icon('trash')

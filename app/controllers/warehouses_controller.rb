@@ -43,7 +43,7 @@ private
   end
 
   def warehouse
-    company_warehouses.find params[:id]
+    company_warehouses.where(slug: params[:slug]).first
   end
 
   def warehouse_params
