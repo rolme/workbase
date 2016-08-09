@@ -16,7 +16,8 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
       ul.nav.navbar-nav.nav-pills
         = nav_link "Clients",  clients_path,  is_active: /clients/ =~ request.fullpath, icon: 'users'
         = nav_link "Projects", projects_path,  is_active: /projects/ =~ request.fullpath, icon: 'th-list'
-        = nav_link "Inventory", inventory_index_path,  is_active: /inventory|units|locations/ =~ request.fullpath, icon: 'barcode'
+        = nav_link "Inventory", inventory_index_path,  is_active: /inventory|units/ =~ request.fullpath, icon: 'barcode'
+        = nav_link "Warehouses", warehouses_path,  is_active: /warehouse|location/ =~ request.fullpath, icon: 'cube'
         = nav_link "Procurement", procurement_index_path,  is_active: /procurement/ =~ request.fullpath, icon: 'cart-plus'
 
 
@@ -27,15 +28,16 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
             span.caret<
           ul.dropdown-menu.navbar-right#user-dropdown role="menu"
             li
-              a href="" Profile
+              a href=profile_user_path(current_user)
+                = fa_icon("user hw", text: "Profile")
             li.divider
-            li.dropdown-header role="presentation" Workbase
+            li.dropdown-header role="presentation" = current_user.company_name
             li
               a href=""
-                = fa_icon("flask hw", text: "Settings")
+                = fa_icon("users fw", text: "Team")
             li
               a href=""
-                = fa_icon("user fw", text: "Members")
+                = fa_icon("gear fw", text: "Settings")
             li.divider
             li
               a href=logout_path

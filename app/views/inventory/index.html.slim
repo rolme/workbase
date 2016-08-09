@@ -1,4 +1,4 @@
-= render "page_header", header: 'Inventory', links: [:new_units, :new_location, :manage_categories]
+= render "page_header", header: 'Inventory', links: [:new_units, :manage_categories]
 
 .row
   .col-xs-12
@@ -9,26 +9,36 @@
       button.btn.btn-default type="submit" Search
 
 .row
-  .col-sm-12
+  .col-xs-12
+    h4 Recent Units
     table.table.table-striped.table-hover
       thead
         tr
           th category
-          th count
           th manufacturer
           th model
           th description
-          th subtotal
-          th
+          th cost
       tbody
         - @units.each do |unit|
-          tr data-url=list_units_path(h: unit.unit_hash)
+          tr data-url=unit_path(unit)
             td = unit.unit_category_label
-            td = unit.count
             td = unit.manufacturer
             td = unit.model
             td = unit.description
-            td.text-right = number_to_currency(unit.subtotal, format: "%n")
+            td.text-right = number_to_currency(unit.cost, format: "%n")
+
+.row
+  .col-xs-12
+    h4 Browse a Warehouse
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th Name
+          th
+      tbody
+        - @warehouses.each do |warehouse|
+          tr data-url=inventory_path(warehouse)
+            td = warehouse.name
             td.text-right
-              a href=list_units_path(h: unit.unit_hash)
               =  fa_icon('search-plus')

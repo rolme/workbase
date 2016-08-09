@@ -73,6 +73,15 @@ SectionType.create([
   { label: 'Attachments' },
   { label: 'Materials' }
 ])
+
+SecurityQuestion.create([
+  { label: 'What is the name of your first pet?' },
+  { label: 'What is the name of your favorite sports team?' },
+  { label: 'What is the name of your high school mascot?' },
+  { label: 'What city did you meet your significant other?' },
+  { label: 'What was the model of your first car?' }
+])
+
 puts "done"
 
 puts ""
