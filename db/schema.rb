@@ -193,7 +193,6 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.integer  "unit_status_id"
     t.string   "cached_status"
     t.datetime "deleted_at"
-    t.datetime "checkin_at"
     t.datetime "created_at",                                 null: false
     t.datetime "updated_at",                                 null: false
     t.index ["company_id"], name: "index_units_on_company_id", using: :btree
@@ -209,22 +208,19 @@ ActiveRecord::Schema.define(version: 20160804052808) do
   create_table "users", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "slug"
-    t.string   "type"
     t.string   "first_name"
     t.string   "last_name"
     t.string   "email"
+    t.boolean  "confirmed",          default: false
+    t.string   "confirmation_token"
     t.string   "phone"
-    t.string   "avatar"
+    t.string   "type"
     t.string   "password_digest"
     t.integer  "user_status_id"
     t.string   "cached_status"
-    t.boolean  "confirmed",            default: false
-    t.string   "confirmation_token"
-    t.integer  "security_question_id"
-    t.string   "security_answer"
     t.datetime "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["slug"], name: "index_users_on_slug", using: :btree
     t.index ["user_status_id"], name: "index_users_on_user_status_id", using: :btree
