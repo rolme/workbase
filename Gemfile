@@ -60,6 +60,7 @@ source 'https://rubygems.org' do
     gem 'pry-remote'
     gem 'rspec-rails'
     gem 'capybara'
+    gem 'cucumber-rails', require: false
   end
 
   group :development do
