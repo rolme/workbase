@@ -59,8 +59,8 @@ source 'https://rubygems.org' do
     gem 'pry-rails'
     gem 'pry-remote'
     gem 'rspec-rails'
-    gem 'capybara'
     gem 'cucumber-rails', require: false
+    gem 'capybara'
   end
 
   group :development do
