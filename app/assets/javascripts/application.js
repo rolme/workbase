@@ -17,3 +17,5 @@
 //= require select2-full
 //= require bootsy
 //= require_tree .
+
+import "babel-polyfill";

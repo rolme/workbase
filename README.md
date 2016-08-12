@@ -20,7 +20,7 @@ brew update && brew upgrade
 ### Install 3rd party applications
 Homebrew install postgres and follow directions to start application.
 ```
-brew install postgresql
+brew install postgresql node
 ```
 
 ### Install ruby 2.3.0
@@ -33,6 +33,7 @@ rbenv install 2.3.0
 ### Initialize Workbase
 clone the project and cd into the directory.
 ```
+npm install
 gem install foreman
 bundle
 rake db:reset
@@ -52,5 +53,7 @@ If deploying to Heroku, you will need to need to add the following add-ons:
 * bucketeer
 * SendGrid
 
-You will also need to install the following buildpack:
+You will also need to install the following buildpack: (order matters)
 https://github.com/akomic/heroku-buildpack-ffmpegthumbnailer.git
+heroku/nodejs
+heroky/ruby

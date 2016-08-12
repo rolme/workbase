@@ -37,6 +37,7 @@ source 'https://rubygems.org' do
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.5'
   gem 'select2-rails'
+  gem 'browserify-rails'
 
   group :production do
     gem 'rails_stdout_logging'
@@ -61,6 +62,8 @@ source 'https://rubygems.org' do
     gem 'rspec-rails'
     gem 'cucumber-rails', require: false
     gem 'capybara'
+    gem "teaspoon-jasmine"
+    gem "coffee-script"
   end
 
   group :development do

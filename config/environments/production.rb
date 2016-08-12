@@ -1,4 +1,7 @@
 Rails.application.configure do
+  # For deployment to heroku
+  config.browserify_rails.use_browserifyinc = true
+
   # Settings specified here will take precedence over those in config/application.rb.
 
   # Code is not reloaded between requests.
