@@ -3,7 +3,8 @@ sudo: false
 
 rvm:
   - 2.3.0
-  - ruby-head
+  # Removing ruby-head (2.4.0) for now since our Gemfile is locked at 2.3.0
+  # - ruby-head
 
 services: postgresql
 
