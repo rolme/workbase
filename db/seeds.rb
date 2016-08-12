@@ -90,6 +90,7 @@ company = Company.create({name: 'City101'})
 puts ">> adding users..."
 admin   = Admin.create(first_name: 'Michael', last_name: 'Aguda', email: "demo-admin@city101.net", password: "demo", password_confirmation: "demo", company: company)
 user    = User.create(first_name: 'Joseph', last_name: 'Estrella', email: "demo-user@city101.net", password: "demo", password_confirmation: "demo", company: company)
+user2   = User.create(first_name: 'Yam', last_name: 'Zara', email: 'walmozara@gmail.com', password: "demo", password_confirmation: "demo", company: company)
 User.update_all(confirmed: true, confirmation_token: nil)
 
 puts ">> adding meta data"
