@@ -22,4 +22,5 @@ env:
 script:
   - psql -c 'create database workbase_test;' -U postgres
   - RAILS_ENV=test bundle exec rake db:migrate --trace
-  - bundle exec rake spec
+  # run both rspec and cucumber tests
+  - bundle exec rake
