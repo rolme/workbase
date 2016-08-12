@@ -15,8 +15,8 @@ before_install: gem install bundler -v 1.11.2
 cache:
   bundler: true
   directories:
-  - vendor/bundle
-  - node_modules
+    - vendor/bundle
+    - node_modules
 
 env:
   global:
