@@ -7,6 +7,9 @@ development:
   <<: *default
   database: workbase_development
 
-test:
+test: &test
   <<: *default
   database: workbase_test
+
+cucumber:
+  <<: *test

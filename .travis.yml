@@ -1,20 +1,31 @@
 language: ruby
 sudo: false
 
+rvm:
+  - 2.3.0
+  # Removing ruby-head (2.4.0) for now since our Gemfile is locked at 2.3.0
+  # - ruby-head
+
+services: postgresql
+
+bundler_args: --without production development --binstubs --jobs 3 --retry 3
+
+before_install: gem install bundler -v 1.11.2
+
 cache:
   bundler: true
   directories:
-  - vendor/bundle
-  - node_modules
-addons:
-  postgresql: "9.4"
+    - vendor/bundle
+    - node_modules
 
-before_install:
-  - "rm ${BUNDLE_GEMFILE}.lock"
+env:
+  global:
+    - DATABASE_USERNAME=postgres
+    - DATABASE_PASSWORD=
 
-before_script:
-  - bundle update
-
-rvm:
-  - 2.3.0
-  - ruby-head
+script:
+  - npm install
+  - psql -c 'create database workbase_test;' -U postgres
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  # run both rspec and cucumber tests
+  - bundle exec rake
