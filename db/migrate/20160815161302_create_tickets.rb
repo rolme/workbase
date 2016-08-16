@@ -6,11 +6,13 @@ class CreateTickets < ActiveRecord::Migration[5.0]
       t.text :description
       t.integer :company_id
       t.integer :status, default: 0
+      t.integer :created_by
       t.integer :viewed_by
       t.integer :assigned_to
       t.string :submitted_by_name
       t.string :submitted_by_email
       t.string :submitted_by_company
+      t.datetime :deleted_at
 
       t.timestamps
     end

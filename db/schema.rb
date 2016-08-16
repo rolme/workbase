@@ -181,11 +181,13 @@ ActiveRecord::Schema.define(version: 20160815161302) do
     t.text     "description"
     t.integer  "company_id"
     t.integer  "status",               default: 0
+    t.integer  "created_by"
     t.integer  "viewed_by"
     t.integer  "assigned_to"
     t.string   "submitted_by_name"
     t.string   "submitted_by_email"
     t.string   "submitted_by_company"
+    t.datetime "deleted_at"
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
     t.index ["company_id"], name: "index_tickets_on_company_id", using: :btree
