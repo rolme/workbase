@@ -1,11 +1,12 @@
 - if flash.present?
   .container
     - flash.each do |key, messages|
-      div class="alert alert-dismissable"
-        button.close type="button" data-dismiss="alert" aria-hidden='true' &times;
-        ul.list-group
-          - if messages.kind_of? Array
+      div.alert.alert-dismissible class="alert-#{key}" role="alert"
+        button.close type="button" data-dismiss="alert"
+          span &times;
+        - if messages.kind_of? Array
+          ul.list-group
             - messages.each do |message|
               li.list-group-item = message
-          - else
-            li.list-group-item = messages
+        - else
+          p = messages
