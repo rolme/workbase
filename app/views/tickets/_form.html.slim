@@ -1,0 +1,24 @@
+= render "layouts/flash"
+
+.row
+  .col-sm-12.col-md-offset-2.col-md-8
+    = form_for ticket, html: {class: 'form-horizontal'} do |f|
+      .panel.panel-default
+        .panel-heading Ticket Information
+        .panel-body
+          .form-group
+            = f.label(:title, nil, class: "col-sm-2 control-label #{'error' if ticket.errors[:title]}")
+            .col-sm-10
+              = f.text_field(:title, placeholder: 'title', class: 'form-control')
+          .form-group
+            = f.label(:description, nil, class: "col-sm-2 control-label #{'error' if ticket.errors[:description]}")
+            .col-sm-10
+              = f.text_area(:description, placeholder: 'description', class: 'form-control', rows: 5)
+          .form-group
+            = f.label(:assigned_to, nil, class: "col-sm-2 control-label #{'error' if ticket.errors[:assigned_to]}")
+            .col-sm-10
+              = f.select(:assigned_to, User.where(company_id: current_user.company_id).all.collect{ |s| [s.full_name, s.id] }, { include_blank: 'Unassigned' }, { class: 'form-control' })
+      .form-group
+        .col-sm-offset-2.col-sm-10.text-right
+          = f.submit nil, class: 'btn btn-primary'
+          =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

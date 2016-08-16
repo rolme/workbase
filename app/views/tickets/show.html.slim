@@ -1,1 +1,29 @@
-p Show
+= render "page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: [:new, :edit, :index, :delete]
+= render "layouts/flash"
+
+.row
+  .col-sm-9
+    .panel.panel-default
+      .panel-body
+        h4 = @ticket.title
+        p = @ticket.description
+
+        h4 Notes
+        p notes here ...
+
+    h4 Comments
+    .panel.panel-default
+      .panel-body
+        p comments here ...
+
+  .col-sm-3
+    .panel.panel-default
+      .panel-body
+        p Status: #{@ticket.status}
+        p Assignee: #{@ticket.assignee.full_name}
+    .panel.panel-default
+      .panel-body
+        p.small Submitted by
+        p.small Name: #{@ticket.submitted_by_name}
+        p.small Email: #{@ticket.submitted_by_email}
+        p.small Company: #{@ticket.submitted_by_company}
