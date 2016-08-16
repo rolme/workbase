@@ -316,8 +316,8 @@ DEPENDENCIES
   capybara!
   carrierwave!
   carrierwave-video-thumbnailer!
-  cucumber-rails!
   coffee-script!
+  cucumber-rails!
   database_cleaner!
   factory_girl_rails!
   faker!
@@ -350,6 +350,9 @@ DEPENDENCIES
   uglifier (>= 1.3.0)!
   valid_email!
   web-console!
+
+RUBY VERSION
+   ruby 2.3.0p0
 
 BUNDLED WITH
    1.12.5
