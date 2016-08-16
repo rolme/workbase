@@ -13,9 +13,6 @@ Rails.application.routes.draw do
       get :checkin
     end
   end
-  resources :warehouses, param: :slug do
-    resources :locations, param: :slug, except: [:index]
-  end
   resources :procurement
   resources :projects, param: :slug do
     resources :attachments, param: :slug, only: [:index, :create, :update, :destroy]
@@ -23,7 +20,6 @@ Rails.application.routes.draw do
       resources :sections
     end
   end
-
   resources :registration, only: [:create] do
     get :confirm_email
     get :confirmation, on: :collection
@@ -36,7 +32,11 @@ Rails.application.routes.draw do
       get :profile
     end
   end
+  resources :warehouses, param: :slug do
+    resources :locations, param: :slug, except: [:index]
+  end
   resources :workbase, only: [:index]
+  resources :workflow, only: [:index]
 
   resources :login, only: [:index]
   post "/emulate", to: "session#emulate"
