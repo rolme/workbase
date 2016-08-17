@@ -60,6 +60,7 @@ source 'https://rubygems.org' do
     gem 'pry-rails'
     gem 'pry-remote'
     gem 'rspec-rails'
+    gem 'selenium-webdriver'
     gem 'cucumber-rails', require: false
     gem 'capybara'
     gem "teaspoon-jasmine"
