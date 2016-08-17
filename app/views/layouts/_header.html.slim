@@ -19,6 +19,7 @@ nav.navbar.navbar-default.navbar-fixed-top role="navigation"
         = nav_link "Inventory", inventory_index_path,  is_active: /inventory|units/ =~ request.fullpath, icon: 'barcode'
         = nav_link "Warehouses", warehouses_path,  is_active: /warehouse|location/ =~ request.fullpath, icon: 'cube'
         = nav_link "Procurement", procurement_index_path,  is_active: /procurement/ =~ request.fullpath, icon: 'cart-plus'
+        = nav_link "Tickets", tickets_path,  is_active: /tickets/ =~ request.fullpath, icon: 'life-ring'
 
 
       ul.nav.navbar-nav.navbar-right
