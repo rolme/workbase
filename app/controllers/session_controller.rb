@@ -1,6 +1,6 @@
 class SessionController < ApplicationController
 
-  skip_before_filter :authenticate, :authorize
+  skip_before_action :authenticate, :authorize
 
   # POST /login
   def create
