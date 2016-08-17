@@ -13,3 +13,13 @@
             = f.label(:name, 'Title', class: "col-sm-4 col-md-3 control-label #{'error' if project.errors[:name]}")
             .col-sm-6.col-md-9
               = f.text_field(:name, placeholder: 'project title', class: 'form-control')
+
+          .form-group
+            = f.label(:start_date, 'Start', class: "col-sm-4 col-md-3 control-label #{'error' if project.errors[:start_date]}")
+            .col-sm-6.col-md-9
+              = f.text_field(:start_date, placeholder: 'date picker', class: 'form-control')
+
+          .form-group
+            = f.label(:end_date, 'End', class: "col-sm-4 col-md-3 control-label #{'error' if project.errors[:end_date]}")
+            .col-sm-6.col-md-9
+              = f.text_field(:end_date, placeholder: 'date picker', class: 'form-control')

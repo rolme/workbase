@@ -5,7 +5,7 @@ class ProjectsController < ApplicationController
 
   def new
     client   = params[:c].present? ? Client.find(params[:c]) : Client.new
-    @project = Project.new(client_id: client.id)
+    @project = Project.new(client_id: client.id, start_date: Date.today)
     @clients = Client.with_company_id(current_user.company_id)
   end
 
