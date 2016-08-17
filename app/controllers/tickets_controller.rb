@@ -1,6 +1,6 @@
 class TicketsController < ApplicationController
   def index
-    @tickets = tickets.active.order(:status, :created_at)
+    @tickets = tickets.open.active.order(:status, :created_at)
   end
 
   def show

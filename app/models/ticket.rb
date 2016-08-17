@@ -8,6 +8,8 @@ class Ticket < ApplicationRecord
 
   enum status: { unviewed: 0, unassigned: 1, assigned: 2, closed: 9 }
 
+  scope :open, -> { where.not(status: :closed) }
+
   def assignee
     assigned_to.present? ? User.find_by(id: assigned_to) : NullUser.new
   end
