@@ -64,8 +64,8 @@ State.create([
 
 CompanyStatus.create([
   { label: 'trial' },
-  { label: 'member' },
-  { label: 'deactived' }
+  { label: 'active' },
+  { label: 'inactive' }
 ])
 
 ProjectStatus.create([
@@ -77,8 +77,8 @@ ProjectStatus.create([
 
 SectionType.create([
   { label: 'WYSIWYG' },
-  { label: 'Attachments' },
-  { label: 'Materials' }
+  { label: 'attachments' },
+  { label: 'materials' }
 ])
 
 SecurityQuestion.create([
@@ -106,8 +106,8 @@ Ticket.create!(title: 'Forgot Login Information', description: 'Please assist wi
 
 puts ">> adding meta data"
 ProposalStatus.create([
-  { label: 'Draft', company: company },
-  { label: 'Final', company: company },
+  { label: 'draft', company: company },
+  { label: 'final', company: company },
   { label: 'submitted', company: company },
   { label: 'approved', company: company },
   { label: 'rejected', company: company },

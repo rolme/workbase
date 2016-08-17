@@ -10,11 +10,11 @@ class Proposal < ApplicationRecord
 
   has_many :sections
 
+  DEFAULT_STATUS = 'draft'
+
   delegate :label,
            to: :proposal_status,
            prefix: true
-
-  DEFAULT_STATUS = 'Draft'
 
   before_create :create_uuid,
                 :create_proposal_status

@@ -5,6 +5,7 @@ FactoryGirl.define do
     name "Installation"
     start_date { Date.current + 14.days }
     end_date { Date.current + 17.days }
+    project_status { ProjectStatus.first || association(:project_status) }
   end
 
   trait :with_units do

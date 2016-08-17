@@ -2,6 +2,15 @@ require 'rails_helper'
 
 RSpec.describe Project, type: :model do
 
+
+  describe '#create' do
+    let(:project) { FactoryGirl.create(:project) }
+
+    it "should set status to active" do
+      expect(project.status).to eql('active')
+    end
+  end
+
   describe '#materials' do
     context 'given a project with 2 of the same units' do
       let(:project) { FactoryGirl.create(:project, :with_units, unit_count: 2) }
