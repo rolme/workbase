@@ -40,6 +40,7 @@ class TicketsController < ApplicationController
   def update
     @ticket = ticket
     if @ticket.update(ticket_params)
+      flash[:success] = 'Ticket updated'
       redirect_to @ticket
     else
       flash[:error] = @ticket.errors.full_messages
