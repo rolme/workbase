@@ -2,10 +2,12 @@ class Project < ApplicationRecord
   include Sluggable
   include SoftDeletable
 
+  attr_accessor :created_by_id
+
   belongs_to :client
   belongs_to :company
   belongs_to :proposal, optional: true
-  belongs_to :project_status
+  belongs_to :project_status, optional: true
 
   has_many :attachments
   has_many :units
@@ -37,6 +39,8 @@ class Project < ApplicationRecord
 
   before_create :create_project_status
 
+  after_create :add_proposal
+
   before_save :update_cache
 
   def status
@@ -55,8 +59,12 @@ class Project < ApplicationRecord
     materials.map{ |m| m.subtotal }.reduce(&:+)
   end
 
+  def add_proposal
+    Proposal.create(project: self, company: company, created_by_id: created_by_id, title: 'Initial Draft')
+  end
+
   def create_project_status
-    self.project_status_id = ProjectStatus.find_by(label: Project::DEFAULT_STATUS).id
+    self.project_status = ProjectStatus.find_by(label: Project::DEFAULT_STATUS)
   end
 
   def update_cache

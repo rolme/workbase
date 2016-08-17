@@ -47,7 +47,7 @@ private
   end
 
   def create_proposal_status
-    self.proposal_status_id = ProposalStatus.find_by(label: Proposal::DEFAULT_STATUS).id
+    self.proposal_status = ProposalStatus.find_by(label: Proposal::DEFAULT_STATUS)
   end
 
   def create_association_on_project
