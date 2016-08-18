@@ -30,6 +30,7 @@ source 'https://rubygems.org' do
   gem 'sass-rails', '~> 5.0'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
+  gem 'bootstrap-datepicker-rails'
   gem 'uglifier', '>= 1.3.0'
   gem 'font-awesome-rails'
 
