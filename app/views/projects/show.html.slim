@@ -28,6 +28,7 @@
 
     .tab-content
       #attachments.tab-pane.active
+        / TODO: http://www.dropzonejs.com/bootstrap.html
         br
         - if @project.attachments.empty?
           | Empty
@@ -202,4 +203,5 @@
                 = fa_icon('edit', text: 'Edit')
 
       #work-order.tab-pane
+        br
         | Work Orders here
