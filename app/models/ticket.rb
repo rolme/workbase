@@ -1,4 +1,6 @@
 class Ticket < ApplicationRecord
+  has_paper_trail only: [:title, :description, :status, :assigned_to]
+
   include Sluggable
   include SoftDeletable
 
