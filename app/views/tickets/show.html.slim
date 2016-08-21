@@ -11,19 +11,98 @@
         h4 Notes
         p notes here ...
 
-    h4 Comments
-    .panel.panel-default
-      .panel-body
-        p comments here ...
+    ul.nav.nav-tabs role="tablist" style="margin-bottom: 15px;"
+      li.active role="presentation"
+        a href="#comments" aria-controls="comments" role="tab" data-toggle="tab" Comments
+      li role="presentation"
+        a href="#history" aria-controls="history" role="tab" data-toggle="tab" History
+
+
+    div.tab-content
+      div#comments.tab-pane.active role="tabpanel"
+        - if @ticket.comments.any?
+          - @ticket.comments.each do |comment|
+            p #{comment.user.full_name} added a comment - #{time_ago_in_words(comment.created_at)} ago
+            - if comment.public
+             p PUBLIC
+            - if comment.title.present?
+              p = comment.title
+            p = comment.content
+            hr
+        - else
+          p No comments yet.
+          hr
+
+
+        h4 Add a comment
+
+        = form_for [@ticket, @comment], html: {class: 'form-horizontal'} do |f|
+          .form-group
+            = f.label(:title, nil, class: "col-sm-2 control-label #{'error' if @comment.errors[:title]}")
+            .col-sm-4
+              = f.text_field(:title, placeholder: 'title (optional)', class: 'form-control')
+          .form-group
+            = f.label(:content, nil, class: "col-sm-2 control-label #{'error' if @comment.errors[:content]}")
+            .col-sm-4
+              = f.text_area(:content, placeholder: 'content', class: 'form-control', rows: 5)
+          .checkbox style="margin-bottom: 15px;"
+            = f.label(:public, nil, class: "col-sm-offset-2 col-sm-5")
+              = f.check_box(:public)
+              | Make public (visible to customer)
+
+          .form-group
+            .col-sm-offset-2.col-sm-4.text-right
+
+              = f.submit nil, class: 'btn btn-primary'
+              =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'
+
+      div#history.tab-pane role="tabpanel"
+        - if @ticket.versions.any?
+          - @ticket.versions.each do |version|
+            p = version.event
+            p = User.find_by(id: version.whodunnit).full_name
+            table.table.table-striped.table-hover
+              thead
+                tr
+                  th.text-center Field
+                  th.text-center Original Value
+                  th.text-center New Value
+              tbody
+                - version.changeset.each_pair do |field, values|
+                  tr
+                    td = field
+                    td = values[0]
+                    td = values[1]
+            hr
+        - else
+          p No history yet.
 
   .col-sm-3
     .panel.panel-default
       .panel-body
-        p Status: #{@ticket.status}
-        p Assignee: #{@ticket.assignee.full_name}
+        p.small Details
+        dl.dl-horizontal
+          dt.lefty Status:
+          dd = @ticket.status.titlecase
+
+          dt.lefty Assignee:
+          dd = @ticket.assignee.full_name
+
+          dt.lefty Created:
+          dd = @ticket.created_at
+
+          dt.lefty Updated:
+          dd = @ticket.updated_at
+
     .panel.panel-default
       .panel-body
         p.small Submitted by
-        p.small Name: #{@ticket.submitted_by_name}
-        p.small Email: #{@ticket.submitted_by_email}
-        p.small Company: #{@ticket.submitted_by_company}
+        dl.dl-horizontal
+          dt.lefty Name:
+          dd = @ticket.submitted_by_name
+
+          dt.lefty Email:
+          dd = @ticket.submitted_by_email
+
+          dt.lefty Company:
+          dd = @ticket.submitted_by_company

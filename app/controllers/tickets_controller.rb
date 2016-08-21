@@ -5,6 +5,7 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = ticket
+    @comment = Comment.new
 
     if @ticket.unviewed? || @ticket.viewed_by.nil?
       # Mark this ticket as viewed
