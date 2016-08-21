@@ -8,8 +8,8 @@ class CommentsController < ApplicationController
       flash[:success] = 'Comment created'
       redirect_to @ticket
     else
-      flash[:error] = @comment.errors.full_messages
-      render ticket_show_path(@ticket)
+      flash[:danger] = @comment.errors.full_messages
+      render template: 'tickets/show'
     end
   end
 
