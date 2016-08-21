@@ -26,7 +26,7 @@ class UnitsController < ApplicationController
     else
       @unit_categories = unit_categories
       @locations  = locations
-      flash[:error] = @unit.errors.full_messages
+      flash[:danger] = @unit.errors.full_messages
       render 'new'
     end
   end
@@ -47,7 +47,7 @@ class UnitsController < ApplicationController
     else
       @unit_categories = unit_categories
       @locations  = locations
-      flash[:error] = @unit.errors.full_messages
+      flash[:danger] = @unit.errors.full_messages
       render 'edit'
     end
   end

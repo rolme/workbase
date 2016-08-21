@@ -17,7 +17,7 @@ class UnitCategoriesController < ApplicationController
       @unit_categories = unit_categories
       render :index
     else
-      flash[:error] = @unit_category.errors.full_messages
+      flash[:danger] = @unit_category.errors.full_messages
       render 'new'
     end
   end
@@ -34,7 +34,7 @@ class UnitCategoriesController < ApplicationController
       @unit_categories = unit_categories
       render :index
     else
-      flash[:error] = @unit_category.errors.full_messages
+      flash[:danger] = @unit_category.errors.full_messages
       render 'edit'
     end
   end

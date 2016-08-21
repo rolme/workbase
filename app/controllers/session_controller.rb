@@ -9,7 +9,7 @@ class SessionController < ApplicationController
       session[:current_user_id] = session[:login_user_id] = user.id
       redirect_to root_url
     else
-      redirect_to login_index_path, flash: { error: "Invalid email or password." }
+      redirect_to login_index_path, flash: { danger: "Invalid email or password." }
     end
   end
 
@@ -18,7 +18,7 @@ class SessionController < ApplicationController
     if session[:current_user_id] == session[:login_user_id]
       name = User.select(:last_name, :first_name).find(session[:login_user_id]).full_name
       reset_session
-      redirect_to login_index_path, flash: { error: "You have logged out." }
+      redirect_to login_index_path, flash: { danger: "You have logged out." }
     else
       name = current_user.try(:full_name)
       session[:current_user_id]    = session[:login_user_id]

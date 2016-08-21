@@ -29,7 +29,7 @@ class TicketsController < ApplicationController
       flash[:success] = 'Ticket created'
       redirect_to @ticket
     else
-      flash[:error] = @ticket.errors.full_messages
+      flash[:danger] = @ticket.errors.full_messages
       render :edit
     end
   end
@@ -44,7 +44,7 @@ class TicketsController < ApplicationController
       flash[:success] = 'Ticket updated'
       redirect_to @ticket
     else
-      flash[:error] = @ticket.errors.full_messages
+      flash[:danger] = @ticket.errors.full_messages
       render 'edit'
     end
   end

@@ -11,7 +11,7 @@ class LocationsController < ApplicationController
     if @location.save
       redirect_to @warehouse
     else
-      flash[:error] = @location.errors.full_messages
+      flash[:danger] = @location.errors.full_messages
       render 'new'
     end
   end
