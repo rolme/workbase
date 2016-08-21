@@ -5,7 +5,13 @@
         .panel.panel-default
           .panel-body
             p
-              i #{User.find_by(id: version.whodunnit).full_name} #{humanize_event(version.event)} - #{time_ago_in_words(version.created_at)} ago
+              i
+                - if version.whodunnit && User.find_by(id: version.whodunnit)
+                  => User.find_by(id: version.whodunnit).full_name
+                - else
+                  => NullUser.new.full_name
+                |#{humanize_event(version.event)} - #{time_ago_in_words(version.created_at)} ago
+
             - unless version.event == 'create'
               table.table.table-striped.table-hover
                 thead
