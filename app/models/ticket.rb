@@ -7,6 +7,8 @@ class Ticket < ApplicationRecord
   belongs_to :company
   has_many :comments, -> {where.not(created_at: nil)}
 
+  validates_presence_of :title, :description
+
   before_save :check_status
 
   enum status: { unviewed: 0, unassigned: 1, assigned: 2, closed: 9 }
