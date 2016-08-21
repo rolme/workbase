@@ -2,7 +2,9 @@ Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :clients, param: :slug
-  resources :tickets, param: :slug
+  resources :tickets, param: :slug do
+    resources :comments
+  end
   resources :inventory, param: :area_slug do
     collection do
       get :search

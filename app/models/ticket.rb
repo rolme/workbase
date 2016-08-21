@@ -5,6 +5,7 @@ class Ticket < ApplicationRecord
   include SoftDeletable
 
   belongs_to :company
+  has_many :comments
 
   before_save :check_status
 

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160818072610) do
+ActiveRecord::Schema.define(version: 20160821154014) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,18 @@ ActiveRecord::Schema.define(version: 20160818072610) do
     t.index ["client_status_id"], name: "index_clients_on_client_status_id", using: :btree
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
     t.index ["slug"], name: "index_clients_on_slug", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "ticket_id",                  null: false
+    t.integer  "user_id",                    null: false
+    t.boolean  "public",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "companies", force: :cascade do |t|
