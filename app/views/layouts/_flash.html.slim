@@ -5,8 +5,7 @@
         button.close type="button" data-dismiss="alert"
           span &times;
         - if messages.kind_of? Array
-          ul.list-group
-            - messages.each do |message|
-              li.list-group-item = message
+          - messages.each do |message|
+              p = message
         - else
           p = messages
