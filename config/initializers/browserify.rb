@@ -1,5 +1,5 @@
 # Configure Browserify to use babelify to compile ES6
-Rails.application.config.browserify_rails.commandline_options = "-t [ babelify --presets [ react es2015 stage-1 ] ]"
+Rails.application.config.browserify_rails.commandline_options = "-t [ babelify --presets [ react es2015 stage-1 ] --extensions='.js.jsx' ]"
 
 unless Rails.env.production?
   # Work around sprockets+teaspoon mismatch:
