@@ -1,0 +1,117 @@
+/ TODO: This file to be removed.
+br
+/ DEFINITIONS
+.panel.panel-default
+  .panel-heading role="tab" id="definitions"
+    h4.panel-title
+      a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-definitions" aria-expanded="true" aria-controls="collapse-definitions" Definitions
+  #collapse-definitions.panel-collapse.collapse role="tabpanel" aria-labelledby="definitions"
+    .panel-body
+      dl.dl-horizontal
+        dt Configuration
+        dd the arrangement or set-up of the hardware and software that comprise the Video Surveillance system.
+        dt Customer
+        dd the Customer or other legal entity accepting this Agreement, and Affiliates of that Customer or entity.
+        dt Installation
+        dd the action or process of installing, mounting, and setting-up the physical hardware and/or software stated within this Agreement.
+        dt Network
+        dd the system of interconnected computers, machines, and devices that broadcast/transfer data through physical wires and/or wirelessly.
+        dt Proposal
+        dd means the formal plan to sell, procure, install, configure, and warrant the Video Surveillance system as stated in this Agreement.
+        dt Server
+        dd the NVR/DVR or Network Video Recorder/Digital Video Recorder or Hybrid NVR/DVR device which will be utilized as the server for recording and storing live surveillance footage.
+        dt Service Order
+        dd the Quote and any ordering documents for purchases hereunder that are entered into agreement between Customer and CITY101.
+        dt Software
+        dd the digital programs required to configure/operate/utilize the Video Surveillance system’s capabilities through computer(s), laptops and/or smart phone(s).
+      hr
+      button.btn.btn-default.btn-xs.pull-right
+        = fa_icon('edit', text: 'Edit')
+
+/ SUMMARY
+- if project.proposal.sections.present?
+  - section = project.proposal.sections.first
+  .panel.panel-default
+    .panel-heading role="tab" id="summary"
+      h4.panel-title
+        a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-summary" aria-expanded="true" aria-controls="collapse-summary" = section.header
+    #collapse-summary.panel-collapse.collapse role="tabpanel" aria-labelledby="summary"
+      .panel-body
+        - if section.style == 'WYSIWYG'
+          = form_for [project, project.proposal, section] do |f|
+            = f.bootsy_area :data, class: 'form-control'
+
+            hr
+              = f.submit nil, class: 'button btn btn-primary btn-xs pull-right'
+
+/ MATERIALS
+.panel.panel-default
+  .panel-heading role="tab" id="materials"
+    h4.panel-title
+      a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-materials" aria-expanded="true" aria-controls="collapse-materials" Materials
+  #collapse-materials.panel-collapse.collapse role="tabpanel" aria-labelledby="materials"
+    .panel-body
+      table.table.table-striped
+        thead
+          tr
+            th count
+            th description
+        tbody
+          - project.materials.each do |material|
+            tr
+              td = material[:count]
+              td = material[:client_description]
+      hr
+      button.btn.btn-default.btn-xs.pull-right
+        = fa_icon('edit', text: 'Edit')
+/ LABOR
+.panel.panel-default
+  .panel-heading role="tab" id="labor"
+    h4.panel-title
+      a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-labor" aria-expanded="true" aria-controls="collapse-labor" Labor
+  #collapse-labor.panel-collapse.collapse role="tabpanel" aria-labelledby="labor"
+    .panel-body
+      ol
+        li Complete wiring, mounting, positioning, lens optimization, channel-by-channel programming and testing of (6) Professional Grade Security Cameras: (3) High Definition 2.0 Megapixel HD1080P IR Vandal Dome Camera & (3) High Definition 2.0 Megapixel HD1080P IR Large Bullet Camera. All cameras will have their own unique presets which will be programmed individually including motion detection, privacy masking, point patrol (if capable), etc. Installation covers various interior and exterior areas of the property (refer to Overview Map)
+        li All cameras will be hard wired to their assigned Video Server/Power Supply using Coax/CAT6 cabling with specific end-to-end connectors/adapters/terminations. Existing wiring will be utilized or repaired when possible. New wiring will be installed only as necessary
+        li Custom Configuration of (1) 16-Channel Network Video Server w/ total of 4 Terabytes of Storage – more cameras, video servers, storage and optional peripherals may be added in the future
+        li Installation and Configuration of (1) Uninterruptible Power Supply Battery Backup Unit for system extended runtime in case of power outage
+        li Installation and Configuration of (1) 8-Port Power Supply Box to power cameras
+        li Installation and Configuration of up to (1) Network Gigabit Switch/WAP for network connectivity
+        li Installation of up to (6) Special Camera Mounts for cameras as necessary
+        li Installation and Configuration of Power Adapter(s) as necessary
+        li Installation and configuration of Client Software (included for up to (5) devices – PC, Mac, Laptop, iPhone, Android, Tablets, etc.) for management/staff/authorized users. Please contact your Account Manager if additional devices and/or users need to be setup or added. The program can be used to view live feeds, playback videos, take pictures and other custom control*
+      hr
+      button.btn.btn-default.btn-xs.pull-right
+        = fa_icon('edit', text: 'Edit')
+
+/ WARRANTY
+.panel.panel-default
+  .panel-heading role="tab" id="warranty"
+    h4.panel-title
+      a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-warranty" aria-expanded="true" aria-controls="collapse-warranty" Warranty
+  #collapse-warranty.panel-collapse.collapse role="tabpanel" aria-labelledby="warranty"
+    .panel-body
+      ul
+        li 3 year parts warranty (CITY101 limited warranty)
+        li 1 year labor warranty (CITY101 limited warranty)
+        li If the system or any part fails within one year, parts will be replaced and installation will be performed at no additional cost
+      strong CITY101’s warranty does not refer to the manufacturer’s warranty. If any of the materials stated in this proposal stops functioning within 3 years of the date of the initial project installation as the result of normal operation (this warranty does not provide coverage due to vandalism, tampering, acts of nature, negligence, etc.), simply contact us and we will gladly repair or replace the Customer’s defective equipment. IP or network modifications performed by the Customer or a 3rd party that affect the system, network, or remote capabilities will not be covered by our warranty. Monthly/Annual Support and/or Managed Services falls under separate agreement(s) and are not included with this Warranty.
+    hr
+    button.btn.btn-default.btn-xs.pull-right
+      = fa_icon('edit', text: 'Edit')
+
+/ TERMS
+.panel.panel-default
+  .panel-heading role="tab" id="terms"
+    h4.panel-title
+      a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapse-terms" aria-expanded="true" aria-controls="collapse-terms" Terms &amp; Conditions
+  #collapse-terms.panel-collapse.collapse role="tabpanel" aria-labelledby="terms"
+    .panel-body
+      ul
+        li Initial Down Payment: Cost of all Materials and applicable taxes due upon signing (please reference quote)
+        li Final Payment: Cost of all Labor due on demand immediately upon project completion (please reference quote)
+        li All checks must be issued to “CITY101”
+      hr
+      button.btn.btn-default.btn-xs.pull-right
+        = fa_icon('edit', text: 'Edit')

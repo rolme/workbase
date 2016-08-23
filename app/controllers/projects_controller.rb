@@ -23,6 +23,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project    = project
+    @proposal   = ProposalAdapter.new(project.proposal)
     @attachment = Attachment.new
   end
 
