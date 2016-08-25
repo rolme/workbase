@@ -158,4 +158,51 @@ puts ">> adding materials to project..."
 company.units.each do |unit|
   unit.update_attribute(:project_id, project.id)
 end
+
+puts "City101 DONE"
+
+puts ""
+puts ">> Setup Tri-City demo"
+company = Company.create({name: 'Tri-City Health Center'})
+puts ">> adding users..."
+admin   = Admin.create(first_name: 'Wilfredo', last_name: 'Lacro', email: "demo@tri-cityhealth.org", password: "demo", password_confirmation: "demo", company: company)
+User.update_all(confirmed: true, confirmation_token: nil)
+
+puts ">> adding meta data"
+ProposalStatus.create([
+  { label: 'Draft', company: company },
+  { label: 'Final', company: company }
+])
+
+puts ">> adding locations..."
+warehouse = Warehouse.create(
+  name: 'Office',
+  street: '40910 Fremont Blvd.',
+  city: 'Fremont',
+  state: 'CA',
+  zipcode: '94538',
+  created_by_id: admin.id,
+  company: company
+)
+location = Location.create(name: 'storage', warehouse: warehouse, created_by_id: admin.id, company: company)
+
+puts ">> adding inventory..."
+UnitCategory.create([
+  { label: 'table', company: company },
+  { label: 'chair', company: company },
+  { label: 'work surface', company: company },
+  { label: 'legs', company: company },
+  { label: 'cabinet', company: company }
+])
+
+Unit.create([
+  { unit_category_id: UnitCategory.find_by(label: 'table').id, manufacturer: 'Ikea', model: 'DS-7316HQHI-SH 4TB', description: '12\' medical table', client_description: 'Professional Grade Medical Table', cost: 4000.0, procurement_status: 'ordering', company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'chair').id, manufacturer: 'Ikea', model: 'DS-2CE56D5T-AVPIR3', description: 'examiner reclining chair', client_description: 'Reclinable patient chair white', cost: 6140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'chair').id, manufacturer: 'Ikea', model: 'DS-2CE56D5T-AVPIR3', description: 'examiner reclining chair', client_description: 'Reclinable patient chair white', cost: 6140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'chair').id, manufacturer: 'Ikea', model: 'DS-2CE56D5T-AVPIR3', description: 'examiner reclining chair', client_description: 'Reclinable patient chair white', cost: 6140.0, procurement_status: 'ordering', company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'chair').id, manufacturer: 'Ikea', model: 'DS-2CE16D5T-AVFIT3', description: 'stool with wheels', client_description: 'Medical stool with wheels', cost: 1140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'chair').id, manufacturer: 'Ikea', model: 'DS-2CE16D5T-AVFIT3', description: 'stool with wheels', client_description: 'Medical stool with wheels', cost: 1140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'chair').id, manufacturer: 'Ikea', model: 'DS-2CE16D5T-AVFIT3', description: 'stool with wheels', client_description: 'Medical stool with wheels', cost: 1140.0, location_id: location.id, company: company },
+  { unit_category_id: UnitCategory.find_by(label: 'cabinet').id, manufacturer: 'Ikea', model: 'DS-2CE56D1T-VPIR 2.8mm', description: '4 shelf white glass cabinet', client_description: '4 shelf white glass cabinet', cost: 1080.0, location_id: location.id, company: company }
+])
 puts ">> DONE"
