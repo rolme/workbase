@@ -5,6 +5,7 @@ class CreateTickets < ActiveRecord::Migration[5.0]
       t.string :title
       t.text :description
       t.integer :company_id
+      t.integer :project_id
       t.integer :status, default: 0
       t.integer :created_by
       t.integer :viewed_by
@@ -18,6 +19,7 @@ class CreateTickets < ActiveRecord::Migration[5.0]
     end
     add_index :tickets, :slug
     add_index :tickets, :company_id
+    add_index :tickets, :project_id
     add_index :tickets, :status
   end
 end
