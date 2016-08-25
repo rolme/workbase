@@ -7,6 +7,7 @@ class Project < ApplicationRecord
   belongs_to :proposal, optional: true
 
   has_many :attachments
+  has_many :tickets
   has_many :units
 
   scope :sorted, -> {

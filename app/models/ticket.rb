@@ -5,6 +5,7 @@ class Ticket < ApplicationRecord
   include SoftDeletable
 
   belongs_to :company
+  belongs_to :project
   has_many :comments, -> {where.not(created_at: nil)}
 
   validates_presence_of :title, :description
