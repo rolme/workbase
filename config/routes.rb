@@ -16,6 +16,9 @@ Rails.application.routes.draw do
 
   resources :clients, param: :slug
   resources :tickets, param: :slug do
+    member do
+      put :toggle_close
+    end
     resources :comments
   end
   resources :inventory, param: :area_slug do

@@ -38,6 +38,8 @@
 
           dt.lefty Updated:
           dd = @ticket.updated_at
+        = button_to [:toggle_close, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
+          = @ticket.closed? ? 'ReOpen Ticket' : 'Close Ticket'
 
     .panel.panel-default
       .panel-body

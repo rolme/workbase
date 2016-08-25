@@ -55,6 +55,18 @@ class TicketsController < ApplicationController
     redirect_to tickets_path
   end
 
+  def toggle_close
+    @ticket = ticket
+
+    if !ticket.closed?
+      @ticket.closed!
+    elsif ticket.closed?
+      @ticket.unassigned!
+    end
+
+    redirect_to @ticket
+  end
+
 private
 
   def tickets
