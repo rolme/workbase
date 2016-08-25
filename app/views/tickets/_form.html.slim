@@ -6,6 +6,12 @@
       .panel.panel-default
         .panel-heading Ticket Information
         .panel-body
+          .form-group class=('has-error' if ticket.errors[:project_id].present?)
+            = f.label(:project, nil, class: "col-sm-2 control-label")
+            .col-sm-10
+              = f.select(:project_id, @projects.collect{ |p| [p.name, p.id] }, { include_blank: 'None' }, { class: 'form-control' })
+
+
           .form-group class=('has-error' if ticket.errors[:title].present?)
             = f.label(:title, nil, class: "col-sm-2 control-label")
             .col-sm-10

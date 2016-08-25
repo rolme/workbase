@@ -30,6 +30,9 @@
           dt.lefty Status:
           dd = @ticket.status.titlecase
 
+          dt.lefty Project:
+          dd = @ticket.project.name
+
           dt.lefty Assignee:
           dd = @ticket.assignee.full_name
 

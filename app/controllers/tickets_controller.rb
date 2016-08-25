@@ -17,6 +17,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @projects = projects
   end
 
   def create
@@ -36,6 +37,7 @@ class TicketsController < ApplicationController
 
   def edit
     @ticket = ticket
+    @projects = projects
   end
 
   def update
@@ -78,6 +80,10 @@ private
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :status, :assigned_to)
+    params.require(:ticket).permit(:title, :description, :status, :assigned_to, :project_id)
+  end
+
+  def projects
+    Project.where(company_id: current_user.company_id)
   end
 end

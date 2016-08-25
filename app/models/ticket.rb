@@ -1,11 +1,10 @@
 class Ticket < ApplicationRecord
-  has_paper_trail only: [:title, :description, :status, :assigned_to]
+  has_paper_trail only: [:title, :description, :status, :viewed_by, :assigned_to]
 
   include Sluggable
   include SoftDeletable
 
   belongs_to :company
-  belongs_to :project
   has_many :comments, -> {where.not(created_at: nil)}
 
   validates_presence_of :title, :description
@@ -18,6 +17,10 @@ class Ticket < ApplicationRecord
 
   def assignee
     assigned_to.present? ? User.find_by(id: assigned_to) : NullUser.new
+  end
+
+  def project
+    project_id.present? ? Project.find_by(id: project_id) : NullProject.new
   end
 
 private
