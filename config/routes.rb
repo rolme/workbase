@@ -1,6 +1,19 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
+  # api end points for ticket creation
+  scope '/api' do
+    scope '/v1' do
+      scope '/projects' do
+        scope '/:project_slug' do
+          scope '/tickets' do
+            post '/' => 'api_projects#create'
+          end
+        end
+      end
+    end
+  end
+
   resources :clients, param: :slug
   resources :tickets, param: :slug do
     resources :comments
