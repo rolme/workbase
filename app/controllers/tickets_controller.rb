@@ -62,6 +62,7 @@ class TicketsController < ApplicationController
 
     if !ticket.closed?
       @ticket.closed!
+      TicketMailer.ticket_closed(@ticket).deliver
     elsif ticket.closed?
       @ticket.unassigned!
     end

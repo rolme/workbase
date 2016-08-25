@@ -1,5 +1,5 @@
 class ApiProjectsController < BaseApiController
-  def create
+  def create_ticket
     # POST /api/v1/projects/*project_slug*/tickets
     # {
     #     "ticket": {
@@ -15,6 +15,11 @@ class ApiProjectsController < BaseApiController
     @ticket.assign_attributes(@json['ticket'])
 
     if @ticket.save
+      # notify company users
+      # notify external user
+      TicketMailer.ticket_created(@ticket).deliver_later
+      TicketMailer.ticket_confirmation(@ticket).deliver_later
+
       render json: @ticket
     else
       head :internal_server_error
