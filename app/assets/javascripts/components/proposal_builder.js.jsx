@@ -1,5 +1,7 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
+
+import ProposalPreview from './proposal_preview.js.jsx';
+import ProposalActions from './proposal_actions.js.jsx';
 
 // TODO: Use this for drag and drop - http://gaearon.github.io/react-dnd/
 
@@ -13,12 +15,8 @@ export default class ProposalBuilder extends React.Component {
           </div>
         </div>
         <div className="row">
-          <div className="col-sm-8">
-            Live preview
-          </div>
-          <div className="col-sm-4">
-            actions
-          </div>
+          <ProposalPreview proposal={this.props.proposal} />
+          <ProposalActions proposal={this.props.proposal} />
         </div>
       </div>
     );
