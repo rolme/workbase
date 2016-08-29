@@ -6,7 +6,7 @@ $(() => {
   // Global methods
   $('.datepicker').datepicker();
 
-  $("table tr[data-url]").on("click", function (ev) {
+  $("table tr[data-url]").on("click", function() {
     window.location.href = $(this).data('url');
   });
 
