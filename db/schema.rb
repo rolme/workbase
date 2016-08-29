@@ -192,7 +192,6 @@ ActiveRecord::Schema.define(version: 20160828162314) do
     t.string   "title"
     t.text     "description"
     t.integer  "company_id"
-    t.integer  "project_id"
     t.integer  "status",               default: 0
     t.integer  "created_by"
     t.integer  "viewed_by"
@@ -205,7 +204,6 @@ ActiveRecord::Schema.define(version: 20160828162314) do
     t.datetime "updated_at",                       null: false
     t.string   "access_key",                       null: false
     t.index ["company_id"], name: "index_tickets_on_company_id", using: :btree
-    t.index ["project_id"], name: "index_tickets_on_project_id", using: :btree
     t.index ["slug"], name: "index_tickets_on_slug", using: :btree
     t.index ["status"], name: "index_tickets_on_status", using: :btree
   end
