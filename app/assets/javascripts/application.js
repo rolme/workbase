@@ -17,6 +17,7 @@
 //= require bootstrap-datepicker
 //= require select2-full
 //= require bootsy
+//= require workbase
 //= require_tree .
 
 import "babel-polyfill";
