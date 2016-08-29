@@ -1,4 +1,4 @@
-= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: [:new, :edit, :index, :delete]
+= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: []
 = render "layouts/flash"
 
 .row
@@ -17,7 +17,7 @@
 
     div.tab-content
       div#comments.tab-pane.active role="tabpanel"
-        = render "tickets/comment_tab", comments: @ticket.comments
+        = render "tickets/comment_tab", comments: @ticket.comments.public_only
 
       div#history.tab-pane role="tabpanel"
         = render "tickets/history_tab"

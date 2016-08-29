@@ -19,6 +19,9 @@ Rails.application.routes.draw do
     member do
       put :toggle_close
     end
+    collection do
+      get :customer
+    end
     resources :comments
   end
   resources :inventory, param: :area_slug do

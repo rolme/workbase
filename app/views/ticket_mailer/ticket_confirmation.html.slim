@@ -5,4 +5,7 @@
 
 .content
   .description
-      p Thank you for submitting your issue, you can view the ticket here: xxx
+      p
+        |Thank you for submitting your issue, you can view the ticket here:
+        a href=@ticket.external_path
+          = @ticket.external_path

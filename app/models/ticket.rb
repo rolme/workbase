@@ -9,7 +9,7 @@ class Ticket < ApplicationRecord
 
   validates_presence_of :title, :description
 
-  before_save :check_status
+  before_save :check_status, :generate_access_key
 
   enum status: { unviewed: 0, unassigned: 1, assigned: 2, closed: 9 }
 
@@ -21,6 +21,10 @@ class Ticket < ApplicationRecord
 
   def project
     project_id.present? ? Project.find_by(id: project_id) : NullProject.new
+  end
+
+  def external_path
+    "/tickets/customer?access_key=#{access_key}"
   end
 
 private
@@ -35,5 +39,11 @@ private
     elsif assigned_to.present?
       self.status = Ticket.statuses[:assigned]
     end
+  end
+
+  # Used as the link for customer external page viewing
+  def generate_access_key
+    return if self.access_key.present?
+    self.access_key = SecureRandom.uuid
   end
 end

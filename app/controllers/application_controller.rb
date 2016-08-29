@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
   include GateKeeper
   protect_from_forgery with: :exception
 
-  before_filter :set_paper_trail_whodunnit
+  before_action :set_paper_trail_whodunnit
 
   # Public: Display an authentication error to the user
   def auth_error(message)
@@ -11,4 +11,7 @@ class ApplicationController < ActionController::Base
     render 'errors/401', :layout => 'error', :status => 401
   end
 
+  def not_found
+    render 'errors/404' and return
+  end
 end

@@ -1,5 +1,5 @@
-- if @ticket.comments.any?
-  - @ticket.comments.each do |comment|
+- if comments.any?
+  - comments.each do |comment|
     - next unless comment.created_at.present?
     .row.comment-row
       .col-sm-9
@@ -32,10 +32,13 @@
             = f.label(:content, nil, class: "col-sm-2 control-label")
             .col-sm-10
               = f.text_area(:content, placeholder: 'content', class: 'form-control', rows: 5)
-          .checkbox style="margin-bottom: 15px;"
-            = f.label(:public, nil, class: "col-sm-offset-2 col-sm-10")
-              = f.check_box(:public)
-              | Make public (visible to customer)
+          - if current_user
+            .checkbox style="margin-bottom: 15px;"
+              = f.label(:public, nil, class: "col-sm-offset-2 col-sm-10")
+                = f.check_box(:public)
+                | Make public (visible to customer)
+          - else
+            = f.hidden_field(:public, value: true)
 
           .form-group
             .col-sm-offset-2.col-sm-10.text-right
