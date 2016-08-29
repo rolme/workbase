@@ -17,7 +17,7 @@
 
     div.tab-content
       div#comments.tab-pane.active role="tabpanel"
-        = render "tickets/comment_tab", comments: @ticket.comments.public_only
+        = render "tickets/comment_tab", comments: @ticket.comments.public_only, comment_post_url: external_ticket_comments_path(@ticket)
 
       div#history.tab-pane role="tabpanel"
         = render "tickets/history_tab"
@@ -41,7 +41,7 @@
 
           dt.lefty Updated:
           dd = @ticket.updated_at
-        = button_to [:toggle_close, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
+        = button_to [:toggle_close_external, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
           = @ticket.closed? ? 'ReOpen Ticket' : 'Close Ticket'
 
     .panel.panel-default

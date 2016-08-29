@@ -23,10 +23,6 @@ class Ticket < ApplicationRecord
     project_id.present? ? Project.find_by(id: project_id) : NullProject.new
   end
 
-  def external_path
-    "/tickets/customer?access_key=#{access_key}"
-  end
-
 private
 
   def check_status

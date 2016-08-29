@@ -7,6 +7,12 @@
       .panel-body
         h4 = @ticket.title
         p = @ticket.description
+        hr
+        p.small style="margin-bottom: 0;"
+          | Ticket External Link:
+          span.text-muted<
+            a href=@external_link
+              = @external_link
 
     ul.nav.nav-tabs role="tablist" style="margin-bottom: 15px;"
       li.active role="presentation"
@@ -17,7 +23,7 @@
 
     div.tab-content
       div#comments.tab-pane.active role="tabpanel"
-        = render "tickets/comment_tab", comments: @ticket.comments
+        = render "tickets/comment_tab", comments: @ticket.comments, comment_post_url: ticket_comments_path(@ticket)
 
       div#history.tab-pane role="tabpanel"
         = render "tickets/history_tab"

@@ -1,6 +1,4 @@
 class TicketsController < ApplicationController
-  skip_before_action :authenticate, only: [:customer]
-
   def index
     @tickets = tickets.open.active.order(:status, :created_at)
   end
@@ -8,6 +6,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = ticket
     @comment = Comment.new
+    @external_link = customer_external_tickets_url(access_key: @ticket.access_key)
 
     if @ticket.unviewed? || @ticket.viewed_by.nil?
       # Mark this ticket as viewed
@@ -70,16 +69,6 @@ class TicketsController < ApplicationController
     end
 
     redirect_to @ticket
-  end
-
-  def customer
-    not_found unless params[:access_key].present?
-
-    @ticket = Ticket.find_by(access_key: params[:access_key])
-
-    not_found unless @ticket.present?
-
-    @comment = Comment.new
   end
 
 private
