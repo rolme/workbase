@@ -1,10 +1,12 @@
 class TicketsController < ApplicationController
   def index
-    @tickets = tickets.active.order(:status, :created_at)
+    @tickets = tickets.open.active.order(:status, :created_at)
   end
 
   def show
     @ticket = ticket
+    @comment = Comment.new
+    @external_link = customer_external_tickets_url(access_key: @ticket.access_key)
 
     if @ticket.unviewed? || @ticket.viewed_by.nil?
       # Mark this ticket as viewed
@@ -16,6 +18,7 @@ class TicketsController < ApplicationController
 
   def new
     @ticket = Ticket.new
+    @projects = projects
   end
 
   def create
@@ -28,21 +31,23 @@ class TicketsController < ApplicationController
       flash[:success] = 'Ticket created'
       redirect_to @ticket
     else
-      flash[:error] = @ticket.errors.full_messages
+      flash[:danger] = @ticket.errors.full_messages
       render :edit
     end
   end
 
   def edit
     @ticket = ticket
+    @projects = projects
   end
 
   def update
     @ticket = ticket
     if @ticket.update(ticket_params)
+      flash[:success] = 'Ticket updated'
       redirect_to @ticket
     else
-      flash[:error] = @ticket.errors.full_messages
+      flash[:danger] = @ticket.errors.full_messages
       render 'edit'
     end
   end
@@ -51,6 +56,19 @@ class TicketsController < ApplicationController
     ticket.delete
     flash[:success] = 'Ticket deleted'
     redirect_to tickets_path
+  end
+
+  def toggle_close
+    @ticket = ticket
+
+    if !ticket.closed?
+      @ticket.closed!
+      TicketMailer.ticket_closed(@ticket).deliver
+    elsif ticket.closed?
+      @ticket.unassigned!
+    end
+
+    redirect_to @ticket
   end
 
 private
@@ -64,6 +82,10 @@ private
   end
 
   def ticket_params
-    params.require(:ticket).permit(:title, :description, :status, :assigned_to)
+    params.require(:ticket).permit(:title, :description, :status, :assigned_to, :project_id)
+  end
+
+  def projects
+    Project.where(company_id: current_user.company_id)
   end
 end

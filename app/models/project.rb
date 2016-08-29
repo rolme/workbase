@@ -10,6 +10,7 @@ class Project < ApplicationRecord
   belongs_to :project_status, optional: true
 
   has_many :attachments
+  has_many :tickets
   has_many :units
 
   DEFAULT_STATUS = 'active'

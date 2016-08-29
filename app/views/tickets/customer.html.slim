@@ -1,4 +1,4 @@
-= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: [:new, :edit, :index, :delete]
+= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: []
 = render "layouts/flash"
 
 .row
@@ -7,12 +7,6 @@
       .panel-body
         h4 = @ticket.title
         p = @ticket.description
-        hr
-        p.small style="margin-bottom: 0;"
-          | Ticket External Link:
-          span.text-muted<
-            a href=@external_link
-              = @external_link
 
     ul.nav.nav-tabs role="tablist" style="margin-bottom: 15px;"
       li.active role="presentation"
@@ -23,7 +17,7 @@
 
     div.tab-content
       div#comments.tab-pane.active role="tabpanel"
-        = render "tickets/comment_tab", comments: @ticket.comments, comment_post_url: ticket_comments_path(@ticket)
+        = render "tickets/comment_tab", comments: @ticket.comments.public_only, comment_post_url: external_ticket_comments_path(@ticket)
 
       div#history.tab-pane role="tabpanel"
         = render "tickets/history_tab"
@@ -47,7 +41,7 @@
 
           dt.lefty Updated:
           dd = @ticket.updated_at
-        = button_to [:toggle_close, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
+        = button_to [:toggle_close_external, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
           = @ticket.closed? ? 'ReOpen Ticket' : 'Close Ticket'
 
     .panel.panel-default

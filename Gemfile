@@ -40,6 +40,9 @@ source 'https://rubygems.org' do
   gem 'select2-rails'
   gem 'browserify-rails'
 
+  # Auditing
+  gem 'paper_trail', '~> 5.2'
+
   group :production do
     gem 'rails_stdout_logging'
     gem 'rails_12factor'
@@ -55,12 +58,14 @@ source 'https://rubygems.org' do
     gem 'binding_of_caller'
     gem 'byebug', platform: :mri
     gem 'factory_girl_rails'
+    gem 'letter_opener'
     gem 'parallel_tests'
     gem 'pry'
     gem 'pry-byebug'
     gem 'pry-rails'
     gem 'pry-remote'
     gem 'rspec-rails'
+    gem 'selenium-webdriver'
     gem 'cucumber-rails', require: false
     gem 'capybara'
     gem "teaspoon-jasmine"
