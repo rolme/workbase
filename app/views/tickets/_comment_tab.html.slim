@@ -1,0 +1,46 @@
+- if comments.any?
+  - comments.each do |comment|
+    - next unless comment.created_at.present?
+    .row.comment-row
+      .col-sm-9
+        .panel.panel-default.comment class=(comment.public? ? 'public-comment' : '')
+          .panel-body
+            p
+              i #{comment.user.full_name} added a comment - #{time_ago_in_words(comment.created_at)} ago
+            - if comment.title.present?
+              p = comment.title
+            p = comment.content
+- else
+  .row.comment-row
+    .col-sm-9
+      .panel.panel-default.comment
+        .panel-body
+          p No comments yet.
+
+.row
+  .col-sm-9
+    .panel.panel-default
+      .panel-body
+        h4 Add a comment
+
+        = form_for [@ticket, @comment], url: comment_post_url, html: {class: 'form-horizontal'} do |f|
+          .form-group
+            = f.label(:title, nil, class: "col-sm-2 control-label")
+            .col-sm-10
+              = f.text_field(:title, placeholder: 'title (optional)', class: 'form-control')
+          .form-group class=('has-error' if @comment.errors[:content].present? )
+            = f.label(:content, nil, class: "col-sm-2 control-label")
+            .col-sm-10
+              = f.text_area(:content, placeholder: 'content', class: 'form-control', rows: 5)
+          - if current_user
+            .checkbox style="margin-bottom: 15px;"
+              = f.label(:public, nil, class: "col-sm-offset-2 col-sm-10")
+                = f.check_box(:public)
+                | Make public (visible to customer)
+          - else
+            = f.hidden_field(:public, value: true)
+
+          .form-group
+            .col-sm-offset-2.col-sm-10.text-right
+              = f.submit nil, class: 'btn btn-primary'
+              =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

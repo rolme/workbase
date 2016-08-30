@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :proposal_status do
-    label 'Draft'
+    label 'draft'
     company { Company.first || association(:company) }
   end
 end

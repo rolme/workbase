@@ -14,7 +14,7 @@ class UsersController < ApplicationController
     if @user.update(user_params(@user.type))
       render :profile
     else
-      flash[:error] = @user.errors.full_messages
+      flash[:danger] = @user.errors.full_messages
       render :profile
     end
   end

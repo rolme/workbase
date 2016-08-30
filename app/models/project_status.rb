@@ -1,0 +1,2 @@
+class ProjectStatus < Registry
+end

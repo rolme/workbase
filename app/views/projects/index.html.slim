@@ -1,12 +1,4 @@
-.row
-  .col-sm-12
-    h1 = fa_icon('th-list', text: "Projects")
-
-    ul.list-inline
-      li
-        a data-toggle="modal" data-placement="top" title="add profile" href="#modal-find-client"
-          = fa_icon('plus-square', text: "Add")
-    hr
+= render "page_header", header: 'Projects', links: [:new]
 
 .row
   .col-sm-12

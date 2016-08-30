@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160804052808) do
+ActiveRecord::Schema.define(version: 20160828162314) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,18 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.index ["client_status_id"], name: "index_clients_on_client_status_id", using: :btree
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
     t.index ["slug"], name: "index_clients_on_slug", using: :btree
+  end
+
+  create_table "comments", force: :cascade do |t|
+    t.string   "title"
+    t.text     "content"
+    t.integer  "ticket_id",                  null: false
+    t.integer  "user_id",                    null: false
+    t.boolean  "public",     default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
+    t.index ["ticket_id"], name: "index_comments_on_ticket_id", using: :btree
+    t.index ["user_id"], name: "index_comments_on_user_id", using: :btree
   end
 
   create_table "companies", force: :cascade do |t|
@@ -175,6 +187,29 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "tickets", force: :cascade do |t|
+    t.string   "slug"
+    t.string   "title"
+    t.text     "description"
+    t.integer  "company_id"
+    t.integer  "project_id"
+    t.integer  "status",               default: 0
+    t.integer  "created_by"
+    t.integer  "viewed_by"
+    t.integer  "assigned_to"
+    t.string   "submitted_by_name"
+    t.string   "submitted_by_email"
+    t.string   "submitted_by_company"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.string   "access_key",                       null: false
+    t.index ["company_id"], name: "index_tickets_on_company_id", using: :btree
+    t.index ["project_id"], name: "index_tickets_on_project_id", using: :btree
+    t.index ["slug"], name: "index_tickets_on_slug", using: :btree
+    t.index ["status"], name: "index_tickets_on_status", using: :btree
+  end
+
   create_table "units", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "uuid"
@@ -228,6 +263,17 @@ ActiveRecord::Schema.define(version: 20160804052808) do
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["slug"], name: "index_users_on_slug", using: :btree
     t.index ["user_status_id"], name: "index_users_on_user_status_id", using: :btree
+  end
+
+  create_table "versions", force: :cascade do |t|
+    t.string   "item_type",      null: false
+    t.integer  "item_id",        null: false
+    t.string   "event",          null: false
+    t.string   "whodunnit"
+    t.text     "object"
+    t.datetime "created_at"
+    t.text     "object_changes"
+    t.index ["item_type", "item_id"], name: "index_versions_on_item_type_and_item_id", using: :btree
   end
 
   add_foreign_key "areas", "companies"

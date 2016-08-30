@@ -1,0 +1,58 @@
+= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: []
+= render "layouts/flash"
+
+.row
+  .col-sm-9
+    .panel.panel-default
+      .panel-body
+        h4 = @ticket.title
+        p = @ticket.description
+
+    ul.nav.nav-tabs role="tablist" style="margin-bottom: 15px;"
+      li.active role="presentation"
+        a href="#comments" aria-controls="comments" role="tab" data-toggle="tab" Comments
+      li role="presentation"
+        a href="#history" aria-controls="history" role="tab" data-toggle="tab" History
+
+
+    div.tab-content
+      div#comments.tab-pane.active role="tabpanel"
+        = render "tickets/comment_tab", comments: @ticket.comments.public_only, comment_post_url: external_ticket_comments_path(@ticket)
+
+      div#history.tab-pane role="tabpanel"
+        = render "tickets/history_tab"
+
+  .col-sm-3
+    .panel.panel-default
+      .panel-body
+        p.small Details
+        dl.dl-horizontal
+          dt.lefty Status:
+          dd = @ticket.status.titlecase
+
+          dt.lefty Project:
+          dd = @ticket.project.name
+
+          dt.lefty Assignee:
+          dd = @ticket.assignee.full_name
+
+          dt.lefty Created:
+          dd = @ticket.created_at
+
+          dt.lefty Updated:
+          dd = @ticket.updated_at
+        = button_to [:toggle_close_external, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
+          = @ticket.closed? ? 'ReOpen Ticket' : 'Close Ticket'
+
+    .panel.panel-default
+      .panel-body
+        p.small Submitted by
+        dl.dl-horizontal
+          dt.lefty Name:
+          dd = @ticket.submitted_by_name
+
+          dt.lefty Email:
+          dd = @ticket.submitted_by_email
+
+          dt.lefty Company:
+          dd = @ticket.submitted_by_company

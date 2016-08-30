@@ -1,0 +1,24 @@
+.page-header
+  h1 = fa_icon('th-list', text: header)
+
+  ul.list-inline
+    - if links.include?(:new)
+      li
+        a href=new_project_path
+          = fa_icon('plus-square', text: "Add")
+
+    - if links.include?(:index)
+      li
+        a href=projects_path
+          = fa_icon('list', text: "List")
+
+    - if links.include?(:show)
+      li
+        a href=project_path(project)
+          = fa_icon('search-plus', text: "Details")
+
+    - if links.include?(:edit)
+      li
+        a href=edit_project_path(@project)
+          = fa_icon('edit', text: "Edit")
+  hr
