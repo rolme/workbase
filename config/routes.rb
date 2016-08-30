@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  mount ActionCable.server => '/cable'
 
   # api end points for ticket creation
   namespace :api, defaults: { format: :json } do
