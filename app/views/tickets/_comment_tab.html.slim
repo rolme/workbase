@@ -1,15 +1,8 @@
 - if comments.any?
   - comments.each do |comment|
     - next unless comment.created_at.present?
-    .row.comment-row
-      .col-sm-9
-        .panel.panel-default.comment class=(comment.public? ? 'public-comment' : '')
-          .panel-body
-            p
-              i #{comment.user.full_name} added a comment - #{time_ago_in_words(comment.created_at)} ago
-            - if comment.title.present?
-              p = comment.title
-            p = comment.content
+    = render 'tickets/comment', comment: comment
+
 - else
   .row.comment-row
     .col-sm-9
@@ -17,7 +10,7 @@
         .panel-body
           p No comments yet.
 
-.row
+#comments-form.row
   .col-sm-9
     .panel.panel-default
       .panel-body
