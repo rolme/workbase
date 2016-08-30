@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   end
 
   # for unauthenticated user actions
-  namespace :external do
+  namespace :public do
     resources :tickets, param: :slug, only: [] do
       member do
         put :toggle_close

@@ -6,7 +6,7 @@ class TicketsController < ApplicationController
   def show
     @ticket = ticket
     @comment = Comment.new
-    @external_link = customer_external_tickets_url(access_key: @ticket.access_key)
+    @external_link = customer_public_tickets_url(access_key: @ticket.access_key)
 
     if @ticket.unviewed? || @ticket.viewed_by.nil?
       # Mark this ticket as viewed
