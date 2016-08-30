@@ -45,7 +45,12 @@
   .col-sm-12.col-md-offset-2.col-md-8
     .row
       .panel.panel-default
-        .panel-heading Projects
+        .panel-heading
+          .row
+            .col-sm-8 Projects
+            .col-sm-4.text-right
+              a.btn.btn-default.btn-sm href=new_project_path(c: @client.slug)
+                = fa_icon('th-list', text: 'New')
         .panel-body
           table.table.table-striped.table-hover
             thead

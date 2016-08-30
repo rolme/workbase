@@ -1,5 +1,5 @@
 # Workbase
-Small business PSA for automating Inventory, Project Management, Resource Management, and Bidding.
+Small business PSA for automating Inventory, Project Management, Resource Management, and Ticketing.
 
 ## Environment Setup
 This assumes your development environment is OSX Yosemite. NOTE: make sure to follow all post installation instructions for each package below.
@@ -23,11 +23,11 @@ Homebrew install postgres and follow directions to start application.
 brew install postgresql node
 ```
 
-### Install ruby 2.3.0
-You will need rbenv and ruby-build if you do not have 2.3.0 already installed.
+### Install ruby 2.3.1
+You will need rbenv and ruby-build if you do not have 2.3.1 already installed.
 ```
 brew install rbenv ruby-build
-rbenv install 2.3.0
+rbenv install 2.3.1
 ```
 
 ### Initialize Workbase
@@ -54,6 +54,6 @@ If deploying to Heroku, you will need to need to add the following add-ons:
 * SendGrid
 
 You will also need to install the following buildpack: (order matters)
-https://github.com/akomic/heroku-buildpack-ffmpegthumbnailer.git
-heroku/nodejs
-heroky/ruby
+* https://github.com/akomic/heroku-buildpack-ffmpegthumbnailer.git
+* heroku/nodejs
+* heroky/ruby

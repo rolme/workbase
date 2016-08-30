@@ -14,8 +14,12 @@
 //= require jquery_ujs
 //= require jquery
 //= require bootstrap-sprockets
+//= require bootstrap-datepicker
 //= require select2-full
 //= require bootsy
+//= require workbase
 //= require_tree .
+//= require Chart.bundle
+//= require chartkick
 
 import "babel-polyfill";
