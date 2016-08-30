@@ -17,7 +17,7 @@ class WarehousesController < ApplicationController
     if @warehouse.save
       redirect_to @warehouse
     else
-      flash[:error] = @warehouse.errors.full_messages
+      flash[:danger] = @warehouse.errors.full_messages
       render 'new'
     end
   end
@@ -31,7 +31,7 @@ class WarehousesController < ApplicationController
     if @warehouse.update(warehouse_params)
       redirect_to @warehouse
     else
-      flash[:error] = @warehouse.errors.full_messages
+      flash[:danger] = @warehouse.errors.full_messages
       render 'edit'
     end
   end

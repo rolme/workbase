@@ -2,6 +2,26 @@ require 'rails_helper'
 
 RSpec.describe Project, type: :model do
 
+
+  describe '#create' do
+    let(:project) { FactoryGirl.create(:project) }
+
+    it "should set status to active" do
+      expect(project.status).to eql('active')
+    end
+  end
+
+  describe '#save' do
+    let(:project) { FactoryGirl.build(:project) }
+    let(:user)    { FactoryGirl.create(:user) }
+
+    it "should create a draft proposal when provided a created by user id" do
+      project.created_by_id = user.id
+      project.save
+      expect(project.proposal).to_not eql(nil)
+    end
+  end
+
   describe '#materials' do
     context 'given a project with 2 of the same units' do
       let(:project) { FactoryGirl.create(:project, :with_units, unit_count: 2) }

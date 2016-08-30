@@ -3,24 +3,24 @@ require 'rails_helper'
 RSpec.describe Proposal, type: :model do
   let(:proposal) { FactoryGirl.create(:proposal) }
 
-  context '#create' do
+  describe '#create' do
     it "should set uuid" do
       expect(proposal.uuid).to_not eql(nil)
     end
 
     it "should set status to draft" do
-      expect(proposal.status).to eql('Draft')
+      expect(proposal.status).to eql('draft')
     end
   end
 
-  context '#update' do
+  describe '#update' do
     it "should reset cache" do
       proposal.update_attribute(:proposal_status_id, ProposalStatus.create(company: proposal.company, label: 'Final').id)
       expect(proposal.status).to eql('Final')
     end
   end
 
-  context '#version! should create a copy' do
+  describe '#version! should create a copy' do
     it "with a versioned date" do
       saved_proposal = proposal.version!
       expect(saved_proposal.versioned_at).to_not eql(1)

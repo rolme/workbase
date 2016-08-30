@@ -23,6 +23,11 @@ env:
     - DATABASE_USERNAME=postgres
     - DATABASE_PASSWORD=
 
+before_script:
+  - 'export DISPLAY=:99.0'
+  - 'sh -e /etc/init.d/xvfb start' # for gui tests
+  - sleep 3 # let xvfb start up
+
 script:
   - npm install
   - psql -c 'create database workbase_test;' -U postgres

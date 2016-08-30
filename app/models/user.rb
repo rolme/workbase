@@ -7,6 +7,7 @@ class User < ApplicationRecord
 
   belongs_to :company
   belongs_to :security_question, optional: true
+  has_many :comments
 
   validates_associated :company
   validates :email, uniqueness: true, email: true, domain: true

@@ -3,7 +3,33 @@ Rails.application.routes.draw do
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
+  # api end points for ticket creation
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resource :tickets, only: [:create]
+    end
+  end
+
+  # for unauthenticated user actions
+  namespace :external do
+    resources :tickets, param: :slug, only: [] do
+      member do
+        put :toggle_close
+      end
+      collection do
+        get :customer
+      end
+      resources :comments, only: [:create]
+    end
+  end
+
   resources :clients, param: :slug
+  resources :tickets, param: :slug do
+    member do
+      put :toggle_close
+    end
+    resources :comments
+  end
   resources :inventory, param: :area_slug do
     collection do
       get :search

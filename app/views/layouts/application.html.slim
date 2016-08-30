@@ -7,7 +7,11 @@ html
     = javascript_include_tag 'application'
 
   body data-controller=controller_name data-action=action_name
-    = render "layouts/header"
+
+    - if current_user
+      = render "layouts/header"
+    - else
+      = render "layouts/customer_header"
 
     #content.container-fluid class="#{"with-subnav" if content_for?(:subnav)}"
       = yield
