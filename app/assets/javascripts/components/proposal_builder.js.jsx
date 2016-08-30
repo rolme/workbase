@@ -15,7 +15,7 @@ export default class ProposalBuilder extends React.Component {
           </div>
         </div>
         <div className="row">
-          <ProposalPreview proposal={this.props.proposal} />
+          <ProposalPreview sections={this.props.proposal.sections} />
           <ProposalActions proposal={this.props.proposal} />
         </div>
       </div>
