@@ -1,7 +1,7 @@
-ruby '2.3.0'
+ruby '2.3.1'
 
 source 'https://rubygems.org' do
-  gem 'rails', '~> 5.0.0'
+  gem 'rails', '~> 5.0.0.1'
   gem 'pg', '~> 0.18'
   gem 'puma', '~> 3.0'
   gem 'slim-rails'
@@ -27,7 +27,7 @@ source 'https://rubygems.org' do
   gem 'valid_email'
 
   # CSS
-  gem 'sass-rails', '~> 5.0'
+  gem 'sass-rails', '~> 5.0.6'
   gem 'bootstrap-sass'
   gem 'bootswatch-rails'
   gem 'bootstrap-datepicker-rails'
