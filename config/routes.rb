@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'welcome/index'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
 
   resources :clients, param: :slug
@@ -44,5 +46,5 @@ Rails.application.routes.draw do
   get "/logout",   to: "session#destroy"
   get "/register", to: "registration#new"
 
-  root to: "workbase#index"
+  root to: "welcome#index"
 end

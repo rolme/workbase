@@ -8,6 +8,7 @@ html
 
   body data-controller=controller_name data-action=action_name
     = render "layouts/header"
+
     #content.container-fluid class="#{"with-subnav" if content_for?(:subnav)}"
       = yield
 

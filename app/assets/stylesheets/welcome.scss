@@ -1,0 +1,361 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+@import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootswatch/flatly/variables";
+@import "bootstrap";
+@import "bootswatch/flatly/bootswatch";
+@import "select2-bootstrap";
+@import "bootsy";
+
+$primary-color: #3b4952;
+
+html,body{
+    font-family: 'Open Sans', sans-serif;
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+.bolder{
+    font-weight: 700;
+}
+.navbar-cstm{
+    background-color: rgba(0,0,0,0);
+    background-repeat: repeat;
+    border-bottom: 0 !important;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 0 !important;
+}
+.nav>li>a{
+    color: #fff;
+}
+.nav>li>a.active{
+    font-weight: bold;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background: initial;
+    text-shadow: initial;
+    color: #fff;
+}
+section{
+    position: relative;
+}
+.row{
+    margin: 0;
+}
+section#header{
+    padding-top: 50px;
+    background: image-url("landing/bg-pattern.jpg");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+}
+section#header .container-fluid{
+    text-align: center;
+}
+.header-title{
+    text-align: center;
+    font-size: 34px;
+    font-weight: bolder;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+.header-text{
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.1em;
+    line-height: 30px;
+    width: 615px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+}
+.caption-email-send{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.email-send-cont{
+    width: 320px;
+    margin: 0 auto;
+}
+.email-send{
+    background: rgba(0,0,0,0);
+    border: 2px solid #fff;
+    color: #fff;
+}
+.email-send:focus{
+    border-color: #e4e4e4;
+}
+.btn-cstm{
+    background: #fedc00;
+    border: 2px solid #fedc00;
+    color: $primary-color;
+    letter-spacing: .450em;
+}
+div#divider{
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+}
+.head-divider{
+    width: 100%;
+}
+
+section#why{
+    width: 100%;
+    padding-top: 64px;
+    padding-bottom: 100px;
+}
+section#why .section-title{
+    color: $primary-color;
+    font-size: 31px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+.services{
+    text-align: center;
+}
+.service-icon{
+    margin-left: auto;
+    margin-right: auto;
+    height: 69px;
+    width: 69px;
+    margin-bottom: 17px;
+}
+.service-title{
+    color: $primary-color;
+    font-weight: 700;
+    font-size: 19px;
+    margin-bottom: 17px;
+}
+.service-details{
+    line-height: 24px;
+    font-size: 13px;
+    color: #bfc0c4;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding: 0;
+}
+section#service{
+    padding: 0 !important;
+    background-color: #f7f8fc;
+}
+.service-in-desc-icon{
+    margin-bottom: 25px;
+}
+.service-in-title{
+    font-size: 26px;
+    color: $primary-color;
+}
+.hrule{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 65px;
+    height: 10px;
+    background-color: #f7e61c;
+}
+.service-in-details{
+    font-size: 14.5px;
+    line-height: 26px;
+    color: #b0b3b8;
+}
+.free-demo{
+    font-weight: bolder;
+    text-decoration: none;
+    color: #b0b3b8;
+}
+.free-demo:hover{
+    text-decoration: underline;
+    color: #b0b3b8;
+}
+.service-in-image img{
+    width: 100%;
+}
+.service-in-desc{
+    width: 100%;
+    padding: 0 70px;
+}
+.service-in-image-col-right{
+    float: right !important;
+}
+.chart-cont{
+    padding: 6.31% 13.03%;
+}
+.label-chart{
+    font-size: 32px;
+    color: $primary-color;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 45px;
+}
+section#who-we-help{
+    border-top: 1px solid #ecf1f4;
+    width: 100%; 
+    padding: 3.9% 10.88%;
+}
+.who-we-help-col{
+    padding: 0 10px;
+}
+.who-we-help-image{
+    border-top: 10px solid #119dff;
+}
+.who-we-help-image img{
+    width: 100%;
+}
+.who-we-help-text{
+    padding: 18px;
+    background: #f7f8fc;
+    border-right: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+}
+.who-we-help-title{
+    font-size: 20px;
+    color: #119dff;
+    font-weight: bold;
+}
+.who-we-help-details{
+    font-size: 14px;
+    line-height: 24px;
+    color: #4e5b64;
+}
+section#mission{
+    background: #119dff;
+}
+.mission-title{
+    font-size: 31px;
+    color: #fff;
+    font-weight: bold;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.mission-details{
+    color: #fff;
+    font-size: 16px;
+    line-height: 29px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.mission-details .free-demo{
+    color: #fff;
+}
+.footer-brand{
+    margin-bottom: 25px;
+}
+.footer-brand a{
+    font-size: 16px;
+    letter-spacing: 0.16em;
+    font-weight: bold;
+    color: $primary-color;
+}
+.footer-address{
+    font-weight: bold;
+    font-size: 14px;
+    color: #d3d8dc;
+    line-height: 23.44px;
+}
+.footer-address a{
+    color: #d3d8dc;
+}
+.footer-contact-cont{
+    margin-bottom: 20px;
+}
+.footer-contact, .footer-follow{
+    color: #d2d7da;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contact-tel-no, .contact-email{
+    color: $primary-color;
+    font-weight: bold;
+    font-size: 14px;
+}
+.footer-icons ul li{
+    list-style: none;
+    display: inline;
+    margin-right: 12px;
+}
+.footer-icons ul{
+    padding: 0;
+}
+@media screen and (min-width: 800px){
+    .service-in-desc{
+        position: relative;
+        transform: translateY(33%);
+    }
+    section#header{
+    padding-top: 150px !important;
+    }
+    .main-cont{
+    max-width: 940px;
+    margin: 0 auto;
+/*    padding: 0 11.21%;*/
+}
+    section#mission{
+    padding: 90px 255px;
+    }
+    footer{
+        padding-top: 50px;
+        padding-bottom: 75px;
+        padding-left: 135px;
+        padding-right: 135px;
+    }
+    .footer-follow{
+        position: relative;
+        transform: translateY(33%);
+    }
+    .col-service-why{
+        padding: 0 12px;
+    }
+}
+@media screen and (max-width: 767px){
+    .service-in-desc{
+        margin: 50px auto;
+        text-align: center;
+    }
+    .hrule{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .chart-cont{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .canvas#myChart{
+        width: 100%;
+        height: 100%;
+    }
+    .col-service-why{
+        margin: 20px auto;
+    }
+    .who-we-help-col{
+        margin: 20px 0;
+    }
+    .who-we-help-text .hrule{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    section#mission{
+    padding: 30px;
+    }
+    footer{
+        padding: 20px;
+    }
+    footer .row{
+        margin: 20px;
+    }
+}

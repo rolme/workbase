@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    title eWorkbase
+    link rel="stylesheet" href=""
+    = csrf_meta_tags
+    = stylesheet_link_tag 'welcome', media: 'all'
+    = javascript_include_tag 'welcome'
+
+  body data-controller=controller_name data-action=action_name
+    = render "layouts/home_header"
+    = yield
+    = render "layouts/home_footer"
