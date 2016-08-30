@@ -9,6 +9,7 @@ export default class ProposalPreview extends React.Component {
     );
   }
 
+  // TODO: This could eventually be turned into a component.
   displaySection(section) {
     return(
       <div key={section.id} className="row">
