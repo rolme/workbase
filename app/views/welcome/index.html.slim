@@ -1,10 +1,9 @@
 section#header.row
     div#content.col-xs-12
         div.main-cont
-            div.header-title Reduce Cost. Gain Time
+            div.header-title Reduce Cost. Gain Time.
             div.header-text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Dummy text of the printing and typesetting industry.
-            div.caption-email-send  Enter your email for
-                span.bolder Demo
+            div.caption-email-send  Enter your email for <b>Demo</b>
             div.input-group.email-send-cont
                 input.form-control.email-send type="text"
                 span.input-group-btn
@@ -33,10 +32,10 @@ section#why.row
                     div.service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
 section#service
     div.row
-        div.col-xs-12
+        div.col-xs-12.service-col
             div.row.service-row
                 div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-image
+                    div.service-in-image.text-right
                         = image_tag src='landing/Work-progress.jpg'
                 div.col-xs-12.col-sm-12.col-md-6.col-lg-6
                     div.service-in-desc
@@ -46,10 +45,10 @@ section#service
                         div.hrule
                         div.service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.                         Schedule a 
                         = link_to "Free Demo", {controller: "login", action: "index"}, class: "free-demo" 
-        div.col-xs-12
+        div.col-xs-12.service-col
             div.row.service-row
                 div.col-xs-12.col-sm-12.col-md-6.col-lg-6.service-in-image-col-right
-                    div.service-in-image
+                    div.service-in-image.text-left
                         = image_tag src='landing/Procurement.jpg'
                 div.col-xs-12.col-sm-12.col-md-6.col-lg-6
                     div.service-in-desc
@@ -59,10 +58,10 @@ section#service
                         div.hrule
                         div.service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.                         Schedule a 
                         = link_to "Free Demo", {controller: "login", action: "index"}, class: "free-demo" 
-        div.col-xs-12
+        div.col-xs-12.service-col
             div.row.service-row
                 div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-image
+                    div.service-in-image.text-right
                         = image_tag src='landing/Inventory.jpg'
                 div.col-xs-12.col-sm-12.col-md-6.col-lg-6
                     div.service-in-desc
@@ -75,29 +74,31 @@ section#service
 section#chart
     div.row
         div.col-xs-12.chart-cont
-            label.label-chart for="myChart"
-                The Stats we Make.
-            canvas#myChart
+            label.label-chart for="myChart" The Stats we Make.
+            = area_chart [{name: "Effort", data: [["Week 1", 50], ["Week 2", 42], ["Week 3", 39], ["Week 4", 32], ["Week 5", 26], ["Week 6", 20], ["Week 7", 16]]}, {name: "Productivity", data: [["Week 1", 20], ["Week 2", 24], ["Week 3", 31], ["Week 4", 42], ["Week 5", 54], ["Week 6", 68], ["Week 7", 80]]}], library: {min: 0, max: 500}
 section#who-we-help
     div.row
         div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
             div.who-we-help-image
                 = image_tag src='landing/1.jpg'
-            div.who-we-help-text Small Business
-            div.hrule
-            div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+            div.who-we-help-text 
+                div.who-we-help-title Small Business
+                div.hrule
+                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
         div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
             div.who-we-help-image
                 = image_tag src='landing/2.jpg'
-            div.who-we-help-text Franchise
-            div.hrule
-            div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+            div.who-we-help-text
+                div.who-we-help-title Franchise
+                div.hrule
+                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
         div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
             div.who-we-help-image
                 = image_tag src='landing/3.jpg'
-            div.who-we-help-text Feature Industry
-            div.hrule
-            div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+            div.who-we-help-text
+                div.who-we-help-title Feature Industry
+                div.hrule
+                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
 section#mission
     div.row
         div.col-xs-12

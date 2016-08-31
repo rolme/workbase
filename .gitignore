@@ -15,3 +15,8 @@ dump.rdb
 .DS_Store
 /public/uploads/**
 /node_modules
+
+
+/vendor/cache/
+/log/
+/node_modules/

@@ -8,7 +8,6 @@ class CommentsController < ApplicationController
       CommentsChannel.broadcast_to(@ticket.slug,
           comment: CommentsController.render(partial: 'tickets/comment', locals: { comment: @comment })
       )
-
       flash[:success] = 'Comment created'
       redirect_to @ticket
     else

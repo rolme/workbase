@@ -40,6 +40,13 @@ source 'https://rubygems.org' do
   gem 'jbuilder', '~> 2.5'
   gem 'select2-rails'
   gem 'browserify-rails'
+  gem 'chartkick'
+
+  # Auditing
+  gem 'paper_trail', '~> 5.2'
+
+  # Auditing
+  gem 'paper_trail', '~> 5.2'
 
   # Auditing
   gem 'paper_trail', '~> 5.2'

@@ -21,4 +21,6 @@
 //= require_tree .
 //= require_tree ./channels
 
+//= require chartkick
+
 import "babel-polyfill";
