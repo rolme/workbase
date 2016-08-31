@@ -1,0 +1,92 @@
+.page-header
+  .row
+    .col-md-10.col-sm-10
+      h1
+        => fa_icon('th-list', text: "#{@project.name}")
+        small #{@project.client_contact_name} - #{@project.client_company_name}
+  ul.list-inline
+    li
+      a href=projects_path
+        = fa_icon('list', text: "List")
+  hr
+
+.row
+  .col-md-offset-1.col-md-10
+    ul.nav.nav-tabs role="tablist"
+      li.active role="presentation"
+        a href="#attachments" aria-controls="attachments" role="tab" data-toggle="tab"
+          = fa_icon('paperclip', text: "Attachments")
+      li role="presentation"
+        a href="#specification" aria-controls="specification" role="tab" data-toggle="tab"
+          = fa_icon('list-alt', text: "Specifications")
+      li role="presentation"
+        a href="#proposal" aria-controls="proposal" role="tab" data-toggle="tab"
+          = fa_icon('wpforms', text: "Proposal")
+      li role="presentation"
+        a href="#work-order" aria-controls="work-order" role="tab" data-toggle="tab"
+          = fa_icon('briefcase', text: "Work Order")
+
+    .tab-content
+      #attachments.tab-pane.active
+        / TODO: http://www.dropzonejs.com/bootstrap.html
+        br
+        - if @project.attachments.empty?
+          | Empty
+        - else
+          - @project.attachments.each_slice(4).each do |attachment_slice|
+            .row
+              - attachment_slice.each do |attachment|
+                .col-sm-3.text-center.js-media-item
+                  a href=project_attachment_path(@project, attachment) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+                    span.remove-media
+                      i.fa.fa-icon.fa-times.close.red
+                  - if attachment.image?
+                    a.enlarge-image href=attachment.asset.url data-description=attachment.description
+                      img src=attachment.asset.url(:thumb)
+                  - elsif attachment.video?
+                    a.video-playback href=attachment.asset.url data-content-type=attachment.content_type data-description=attachment.description
+                      img src=attachment.asset.url(:still)
+                  - else
+                    a href=attachment.asset.url
+                      = fa_icon('file-o 2x')
+                  br
+                  = truncate(attachment.description, length: 25)
+        hr
+        = form_for @attachment, url: project_attachments_path(@project), html: { multipart: true } do |f|
+          .form-group
+            = f.file_field :asset, class: 'form-control'
+            = f.text_field :description, placeholder: "short description", class: 'form-control'
+          = f.button "Upload", class: "btn btn-default btn-sm"
+
+      #specification.tab-pane
+        br
+        table.table.table-striped
+          thead
+            tr
+              th count
+              th manufacturer
+              th model
+              th description
+              th subtotal
+              th in inventory?
+          tbody
+            - @project.materials.each do |material|
+              tr
+                td = material[:count]
+                td = material[:manufacturer]
+                td = material[:model]
+                td = material[:description]
+                td.text-right = number_to_currency(material[:subtotal], format: "%n")
+                td = !!material[:location_id] ? 'Yes' : 'No'
+        hr
+        button.btn.btn-default.btn-xs.pull-right>
+          = fa_icon('edit', text: 'Edit')
+        button.btn.btn-default.btn-xs.pull-right<
+          = fa_icon('search-plus', text: 'Details')
+
+      #proposal.tab-pane
+        #proposal-builder data-proposal=@proposal.as_json
+
+      #work-order.tab-pane
+        br
+        | Work Orders here

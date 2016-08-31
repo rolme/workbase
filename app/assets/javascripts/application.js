@@ -19,7 +19,7 @@
 //= require bootsy
 //= require workbase
 //= require_tree .
-//= require Chart.bundle
+
 //= require chartkick
 
 import "babel-polyfill";

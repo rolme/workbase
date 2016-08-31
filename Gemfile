@@ -44,6 +44,9 @@ source 'https://rubygems.org' do
   # Auditing
   gem 'paper_trail', '~> 5.2'
 
+  # Auditing
+  gem 'paper_trail', '~> 5.2'
+
   group :production do
     gem 'rails_stdout_logging'
     gem 'rails_12factor'

@@ -76,27 +76,30 @@ section#chart
         div.col-xs-12.chart-cont
             label.label-chart for="myChart"
                 The Stats we Make.
-            = area_chart [{name: "Series A", data: [["Data One", 3], ["Data Two", 5]]}, {name: "Series B", data: [["Data One", 8], ["Data Two", 3]]}]
+            = area_chart [{name: "Effort", data: [["January", 50], ["February", 42], ["March", 39], ["April", 32], ["May", 26], ["June", 20], ["July", 16]]}, {name: "Productivity", data: [["January", 20], ["February", 24], ["March", 31], ["April", 42], ["May", 54], ["June", 68], ["July", 80]]}], library: {min: 0, max: 500}
 section#who-we-help
     div.row
         div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
             div.who-we-help-image
                 = image_tag src='landing/1.jpg'
-            div.who-we-help-text Small Business
-            div.hrule
-            div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+            div.who-we-help-text 
+                div.who-we-help-title Small Business
+                div.hrule
+                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
         div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
             div.who-we-help-image
                 = image_tag src='landing/2.jpg'
-            div.who-we-help-text Franchise
-            div.hrule
-            div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+            div.who-we-help-text
+                div.who-we-help-title Franchise
+                div.hrule
+                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
         div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
             div.who-we-help-image
                 = image_tag src='landing/3.jpg'
-            div.who-we-help-text Feature Industry
-            div.hrule
-            div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+            div.who-we-help-text
+                div.who-we-help-title Feature Industry
+                div.hrule
+                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
 section#mission
     div.row
         div.col-xs-12
