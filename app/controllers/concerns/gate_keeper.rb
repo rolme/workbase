@@ -12,9 +12,9 @@ module GateKeeper
   end
 
   def authenticate
-#    if !login_user
-#      redirect_to login_index_path
-#    end
+   if !login_user
+     redirect_to login_index_path
+   end
   end
 
   def authorize
