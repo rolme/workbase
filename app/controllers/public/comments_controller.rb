@@ -1,4 +1,4 @@
-class External::CommentsController < ApplicationController
+class Public::CommentsController < ApplicationController
   skip_before_action :authenticate
 
   def create

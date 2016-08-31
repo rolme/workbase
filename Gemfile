@@ -5,6 +5,7 @@ source 'https://rubygems.org' do
   gem 'pg', '~> 0.18'
   gem 'puma', '~> 3.0'
   gem 'slim-rails'
+  gem 'newrelic_rpm'
 
   # helper gems
   gem 'ranked-model'
@@ -42,6 +43,9 @@ source 'https://rubygems.org' do
 
   # Auditing
   gem 'paper_trail', '~> 5.2'
+
+  # ActionCable
+  gem 'redis'
 
   group :production do
     gem 'rails_stdout_logging'

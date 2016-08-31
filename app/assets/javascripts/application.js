@@ -19,5 +19,6 @@
 //= require bootsy
 //= require workbase
 //= require_tree .
+//= require_tree ./channels
 
 import "babel-polyfill";
