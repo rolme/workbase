@@ -26,6 +26,11 @@
 @import "workbase";
 @import "tickets";
 
+html {
+  position: relative;
+  min-height: 100%;
+}
+
 // global styles
 body {
   padding-top: 70px;
@@ -55,4 +60,12 @@ body {
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  /* Set the fixed height of the footer here */
+  height: 60px;
 }

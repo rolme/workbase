@@ -1,6 +1,6 @@
 # Intended for unauthenticated actions by our external users
 
-class External::TicketsController < ApplicationController
+class Public::TicketsController < ApplicationController
   skip_before_action :authenticate
 
   def customer

@@ -5,6 +5,10 @@ class CommentsController < ApplicationController
     @comment.user = current_user
 
     if @comment.save
+      CommentsChannel.broadcast_to(@ticket.slug,
+          comment: CommentsController.render(partial: 'tickets/comment', locals: { comment: @comment })
+      )
+
       flash[:success] = 'Comment created'
       redirect_to @ticket
     else

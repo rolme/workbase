@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
+  mount ActionCable.server => '/cable'
 
   # api end points for ticket creation
   namespace :api, defaults: { format: :json } do
@@ -9,7 +10,7 @@ Rails.application.routes.draw do
   end
 
   # for unauthenticated user actions
-  namespace :external do
+  namespace :public do
     resources :tickets, param: :slug, only: [] do
       member do
         put :toggle_close

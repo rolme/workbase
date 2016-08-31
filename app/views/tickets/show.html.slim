@@ -1,7 +1,7 @@
 = render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: [:new, :edit, :index, :delete]
 = render "layouts/flash"
 
-.row
+.row data-ticket-slug=@ticket.slug
   .col-sm-9
     .panel.panel-default
       .panel-body
