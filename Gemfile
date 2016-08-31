@@ -45,12 +45,6 @@ source 'https://rubygems.org' do
   # Auditing
   gem 'paper_trail', '~> 5.2'
 
-  # Auditing
-  gem 'paper_trail', '~> 5.2'
-
-  # Auditing
-  gem 'paper_trail', '~> 5.2'
-
   # ActionCable
   gem 'redis'
 

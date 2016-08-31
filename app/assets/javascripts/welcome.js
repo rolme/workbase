@@ -1,8 +1,5 @@
 // Place all the behaviors and hooks related to the matching controller here.
 // All this logic will automatically be available in application.js.
-<<<<<<< HEAD
-import Chart from 'chart.js';
-
 console.log('WORKING!');
 
 var MONTHS = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
