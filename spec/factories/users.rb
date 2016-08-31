@@ -16,4 +16,14 @@ FactoryGirl.define do
     password_confirmation '1234'
     company { Company.first || association(:company) }
   end
+
+  factory :user1, class: User do
+    email 'test-user@testemail.com'
+    first_name 'First'
+    last_name 'Last'
+    password '1234'
+    password_confirmation '1234'
+    type 'User'
+    company { Company.first || association(:company) }
+  end
 end
