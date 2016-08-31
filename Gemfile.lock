@@ -172,6 +172,7 @@ GEM
     minitest (5.9.0)
     multi_json (1.12.1)
     multi_test (0.1.2)
+    newrelic_rpm (3.16.2.321)
     nio4r (1.2.1)
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
@@ -349,6 +350,7 @@ DEPENDENCIES
   letter_opener!
   listen (~> 3.0.5)!
   mini_magick!
+  newrelic_rpm!
   paper_trail (~> 5.2)!
   parallel_tests!
   pg (~> 0.18)!
