@@ -6,16 +6,16 @@
           .panel-heading Contact Info
           .panel-body
             dl.dl-horizontal
-              dt Name
+              dt Name&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.full_name
-              dt Company
+              dt Company&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.company_name
-              dt Account
+              dt Account&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.type
-              dt Email
+              dt Email&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.email
               - if @user.phone.present?
-                dt Phone
+                dt Phone&nbsp;&nbsp;:&nbsp;&nbsp;
                 dd = number_to_phone(@user.phone)
 
         .panel.panel-default
