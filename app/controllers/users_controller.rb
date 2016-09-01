@@ -30,6 +30,17 @@ class UsersController < ApplicationController
     render :index
   end
 
+  # POST /users/:slug/password_update
+  def password_update
+    @user = user
+    if @user.update(password_params(@user.type))
+      render :profile
+    else
+      flash[:danger] = @user.errors.full_messages
+      render :profile
+    end
+  end
+
 private
 
   def users
@@ -42,6 +53,10 @@ private
 
   def user_params(type)
     params.require(type.downcase.to_sym).permit(:security_question_id, :security_answer, :email, :phone, :avatar)
+  end
+
+  def password_params(type)
+    params.require(type.downcase.to_sym).permit(:new_password, :current_password)
   end
 
 end

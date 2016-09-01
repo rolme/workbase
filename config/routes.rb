@@ -83,6 +83,7 @@ Rails.application.routes.draw do
   resources :users, only: [:index, :update, :destroy], param: :slug do
     member do
       get :profile
+      patch :password_update
     end
   end
   resources :workbase, only: [:index]
