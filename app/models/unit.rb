@@ -8,6 +8,8 @@ class Unit < ApplicationRecord
   belongs_to :location, optional: true
   belongs_to :project, optional: true
   belongs_to :unit_category, counter_cache: :count
+  has_one :upload, as: :uploadable, dependent: :destroy
+  accepts_nested_attributes_for :upload
 
   scope :in_inventory, -> {
     where.not(location_id: nil)
