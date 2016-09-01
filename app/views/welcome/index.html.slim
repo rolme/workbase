@@ -1,113 +1,112 @@
 section#header.row
-    div#content.col-xs-12
-        div.main-cont
-            div.header-title Reduce Cost. Gain Time.
-            div.header-text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Dummy text of the printing and typesetting industry.
-            div.caption-email-send  Enter your email for <b>Demo</b>
-            div.input-group.email-send-cont
-                input.form-control.email-send type="text"
-                span.input-group-btn
-                    button.btn.btn-cstm type="button" Send
-    div#divider.col-xs-12
-        = image_tag src='landing/head-divider.png',  :class => "head-divider"
+  #content.col-xs-12
+    .main-cont
+      .header-title Reduce Cost. Gain Time.
+      .header-text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Dummy text of the printing and typesetting industry.
+      .caption-email-send  Enter your email for <strong>Demo</strong>
+      .input-group.email-send-cont
+        input.form-control.email-send type="text"
+          span.input-group-btn
+            button.btn.btn-cstm type="button" Send
+  #divider.col-xs-12
+    = image_tag src='landing/head-divider.png',  :class => "head-divider"
 section#why.row
-    div#content.col-xs-12
-        div.main-cont
-            div.section-title Why eWORKBASE
-            div.row.services
-                div.col-xs-12.col-sm-12.col-md-4.col-service-why
-                    div.service-icon
-                        = image_tag src='landing/save-time-icon.png'
-                    div.service-title Save Time
-                    div.service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
-                div.col-xs-12.col-sm-12.col-md-4.col-service-why
-                    div.service-icon
-                        = image_tag src='landing/personal-support-icon.png'
-                    div.service-title Personal Support
-                    div.service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
-                div.col-xs-12.col-sm-12.col-md-4.col-service-why
-                    div.service-icon
-                        = image_tag src='landing/get-results-icon.png'
-                    div.service-title Get Results
-                    div.service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
+  #content.col-xs-12
+    .main-cont
+      .section-title Why eWORKBASE
+      .row.services
+        .col-xs-12.col-sm-12.col-md-4.col-service-why
+          .service-icon
+            = image_tag src='landing/save-time-blue.png'
+          .service-title Save Time
+          .service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
+        .col-xs-12.col-sm-12.col-md-4.col-service-why
+          .service-icon
+            = image_tag src='landing/personal-support-blue.png'
+          .service-title Personal Support
+          .service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
+        .col-xs-12.col-sm-12.col-md-4.col-service-why
+          .service-icon
+            = image_tag src='landing/get-results-blue.png'
+          .service-title Get Results
+          .service-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
 section#service
-    div.row
-        div.col-xs-12.service-col
-            div.row.service-row
-                div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-image.text-right
-                        = image_tag src='landing/Work-progress.jpg'
-                div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-desc
-                        div.service-in-desc-icon
-                            = image_tag src='landing/Work-Order.png'
-                        div.service-in-title Work Order
-                        div.hrule
-                        div.service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.                         Schedule a 
-                        = link_to "Free Demo", {controller: "login", action: "index"}, class: "free-demo" 
-        div.col-xs-12.service-col
-            div.row.service-row
-                div.col-xs-12.col-sm-12.col-md-6.col-lg-6.service-in-image-col-right
-                    div.service-in-image.text-left
-                        = image_tag src='landing/Procurement.jpg'
-                div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-desc
-                        div.service-in-desc-icon
-                            = image_tag src='landing/Procurement.png'
-                        div.service-in-title Procurement
-                        div.hrule
-                        div.service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.                         Schedule a 
-                        = link_to "Free Demo", {controller: "login", action: "index"}, class: "free-demo" 
-        div.col-xs-12.service-col
-            div.row.service-row
-                div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-image.text-right
-                        = image_tag src='landing/Inventory.jpg'
-                div.col-xs-12.col-sm-12.col-md-6.col-lg-6
-                    div.service-in-desc
-                        div.service-in-desc-icon
-                            = image_tag src='landing/Inventory.png'
-                        div.service-in-title Inventory
-                        div.hrule
-                        div.service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.                         Schedule a 
-                        = link_to "Free Demo", {controller: "login", action: "index"}, class: "free-demo" 
+  .row
+    .col-xs-12.service-col
+        .row.service-row
+          .col-xs-12.col-sm-12.col-md-6.col-lg-6
+            .service-in-image.text-right
+              = image_tag src='landing/Work-progress.jpg'
+          .col-xs-12.col-sm-12.col-md-6.col-lg-6
+            .service-in-desc
+              .service-in-desc-icon
+                = image_tag src='landing/Work-Order.png'
+              .service-in-title Work Order
+              .hrule
+              .service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
+                Schedule a <a href="#">Free Demo</a>
+    .col-xs-12.service-col
+      .row.service-row
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6.service-in-image-col-right
+          .service-in-image.text-left
+            = image_tag src='landing/Procurement.jpg'
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6
+          .service-in-desc
+            .service-in-desc-icon
+              = image_tag src='landing/Procurement.png'
+            .service-in-title Procurement
+            .hrule
+            .service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
+              Schedule a <a href="#">Free Demo</a> 
+    .col-xs-12.service-col
+      .row.service-row
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6
+          .service-in-image.text-right
+            = image_tag src='landing/Inventory.jpg'
+        .col-xs-12.col-sm-12.col-md-6.col-lg-6
+          .service-in-desc
+            .service-in-desc-icon
+              = image_tag src='landing/Inventory.png'
+            .service-in-title Inventory
+            .hrule
+            .service-in-details Lorem Ipsum is simply dummy text of the printing and typesetting industry. This Dummy text of the printing and typesetting industry.
+              Schedule a <a href="#">Free Demo</a>
 section#chart
-    div.row
-        div.col-xs-12.chart-cont
-            label.label-chart for="myChart" The Stats we Make.
-            = area_chart [{name: "Effort", data: [["Week 1", 50], ["Week 2", 42], ["Week 3", 39], ["Week 4", 32], ["Week 5", 26], ["Week 6", 20], ["Week 7", 16]]}, {name: "Productivity", data: [["Week 1", 20], ["Week 2", 24], ["Week 3", 31], ["Week 4", 42], ["Week 5", 54], ["Week 6", 68], ["Week 7", 80]]}], library: {min: 0, max: 500}
+  .row
+    .col-xs-12.chart-cont
+      label.label-chart for="myChart" The Stats we Make.
+      = area_chart [{name: "Effort", data: [["Week 1", 50], ["Week 2", 42], ["Week 3", 39], ["Week 4", 32], ["Week 5", 26], ["Week 6", 20], ["Week 7", 16]]}, {name: "Productivity", data: [["Week 1", 20], ["Week 2", 24], ["Week 3", 31], ["Week 4", 42], ["Week 5", 54], ["Week 6", 68], ["Week 7", 80]]}], library: {min: 0, max: 100, colors: ["#109DFF", "#FEDC00"]}
 section#who-we-help
-    div.row
-        div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
-            div.who-we-help-image
-                = image_tag src='landing/1.jpg'
-            div.who-we-help-text 
-                div.who-we-help-title Small Business
-                div.hrule
-                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
-        div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
-            div.who-we-help-image
-                = image_tag src='landing/2.jpg'
-            div.who-we-help-text
-                div.who-we-help-title Franchise
-                div.hrule
-                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
-        div.col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
-            div.who-we-help-image
-                = image_tag src='landing/3.jpg'
-            div.who-we-help-text
-                div.who-we-help-title Feature Industry
-                div.hrule
-                div.who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+  .row
+    .col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
+      .who-we-help-image
+        = image_tag src='landing/1.jpg'
+      .who-we-help-text 
+        .who-we-help-title Small Business
+        .hrule
+        .who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+    .col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
+      .who-we-help-image
+        = image_tag src='landing/2.jpg'
+      .who-we-help-text
+        .who-we-help-title Franchise
+        .hrule
+        .who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
+    .col-xs-12.col-sm-12.col-md-4.col-lg-4.who-we-help-col
+      .who-we-help-image
+        = image_tag src='landing/3.jpg'
+      .who-we-help-text
+        .who-we-help-title Feature Industry
+        .hrule
+        .who-we-help-details This Dummy text of the printing and of the industry. Lorem Ipsum is simply dummy text of the printing  and text  of the printing and of the typestting.
 section#mission
-    div.row
-        div.col-xs-12
-            div.mission-title eWORKBASE Mission
-            div.mission-details Large business shouldn’t be the only ones benefiting from business process automation. Let eWORKBASE partner with you to build more efficient company. Schedule a Free Demo
-            div.mission-send
-                div.caption-email-send
-                    Enter your Email for Demo
-                div.input-group.email-send-cont
-                    input.form-control.email-send type="text"
-                    span.input-group-btn
-                        button.btn.btn-cstm type="button" Send
+  .row
+    .col-xs-12
+      .mission-title eWORKBASE Mission
+      .mission-details Large business shouldn’t be the only ones benefiting from business process automation. Let eWORKBASE partner with you to build more efficient company. Schedule a Free Demo
+      .mission-send
+        .caption-email-send Enter your Email for <strong>Demo</strong>
+        .input-group.email-send-cont
+          input.form-control.email-send type="text"
+            span.input-group-btn
+              button.btn.btn-cstm type="button" Send
