@@ -22,6 +22,9 @@ class User < ApplicationRecord
 
   before_create :set_confirmation_token
   after_update :send_password_change_email, if: :needs_password_change_email?
+  after_update :send_email_change_email, if: :needs_email_change_email?
+  after_update :send_info_change_email, if: :needs_info_change_email?
+
 
   def avatar?
     avatar.file.present?
@@ -64,8 +67,40 @@ private
     password_digest_changed? && persisted?
   end
 
-  # send email on password changed
+  # send email when password changed
   def send_password_change_email
     UserMailer.password_changed(id).deliver
+  end
+
+  # check if email changed
+  def needs_email_change_email?
+    email_changed? && persisted?
+  end
+
+  # send email when email changed
+  def send_email_change_email
+    UserMailer.email_changed(id, email_was).deliver
+  end
+
+  #check if other info changed
+  def needs_info_change_email?
+    (phone_changed? || avatar_changed? || security_question_id_changed? || security_answer_changed?) && persisted?
+  end
+
+  # send email when info changed
+  def send_info_change_email
+    UserMailer.info_changed(id, change_information_for).deliver
+  end
+
+  def change_information_for
+    if security_question_id_changed?
+      'security question'
+    elsif security_answer_changed?
+      'security answer'
+    elsif phone_changed?
+      'phone number'
+    elsif avatar_changed?
+      'profile image'
+    end
   end
 end
