@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery
+//= require dropzone.min
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require select2-full
@@ -22,3 +23,4 @@
 //= require_tree ./channels
 
 import "babel-polyfill";
+$('input[type="file"]').ezdz();
