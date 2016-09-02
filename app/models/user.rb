@@ -2,6 +2,8 @@ class User < ApplicationRecord
   include Sluggable
   include SoftDeletable
 
+  attr_accessor :current_password, :new_password
+
   has_secure_password
   mount_uploader :avatar, AvatarUploader
 
@@ -12,12 +14,17 @@ class User < ApplicationRecord
   validates_associated :company
   validates :email, uniqueness: true, email: true, domain: true
   validates :password, length: { minimum: 4 }, allow_nil: true
+  validate :validate_current_password, if: :current_password
 
   delegate :name,
            to: :company,
            prefix: true
 
   before_create :set_confirmation_token
+  after_update :send_password_change_email, if: :needs_password_change_email?
+  after_update :send_email_change_email, if: :needs_email_change_email?
+  after_update :send_info_change_email, if: :needs_info_change_email?
+
 
   def avatar?
     avatar.file.present?
@@ -47,4 +54,53 @@ private
     end
   end
 
+  def validate_current_password
+    if authenticate(current_password)
+      self.password = new_password
+    else
+      errors.add(:current_password, "is invalid.")
+    end
+  end
+
+  # check if password changed
+  def needs_password_change_email?
+    password_digest_changed? && persisted?
+  end
+
+  # send email when password changed
+  def send_password_change_email
+    UserMailer.password_changed(id).deliver
+  end
+
+  # check if email changed
+  def needs_email_change_email?
+    email_changed? && persisted?
+  end
+
+  # send email when email changed
+  def send_email_change_email
+    UserMailer.email_changed(id, email_was).deliver
+  end
+
+  #check if other info changed
+  def needs_info_change_email?
+    (phone_changed? || avatar_changed? || security_question_id_changed? || security_answer_changed?) && persisted?
+  end
+
+  # send email when info changed
+  def send_info_change_email
+    UserMailer.info_changed(id, change_information_for).deliver
+  end
+
+  def change_information_for
+    if security_question_id_changed?
+      'security question'
+    elsif security_answer_changed?
+      'security answer'
+    elsif phone_changed?
+      'phone number'
+    elsif avatar_changed?
+      'profile image'
+    end
+  end
 end
