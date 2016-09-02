@@ -19,8 +19,7 @@
 //= require select2-full
 //= require bootsy
 //= require workbase
-//= require_tree .
+//= require cable
 //= require_tree ./channels
 
 import "babel-polyfill";
-$('input[type="file"]').ezdz();
