@@ -14,6 +14,7 @@ html
       = render "layouts/customer_header"
 
     #content.container-fluid class="#{"with-subnav" if content_for?(:subnav)}"
+      = render "layouts/flash"
       = yield
 
     = render "layouts/footer"
