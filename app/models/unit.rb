@@ -2,7 +2,7 @@ class Unit < ApplicationRecord
   include SoftDeletable
   include Sluggable
 
-  attr_accessor :location_required
+  attr_accessor :location_required, :upload_id
 
   belongs_to :company
   belongs_to :location, optional: true
@@ -75,6 +75,7 @@ class Unit < ApplicationRecord
 
   before_save   :generate_unit_hash,
                 :checkin_unit
+  after_save :attach_upload, if: :upload_id
 
   def location_required?
     !!location_required
@@ -85,6 +86,11 @@ class Unit < ApplicationRecord
   end
 
 private
+
+  def attach_upload
+    # attach image with unit
+    Upload.associate_with_unit(upload_id, self.id)
+  end
 
   def generate_qrcode
     self.uuid   = SecureRandom.uuid

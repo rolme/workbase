@@ -82,6 +82,7 @@ private
         :manufacturer,
         :model,
         :unit_category_id,
+        :upload_id,
         :upload_attributes => [:id, :image, :_destroy]
       )
   end
