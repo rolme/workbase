@@ -1,26 +1,45 @@
+
+= render "layouts/header_bar", header: 'Projects'
 = render "page_header", header: 'Projects', links: [:new]
 
 .row
-  .col-sm-12
-    table.table.table-striped.table-hover
+  .table-responsive id="#page-wrap" 
+    table.table
       thead
         tr
-          th company
-          th name
-          th created at
-          th start date
-          th end date
-          th value
           th
+            input type="checkbox"
+          th Company
+          th Name
+          th Created at
+          th Start date
+          th End date
+          th Value
+          th Action
+            
       tbody
         - @projects.each do |project|
-          tr data-url=project_path(project)
-            td = project.client_company_name
-            td = project.name
-            td = project.created_at.in_time_zone("Pacific Time (US & Canada)")
-            td = project.start_date
-            td = project.end_date
-            td.text-center = number_to_currency(project.total_material_cost, format: "%n")
-            td.text-right
+          tr
+            td
+              input type="checkbox"
+            td data-content="Company" 
+              = project.client_company_name
+            td data-content="Name"  
+              = project.name
+            td data-content="Created at"
+              = project.created_at.in_time_zone("Pacific Time (US & Canada)")
+            td data-content="Start date"
+              = project.start_date
+            td data-content="End date"
+              = project.end_date
+
+            td.text-center data-content="Value"
+              = number_to_currency(project.total_material_cost, format: "%n")
+            td.text-center
               =  fa_icon('edit')
               =< fa_icon('trash')
+        
+
+
+
+

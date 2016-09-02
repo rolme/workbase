@@ -18,6 +18,7 @@
 //= require select2-full
 //= require bootsy
 //= require workbase
+//= require sidebar_menu
 //= require_tree .
 //= require_tree ./channels
 
