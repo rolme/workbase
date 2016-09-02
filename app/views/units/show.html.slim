@@ -5,24 +5,24 @@
     .row
       .col-sm-8
         dl.dl-horizontal
-          dt UUID
+          dt UUID #{label_spacing}
           dd = @unit.uuid
-          dt Model
+          dt Model #{label_spacing}
           dd = @unit.model
-          dt Manufacturer
+          dt Manufacturer #{label_spacing}
           dd = @unit.manufacturer
           - if @unit.location_id.blank? && @unit.procurement_status.present?
-            dt Procuement Status
+            dt Procuement Status #{label_spacing}
             dd = @unit.procurement_status
-          dt Unit Category
+          dt Unit Category #{label_spacing}
           dd = @unit.unit_category_label
-          dt Description
+          dt Description #{label_spacing}
           dd = @unit.description
-          dt Client Description
+          dt Client Description #{label_spacing}
           dd = @unit.client_description
-          dt cost
+          dt cost #{label_spacing}
           dd = number_to_currency(@unit.cost)
-          dt location
+          dt location #{label_spacing}
           dd
             - if @unit.location.present?
               a href=inventory_path(@unit.location) = @unit.area_name
