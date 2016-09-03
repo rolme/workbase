@@ -5,24 +5,24 @@
     .row
       .col-sm-8
         dl.dl-horizontal
-          dt UUID #{label_spacing}
+          dt.label-space UUID:
           dd = @unit.uuid
-          dt Model #{label_spacing}
+          dt.label-space Model:
           dd = @unit.model
-          dt Manufacturer #{label_spacing}
+          dt.label-space Manufacturer:
           dd = @unit.manufacturer
           - if @unit.location_id.blank? && @unit.procurement_status.present?
-            dt Procuement Status #{label_spacing}
+            dt.label-space Procuement Status:
             dd = @unit.procurement_status
-          dt Unit Category #{label_spacing}
+          dt.label-space Unit Category:
           dd = @unit.unit_category_label
-          dt Description #{label_spacing}
+          dt.label-space Description:
           dd = @unit.description
-          dt Client Description #{label_spacing}
+          dt.label-space Client Description:
           dd = @unit.client_description
-          dt cost #{label_spacing}
+          dt.label-space cost:
           dd = number_to_currency(@unit.cost)
-          dt location #{label_spacing}
+          dt.label-space location:
           dd
             - if @unit.location.present?
               a href=inventory_path(@unit.location) = @unit.area_name
