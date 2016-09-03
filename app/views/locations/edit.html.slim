@@ -1,0 +1,3 @@
+= render "locations/page_header", header: "#{@location.name}: Edit", warehouse: @warehouse, location: @location, links: [:inventory_index, :show_warehouse]
+
+= render "form", warehouse: @warehouse, location: @location

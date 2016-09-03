@@ -35,13 +35,13 @@ Rails.application.routes.draw do
       resources :unit_categories, except: [:show], param: :slug do
         get :restore, on: :member
       end
+      resources :warehouses, param: :slug do
+        resources :locations, param: :slug, except: [:index]
+      end
     end
     member do
       get :checkin
     end
-  end
-  resources :warehouses, param: :slug do
-    resources :locations, param: :slug, except: [:index]
   end
   resources :procurement
   resources :projects, param: :slug do

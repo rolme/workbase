@@ -1,4 +1,4 @@
-= render "page_header", header: "Warehouse: #{@warehouse.name}", warehouse: @warehouse, links: [:index, :edit, :new_location]
+= render "warehouses/page_header", header: "Warehouse: #{@warehouse.name}", warehouse: @warehouse, links: [:inventory_index, :warehouse_index, :edit_warehouse, :add_location]
 
 .row
   .col-xs-12
@@ -9,7 +9,10 @@
           th
       tbody
         - @locations.each do |location|
-          tr data-url=inventory_path(location)
+          tr
             td = location.name
             td.text-right
-              = fa_icon('barcode')
+              a style="margin-left: 10px;" href=edit_warehouse_location_path(@warehouse, location)
+                = fa_icon('pencil')
+              a style="margin-left: 10px;" href=inventory_path(location)
+                = fa_icon('barcode')

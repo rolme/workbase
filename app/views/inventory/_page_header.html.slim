@@ -1,51 +1,32 @@
 .page-header
   h1 = fa_icon('barcode', text: header)
-
   ul.list-inline
-    - if links.include?(:manage_categories)
+    - if links.include?(:category_index)
       li
         a href=unit_categories_path
           = fa_icon('th-large', text: "Categories")
-
-    - if links.include?(:add_category)
+    - if links.include?(:warehouse_index)
       li
-        a href=new_unit_category_path
-          = fa_icon('plus-square', text: "Add Category")
-
-    - if links.include?(:edit_category)
-      li
-        a href=edit_unit_category_path(unit_category)
-          = fa_icon('edit', text: "Edit Category")
-
-    - if links.include?(:new_location)
-      li
-        a href=new_location_path
-          = fa_icon('plus-square', text: "Add Location")
-
-    - if links.include?(:index)
+        a href=warehouses_path
+          = fa_icon('cube', text: "Warehouses")
+    - if links.include?(:inventory_index)
       li
         a href=inventory_index_path
-          = fa_icon('list', text: "List")
-
-    - if links.include?(:unit_index)
-      li
-        a href=list_units_path(h: unit.unit_hash)
-          = fa_icon('list', text: "Unit List")
-
-    - if links.include?(:edit_unit)
-      li
-        a href=edit_unit_path
-          = fa_icon('edit', text: "Edit Unit")
-
-    - if links.include?(:new_units)
+          = fa_icon('barcode', text: "Back to Inventory")
+    - if links.include?(:add_units)
       li
         a href=new_unit_path
           = fa_icon('plus-square', text: "Add Units")
-
     - if links.include?(:checkin_units)
       li
         a href=checkin_inventory_path(area)
           = fa_icon('check', text: "Checkin Units")
-
-
+    - if links.include?(:add_category)
+      li
+        a href=new_unit_category_path
+          = fa_icon('plus-square', text: "Add Category")
+    - if links.include?(:edit_location)
+      li
+        a href=edit_warehouse_location_path
+          = fa_icon('plus-square', text: "Add Location")
   hr
