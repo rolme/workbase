@@ -13,13 +13,23 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery
-//= require dropzone.min
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require select2-full
 //= require bootsy
-//= require workbase
-//= require cable
+//= require_tree .
 //= require_tree ./channels
 
 import "babel-polyfill";
+
+// Import Controller Objects used by DOM Ready.
+import Workbase from "controllers/workbase.js.es6";
+import Projects from "controllers/projects.js.es6";
+import Units from "controllers/units.js.es6";
+
+// Executes javascript code based on controller and action.
+import DomReady from "modules/dom_ready.js.es6";
+
+$(() => {
+  new DomReady(document);
+});
