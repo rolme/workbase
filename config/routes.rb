@@ -65,6 +65,9 @@ Rails.application.routes.draw do
     end
   end
   resources :workbase, only: [:index]
+  
+  # for image save(drag&drop)
+  resources :uploads, only: [:create, :destroy, :show]
 
   resources :login, only: [:index]
   post "/emulate", to: "session#emulate"
