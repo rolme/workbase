@@ -24,26 +24,32 @@ $(document).ready(function(){
       if(parseInt(id)>0){
         $.get('/uploads/'+id, function(data) {
           var mockFile = { name: data.fileName, size: 1000000,  fileID: data.fileID };
-          myDropzone.options.addedfile.call(myDropzone, mockFile);
+
+          mockFile.accepted = true;
+
+          myDropzone.files.push(mockFile);
+          myDropzone.emit('addedfile', mockFile);
           myDropzone.options.thumbnail.call(myDropzone, mockFile, data.fileUrl);
-          // $(document).find('.dropzone').addClass('dz-max-files-reached');
-          // $(document).find('.dropzone').addClass('dz-started');
+          myDropzone.emit('complete', mockFile);
+          mockFile.previewElement.classList.add('dz-success');
+          mockFile.previewElement.classList.add('dz-complete')
+          mockFile.previewElement.classList.add('dz-max-files-reached');
+          mockFile.previewElement.classList.add('dz-started');
           // add id for remove section
+
           $(document).find('.dz-remove').attr('id', id)
         });
       }
       //Restore initial message when queue has been completed
       this.on("drop", function(event) {
-        image_preview = $(document).find('.dz-preview');
-        if((this.files.length > 0) || (image_preview.length>0)){
+        if(this.files.length > 0){
           event.preventDefault();
           // $(document).find(file.previewElement).remove();
         }
       });
       //Restore initial message when queue has been completed
       this.on("click", function(event) {
-        image_preview = $(document).find('.dz-preview')
-        if((this.files.length > 0) || (image_preview.length>0)){
+        if(this.files.length > 0){
           event.preventDefault;
         }
       });

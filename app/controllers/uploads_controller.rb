@@ -21,7 +21,7 @@ class UploadsController < ApplicationController
   def show
     @upload = Upload.find_by_id(params[:id])
     if @upload
-      render json: { message: "success", fileID: @upload.id, fileName: @upload.image_name, fileUrl: @upload.image.url }, :status => 200
+      render json: { message: "success", fileID: @upload.id, fileName: @upload.image_name, fileUrl: @upload.image.url(:thumb) }, :status => 200
     else
       render json: { error: @upload.errors.full_messages.join(',')}, :status => 400
     end
