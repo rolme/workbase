@@ -1,11 +1,13 @@
 = render "page_header", header: "Inventory: #{@area.name}", area: @area, links: [:new_units, :index, :checkin_units]
 
 .row
-  .col-sm-12
+  .table-responsive id="#page-wrap" 
     - unless @units.empty?
-      table.table.table-striped.table-hover
+      table.table
         thead
           tr
+            th 
+              input type="checkbox"
             th count
             th manufacturer
             th model
@@ -17,14 +19,23 @@
         tbody
           - @units.each do |unit|
             tr data-url=list_units_path(h: unit.unit_hash)
-              td = unit.count
-              td = unit.manufacturer
-              td = unit.model
-              td = unit.description
-              td.text-right = number_to_currency(unit.subtotal, format: "%n")
+              td
+                input type="checkbox"
+              td data-content="Count"
+                = unit.count
+              td data-content="Manufacturer"
+                = unit.manufacturer
+              td data-content="Model"
+                = unit.model
+              td data-content="Description"
+                = unit.description
+              td data-content="Subtotal"
+                = number_to_currency(unit.subtotal, format: "%n")
               - if @area.warehouse?
-                td = unit.location.name
-              td.text-right
+                td data-content="Location"
+                  = unit.location.name
+              td.text-center
                 =  fa_icon('search-plus')
     - else
       p Empty
+

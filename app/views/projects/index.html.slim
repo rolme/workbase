@@ -1,5 +1,3 @@
-
-= render "layouts/header_bar", header: 'Projects'
 = render "page_header", header: 'Projects', links: [:new]
 
 .row
@@ -19,7 +17,7 @@
             
       tbody
         - @projects.each do |project|
-          tr
+          tr data-url=project_path(project)
             td
               input type="checkbox"
             td data-content="Company" 
@@ -36,9 +34,9 @@
             td.text-center data-content="Value"
               = number_to_currency(project.total_material_cost, format: "%n")
             td.text-center
-              =  fa_icon('edit')
+              =  fa_icon('search-plus')
               =< fa_icon('trash')
-        
+      
 
 
 

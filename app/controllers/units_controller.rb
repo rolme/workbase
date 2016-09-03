@@ -1,5 +1,5 @@
 class UnitsController < ApplicationController
-
+  layout "application_new"
   # GET /units/list
   def list
     @units = units.where(unit_hash: params[:h]).in_inventory

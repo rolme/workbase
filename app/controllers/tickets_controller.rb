@@ -1,4 +1,5 @@
 class TicketsController < ApplicationController
+  layout "application_new"
   def index
     @tickets = tickets.open.active.order(:status, :created_at)
   end

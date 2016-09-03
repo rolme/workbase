@@ -23,6 +23,6 @@ html lang="en"
       
       #page-content-wrapper
         .container-fluid.xyz
-          
+          = render "layouts/header_bar", header: controller_name.try(:capitalize)
           = yield
           

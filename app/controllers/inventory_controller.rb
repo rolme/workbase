@@ -1,9 +1,9 @@
 class InventoryController < ApplicationController
   # GET /inventory
+  layout "application_new"
   def index
     @warehouses = Warehouse.select(:name, :slug).where(company_id: current_user.company_id)
     @units = Unit.in_inventory.where(company_id: current_user.company_id).order(created_at: :desc).limit(10)
-    render :layout => "application_new"
   end
 
   # GET /inventory/:area_slug

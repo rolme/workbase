@@ -3,7 +3,7 @@
     h4.logo
       a href="#" 
         span.fa-stack.fa-lg
-          img.img-responsive alt="" src="assets/logo.png" /
+          i.fa.fa-compass.fa-stack-1x
         strong  Workbase 
     li class=get_active_class(controller_name, "Clients")
       a href=clients_path
@@ -17,12 +17,12 @@
         | Projects
     
     li class=get_active_class(controller_name, "procurement")
-      a href=procurement_index_path
+      a href="#"
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-cloud-download.fa-stack-1x
         | Procurement
     li class=get_active_class(controller_name, "tickets")
-      a href="#" 
+      a href=tickets_path 
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-ticket.fa-stack-1x
         | Tickets

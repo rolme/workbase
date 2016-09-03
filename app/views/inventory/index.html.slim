@@ -1,45 +1,54 @@
-= render "layouts/header_bar", header: 'Inventory'
 = render "page_header", header: 'Inventory', links: [:new_units, :manage_categories]
 
 .row
-  .col-xs-12
-    h4 Find Inventory
-    = form_tag search_inventory_index_path, method: :get, class: 'form-inline'
-      .form-group
-        input#q.form-control name="q" type="text" placeholder="Term"
-      button.btn.btn-default type="submit" Search
-
-.row
-  .col-xs-12
-    h4 Recent Units
-    table.table.table-striped.table-hover
+  .table-responsive id="#page-wrap" 
+    table.table
       thead
         tr
+          th 
+            input type="checkbox"
           th category
           th manufacturer
           th model
           th description
           th cost
+          th Action
+            
       tbody
         - @units.each do |unit|
           tr data-url=unit_path(unit)
-            td = unit.unit_category_label
-            td = unit.manufacturer
-            td = unit.model
-            td = unit.description
-            td.text-right = number_to_currency(unit.cost, format: "%n")
+            td
+              input type="checkbox"
+            td data-content="Category" 
+              = unit.unit_category_label
+            td data-content="Manufacturer"  
+              = unit.manufacturer
+            td data-content="Model"
+              = unit.model
+            td data-content="Description"
+              = unit.description
+            td data-content="Cost"
+              = number_to_currency(unit.cost, format: "%n")
+            td.text-center
+              =  fa_icon('search-plus')
+              =< fa_icon('trash')
 
 .row
-  .col-xs-12
+  .tb-head
     h4 Browse a Warehouse
-    table.table.table-striped.table-hover
+  .table-responsive id="#page-wrap"
+    table.table
       thead
         tr
+          th 
+            input type="checkbox"
           th Name
-          th
+          th Action
       tbody
         - @warehouses.each do |warehouse|
           tr data-url=inventory_path(warehouse)
-            td = warehouse.name
-            td.text-right
+            td 
+              input type="checkbox"
+            td data-content="Name"= warehouse.name
+            td.text-center
               =  fa_icon('search-plus')

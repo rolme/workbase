@@ -1,7 +1,7 @@
 = render "page_header", header: @client.contact_name, client: @client, links: [:new, :edit, :index]
 
 .row
-  .col-sm-12.col-md-offset-2.col-md-8
+  .col-sm-12.mini-container
     .row
       .panel.panel-default
         .panel-heading Contact
@@ -42,7 +42,7 @@
             .col-sm-offset-4.col-sm-8 = @client.zipcode
 
 .row
-  .col-sm-12.col-md-offset-2.col-md-8
+  .col-sm-12.mini-container
     .row
       .panel.panel-default
         .panel-heading
@@ -52,22 +52,38 @@
               a.btn.btn-default.btn-sm href=new_project_path(c: @client.slug)
                 = fa_icon('th-list', text: 'New')
         .panel-body
-          table.table.table-striped.table-hover
-            thead
-              tr
-                th name
-                th created at
-                th start date
-                th end date
-                th value
-                th
-            tbody
-              - @client.projects.each do |project|
-                tr data-url=project_path(project)
-                  td = project.name
-                  td = project.created_at
-                  td = project.start_date
-                  td = project.end_date
-                  td.text-center = project.total_material_cost
-                  td.text-right
-                    =  fa_icon('search-plus')
+          .table-responsive id="#page-wrap" 
+            table.table
+              thead
+                tr
+                  th
+                    input type="checkbox"
+                  th Company
+                  th Name
+                  th Created at
+                  th Start date
+                  th End date
+                  th Value
+                  th Action
+                    
+              tbody
+                - @client.projects.each do |project|
+                  tr data-url=project_path(project)
+                    td
+                      input type="checkbox"
+                    td data-content="Company" 
+                      = project.client_company_name
+                    td data-content="Name"  
+                      = project.name
+                    td data-content="Created at"
+                      = project.created_at.in_time_zone("Pacific Time (US & Canada)")
+                    td data-content="Start date"
+                      = project.start_date
+                    td data-content="End date"
+                      = project.end_date
+
+                    td.text-center data-content="Value"
+                      = number_to_currency(project.total_material_cost, format: "%n")
+                    td.text-center
+                      =  fa_icon('search-plus')
+                      =< fa_icon('trash')

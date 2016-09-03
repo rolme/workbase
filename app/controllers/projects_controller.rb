@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
+  layout "application_new"
   def index
     @projects = projects.sorted
-    render :layout => "application_new"
   end
 
   def new
