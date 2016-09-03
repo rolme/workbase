@@ -1,8 +1,16 @@
 import Uploader from "../modules/uploader.js.es6";
 
 export default class Units {
+  new() {
+    this.form();
+  }
+
   edit() {
-    new Uploader();
+    this.form();
+  }
+
+  form() {
+    new Uploader();    
   }
 }
 

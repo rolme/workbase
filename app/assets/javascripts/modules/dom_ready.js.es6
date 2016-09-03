@@ -1,4 +1,4 @@
-import Global from '../controllers/global.js.es6';
+import Global from '../ready/global.js.es6';
 
 export default class DomReady {
   constructor(doc) {

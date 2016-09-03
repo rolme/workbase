@@ -22,10 +22,10 @@
 
 import "babel-polyfill";
 
-// Import Controller Objects used by DOM Ready.
-import Workbase from "controllers/workbase.js.es6";
-import Projects from "controllers/projects.js.es6";
-import Units from "controllers/units.js.es6";
+// Import Ready Objects that mimic Actions in its corresponding Rails controller.
+import Workbase from "ready/workbase.js.es6";
+import Projects from "ready/projects.js.es6";
+import Units from "ready/units.js.es6";
 
 // Executes javascript code based on controller and action.
 import DomReady from "modules/dom_ready.js.es6";

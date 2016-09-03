@@ -1,10 +1,6 @@
 // This is the global javascript file that will execute on every file.
 // #init is executed on every page load.
 export default class Global {
-  constructor() {
-    this.init();
-  }
-
   init() {
     $('.datepicker').datepicker();
 
