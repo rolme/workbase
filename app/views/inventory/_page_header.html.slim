@@ -6,23 +6,11 @@
       li.shift-down
         a href=unit_categories_path
           = fa_icon('th-large', text: "Categories")
-
-    - if links.include?(:add_category)
+    - if links.include?(:warehouse_index)
       li
-        a href=new_unit_category_path
-          = fa_icon('plus-square', text: "Add Category")
-
-    - if links.include?(:edit_category)
-      li
-        a href=edit_unit_category_path(unit_category)
-          = fa_icon('edit', text: "Edit Category")
-
-    - if links.include?(:new_location)
-      li
-        a href=new_location_path
-          = fa_icon('plus-square', text: "Add Location")
-
-    - if links.include?(:index)
+        a href=warehouses_path
+          = fa_icon('cube', text: "Warehouses")
+    - if links.include?(:inventory_index)
       li
         a href=inventory_index_path
           = fa_icon('list', text: "List")
@@ -54,6 +42,4 @@
         a href=checkin_inventory_path(area)
           = fa_icon('check', text: "Checkin Units")
   .clearfix
-
-
   hr
