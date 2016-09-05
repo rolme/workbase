@@ -12,22 +12,29 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require jquery
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require select2-full
 //= require bootsy
 //= require_tree .
 //= require_tree ./channels
+////////////////////////////////////////////////////////////////////////////////
+// NOTE: AVOID UPDATING THE ABOVE REQUIRE. USE the following instead:
+// $ npm install <javascript-module> --save
+////////////////////////////////////////////////////////////////////////////////
 
 import "babel-polyfill";
 
-// Import Ready Objects that mimic Actions in its corresponding Rails controller.
+// Ready Classes
+// Import objects that mimic actions with its corresponding Rails Controller.
+// These will be used to trigger corresponding javascript based on the
+// controller and action.
 import Workbase from "ready/workbase.js.es6";
 import Projects from "ready/projects.js.es6";
 import Units from "ready/units.js.es6";
 
-// Executes javascript code based on controller and action.
+// Based on Garber Irish javascript execution pattern.
+// https://gist.github.com/danielgreen/5677251
 import DomReady from "modules/dom_ready.js.es6";
 
 $(() => {
