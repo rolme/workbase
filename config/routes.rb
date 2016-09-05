@@ -27,6 +27,10 @@ Rails.application.routes.draw do
     member do
       put :toggle_close
     end
+    collection do
+      get :closed
+      get :deleted
+    end
     resources :comments
   end
   resources :inventory, param: :area_slug do
@@ -65,7 +69,7 @@ Rails.application.routes.draw do
     end
   end
   resources :workbase, only: [:index]
-  
+
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
 

@@ -3,10 +3,18 @@ class TicketsController < ApplicationController
     @tickets = tickets.open.active.order(:status, :created_at)
   end
 
+  def closed
+    @tickets = tickets.closed.active.order(:status, :created_at)
+  end
+
+  def deleted
+    @tickets = tickets.deleted.order(:status, :created_at)
+  end
+
   def show
     @ticket = ticket
     @comment = Comment.new
-    @external_link = customer_public_tickets_url(access_key: @ticket.access_key)
+    @public_link = customer_public_tickets_url(access_key: @ticket.access_key)
 
     if @ticket.unviewed? || @ticket.viewed_by.nil?
       # Mark this ticket as viewed

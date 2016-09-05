@@ -2,24 +2,33 @@
   h1 = fa_icon('life-ring', text: header)
 
   ul.list-inline
-    - if links.include?(:index)
+    - if links.include?(:ticket_index)
       li
         a href=tickets_path
-          = fa_icon('list', text: "List")
+          = fa_icon('list', text: "Back to Active Tickets")
 
-    - if links.include?(:new)
+    - if links.include?(:add_ticket)
       li
         a href=new_ticket_path
-          = fa_icon('plus-square', text: "Add Ticket")
+          = fa_icon('plus-square', text: "Add a Ticket")
 
-    - if links.include?(:edit)
+    - if links.include?(:edit_ticket) && !ticket.deleted?
       li
         a href=edit_ticket_path(ticket)
-          = fa_icon('edit', text: "Edit")
+          = fa_icon('edit', text: "Edit this Ticket")
 
-    - if links.include?(:delete)
+    - if links.include?(:delete_ticket) && !ticket.deleted?
       li
         a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofoloow"
-          = fa_icon('trash', text: "Delete")
+          = fa_icon('trash', text: "Delete this Ticket")
 
+    - if links.include?(:closed_tickets)
+      li
+        a href=closed_tickets_path
+          = fa_icon('list', text: "View Closed Tickets")
+
+    - if links.include?(:deleted_tickets)
+      li
+        a href=deleted_tickets_path
+          = fa_icon('list', text: "View Deleted Tickets")
   hr
