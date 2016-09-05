@@ -1,4 +1,4 @@
-= render "page_header", header: "Inventory: #{@area.name}", area: @area, links: [:new_units, :index, :checkin_units]
+= render "inventory/page_header", header: "Inventory: #{@area.name}", area: @area, links: [:inventory_index, :edit_location, :add_units, :checkin_units]
 
 .row
   .table-responsive id="#page-wrap" 

@@ -18,4 +18,11 @@ class TicketMailer < ApplicationMailer
     send_to = ticket.submitted_by_email.presence
     mail(to: send_to, subject: "Workbase: Your ticket has been closed.") if send_to
   end
+
+  # Send an email to the user who submitted this ticket to let them know a public
+  # comment has been added.
+  def public_comment_added(ticket)
+    send_to = ticket.submitted_by_email.presence
+    mail(to: send_to, subject: "Workbase: A new comment has been added.") if send_to
+  end
 end

@@ -35,13 +35,13 @@ Rails.application.routes.draw do
       resources :unit_categories, except: [:show], param: :slug do
         get :restore, on: :member
       end
+      resources :warehouses, param: :slug do
+        resources :locations, param: :slug, except: [:index]
+      end
     end
     member do
       get :checkin
     end
-  end
-  resources :warehouses, param: :slug do
-    resources :locations, param: :slug, except: [:index]
   end
   resources :procurement
   resources :projects, param: :slug do
@@ -65,6 +65,9 @@ Rails.application.routes.draw do
     end
   end
   resources :workbase, only: [:index]
+  
+  # for image save(drag&drop)
+  resources :uploads, only: [:create, :destroy, :show]
 
   resources :login, only: [:index]
   post "/emulate", to: "session#emulate"
