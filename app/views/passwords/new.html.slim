@@ -1,0 +1,19 @@
+nav.navbar.navbar-default.navbar-fixed-top role="navigation"
+  .container
+    .navbar-header
+      button.navbar-toggle data-toggle="collapse" data-target="#main-nav-collapse" type="button"
+        span.sr-only Toggle navigation
+        span.icon-bar
+        span.icon-bar
+        span.icon-bar
+      a.navbar-brand href=root_path
+        = fa_icon("compass", text: "Workbase")
+br
+= render "layouts/flash"
+
+.register
+  = form_tag passwords_path do
+    .form-group
+      label.sr-only for="email-input" Email
+      = email_field_tag 'user[email]', nil, class: "form-control", placeholder: "Email Address", id: "email-input"
+    button.btn.btn-default< type="submit" class="btn btn-default" Send reset password instructions
