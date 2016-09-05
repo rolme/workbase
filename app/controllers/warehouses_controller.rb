@@ -1,4 +1,5 @@
 class WarehousesController < ApplicationController
+  layout "application_new"
   def index
     @warehouses = company_warehouses.all
   end

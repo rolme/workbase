@@ -1,5 +1,5 @@
 .row
-  nav.navbar.navbar-default.no-margin
+  nav.navbar.no-margin
     display
     .navbar-header
       button#menu-toggle.navbar-toggle.collapsed data-toggle="collapse" type="button" 
@@ -14,14 +14,21 @@
           a href="#" = header
       ul.nav.navbar-nav.pull-right.right
         li
-          button.btn.btn-success New Document
+          a href="#"=  current_user.company_name
         li
-          a href="#"  Inbox
-        li
-          a href="#" 
+          a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
             span RP
+          ul.dropdown-menu.navbar-right#user-dropdown role="menu"
+            li
+              a href=profile_user_path(current_user)
+                = fa_icon("user hw", text: "Profile")
+            li.divider
+            li
+              a href=logout_path
+                = fa_icon("sign-out fw", text: "Logout")
         li
           a href="#" 
             span.info
               i.fa.fa-info
     
+

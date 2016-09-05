@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-
+  layout "application_new"
   # GET /users
   def index
     @users = users

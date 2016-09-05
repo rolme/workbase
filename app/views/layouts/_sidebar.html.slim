@@ -1,11 +1,11 @@
 #sidebar-wrapper
   ul#menu.sidebar-nav.nav-pills.nav-stacked
     h4.logo
-      a href="#" 
+      a href=root_path 
         span.fa-stack.fa-lg
           i.fa.fa-compass.fa-stack-1x
         strong  eWB 
-    li class=get_active_class(controller_name, "Clients")
+    li class=get_active_class(controller_name, "clients")
       a href=clients_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-users.fa-stack-1x
@@ -31,3 +31,13 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-flask.fa-stack-1x
         | Inventory
+    li class=get_active_class(controller_name, "warehouses")
+      a href=warehouses_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-cube.fa-stack-1x
+        | Warehouse
+    li class=get_active_class(controller_name, "")
+      a href=logout_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-sign-out.fa-stack-1x
+        | Logout
