@@ -10,7 +10,7 @@ export default class Units {
   }
 
   form() {
-    new Uploader();    
+    new Uploader();
   }
 }
 
