@@ -86,4 +86,5 @@ private
         :upload_attributes => [:id, :image, :_destroy]
       )
   end
+
 end

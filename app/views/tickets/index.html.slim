@@ -2,17 +2,29 @@
 = render "layouts/flash"
 
 - if @tickets.any?
-  table.table.table-striped.table-hover
-    thead
-      tr
-        th Title
-        th Status
-        th Assignee
-    tbody
-      - @tickets.each do |ticket|
-        tr data-url=ticket_path(ticket) class=(ticket.unviewed? ? 'info' : '')
-          td = ticket.title
-          td = ticket.status
-          td = ticket.assignee.full_name
+  .row
+    .table-responsive id="#page-wrap" 
+      table.table
+        thead
+          tr
+            th
+              input type="checkbox"
+            th Title
+            th Status
+            th Assignee
+        tbody
+          - @tickets.each do |ticket|
+            tr data-url=ticket_path(ticket) class=(ticket.unviewed? ? 'info' : '')
+              td
+                input type="checkbox"
+              td data-content="Title"
+                = ticket.title
+              td data-content="Status"
+                = ticket.status
+              td data-content="Assignee"
+                = ticket.assignee.full_name
+              td.text-center
+                =  fa_icon('search-plus')
+                =< fa_icon('trash')
 - else
   p No tickets

@@ -1,4 +1,5 @@
 class InventoryController < ApplicationController
+
   # GET /inventory
   def index
     @warehouses = Warehouse.select(:name, :slug).where(company_id: current_user.company_id).order(:name)
@@ -32,4 +33,5 @@ private
   def area
     Area.find_by(company_id: current_user.company_id, slug: params[:area_slug])
   end
+
 end

@@ -7,4 +7,24 @@ html
     = javascript_include_tag 'application'
 
   body data-controller=controller_name data-action=action_name
-    = yield
+    #wrapper.dashboardtmp
+    #page-content-wrapper
+      .container-fluid.min-360
+        .navbar-header
+          button.navbar-toggle data-toggle="collapse" data-target="#main-nav-collapse" type="button"
+            span.sr-only Toggle navigation
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand href=root_path
+            = fa_icon("compass", text: "Workbase")
+        .nav.navbar-nav.navbar-right
+          - if params[:controller] == "login"
+            a href=register_path
+              button.navbar-btn.btn.btn-success Register Now
+
+          - if params[:controller] == "registration"
+            a href=login_path
+              button.navbar-btn.btn.btn-success Login
+      .row
+        = yield

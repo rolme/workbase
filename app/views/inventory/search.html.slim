@@ -1,11 +1,14 @@
 = render "page_header", header: "Inventory Search: '#{@term}'", links: []
 
+
 .row
-  .col-sm-12
+  .table-responsive id="#page-wrap" 
     - unless @units.empty?
-      table.table.table-striped.table-hover
+      table.table
         thead
           tr
+            th 
+              input type="checkbox"
             th count
             th manufacturer
             th model
@@ -15,11 +18,18 @@
         tbody
           - @units.each do |unit|
             tr data-url=list_units_path(h: unit.unit_hash)
-              td = unit.count
-              td = unit.manufacturer
-              td = unit.model
-              td = unit.description
-              td = unit.location.present? ? unit.area_name : 'n/a'
-              td.text-right
+              td
+                input type="checkbox"
+              td data-content="Count"
+                = unit.count
+              td data-content="Manufacturer"
+                = unit.manufacturer
+              td data-content="Model"
+                = unit.model
+              td data-content="Description"
+                = unit.description
+              td data-content="Locations" 
+                = unit.location.present? ? unit.area_name : 'n/a'
+              td.text-center
                 a href=list_units_path(h: unit.unit_hash)
                 =  fa_icon('search-plus')
