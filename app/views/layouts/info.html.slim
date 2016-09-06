@@ -5,11 +5,11 @@ html
     = csrf_meta_tags
     = stylesheet_link_tag 'application', media: 'all'
     = javascript_include_tag 'application'
-        
+
   body data-controller=controller_name data-action=action_name
     #wrapper.dashboardtmp
     #page-content-wrapper
-      .container-fluid.xyz
+      .container-fluid.min-360
         .navbar-header
           button.navbar-toggle data-toggle="collapse" data-target="#main-nav-collapse" type="button"
             span.sr-only Toggle navigation
@@ -22,10 +22,9 @@ html
           - if params[:controller] == "login"
             a href=register_path
               button.navbar-btn.btn.btn-success Register Now
-        
+
           - if params[:controller] == "registration"
             a href=login_path
               button.navbar-btn.btn.btn-success Login
-          
       .row
         = yield

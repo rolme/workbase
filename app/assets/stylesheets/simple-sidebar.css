@@ -11,15 +11,15 @@ body{
   transition: all 0.5s ease;
   overflow: hidden;
 }
- 
+
 #wrapper.toggled {
   padding-left: 250px;
   overflow: scroll;
 }
- 
+
 #sidebar-wrapper {
   z-index: 1000;
-  position: fixed; 
+  position: fixed;
   left: 250px;
   width: 0;
   height: 100%;
@@ -35,25 +35,25 @@ body{
 #wrapper.toggled #sidebar-wrapper {
   width: 250px;
 }
- 
+
 #page-content-wrapper {
   position: absolute;
   padding: 15px;
-  width: 100%;  
-  overflow-x: hidden; 
+  width: 100%;
+  overflow-x: hidden;
 }
-.xyz{
+.min-360 {
   min-width: 360px;
 }
 #wrapper.toggled #page-content-wrapper {
   position: relative;
-  margin-right: 0px; 
+  margin-right: 0px;
 }
 .fixed-brand{
   width: auto;
 }
 /* Sidebar Styles */
- 
+
 .sidebar-nav {
   position: absolute;
   top: 0;
@@ -63,41 +63,41 @@ body{
   list-style: none;
   margin-top: 2px;
 }
- 
+
 .sidebar-nav li {
   text-indent: 15px;
   line-height: 40px;
   margin: 20px 0;
 }
- 
+
 .sidebar-nav li a {
   display: block;
   text-decoration: none;
   color: #999999;
 }
- 
+
 .sidebar-nav li a:hover {
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
   border-left: red 2px solid;
 }
- 
+
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
   text-decoration: none;
 }
- 
+
 .sidebar-nav > .sidebar-brand {
   height: 65px;
   font-size: 18px;
   line-height: 60px;
 }
- 
+
 .sidebar-nav > .sidebar-brand a {
   color: #999999;
 }
- 
+
 .sidebar-nav > .sidebar-brand a:hover {
   color: #fff;
   background: none;
@@ -131,8 +131,8 @@ body{
   border: none;
   margin-right: 0;
 }
-.dashboardtmp nav .navbar-toggle:hover, 
-.dashboardtmp nav .navbar-toggle:focus, 
+.dashboardtmp nav .navbar-toggle:hover,
+.dashboardtmp nav .navbar-toggle:focus,
 .dashboardtmp nav .navbar-toggle:active{
   background: none;
 }
@@ -181,10 +181,10 @@ body{
   display: inline-block;
 }
 .dashboardtmp table{
-  width: 100%; 
+  width: 100%;
   border-collapse: collapse;
 }
-.dashboardtmp table span.bluerp, 
+.dashboardtmp table span.bluerp,
 .dashboardtmp table span.yellwtp{
   width: 32px;
   height: 32px;
@@ -255,7 +255,7 @@ body{
   margin-right: 100px;
 }
 
- 
+
 @media(min-width:768px) {
   #wrapper {
     padding-left: 250px;
@@ -317,8 +317,8 @@ body{
     width: 92%;
   }
   /* Force table to not be like tables anymore */
-  table, thead, tbody, th, td, tr { 
-    display: block; 
+  table, thead, tbody, th, td, tr {
+    display: block;
   }
 
   .shift-right{
@@ -328,30 +328,30 @@ body{
     float:left !important;
     margin-left: 15px;
   }
-  
-  thead tr { 
+
+  thead tr {
     position: absolute;
     top: -9999px;
     left: -9999px;
-  }  
+  }
   tr { border: 1px solid #ccc; }
-  
-  .dashboardtmp table.table tbody > tr > td { 
+
+  .dashboardtmp table.table tbody > tr > td {
     /* Behave  like a "row" */
     border: none;
-    border-bottom: 1px solid #eee; 
+    border-bottom: 1px solid #eee;
     position: relative;
     padding-left: 36%;
     line-height: 30px;
-  }  
-  td:before { 
+  }
+  td:before {
     /* Now like a table header */
     position: absolute;
     /* Top/left values mimic padding */
     top: 6px;
     left: 6px;
-    width: 36%; 
-    padding-right: 10px; 
+    width: 36%;
+    padding-right: 10px;
     white-space: nowrap;
   }
   table td:before { content: attr(data-content); font-weight: bold; }
@@ -411,5 +411,3 @@ body{
 .logo-color {
   background: #108DFF;
 }
-
-    

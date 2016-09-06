@@ -1,5 +1,5 @@
 class UnitsController < ApplicationController
-  
+
   # GET /units/list
   def list
     @units = units.where(unit_hash: params[:h]).in_inventory
@@ -86,4 +86,5 @@ private
         :upload_attributes => [:id, :image, :_destroy]
       )
   end
+
 end
