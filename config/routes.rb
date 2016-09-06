@@ -75,5 +75,13 @@ Rails.application.routes.draw do
   get "/logout",   to: "session#destroy"
   get "/register", to: "registration#new"
 
+  # password request
+  resources :passwords, only: [:new, :create] do
+    collection do
+      get :edit
+      put :update
+    end
+  end
+
   root to: "workbase#index"
 end

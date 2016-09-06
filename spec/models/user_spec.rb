@@ -41,4 +41,24 @@ RSpec.describe User, type: :model do
       expect(user.security_answer).to_not eql(answer)
     end
   end
+
+  context '#send_reset_password_instructions' do
+    it "sends an password reset instructions" do
+      expect { user.send_reset_password_instructions }.to change { ActionMailer::Base.deliveries.count }.by(1)
+    end
+  end
+
+  context '#set_new_password' do
+    it "Should not set password" do
+      expect(user.set_new_password({new_password: 'demo',  password_confirmation: 'demo', reset_password_token: '23452345234'}) ).to eql(nil)
+    end
+
+    it "Should set password" do
+      token = Digest::MD5.hexdigest(user.email)
+      user.update(reset_password_token: token)
+      attributes = {new_password: 'demo',  password_confirmation: 'demo', reset_password_token: token}
+      user.set_new_password(attributes)
+      expect( user.authenticate('demo').blank? ).to eql(false)
+    end
+  end
 end
