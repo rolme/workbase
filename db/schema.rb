@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901093623) do
+ActiveRecord::Schema.define(version: 20160905072058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -261,13 +261,15 @@ ActiveRecord::Schema.define(version: 20160901093623) do
     t.string   "password_digest"
     t.integer  "user_status_id"
     t.string   "cached_status"
-    t.boolean  "confirmed",            default: false
+    t.boolean  "confirmed",              default: false
     t.string   "confirmation_token"
     t.integer  "security_question_id"
     t.string   "security_answer"
     t.datetime "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["slug"], name: "index_users_on_slug", using: :btree
     t.index ["user_status_id"], name: "index_users_on_user_status_id", using: :btree
