@@ -29,7 +29,7 @@ Scenario: A user can edit a ticket
     | New Ticket | A new ticket description |
   And I click the link "Tickets"
   And I click the row "New Ticket"
-  Then I should see "Ticket: New Ticket"
+  Then I should see "New Ticket"
   And I click the link "Edit"
   And I fill in the following:
     | Title             |

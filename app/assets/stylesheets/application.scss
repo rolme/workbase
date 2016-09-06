@@ -13,12 +13,11 @@
  */
 @import "font-awesome";
 @import "bootstrap-sprockets";
-@import "bootswatch/flatly/variables";
 @import "bootstrap";
-@import "bootswatch/flatly/bootswatch";
 @import "bootstrap-datepicker3";
 @import "select2-bootstrap";
 @import "bootsy";
+@import "simple-sidebar";
 
 // custom controller based styles
 @import "clients";
@@ -27,46 +26,3 @@
 @import "tickets";
 @import "units";
 @import "dropzone";
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-// global styles
-body {
-  padding-top: 70px;
-  padding-bottom: 75px;
-  background-repeat: no-repeat;
-  background-color: white;
-  background-size: cover;
-}
-
-.login {
-  position: absolute;
-  top: 35rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-
-  h1 {
-    margin: 0;
-    font-size: 12rem;
-    white-space: nowrap;
-  }
-}
-
-.register {
-  position: absolute;
-  top: 35rem;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  text-align: center;
-}
-
-.footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-}

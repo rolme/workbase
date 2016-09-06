@@ -1,10 +1,12 @@
 = render 'page_header', header: "Inventory: #{@units.first.manufacturer}", links: [:new_units]
 
 .row
-  .col-sm-12
-    table.table.table-striped.table-hover
+  .table-responsive id="#page-wrap"
+    table.table
       thead
         tr
+          th 
+            input type="checkbox"
           th uuid
           th manufacturer
           th model
@@ -15,12 +17,20 @@
       tbody
         - @units.each do |unit|
           tr data-url=unit_path(unit)
-            td = unit.uuid
-            td = unit.manufacturer
-            td = unit.model
-            td = unit.description
-            td = number_to_currency(unit.cost, format: "%n")
-            td = unit.area_name
-            td.text-right
+            td 
+              input type="checkbox"
+            td data-content= "UUID"
+              = unit.uuid
+            td data-content="Manufacturer"
+              = unit.manufacturer
+            td data-content="Model"
+              = unit.model
+            td data-content="Description"
+              = unit.description
+            td data-content="Cost"
+              = number_to_currency(unit.cost, format: "%n")
+            td data-content="Area"
+              = unit.area_name
+            td.text-center
               a href=edit_unit_path(unit)
                 = fa_icon('edit')
