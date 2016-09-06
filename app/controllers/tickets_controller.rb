@@ -23,6 +23,7 @@ class TicketsController < ApplicationController
   end
 
   def create
+    @projects = projects
     @ticket = Ticket.new(ticket_params.merge({
         company_id: current_user.company_id,
         viewed_by: current_user.id,
