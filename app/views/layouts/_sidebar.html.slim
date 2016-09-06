@@ -15,7 +15,6 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-folder.fa-stack-1x
         | Projects
-    
     li class=get_active_class(controller_name, "procurement")
       a href="#"
         span.fa-stack.fa-lg.pull-left
@@ -34,10 +33,22 @@
     li class=get_active_class(controller_name, "warehouses")
       a href=warehouses_path
         span.fa-stack.fa-lg.pull-left
-          i.fa.fa-cube.fa-stack-1x
+          i.fa.fa-dashcube.fa-stack-1x
         | Warehouse
     li class=get_active_class(controller_name, "")
       a href=logout_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-sign-out.fa-stack-1x
         | Logout
+  ul.sidebar-nav.nav-pills.nav-stacked.bottmmenu
+    - if current_user.admin?
+      li
+        a 
+          span.fa-stack.fa-lg.pull-left
+            i.fa.fa-cube.fa-stack-1x
+          | Add-ons Store
+    li
+      a 
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-gear.fa-stack-1x
+        | Settings

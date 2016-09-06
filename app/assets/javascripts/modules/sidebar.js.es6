@@ -1,5 +1,6 @@
 export default class Sidebar {
   constructor() {
+    $("#wrapper").toggleClass("toggled-2");
     this.handleMenuToggleClick();
     this.handleMenuToggle2Click();
   }

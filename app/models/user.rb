@@ -46,6 +46,14 @@ class User < ApplicationRecord
     security_answer == Digest::MD5.hexdigest(answer.downcase)
   end
 
+  def get_logo_name
+    self.first_name[0].capitalize + self.last_name[0].capitalize if(self.first_name.present? && self.last_name.present? )
+  end
+
+  def admin?
+    self.type == "Admin"
+  end
+
 private
 
   def set_confirmation_token

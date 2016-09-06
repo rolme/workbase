@@ -165,6 +165,10 @@ body{
   color: #aaa;
   font-size: 15px;
 }
+.dashboardtmp nav ul.right li.open ul.dropdown-menu{
+  right: 15px;
+  left: auto;
+}
 .secndrow button {
   border-radius: 0 0 4px 4px;
   border-top: medium none;
@@ -253,6 +257,10 @@ body{
 }
 .submit-project{
   margin-right: 100px;
+}
+.bottmmenu{
+  top: auto;
+  bottom: 0;
 }
 
 
@@ -408,6 +416,6 @@ body{
   width: 100%;
 }
 
-.logo-color {
-  background: #108DFF;
+.logo-color, .btn-primary {
+  background: #109DFF;
 }
