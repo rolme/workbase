@@ -85,6 +85,11 @@ class Unit < ApplicationRecord
     update_attribute(:checkin_at, DateTime.current)
   end
 
+  # assigned project name
+  def project_name
+    project.name if project
+  end
+  
 private
 
   def attach_upload
