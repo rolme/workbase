@@ -42,7 +42,7 @@ protected
   # Check if a reset_password_token is provided in the request
   def assert_reset_token_passed
     if params[:reset_password_token].blank?
-      flash[:dander] = 'Missing token'
+      flash[:danger] = 'Missing token'
       redirect_to login_path
     end
   end
@@ -51,7 +51,7 @@ private
   def user_exist_for_token
     @user = User.find_by(reset_password_token: reset_password_params[:reset_password_token])
     unless @user
-      flash[:dander] = 'Invalid url!'
+      flash[:danger] = 'Invalid url!'
       redirect_to login_path
     end 
   end
