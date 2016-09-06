@@ -23,6 +23,6 @@ class UserMailer < ActionMailer::Base
   def reset_password_instructions(token, resource)
     @token = token
     @resource = resource
-    mail to: @resource.email, subject: "Reset your password"
+    mail to: @resource, subject: "Reset your password"
   end
 end

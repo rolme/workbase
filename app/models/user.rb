@@ -65,7 +65,7 @@ private
 
   # send link/instruction for password reset
   def send_reset_password_instructions_email(token)
-    UserMailer.reset_password_instructions(token, self).deliver
+    UserMailingJob.perform_now(token, self.email)
   end
 
   # generate reset password token and save
