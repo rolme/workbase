@@ -1,11 +1,11 @@
 class Ticket < ApplicationRecord
-  has_paper_trail only: [:title, :description, :status, :viewed_by, :assigned_to]
+  has_paper_trail only: [:title, :description, :status, :viewed_by, :assigned_to, :deleted_at]
 
   include Sluggable
   include SoftDeletable
 
   belongs_to :company
-  has_many :comments, -> {where.not(created_at: nil)}
+  has_many :comments, -> { where.not(created_at: nil) }
 
   validates_presence_of :title, :description
 
@@ -14,6 +14,7 @@ class Ticket < ApplicationRecord
   enum status: { unviewed: 0, unassigned: 1, assigned: 2, closed: 9 }
 
   scope :open, -> { where.not(status: :closed) }
+  scope :closed, -> { where(status: :closed) }
 
   def assignee
     assigned_to.present? ? User.find_by(id: assigned_to) : NullUser.new
