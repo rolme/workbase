@@ -1,4 +1,5 @@
 class LocationsController < ApplicationController
+  
   def new
     @warehouse = warehouse
     @location = Location.new

@@ -1,5 +1,7 @@
 // This is the global javascript file that will execute on every file.
 // #init is executed on every page load.
+import Sidebar from '../modules/sidebar.js.es6';
+
 export default class Global {
   init() {
     $('.datepicker').datepicker();
@@ -7,6 +9,8 @@ export default class Global {
     $("table tr[data-url]").on("click", function() {
       window.location.href = $(this).data('url');
     });
+
+    new Sidebar();
   }
 }
 

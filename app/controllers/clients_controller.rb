@@ -1,4 +1,5 @@
 class ClientsController < ApplicationController
+  
   def index
     @clients = clients.sorted
   end

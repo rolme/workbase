@@ -30,7 +30,6 @@ source 'https://rubygems.org' do
   # CSS
   gem 'sass-rails', '~> 5.0.6'
   gem 'bootstrap-sass'
-  gem 'bootswatch-rails'
   gem 'bootstrap-datepicker-rails'
   gem 'uglifier', '>= 1.3.0'
   gem 'font-awesome-rails'
@@ -46,6 +45,9 @@ source 'https://rubygems.org' do
 
   # ActionCable
   gem 'redis'
+
+  # for background job
+  gem 'sidekiq'
 
   group :production do
     gem 'rails_stdout_logging'
