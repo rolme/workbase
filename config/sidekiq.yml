@@ -1,7 +1,7 @@
-concurrency: 3
-pidfile: tmp/pids/sidekiq.pid
+:concurrency: 3
+:pidfile: tmp/pids/sidekiq.pid
 
 staging:
-  concurrency: 3
+  :concurrency: 1
 production:
-  concurrency: 3
+  :concurrency: 1
