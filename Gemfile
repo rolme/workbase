@@ -46,6 +46,9 @@ source 'https://rubygems.org' do
   # ActionCable
   gem 'redis'
 
+  # for background job
+  gem 'sidekiq'
+
   group :production do
     gem 'rails_stdout_logging'
     gem 'rails_12factor'
