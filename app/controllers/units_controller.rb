@@ -54,6 +54,17 @@ class UnitsController < ApplicationController
     end
   end
 
+  # remove item from project list
+  def remove_unit
+    @unit = units.find_by(slug: params[:unit_slug])
+    if @unit.update(project_id: nil)
+      flash[:success] = 'Item removed successfully!'
+    else
+      flash[:danger] = @unit.errors.full_messages
+    end
+    redirect_to :back
+  end
+
 private
 
   def units

@@ -1,3 +1,4 @@
+= render "layouts/flash"
 .page-header
   .row
     .col-md-10.col-sm-10
@@ -69,6 +70,7 @@
               th description
               th subtotal
               th in inventory?
+              th
           tbody
             - @project.materials.each do |material|
               tr
@@ -78,6 +80,9 @@
                 td = material[:description]
                 td.text-right = number_to_currency(material[:subtotal], format: "%n")
                 td = !!material[:location_id] ? 'Yes' : 'No'
+                td.text-center
+                  = link_to unit_remove_unit_path(material)
+                    =< fa_icon('trash')
         hr
         button.btn.btn-default.btn-xs.pull-right>
           = fa_icon('edit', text: 'Edit')

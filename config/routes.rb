@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   end
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection
+    get :remove_unit
   end
   resources :users, only: [:index, :update, :destroy], param: :slug do
     member do
