@@ -8,18 +8,18 @@ RSpec.describe ProjectsController, type: :controller do
     end
   end
 
-  describe "POST #new_project_unit" do
+  describe "POST #add_unit" do
 
     it 'Should not add unit' do
       project = FactoryGirl.create(:project)
-      post :new_project_unit, params: {project_slug: project.slug, unit: {slug: "123123"}}
+      post :add_unit, params: {project_slug: project.slug, unit: {slug: "123123"}}
       expect(flash[:danger]).to eq('Item not found')
     end
 
     it 'Should add unit' do
       unit = FactoryGirl.create(:unit)
       project = FactoryGirl.create(:project)
-      post :new_project_unit, params: {project_slug: project.slug, unit: {slug: unit.slug}}
+      post :add_unit, params: {project_slug: project.slug, unit: {slug: unit.slug}}
       unit = Unit.find_by(slug: unit.slug)
       expect(unit.project_id.blank?).to eq(false)
     end
