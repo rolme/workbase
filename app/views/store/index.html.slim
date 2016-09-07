@@ -1,13 +1,13 @@
 .row
   - @features.each do |feature|
-      .col-sm-6.col-md-4
-        .thumbnail style="padding: 0;"
-          .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-          .caption style="height: 200px; overflow: hidden;"
-            h4 style="margin-top: 5px; margin-bottom: 5px;" = feature.title
-            hr style="margin-top: 5px; margin-bottom: 5px;"
-            p = feature.description
-            - if feature.enabled
-              p style="color: green;" = fa_icon('check-circle', text: "Enabled")
-            - else
-              p style="color: lightgrey; font-style: italic;" = fa_icon('circle-o', text: "Not Enabled")
+    .col-sm-6.col-md-4
+      .thumbnail.feature-card
+        .image
+        .caption
+          h4.title = feature.title
+          hr.divider
+          p.description = feature.description
+          - if feature.enabled
+            p.enabled = fa_icon('check-circle', text: "Enabled")
+          - else
+            p.disabled = fa_icon('circle-o', text: "Not Enabled")
