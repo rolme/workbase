@@ -447,3 +447,12 @@ section#mission{
         display: inline;
     }
 }
+@media (max-device-width: 776px) and (max-width: 776px){
+ul.nav.navbar-nav.navbar-right {
+    display: flex;
+    overflow: inherit;
+    float: right;
+    position: relative;
+    bottom: 63px !important;
+}
+}

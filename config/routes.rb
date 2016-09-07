@@ -1,4 +1,12 @@
 Rails.application.routes.draw do
+#  get 'lead_user/new'
+  resources :lead_users, only: [:create] do
+    get :confirm_email
+    get :confirmation_lead, on: :collection
+  end
+  post 'lead_user/new', to: 'lead_user#create'
+  
+    
   get 'welcome/index'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
