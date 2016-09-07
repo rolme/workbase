@@ -1,6 +1,6 @@
 export default class Sidebar {
   constructor() {
-    $("#wrapper").toggleClass("toggled-2");
+    $("#wrapper").toggleClass("sidebar-toggle");
     this.handleMenuToggleClick();
     this.handleMenuToggle2Click();
   }
@@ -16,7 +16,7 @@ export default class Sidebar {
     this.initMenu();
     $("#menu-toggle-2").click(function(e) {
       e.preventDefault();
-      $("#wrapper").toggleClass("toggled-2");
+      $("#wrapper").toggleClass("sidebar-toggle");
       $('#menu ul').hide();
     });
   }

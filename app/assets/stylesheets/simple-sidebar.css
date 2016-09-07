@@ -106,24 +106,24 @@ body{
   margin:0;
 }
 
-.dashboardtmp nav.navbar-default{
+.dashboard nav.navbar-default{
   background: #F7F8FB;
 }
-.dashboardtmp .logo a{
+.dashboard .logo a{
   color: #fff;
 }
-.dashboardtmp .logo{
+.dashboard .logo{
   height: 40px;
   line-height: 40px;
   margin: 0;
 }
-.dashboardtmp .logo img{
+.dashboard .logo img{
   height: 100%;
 }
-.dashboardtmp .logo span{
+.dashboard .logo span{
   margin-right: 10px;
 }
-.dashboardtmp nav .navbar-toggle{
+.dashboard nav .navbar-toggle{
   font-size: 24px;
   color: #888;
   padding: 3px 10px;
@@ -131,20 +131,20 @@ body{
   border: none;
   margin-right: 0;
 }
-.dashboardtmp nav .navbar-toggle:hover,
-.dashboardtmp nav .navbar-toggle:focus,
-.dashboardtmp nav .navbar-toggle:active{
+.dashboard nav .navbar-toggle:hover,
+.dashboard nav .navbar-toggle:focus,
+.dashboard nav .navbar-toggle:active{
   background: none;
 }
-.dashboardtmp nav ul.navbar-nav > li > a {
+.dashboard nav ul.navbar-nav > li > a {
   color: #333;
   font-size: 18px;
   padding-top: 18px;
 }
-.dashboardtmp nav ul.right > li button{
+.dashboard nav ul.right > li button{
   margin-top: 10px;
 }
-.dashboardtmp nav ul.right > li a span{
+.dashboard nav ul.right > li a span{
   width: 28px;
   height: 28px;
   color: #fff;
@@ -155,17 +155,17 @@ body{
   border-radius: 100%;
   font-size: 12px;
 }
-.dashboardtmp nav ul.right > li > a {
+.dashboard nav ul.right > li > a {
   font-size: 16px;
   outline: none;
 }
-.dashboardtmp nav ul.right > li a span.info{
+.dashboard nav ul.right > li a span.info{
   background: none;
   border: #aaa solid 1px;
   color: #aaa;
   font-size: 15px;
 }
-.dashboardtmp nav ul.right li.open ul.dropdown-menu{
+.dashboard nav ul.right li.open ul.dropdown-menu{
   right: 15px;
   left: auto;
 }
@@ -184,12 +184,12 @@ body{
   margin: 16px;
   display: inline-block;
 }
-.dashboardtmp table{
+.dashboard table{
   width: 100%;
   border-collapse: collapse;
 }
-.dashboardtmp table span.bluerp,
-.dashboardtmp table span.yellwtp{
+.dashboard table span.bluerp,
+.dashboard table span.yellwtp{
   width: 32px;
   height: 32px;
   color: #fff;
@@ -202,19 +202,19 @@ body{
   float: left;
   margin-right: 6px;
 }
-.dashboardtmp table span.yellwtp{
+.dashboard table span.yellwtp{
   background: #FEDC00;
 }
-.dashboardtmp table tr td{
+.dashboard table tr td{
   line-height: 30px;
 }
-.dashboardtmp table tbody tr td:nth-child(2){
+.dashboard table tbody tr td:nth-child(2){
   font-weight: bold;
 }
 #page-wrap {
   margin: 50px 20px;
 }
-.dashboardtmp table thead > tr > td{
+.dashboard table thead > tr > td{
   vertical-align: middle;
 }
 
@@ -258,7 +258,7 @@ body{
 .submit-project{
   margin-right: 100px;
 }
-.bottmmenu{
+.bottom-menu{
   top: auto;
   bottom: 0;
 }
@@ -282,10 +282,10 @@ body{
   #wrapper.toggled #sidebar-wrapper {
     width: 250px;
   }
-  #wrapper.toggled-2 #sidebar-wrapper {
+  #wrapper.sidebar-toggle #sidebar-wrapper {
     width: 50px;
   }
-  #wrapper.toggled-2 #sidebar-wrapper:hover {
+  #wrapper.sidebar-toggle #sidebar-wrapper:hover {
     width: 250px;
   }
 
@@ -304,7 +304,7 @@ body{
     margin-right: 0;
     padding-left: 250px;
   }
-  #wrapper.toggled-2 #page-content-wrapper {
+  #wrapper.sidebar-toggle #page-content-wrapper {
     position: relative;
     margin-right: 0;
     margin-left: -200px;
@@ -318,10 +318,10 @@ body{
 
 @media screen and (max-width: 767px){
 
-  .dashboardtmp nav .navbar-toggle{
+  .dashboard nav .navbar-toggle{
     margin-left: 10px;
   }
-  .dashboardtmp table{
+  .dashboard table{
     width: 92%;
   }
   /* Force table to not be like tables anymore */
@@ -344,7 +344,7 @@ body{
   }
   tr { border: 1px solid #ccc; }
 
-  .dashboardtmp table.table tbody > tr > td {
+  .dashboard table.table tbody > tr > td {
     /* Behave  like a "row" */
     border: none;
     border-bottom: 1px solid #eee;
@@ -367,12 +367,11 @@ body{
 }
 
 .nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
-  /*background-color: #337ab7;*/
   background-color: #F7F8FB;
   color: black;
 }
 
-.dashboardtmp nav ul.right > li button {
+.dashboard nav ul.right > li button {
   margin-top: 10px;
 }
 .btn-success {

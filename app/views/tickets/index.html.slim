@@ -25,7 +25,8 @@
               td data-content="Assignee"
                 = ticket.assignee.full_name
               td.text-center
-                a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofoloow"
+                a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+                a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
                   = fa_icon('trash')
 - else
   p No tickets
