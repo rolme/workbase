@@ -4,14 +4,16 @@
   .col-sm-offset-2.col-sm-8
     .panel.panel-default
       .panel-heading Location Check In
-      .panel-body
-        .row
-          .col-sm-8
-            input.form-control type="text"
-          .col-sm-4
-            select.form-control name="location_id"
-              - @locations.each do |location|
-                option value=location.id = location.name
+      = form_tag(search_unit_inventory_path(@area))
+        .panel-body
+          .row
+            .col-sm-5
+              = text_field_tag :name, "" , class: 'form-control', placeholder: ""
+            .col-sm-4
+              = select_tag(:location_id,options_for_select(@locations.map{|c| [c.name,c.id]}, selected: params[:location_id] ) ,class: 'form-control')
+            .col-sm-3
+              input.btn.btn-primary data-disable-with=("Search") name="commit" type="submit" value=("Search") /
+
 
 hr
 
