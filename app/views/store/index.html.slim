@@ -1,58 +1,13 @@
 .row
-  .col-sm-6.col-md-4
-    .thumbnail data-url=clients_path style="padding: 0;"
-      .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-      .caption style="height: 200px; overflow: hidden;"
-        h4 style="margin-top: 5px; margin-bottom: 5px;" Contact Managment
-        hr style="margin-top: 5px; margin-bottom: 5px;"
-        p Curabitur in lacus consequat quam cursus viverra. Suspendisse potenti. Maecenas pretium velit quam, blandit malesuada sapien pulvinar non. Duis odio eros, ullamcorper ut libero at, cursus vehicula odio. In hac habitasse platea dictumst.
-        p style="color: green;" = fa_icon('check-circle', text: "Enabled")
-
-
-  .col-sm-6.col-md-4
-    .thumbnail data-url=clients_path style="padding: 0;"
-      .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-      .caption style="height: 200px; overflow: hidden;"
-        h4 style="margin-top: 5px; margin-bottom: 5px;" Project Managment
-        hr style="margin-top: 5px; margin-bottom: 5px;"
-        p Curabitur in lacus consequat quam cursus viverra. Suspendisse potenti. Maecenas pretium velit quam, blandit malesuada sapien pulvinar non. Duis odio eros, ullamcorper ut libero at, cursus vehicula odio. In hac habitasse platea dictumst.
-        p style="color: green;" = fa_icon('check-circle', text: "Enabled")
-
-  .col-sm-6.col-md-4
-    .thumbnail data-url=clients_path style="padding: 0;"
-      .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-      .caption style="height: 200px; overflow: hidden;"
-        h4 style="margin-top: 5px; margin-bottom: 5px;" Customer Relationship Managment
-        hr style="margin-top: 5px; margin-bottom: 5px;"
-        p Curabitur in lacus consequat quam cursus viverra. Suspendisse potenti. Maecenas pretium velit quam, blandit malesuada sapien pulvinar non. Duis odio eros, ullamcorper ut libero at, cursus vehicula odio. In hac habitasse platea dictumst.
-        p style="color: lightgrey;"
-          i = fa_icon('circle-o', text: "Not Enabled")
-
-  .col-sm-6.col-md-4
-    .thumbnail data-url=clients_path style="padding: 0;"
-      .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-      .caption style="height: 200px; overflow: hidden;"
-        h4 style="margin-top: 5px; margin-bottom: 5px;" Procurement Managment
-        hr style="margin-top: 5px; margin-bottom: 5px;"
-        p Curabitur in lacus consequat quam cursus viverra. Suspendisse potenti. Maecenas pretium velit quam, blandit malesuada sapien pulvinar non. Duis odio eros, ullamcorper ut libero at, cursus vehicula odio. In hac habitasse platea dictumst.
-        p style="color: lightgrey;"
-          i = fa_icon('circle-o', text: "Not Enabled")
-
-
-  .col-sm-6.col-md-4
-    .thumbnail data-url=clients_path style="padding: 0;"
-      .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-      .caption style="height: 200px; overflow: hidden;"
-        h4 style="margin-top: 5px; margin-bottom: 5px;" Issue Tracking
-        hr style="margin-top: 5px; margin-bottom: 5px;"
-        p Curabitur in lacus consequat quam cursus viverra. Suspendisse potenti. Maecenas pretium velit quam, blandit malesuada sapien pulvinar non. Duis odio eros, ullamcorper ut libero at, cursus vehicula odio. In hac habitasse platea dictumst.
-        p style="color: green;" = fa_icon('check-circle', text: "Enabled")
-
-  .col-sm-6.col-md-4
-    .thumbnail data-url=clients_path style="padding: 0;"
-      .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
-      .caption style="height: 200px; overflow: hidden;"
-        h4 style="margin-top: 5px; margin-bottom: 5px;" Inventory Managment
-        hr style="margin-top: 5px; margin-bottom: 5px;"
-        p Curabitur in lacus consequat quam cursus viverra. Suspendisse potenti. Maecenas pretium velit quam, blandit malesuada sapien pulvinar non. Duis odio eros, ullamcorper ut libero at, cursus vehicula odio. In hac habitasse platea dictumst.
-        p style="color: green;" = fa_icon('check-circle', text: "Enabled")
+  - @features.each do |feature|
+      .col-sm-6.col-md-4
+        .thumbnail style="padding: 0;"
+          .top-part style="padding: 0; height: 200px; background-color: lightgrey;"
+          .caption style="height: 200px; overflow: hidden;"
+            h4 style="margin-top: 5px; margin-bottom: 5px;" = feature.title
+            hr style="margin-top: 5px; margin-bottom: 5px;"
+            p = feature.description
+            - if feature.enabled
+              p style="color: green;" = fa_icon('check-circle', text: "Enabled")
+            - else
+              p style="color: lightgrey; font-style: italic;" = fa_icon('circle-o', text: "Not Enabled")
