@@ -1,4 +1,5 @@
 class UnitsController < ApplicationController
+  before_action :initialize_unit, only: [:new, :new_project_unit]
 
   # GET /units/list
   def list
@@ -12,10 +13,6 @@ class UnitsController < ApplicationController
 
   # GET /units/new
   def new
-    @unit       = Unit.new
-    @unit.build_upload
-    @unit_categories = unit_categories
-    @locations  = locations
   end
 
   # POST /units
@@ -54,7 +51,29 @@ class UnitsController < ApplicationController
     end
   end
 
-  # remove item from project list
+  # POST /create_with_project 
+  # create unit with project
+  def create_project_unit
+    @unit = Unit.new(unit_params.merge(company_id: current_company.id))
+    @unit.project_required = true
+    @unit.project_id = project.id if project
+    if @unit.save
+      flash[:success] = 'Item added successfully!'
+      redirect_to project
+    else
+      @unit_categories = unit_categories
+      @locations  = locations
+      flash[:danger] = @unit.errors.full_messages
+      render 'new_project_unit'
+    end
+  end
+
+  # GET /unit_project
+  # new unit with project 
+  def new_project_unit
+  end
+
+  # unassign unit for project
   def remove_unit
     @unit = units.find_by(slug: params[:unit_slug])
     if @unit.update(project_id: nil)
@@ -66,6 +85,19 @@ class UnitsController < ApplicationController
   end
 
 private
+
+  # initialize new unit 
+  def initialize_unit
+    @unit       = Unit.new
+    @unit.build_upload
+    @unit_categories = unit_categories
+    @locations  = locations
+  end
+
+  # get project 
+  def project
+    Project.find_by slug: params[:project_slug]
+  end
 
   def units
     Unit.with_company_id(current_user.company_id)
