@@ -1,6 +1,5 @@
 .clearfix
 .inventory-header
-
   ul.list-inline
     - if links.include?(:manage_categories)
       li.shift-down
@@ -31,7 +30,7 @@
           = fa_icon('plus-square', text: "Add Units")
       li.shift-right
         .inventory-search
-          h4 Find inventory        
+          h4 Find inventory
           = form_tag search_inventory_index_path, method: :get, class: 'form-inline inventory-form'
             .form-group
               input#q.form-control name="q" type="text" placeholder="Term"
@@ -41,5 +40,11 @@
       li
         a href=checkin_inventory_path(area)
           = fa_icon('check', text: "Checkin Units")
+
+    - if links.include?(:add_category)
+      li
+        a href=new_unit_category_path
+          = fa_icon('plus-square', text: "Add Category")
+
   .clearfix
   hr

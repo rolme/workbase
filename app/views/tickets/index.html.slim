@@ -1,32 +1,3 @@
-= render "page_header", header: 'Tickets', links: [:new]
-= render "layouts/flash"
+= render "tickets/page_header", header: 'Active Tickets', links: [:add_ticket, :closed_tickets, :deleted_tickets]
 
-- if @tickets.any?
-  .row
-    .table-responsive id="#page-wrap" 
-      table.table
-        thead
-          tr
-            th
-              input type="checkbox"
-            th Title
-            th Status
-            th Assignee
-        tbody
-          - @tickets.each do |ticket|
-            tr data-url=ticket_path(ticket) class=(ticket.unviewed? ? 'info' : '')
-              td
-                a href=ticket
-                  input type="checkbox"
-              td data-content="Title"
-                = ticket.title
-              td data-content="Status"
-                = ticket.status
-              td data-content="Assignee"
-                = ticket.assignee.full_name
-              td.text-center
-                a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
-                a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
-                  = fa_icon('trash')
-- else
-  p No tickets
+= render 'tickets/ticket_list'

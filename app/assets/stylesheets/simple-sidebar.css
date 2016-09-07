@@ -39,7 +39,7 @@ body{
 #page-content-wrapper {
   position: absolute;
   padding: 15px;
-  width: 100%;
+  width: auto;
   overflow-x: hidden;
 }
 .min-360 {
