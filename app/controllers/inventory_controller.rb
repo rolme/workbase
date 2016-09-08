@@ -28,10 +28,20 @@ class InventoryController < ApplicationController
     @units = Unit.in_inventory.where(company_id: current_user.company_id, location_id: location_ids)
   end
 
+  def checkout
+    warehouse = unit.location.warehouse
+    unit.update(location_id: nil)
+    InventoryMailer.checkout_email(warehouse).deliver
+    redirect_to checkin_inventory_path
+  end
+
 private
 
   def area
     Area.find_by(company_id: current_user.company_id, slug: params[:area_slug])
   end
 
+  def unit
+    Unit.find_by(company_id: current_user.company_id, slug: params[:unit_slug])
+  end
 end
