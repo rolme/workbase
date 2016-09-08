@@ -1,12 +1,12 @@
 Rails.application.routes.draw do
-#  get 'lead_user/new'
+
   resources :lead_users, only: [:create] do
     get :confirm_email
     get :confirmation_lead, on: :collection
   end
   post 'lead_user/new', to: 'lead_user#create'
-  
-    
+
+
   get 'welcome/index'
 
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
@@ -57,6 +57,10 @@ Rails.application.routes.draw do
     member do
       put :toggle_close
     end
+    collection do
+      get :closed
+      get :deleted
+    end
     resources :comments
   end
   resources :inventory, param: :area_slug do
@@ -65,13 +69,13 @@ Rails.application.routes.draw do
       resources :unit_categories, except: [:show], param: :slug do
         get :restore, on: :member
       end
+      resources :warehouses, param: :slug do
+        resources :locations, param: :slug, except: [:index]
+      end
     end
     member do
       get :checkin
     end
-  end
-  resources :warehouses, param: :slug do
-    resources :locations, param: :slug, except: [:index]
   end
   resources :procurement
   resources :projects, param: :slug do
@@ -96,11 +100,22 @@ Rails.application.routes.draw do
   end
   resources :workbase, only: [:index]
 
+  # for image save(drag&drop)
+  resources :uploads, only: [:create, :destroy, :show]
+
   resources :login, only: [:index]
   post "/emulate", to: "session#emulate"
   post "/login",   to: "session#create"
   get "/logout",   to: "session#destroy"
   get "/register", to: "registration#new"
+
+  # password request
+  resources :passwords, only: [:new, :create] do
+    collection do
+      get :edit
+      put :update
+    end
+  end
 
   root to: "welcome#index"
 end

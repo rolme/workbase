@@ -18,9 +18,9 @@ brew update && brew upgrade
 ```
 
 ### Install 3rd party applications
-Homebrew install postgres and follow directions to start application.
+Homebrew install required applications
 ```
-brew install postgresql node
+brew install postgresql node redis-server git
 ```
 
 ### Install ruby 2.3.1
@@ -34,15 +34,15 @@ rbenv install 2.3.1
 clone the project and cd into the directory.
 ```
 npm install
-gem install foreman
+gem install foreman bundler
 bundle
-rake db:reset
+rails db:setup
 ```
 
 ## Starting the App
 To start the app run the following.
 ```
-# Make sure postgres is running
+# Make sure postgres and redis-server is running
 foreman start
 ```
 Then visit [localhost:5000](http://localhost:5000)
@@ -52,6 +52,7 @@ If deploying to Heroku, you will need to need to add the following add-ons:
 * postgres
 * bucketeer
 * SendGrid
+* redis
 
 You will also need to install the following buildpack: (order matters)
 * https://github.com/akomic/heroku-buildpack-ffmpegthumbnailer.git

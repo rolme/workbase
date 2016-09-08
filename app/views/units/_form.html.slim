@@ -1,8 +1,8 @@
 = render "layouts/flash"
 
 .row
-  .col-sm-12.col-md-offset-2.col-md-8
-    = form_for unit, html: {class: 'form-horizontal'} do |f|
+  .col-sm-12.mini-container
+    = form_for unit, html: {class: 'form-horizontal dropzone-form', multiple: true} do |f|
       .panel.panel-default
         .panel-heading #{unit.uuid? ? unit.uuid : 'Unit Information' }
         .panel-body
@@ -36,7 +36,14 @@
             = f.label(:location_id, nil, class: "col-sm-2 control-label #{'error' if unit.errors[:location_id]}")
             .col-sm-10
               = f.select(:location_id, locations.collect{ |l| [l.area_name, l.id] }, { include_blank: true }, { class: 'form-control' })
+
+          .form-group
+            = f.fields_for :upload do |upload|
+              = upload.label(:image, class: "col-sm-2 control-label")
+              .col-sm-10.fallback.dropzone-upload.dropzone
+                = upload.file_field(:image, { class: 'form-control hidden', multipart: true, data: {id: upload.object.id}})
+            = f.hidden_field(:upload_id, {class: 'upload-id'})
       .form-group
         .col-sm-offset-2.col-sm-10.text-right
-          = f.submit nil, class: 'btn btn-primary'
+          = f.submit nil, class: 'btn btn-primary submit'
           =< f.submit 'Reset', type: 'reset', class: 'btn btn-default'

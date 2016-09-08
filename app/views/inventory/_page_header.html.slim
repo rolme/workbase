@@ -1,28 +1,15 @@
-.page-header
-  h1 = fa_icon('barcode', text: header)
-
+.clearfix
+.inventory-header
   ul.list-inline
     - if links.include?(:manage_categories)
-      li
+      li.shift-down
         a href=unit_categories_path
           = fa_icon('th-large', text: "Categories")
-
-    - if links.include?(:add_category)
+    - if links.include?(:warehouse_index)
       li
-        a href=new_unit_category_path
-          = fa_icon('plus-square', text: "Add Category")
-
-    - if links.include?(:edit_category)
-      li
-        a href=edit_unit_category_path(unit_category)
-          = fa_icon('edit', text: "Edit Category")
-
-    - if links.include?(:new_location)
-      li
-        a href=new_location_path
-          = fa_icon('plus-square', text: "Add Location")
-
-    - if links.include?(:index)
+        a href=warehouses_path
+          = fa_icon('cube', text: "Warehouses")
+    - if links.include?(:inventory_index)
       li
         a href=inventory_index_path
           = fa_icon('list', text: "List")
@@ -38,14 +25,26 @@
           = fa_icon('edit', text: "Edit Unit")
 
     - if links.include?(:new_units)
-      li
+      li.shift-down
         a href=new_unit_path
           = fa_icon('plus-square', text: "Add Units")
+      li.shift-right
+        .inventory-search
+          h4 Find inventory
+          = form_tag search_inventory_index_path, method: :get, class: 'form-inline inventory-form'
+            .form-group
+              input#q.form-control name="q" type="text" placeholder="Term"
+            button.btn.btn-default.search-inventory type="submit" Search
 
     - if links.include?(:checkin_units)
       li
         a href=checkin_inventory_path(area)
           = fa_icon('check', text: "Checkin Units")
 
+    - if links.include?(:add_category)
+      li
+        a href=new_unit_category_path
+          = fa_icon('plus-square', text: "Add Category")
 
+  .clearfix
   hr

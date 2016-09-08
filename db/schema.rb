@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160907081448) do
+ActiveRecord::Schema.define(version: 20160905072058) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,15 +108,6 @@ ActiveRecord::Schema.define(version: 20160907081448) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["company_status_id"], name: "index_companies_on_company_status_id", using: :btree
-  end
-
-  create_table "lead_users", force: :cascade do |t|
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-    t.boolean  "confirmed",        default: false
-    t.string   "confirm_token"
-    t.string   "email"
-    t.boolean  "infoconfirmation", default: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -250,6 +241,14 @@ ActiveRecord::Schema.define(version: 20160907081448) do
     t.index ["unit_status_id"], name: "index_units_on_unit_status_id", using: :btree
   end
 
+  create_table "uploads", force: :cascade do |t|
+    t.string   "image"
+    t.string   "uploadable_type"
+    t.integer  "uploadable_id"
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "slug"
@@ -262,13 +261,15 @@ ActiveRecord::Schema.define(version: 20160907081448) do
     t.string   "password_digest"
     t.integer  "user_status_id"
     t.string   "cached_status"
-    t.boolean  "confirmed",            default: false
+    t.boolean  "confirmed",              default: false
     t.string   "confirmation_token"
     t.integer  "security_question_id"
     t.string   "security_answer"
     t.datetime "deleted_at"
-    t.datetime "created_at",                           null: false
-    t.datetime "updated_at",                           null: false
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
     t.index ["company_id"], name: "index_users_on_company_id", using: :btree
     t.index ["slug"], name: "index_users_on_slug", using: :btree
     t.index ["user_status_id"], name: "index_users_on_user_status_id", using: :btree

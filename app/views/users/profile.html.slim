@@ -1,21 +1,21 @@
 .row
-  .col-sm-offset-2.col-sm-8
+  .col-sm-12
     .row
       .col-sm-8
         .panel.panel-default
           .panel-heading Contact Info
           .panel-body
             dl.dl-horizontal
-              dt Name
+              dt Name&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.full_name
-              dt Company
+              dt Company&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.company_name
-              dt Account
+              dt Account&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.type
-              dt Email
+              dt Email&nbsp;&nbsp;:&nbsp;&nbsp;
               dd = @user.email
               - if @user.phone.present?
-                dt Phone
+                dt Phone&nbsp;&nbsp;:&nbsp;&nbsp;
                 dd = number_to_phone(@user.phone)
 
         .panel.panel-default
@@ -38,6 +38,25 @@
                         = f.label :new_password, 'New Passwod', class: 'col-sm-2 control-label'
                         .col-sm-10
                           = f.password_field :new_password, class: 'form-control'
+                      .form-group
+                        .col-sm-offset-2.col-sm-10
+                          = f.submit "Save", class: 'btn btn-primary btn-sm'
+              .panel.panel-default
+                #headingOne.panel-heading role="tab" 
+                  h4.panel-title
+                    a.collapsed aria-controls="collapseName" aria-expanded="false" data-parent="#accordion" data-toggle="collapse" href="#collapseName" role="button" 
+                      | Change Name
+                #collapseName.panel-collapse.collapse aria-labelledby="headingOne" role="tabpanel" 
+                  .panel-body
+                    = form_for @user, url:  user_path(@user), html: { class: 'form-horizontal' } do |f|
+                      .form-group
+                        = f.label :first_name, 'First Name', class: 'col-sm-2 control-label'
+                        .col-sm-10
+                          = f.text_field :first_name, class: 'form-control'
+                      .form-group
+                        = f.label :last_name, 'Last Name', class: 'col-sm-2 control-label'
+                        .col-sm-10
+                          = f.text_field :last_name, class: 'form-control'
                       .form-group
                         .col-sm-offset-2.col-sm-10
                           = f.submit "Save", class: 'btn btn-primary btn-sm'

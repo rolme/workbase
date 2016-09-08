@@ -1,28 +1,28 @@
 = render 'page_header', header: "Inventory: #{@unit.uuid}", unit: @unit, links: [:unit_index, :new_units, :edit_unit]
 
 .row
-  .col-sm-offset-2.col-sm-8
+  .mini-container
     .row
       .col-sm-8
         dl.dl-horizontal
-          dt UUID
+          dt.label-space UUID:
           dd = @unit.uuid
-          dt Model
+          dt.label-space Model:
           dd = @unit.model
-          dt Manufacturer
+          dt.label-space Manufacturer:
           dd = @unit.manufacturer
           - if @unit.location_id.blank? && @unit.procurement_status.present?
-            dt Procuement Status
+            dt.label-space Procuement Status:
             dd = @unit.procurement_status
-          dt Unit Category
+          dt.label-space Unit Category:
           dd = @unit.unit_category_label
-          dt Description
+          dt.label-space Description:
           dd = @unit.description
-          dt Client Description
+          dt.label-space Client Description:
           dd = @unit.client_description
-          dt cost
+          dt.label-space cost:
           dd = number_to_currency(@unit.cost)
-          dt location
+          dt.label-space location:
           dd
             - if @unit.location.present?
               a href=inventory_path(@unit.location) = @unit.area_name

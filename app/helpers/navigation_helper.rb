@@ -9,6 +9,10 @@ module NavigationHelper
     end
   end
 
+  def get_active_class(contoller_name, menu)
+    "active" if contoller_name == menu
+  end
+
   private
 
   def nav_link_class_name(path, options)

@@ -1,0 +1,54 @@
+#sidebar-wrapper
+  ul#menu.sidebar-nav.nav-pills.nav-stacked
+    h4.logo
+      a href=root_path 
+        span.fa-stack.fa-lg
+          i.fa.fa-compass.fa-stack-1x.logo-color
+        strong= current_user.company_name
+    li class=get_active_class(controller_name, "clients")
+      a href=clients_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-users.fa-stack-1x
+        | Clients
+    li class=get_active_class(controller_name, "projects")
+      a href=projects_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-folder.fa-stack-1x
+        | Projects
+    li class=get_active_class(controller_name, "procurement")
+      a href="#"
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-cloud-download.fa-stack-1x
+        | Procurement
+    li class=get_active_class(controller_name, "tickets")
+      a href=tickets_path 
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-ticket.fa-stack-1x
+        | Tickets
+    li class=get_active_class(controller_name, "inventory")
+      a href=inventory_index_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-flask.fa-stack-1x
+        | Inventory
+    li class=get_active_class(controller_name, "warehouses")
+      a href=warehouses_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-dashcube.fa-stack-1x
+        | Warehouse
+    li class=get_active_class(controller_name, "")
+      a href=logout_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-sign-out.fa-stack-1x
+        | Logout
+  ul.sidebar-nav.nav-pills.nav-stacked.bottom-menu
+    - if current_user.admin?
+      li
+        a 
+          span.fa-stack.fa-lg.pull-left
+            i.fa.fa-cube.fa-stack-1x
+          | Add-ons Store
+    li
+      a 
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-gear.fa-stack-1x
+        | Settings

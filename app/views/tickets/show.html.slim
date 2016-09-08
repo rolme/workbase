@@ -1,5 +1,4 @@
-= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: [:new, :edit, :index, :delete]
-= render "layouts/flash"
+= render "tickets/page_header", header: "Ticket: #{@ticket.title}", ticket: @ticket, links: [:edit_ticket, :ticket_index, :delete_ticket]
 
 .row data-ticket-slug=@ticket.slug
   .col-sm-9
@@ -9,10 +8,10 @@
         p = @ticket.description
         hr
         p.small style="margin-bottom: 0;"
-          | Ticket External Link:
+          | Ticket Public Link:
           span.text-muted<
-            a href=@external_link
-              = @external_link
+            a href=@public_link
+              = @public_link
 
     ul.nav.nav-tabs role="tablist" style="margin-bottom: 15px;"
       li.active role="presentation"
@@ -31,10 +30,15 @@
   .col-sm-3
     .panel.panel-default
       .panel-body
-        p.small Details
+        p.small
+          b Details
+        - if @ticket.deleted?
+          p.text-danger This ticket has been deleted.
+
         dl.dl-horizontal
           dt.lefty Status:
-          dd = @ticket.status.titlecase
+          dd class=(@ticket.closed? ? 'text-danger' : 'text-success')
+            b = @ticket.status.titlecase
 
           dt.lefty Project:
           dd = @ticket.project.name
@@ -47,12 +51,14 @@
 
           dt.lefty Updated:
           dd = @ticket.updated_at
-        = button_to [:toggle_close, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
-          = @ticket.closed? ? 'ReOpen Ticket' : 'Close Ticket'
+        - unless @ticket.deleted?
+          = button_to [:toggle_close, @ticket], { method: :put, class: "btn btn-xs btn-warning" } do
+            = @ticket.closed? ? 'ReOpen Ticket' : 'Close Ticket'
 
     .panel.panel-default
       .panel-body
-        p.small Submitted by
+        p.small
+          b Submitted by
         dl.dl-horizontal
           dt.lefty Name:
           dd = @ticket.submitted_by_name

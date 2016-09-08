@@ -1,11 +1,12 @@
 class WarehousesController < ApplicationController
+
   def index
     @warehouses = company_warehouses.all
   end
 
   def show
     @warehouse = warehouse
-    @locations = Location.where(parent_id: @warehouse.id)
+    @locations = Location.where(parent_id: @warehouse.id).order(:name)
   end
 
   def new
@@ -39,7 +40,7 @@ class WarehousesController < ApplicationController
 private
 
   def company_warehouses
-    Warehouse.where(company_id: current_user.company_id)
+    Warehouse.where(company_id: current_user.company_id).order(:name)
   end
 
   def warehouse

@@ -13,6 +13,7 @@ class UnitsController < ApplicationController
   # GET /units/new
   def new
     @unit       = Unit.new
+    @unit.build_upload
     @unit_categories = unit_categories
     @locations  = locations
   end
@@ -34,6 +35,7 @@ class UnitsController < ApplicationController
   # GET /units/:slug
   def edit
     @unit            = unit
+    @unit.build_upload if @unit.upload.blank?
     @unit_categories = unit_categories
     @locations       = locations
   end
@@ -79,7 +81,10 @@ private
         :location_id,
         :manufacturer,
         :model,
-        :unit_category_id
+        :unit_category_id,
+        :upload_id,
+        :upload_attributes => [:id, :image, :_destroy]
       )
   end
+
 end
