@@ -7,7 +7,7 @@ class SessionController < ApplicationController
     user = User.find_by(email: login_params["email"])
     if user && user.authenticate(login_params[:password])
       session[:current_user_id] = session[:login_user_id] = user.id
-      redirect_to root_url
+      redirect_to workbase_index_path
     else
       redirect_to login_index_path, flash: { danger: "Invalid email or password." }
     end

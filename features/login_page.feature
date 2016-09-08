@@ -2,6 +2,7 @@ Feature: A User must login
 
 Scenario: User is redirected to the login page
   When I go to the homepage
+  And I click the link "Login"
   Then I should see the login form
 
 Scenario: A new user can register

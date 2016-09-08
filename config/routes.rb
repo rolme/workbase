@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'welcome/index'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   mount ActionCable.server => '/cable'
 
@@ -11,6 +14,26 @@ Rails.application.routes.draw do
 
   # for unauthenticated user actions
   namespace :public do
+    resources :tickets, param: :slug, only: [] do
+      member do
+        put :toggle_close
+      end
+      collection do
+        get :customer
+      end
+      resources :comments, only: [:create]
+    end
+  end
+
+  # api end points for ticket creation
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resource :tickets, only: [:create]
+    end
+  end
+
+  # for unauthenticated user actions
+  namespace :external do
     resources :tickets, param: :slug, only: [] do
       member do
         put :toggle_close
@@ -87,5 +110,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root to: "workbase#index"
+  root to: "welcome#index"
 end
