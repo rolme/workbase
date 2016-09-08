@@ -18,8 +18,8 @@
 
     - if links.include?(:delete_ticket) && !ticket.deleted?
       li
-        a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofoloow"
-          = fa_icon('trash', text: "Delete this Ticket")
+        a href=ticket_path(ticket) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+          = fa_icon('trash', text: "Delete")
 
     - if links.include?(:closed_tickets)
       li

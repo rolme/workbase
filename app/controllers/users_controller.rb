@@ -11,7 +11,8 @@ class UsersController < ApplicationController
 
   def update
     @user = user
-    if @user.update(user_params(@user.type))
+    params = @user.type.present? ? user_params(@user.type) : basic_params
+    if @user.update(params)
       render :profile
     else
       flash[:danger] = @user.errors.full_messages
@@ -59,4 +60,7 @@ private
     params.require(type.downcase.to_sym).permit(:new_password, :current_password)
   end
 
+  def basic_params
+    params.require(:user).permit(:first_name, :last_name)
+  end
 end
