@@ -46,6 +46,10 @@ Rails.application.routes.draw do
   end
 
   resources :clients, param: :slug
+
+  # callback path
+  get 'auth/:provider/callback', to: 'clients#callback', as: :callback
+
   resources :tickets, param: :slug do
     member do
       put :toggle_close

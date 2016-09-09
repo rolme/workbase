@@ -50,6 +50,9 @@ source 'https://rubygems.org' do
   # for background job
   gem 'sidekiq'
 
+  # for import contacts 
+  gem 'omnicontacts'
+
   group :production do
     gem 'rails_stdout_logging'
     gem 'rails_12factor'
