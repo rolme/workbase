@@ -30,8 +30,7 @@ class InventoryController < ApplicationController
 
   def checkout
     warehouse = unit.location.warehouse
-    unit.update(location_id: nil)
-    InventoryMailer.checkout_email(warehouse).deliver
+    unit.update_attributes(location_id: nil, checkout: true)
     redirect_to checkin_inventory_path
   end
 
