@@ -72,6 +72,7 @@ Rails.application.routes.draw do
     end
     member do
       get :checkin
+      post :search_unit
     end
   end
   resources :procurement

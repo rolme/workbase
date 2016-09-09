@@ -80,6 +80,7 @@ source 'https://rubygems.org' do
     gem 'capybara'
     gem "teaspoon-jasmine"
     gem "coffee-script"
+    gem 'rails-controller-testing'
   end
 
   group :development do
