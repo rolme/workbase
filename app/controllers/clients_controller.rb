@@ -10,13 +10,22 @@ class ClientsController < ApplicationController
 
   def create
     @client = Client.new(client_params.merge(company_id: current_user.company_id))
-    if @client.save
-      ClientsMailer.confirmation(@client).deliver
-      flash[:success] = "A confirmation is sent to your Email."
-      redirect_to '/login'
+    if params[:client_lead_submit]
+      if @client.save
+        ClientsMailer.confirmation(@client).deliver
+        flash[:success] = "A confirmation is sent to your Email."
+        redirect_to '/login'
+      else
+        flash[:danger] = @client.errors.full_messages
+        redirect_to root_url
+      end
     else
-      flash[:danger] = @client.errors.full_messages
-      redirect_to root_url
+      if @client.save
+        redirect_to @client
+      else
+        flash[:danger] = @client.errors.full_messages
+        redirect_to root_url
+      end
     end
   end
   def confirm_email
@@ -72,6 +81,9 @@ private
         :street,
         :zipcode
       )
+  end
+  def client_lead_params
+    params.require(:client).permit(:email)
   end
 
 end

@@ -8,7 +8,7 @@ section#header.row
         .input-group.email-send-cont
           = f.email_field :email, { class: "form-control email-send", id: "email" }
           span.input-group-btn
-            button.btn.btn-cstm type="submit" Send
+            button.btn.btn-cstm name="client_lead_submit" type="submit" Send
   #divider.col-xs-12
     = image_tag src='landing/head-divider.png',  :class => "head-divider"
 section#why.row
@@ -111,4 +111,4 @@ section#mission
           .input-group.email-send-cont
             = f.email_field :email, { class: "form-control email-send", id: "email" }
             span.input-group-btn
-              button.btn.btn-cstm type="submit" Send
+              button.btn.btn-cstm name="client_lead_submit" type="submit" Send
