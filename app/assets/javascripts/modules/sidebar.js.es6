@@ -1,20 +1,20 @@
 export default class Sidebar {
   constructor() {
     $("#wrapper").toggleClass("sidebar-toggle");
-    this.handleMenuToggleClick();
-    this.handleMenuToggle2Click();
+    this.handleMinimizedNavBarToggleClick();
+    this.handleNavBarToggleClick();
   }
 
-  handleMenuToggleClick() {
-    $(document).on("click","#menu-toggle",function(e) {
+  handleMinimizedNavBarToggleClick() {
+    $(document).on("click",".navbar-toggle",function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("toggled");
     });
   }
 
-  handleMenuToggle2Click() {
+  handleNavBarToggleClick() {
     this.initMenu();
-    $("#menu-toggle-2").click(function(e) {
+    $(".navbar-toggle").click(function(e) {
       e.preventDefault();
       $("#wrapper").toggleClass("sidebar-toggle");
       $('#menu ul').hide();
