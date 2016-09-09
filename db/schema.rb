@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905072058) do
+ActiveRecord::Schema.define(version: 20160908065810) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -81,8 +81,11 @@ ActiveRecord::Schema.define(version: 20160905072058) do
     t.integer  "client_status_id"
     t.string   "cached_status"
     t.datetime "deleted_at"
-    t.datetime "created_at",       null: false
-    t.datetime "updated_at",       null: false
+    t.datetime "created_at",                         null: false
+    t.datetime "updated_at",                         null: false
+    t.boolean  "confirmed",          default: false
+    t.string   "confirmation_token"
+    t.boolean  "infoconfirm",        default: false
     t.index ["client_status_id"], name: "index_clients_on_client_status_id", using: :btree
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
     t.index ["slug"], name: "index_clients_on_slug", using: :btree

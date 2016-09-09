@@ -5,16 +5,28 @@ class ClientsController < ApplicationController
   end
 
   def new
-    @client = Client.new(company_id: current_user.company_id)
+    @clients = Client.new(company_id: current_user.company_id)
   end
 
   def create
     @client = Client.new(client_params.merge(company_id: current_user.company_id))
     if @client.save
-      redirect_to @client
+      ClientsMailer.confirmation(@client).deliver
+      flash[:success] = "A confirmation is sent to your Email."
+      redirect_to '/login'
     else
       flash[:danger] = @client.errors.full_messages
-      render "new"
+      redirect_to root_url
+    end
+  end
+  def confirm_email
+    @user = Client.find_by(confirmation_token: params[:clients_id])
+    if @user.present?
+      @user.update_attributes(confirmed: true, confirmation_token: nil)
+      redirect_to root_path
+    else
+      flash[:danger] = "Confirmation link is not valid."
+      render :new
     end
   end
 

@@ -45,7 +45,11 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :clients, param: :slug
+  resources :clients, param: :slug do
+    member do
+      get :confirm_email
+    end
+  end
   resources :tickets, param: :slug do
     member do
       put :toggle_close
