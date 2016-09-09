@@ -18,19 +18,42 @@ class RegistrationController < ActionController::Base
   end
 
   def confirm_email
-    @user = User.find_by(confirmation_token: params[:registration_id])
-    if @user.present?
-      @user.update_attributes(confirmed: true, confirmation_token: nil)
-      redirect_to root_path
-    else
+    unless user.present?
       flash[:danger] = "Confirmation link is not valid."
       render :new
     end
   end
 
+  def confirm_user_company
+    if user.present?
+      company = user.company
+      company.update_attributes(name: company_params[:company_name])
+      if company.errors.blank?
+        user.update_attributes(confirmed: true, confirmation_token: nil)
+        flash[:success] = 'You have sucessfully registered, login here'
+        redirect_to login_path
+      else
+        flash[:danger] = company.errors.full_messages
+        render :confirm_email
+      end
+    end
+  end
+  
 private
 
-  def registration_params
-    params.require(:registration).permit(:company_name, :email, :password)
+  def user
+    User.find_by(confirmation_token: params[:registration_id])
   end
+
+  def company
+    user.company
+  end
+
+  def registration_params
+    params.require(:registration).permit(:email, :password, :password_confirmation)
+  end
+
+  def company_params
+    params.require(:registration).permit(:company_name)
+  end  
 end

@@ -82,6 +82,7 @@ Rails.application.routes.draw do
   resources :registration, only: [:create] do
     get :confirm_email
     get :confirmation, on: :collection
+    post :confirm_user_company
   end
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection
