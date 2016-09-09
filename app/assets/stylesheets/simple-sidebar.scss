@@ -1,8 +1,15 @@
-body{
+$sidebar-width: 200px;
+
+.collapse.navbar-collapse {
+  padding-left: 5px;
+}
+
+body {
   margin: 0;
   padding: 0;
   font-family: "Ubuntu";
 }
+
 #wrapper {
   padding-left: 0;
   -webkit-transition: all 0.5s ease;
@@ -13,17 +20,17 @@ body{
 }
 
 #wrapper.toggled {
-  padding-left: 250px;
+  padding-left: $sidebar-width;
   overflow: scroll;
 }
 
 #sidebar-wrapper {
   z-index: 1000;
   position: fixed;
-  left: 250px;
+  left: $sidebar-width;
   width: 0;
   height: 100%;
-  margin-left: -250px;
+  margin-left: -$sidebar-width;
   overflow-y: auto;
   overflow-x: hidden;
   background: #3B4952;
@@ -33,7 +40,7 @@ body{
   transition: all 0.5s ease;
 }
 #wrapper.toggled #sidebar-wrapper {
-  width: 250px;
+  width: 150px;
 }
 
 #page-content-wrapper {
@@ -57,17 +64,17 @@ body{
 .sidebar-nav {
   position: absolute;
   top: 0;
-  width: 250px;
+  width: $sidebar-width;
   margin: 0;
   padding: 0;
   list-style: none;
-  margin-top: 2px;
+  margin-top: 0;
 }
 
 .sidebar-nav li {
   text-indent: 15px;
   line-height: 40px;
-  margin: 20px 0;
+  margin: 0;
 }
 
 .sidebar-nav li a {
@@ -80,7 +87,7 @@ body{
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
-  border-left: red 2px solid;
+  border-left: #109DFF 2px solid;
 }
 
 .sidebar-nav li a:active,
@@ -109,20 +116,7 @@ body{
 .dashboard nav.navbar-default{
   background: #F7F8FB;
 }
-.dashboard .logo a{
-  color: #fff;
-}
-.dashboard .logo{
-  height: 40px;
-  line-height: 40px;
-  margin: 0;
-}
-.dashboard .logo img{
-  height: 100%;
-}
-.dashboard .logo span{
-  margin-right: 10px;
-}
+
 .dashboard nav .navbar-toggle{
   font-size: 24px;
   color: #888;
@@ -142,7 +136,7 @@ body{
   padding-top: 18px;
 }
 .dashboard nav ul.right > li button{
-  margin-top: 10px;
+  margin-top: 0;
 }
 .dashboard nav ul.right > li a span{
   width: 28px;
@@ -266,27 +260,27 @@ body{
 
 @media(min-width:768px) {
   #wrapper {
-    padding-left: 250px;
+    padding-left: $sidebar-width;
   }
   .fixed-brand{
-    width: 250px;
+    width: $sidebar-width;
   }
   #wrapper.toggled {
     padding-left: 0;
   }
 
   #sidebar-wrapper {
-    width: 250px;
+    width: $sidebar-width;
   }
 
   #wrapper.toggled #sidebar-wrapper {
-    width: 250px;
+    width: $sidebar-width;
   }
   #wrapper.sidebar-toggle #sidebar-wrapper {
     width: 50px;
   }
   #wrapper.sidebar-toggle #sidebar-wrapper:hover {
-    width: 250px;
+    width: $sidebar-width;
   }
 
 
@@ -302,12 +296,12 @@ body{
   #wrapper.toggled #page-content-wrapper {
     position: relative;
     margin-right: 0;
-    padding-left: 250px;
+    padding-left: $sidebar-width;
   }
   #wrapper.sidebar-toggle #page-content-wrapper {
     position: relative;
     margin-right: 0;
-    margin-left: -200px;
+    margin-left: -150px;
     -webkit-transition: all 0.5s ease;
     -moz-transition: all 0.5s ease;
     -o-transition: all 0.5s ease;
@@ -366,9 +360,20 @@ body{
 
 }
 
-.nav-pills > li.active > a, .nav-pills > li.active > a:hover, .nav-pills > li.active > a:focus {
+.sidebar-nav > li.active > a,
+.sidebar-nav > li.active > a:hover,
+.sidebar-nav > li.active > a:focus {
   background-color: #F7F8FB;
-  color: black;
+  color: #3B4952;
+}
+
+.sidebar-nav > li.logo-home > a,
+.sidebar-nav > li.logo-home > a:hover,
+.sidebar-nav > li.logo-home > a:focus {
+  background-color: #109DFF;
+  color: #FEDC00;
+  text-decoration: none;
+  border-left: #109DFF 0px solid;
 }
 
 .dashboard nav ul.right > li button {
