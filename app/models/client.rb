@@ -11,7 +11,7 @@ class Client < ApplicationRecord
   scope :sorted, -> {
     order(:company_name, :first_name)
   }
-
+  
   validates :city,
             :email,
             :first_name,
@@ -20,6 +20,9 @@ class Client < ApplicationRecord
             :state,
             :street,
             :zipcode,
+            :confirmed,
+            :confirmation_token,
+            :infoconfirm,
             presence: true
 
   def contact_name

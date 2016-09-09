@@ -23,6 +23,7 @@ Rails.application.routes.draw do
       end
       resources :comments, only: [:create]
     end
+    resources :clients, only: [:create]
   end
 
   # api end points for ticket creation
