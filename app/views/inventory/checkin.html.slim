@@ -32,6 +32,7 @@ hr
               th location
               th check-in
             th added
+            th Checkout
         tbody
           - @units.each do |unit|
             tr data-url=unit_path(unit)
@@ -44,5 +45,6 @@ hr
                 td = unit.location_name
               td = unit.created_at
               td = unit.checkin_at
+              td = link_to "Checkout", checkout_inventory_path(unit_slug: unit.slug, location_id: params[:location_id] ), :data => {:confirm => 'Are you sure?'}
     - else
       p Empty
