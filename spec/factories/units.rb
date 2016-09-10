@@ -13,5 +13,9 @@ FactoryGirl.define do
       sequence(:manufacturer) { |n| "manufacturer ##{n}"}
       cost Faker::Commerce.price
     end
+
+    trait :with_project do
+      project { Project.first || association(:project) }
+    end
   end
 end

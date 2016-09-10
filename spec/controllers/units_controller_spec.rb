@@ -8,7 +8,7 @@ RSpec.describe UnitsController, type: :controller do
   end
   describe "GET #remove_unit" do
     it 'should remove project assigned' do
-      unit = FactoryGirl.create(:unit)
+      unit = FactoryGirl.create(:unit, :with_project)
       request.env["HTTP_REFERER"] = '/projects'
       get :remove_unit, params: {unit_slug: unit.slug}
       unit = Unit.find_by(slug: unit.slug)

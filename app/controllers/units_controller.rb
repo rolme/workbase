@@ -51,7 +51,7 @@ class UnitsController < ApplicationController
     end
   end
 
-  # POST /create_with_project 
+  # POST /create_with_project
   # create unit with project
   def create_project_unit
     @unit = Unit.new(unit_params.merge(company_id: current_company.id))
@@ -69,24 +69,25 @@ class UnitsController < ApplicationController
   end
 
   # GET /unit_project
-  # new unit with project 
+  # new unit with project
   def new_project_unit
   end
 
   # unassign unit for project
   def remove_unit
     @unit = units.find_by(slug: params[:unit_slug])
+    project = @unit.project
     if @unit.update(project_id: nil)
       flash[:success] = 'Item removed successfully!'
     else
       flash[:danger] = @unit.errors.full_messages
     end
-    redirect_to :back
+    redirect_back(fallback_location: project_path(slug: project.slug))
   end
 
 private
 
-  # initialize new unit 
+  # initialize new unit
   def initialize_unit
     @unit       = Unit.new
     @unit.build_upload
@@ -94,7 +95,7 @@ private
     @locations  = locations
   end
 
-  # get project 
+  # get project
   def project
     Project.find_by slug: params[:project_slug]
   end
