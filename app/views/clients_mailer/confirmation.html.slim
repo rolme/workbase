@@ -1,0 +1,10 @@
+.rounded-top
+  h1 Workbase: Email Confirmation
+
+.hr
+
+.content
+  .description
+      p Welcome to Workbase! Please click the following button to confirm your email address and activate your account for #{@user.email}.
+      
+      p = link_to 'Confirm Email', clients_confirm_email_url(@user.confirmation_token), class: 'btn'

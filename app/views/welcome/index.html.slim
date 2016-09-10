@@ -4,11 +4,12 @@ section#header.row
       .header-title Reduce Cost. Gain Time.
       .header-text Lorem Ipsum is simply dummy text of the printing and typesetting industry. Dummy text of the printing and typesetting industry.
       .caption-email-send  Enter your email for <strong>Demo</strong>
-      = form_for :client do |f|
+      = form_for :clients, url: public_clients_path do |f|
         .input-group.email-send-cont
-          = f.text_field :email, { class: "form-control email-send", id: "email" }
+          = f.hidden_field :street
+          = f.email_field :email, { class: "form-control email-send", id: "email" }
           span.input-group-btn
-            button.btn.btn-cstm type="submit" Send
+            button.btn.btn-cstm name="client_lead_submit" type="submit" value="Submit" Send
   #divider.col-xs-12
     = image_tag src='landing/head-divider.png',  :class => "head-divider"
 section#why.row
@@ -107,8 +108,9 @@ section#mission
       .mission-details Large business shouldn’t be the only ones benefiting from business process automation. Let eWORKBASE partner with you to build more efficient company. Schedule a Free Demo
       .mission-send
         .caption-email-send Enter your Email for <strong>Demo</strong>
-        = form_for :client do |f|
+        = form_for :clients, url: public_clients_path do |f|
           .input-group.email-send-cont
-            = f.text_field :email, { class: "form-control email-send", id: "email" }
+            = f.hidden_field :street
+            = f.email_field :email, { class: "form-control email-send", id: "email" }
             span.input-group-btn
-              button.btn.btn-cstm type="submit" Send
+              button.btn.btn-cstm name="client_lead_submit" type="submit" value="Submit" Send
