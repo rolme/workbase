@@ -2,13 +2,17 @@ class Unit < ApplicationRecord
   include SoftDeletable
   include Sluggable
 
-  attr_accessor :location_required, :upload_id, :project_required
+  attr_accessor :checkout,
+                :location_required,
+                :project_required,
+                :upload_id
 
   belongs_to :company
   belongs_to :location, optional: true
   belongs_to :project, optional: true
   belongs_to :unit_category, counter_cache: :count
   has_one :upload, as: :uploadable, dependent: :destroy
+  before_update :check_item_checkout
   accepts_nested_attributes_for :upload
 
   scope :without_project, -> {
@@ -62,13 +66,17 @@ class Unit < ApplicationRecord
            to: :location,
            prefix: true
 
-  delegate :warehouse_name,
-           :area_name,
-           to: :location
+  delegate :name,               # project_name
+           to: :project,
+           prefix: true
 
   delegate :label,              # unit_category_label
            to: :unit_category,
            prefix: true
+
+ delegate :warehouse_name,
+          :area_name,
+          to: :location
 
   validates :cost, numericality: true, presence: true
   validates :manufacturer, presence: true
@@ -89,12 +97,17 @@ class Unit < ApplicationRecord
     update_attribute(:checkin_at, DateTime.current)
   end
 
-  # assigned project name
-  def project_name
-    project.name if project
+  def check_item_checkout
+    if self.checkout == true && self.location_id.nil?
+      InventoryMailingJob.perform_now(previous_location.warehouse)
+    end
   end
 
 private
+
+  def previous_location
+    Location.find_by(id: self.location_id_was)
+  end
 
   # check when unit create with project
   def project_required?

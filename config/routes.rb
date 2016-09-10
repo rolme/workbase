@@ -68,6 +68,8 @@ Rails.application.routes.draw do
     end
     member do
       get :checkin
+      get :checkout
+
       post :search_unit
     end
   end
