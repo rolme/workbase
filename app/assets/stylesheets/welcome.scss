@@ -1,0 +1,456 @@
+// Place all the styles related to the Welcome controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+@import "font-awesome";
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "select2-bootstrap";
+@import "bootsy";
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600';
+@import 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,700';
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('fonts/Avenir.ttc');
+}
+
+$blue: #109DFF;
+$yellow: #FEDC00;
+$grey: #3B4952;
+$white: #F7F8FB;
+
+
+.fa-circle{
+    color: $blue !important;
+}
+
+.fa-facebook, .fa-twitter, .fa-instagram{
+    color: $yellow !important;
+}
+
+html,body{
+    font-family: 'Avenir';
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 100%;
+}
+strong{
+    font-weight: bolder;
+}
+.section-title, .service-title, .service-in-title, .label-chart, .nav>li>a, .who-we-help-title, .mission-title, .footer-brand, .footer-address, .footer-contact, .footer-follow{
+    font-family: 'Ubuntu', sans-serif;
+}
+#chart-1, .header-text, .caption-email-send, .service-details, .service-in-details, .who-help-details, .mission-details{
+    font-family: 'Avenir';
+}
+
+.navbar-cstm{
+    background-color: rgba(0,0,0,0);
+    background-repeat: repeat;
+    border-bottom: 0 !important;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 0 !important;
+}
+.nav>li>a{
+    color: #fff;
+}
+.nav>li>a.active{
+    font-weight: 700;
+}
+.nav>li>a:focus, .nav>li>a:hover{
+    background: initial;
+    text-shadow: initial;
+    color: #fff;
+}
+section{
+    position: relative;
+}
+.row{
+    margin: 0;
+}
+#header #content{
+    position: relative;
+    top: 20%;
+    transform: translateY(-20%);
+}
+section#header{
+    padding-top: 50px;
+    background: image-url("landing/bg-pattern.jpg");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    height: 100%;
+    width: 100%;
+}
+section#header .container-fluid{
+    text-align: center;
+}
+.header-title{
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+.header-text{
+    text-align: center;
+    font-size: 15px;
+    color: #fff;
+    letter-spacing: 0.1em;
+    line-height: 30px;
+    width: 615px;
+    margin: 0 auto;
+    margin-bottom: 35px;
+}
+.caption-email-send{
+    text-align: center;
+    color: #fff;
+    font-size: 12px;
+    margin-bottom: 10px;
+}
+.email-send-cont{
+    width: 320px;
+    margin: 0 auto;
+}
+.email-send{
+    background: rgba(0,0,0,0);
+    border: 2px solid #fff;
+    color: #fff;
+}
+.email-send:focus{
+    border-color: #e4e4e4;
+}
+.btn-cstm{
+    font-family: 'Ubuntu', sans-serif;
+    background: #fedc00;
+    border: 2px solid #fedc00;
+    color: $grey;
+    letter-spacing: .150em;
+    text-transform: uppercase;
+    font-weight: 700;
+}
+div#divider, #divider img{
+    padding: 0;
+    position: absolute;
+    bottom: 0;
+}
+.head-divider{
+    width: 100%;
+}
+
+section#why{
+    width: 100%;
+    padding-top: 64px;
+    padding-bottom: 100px;
+}
+section#why .section-title{
+    color: $grey;
+    font-size: 31px;
+    text-align: center;
+    margin-bottom: 45px;
+}
+.services{
+    text-align: center;
+}
+.service-icon{
+    margin-left: auto;
+    margin-right: auto;
+    height: 69px;
+    width: 69px;
+    margin-bottom: 17px;
+    background-color: rgba(254, 220, 0, 0.11);
+    padding: 15px;
+    border-radius: 50px;
+    border: 2px solid #119dff;
+}
+.service-icon img{
+    height: 100%;
+}
+
+.service-title{
+    color: $grey;
+    font-weight: 500;
+    font-size: 19px;
+    margin-bottom: 17px;
+}
+.service-details{
+    line-height: 24px;
+    font-size: 13px;
+    color: #bfc0c4;
+}
+.col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9{
+    padding: 0;
+}
+section#service{
+    padding: 0 !important;
+    background-color: #f7f8fc;
+}
+.service-in-desc-icon{
+    margin-bottom: 25px;
+}
+.service-in-desc-icon{
+    width: 89px;
+    height: 89px;
+}
+.service-in-desc-icon img{
+    width: 100%;
+}
+.service-in-title{
+    font-size: 26px;
+    color: $grey;
+
+}
+.hrule{
+    margin-top: 5px;
+    margin-bottom: 20px;
+    width: 65px;
+    height: 10px;
+    background-color: $yellow;
+}
+.service-in-details{
+    font-size: 14.5px;
+    line-height: 26px;
+    color: #b0b3b8;
+}
+.free-demo{
+    font-weight: bolder;
+    text-decoration: none;
+    color: #b0b3b8;
+}
+.free-demo:hover{
+    text-decoration: underline;
+    color: #b0b3b8;
+}
+
+.service-in-desc{
+    width: 100%;
+    padding: 0 70px;
+}
+.service-in-image-col-right{
+    float: right !important;
+}
+.chart-cont{
+    padding: 6.31% 13.03%;
+}
+.label-chart{
+    font-size: 32px;
+    color: $grey;
+
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 45px;
+}
+section#who-we-help{
+    border-top: 1px solid #ecf1f4;
+    width: 100%;
+    padding: 3.9% 10.88%;
+}
+.who-we-help-col{
+    padding: 0 10px;
+}
+.who-we-help-image{
+    border-top: 10px solid $blue;
+}
+.who-we-help-image img{
+    width: 100%;
+}
+.who-we-help-text{
+    padding: 18px;
+    background: #f7f8fc;
+    border-right: 1px solid #f2f2f2;
+    border-left: 1px solid #f2f2f2;
+    border-bottom: 1px solid #f2f2f2;
+}
+.who-we-help-title{
+    font-size: 20px;
+    color: #119dff;
+    font-weight: bold;
+}
+.who-we-help-details{
+    font-size: 14px;
+    line-height: 24px;
+    color: #4e5b64;
+}
+section#mission{
+    background: $blue;
+}
+.mission-title{
+    font-size: 31px;
+    color: #fff;
+    font-weight: normal;
+    width: 100%;
+    text-align: center;
+    margin-bottom: 30px;
+}
+.mission-details{
+    color: #fff;
+    font-size: 16px;
+    line-height: 29px;
+    text-align: center;
+    margin-bottom: 40px;
+}
+.mission-details .free-demo{
+    color: #fff;
+}
+.footer-brand{
+    margin-bottom: 25px;
+}
+.footer-brand a{
+    font-size: 16px;
+    letter-spacing: 0.16em;
+    font-weight: bold;
+    color: $grey;
+}
+.footer-address{
+    font-weight: bold;
+    font-size: 14px;
+    color: #d3d8dc;
+    line-height: 23.44px;
+}
+.footer-address a{
+    color: #d3d8dc;
+}
+.footer-contact-cont{
+    margin-bottom: 20px;
+}
+.footer-contact, .footer-follow{
+    color: #d2d7da;
+    font-weight: bold;
+    font-size: 14px;
+}
+.contact-tel-no, .contact-email{
+    color: $grey;
+    font-weight: bold;
+    font-size: 14px;
+}
+.footer-icons ul li{
+    list-style: none;
+    display: inline;
+    margin-right: 12px;
+}
+.footer-icons ul{
+    padding: 0;
+}
+.navbar-brand{
+    font-family: 'Ubuntu', sans-serif;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+}
+.navbar-brand:hover{
+    color: #efefef;
+}
+.service-in-image img{
+    width: 100%;
+}
+.footer-icons ul{
+    margin: 0;
+}
+@media (min-width: 800px){
+    section#header{
+        height: 100%;
+        width: 100%;
+    }
+    .service-in-desc{
+        position: relative;
+        top: 50%;
+        transform: translateY(11%);
+    }
+    .service-in-image{
+        padding: 8%;
+    }
+    .service-col{
+        padding: 0 15% 0 15%;
+    }
+    .main-cont{
+        max-width: 940px;
+        margin: 0 auto;
+}
+    section#mission{
+        padding: 90px 255px;
+    }
+    footer{
+        padding-top: 50px;
+        padding-bottom: 75px;
+        padding-left: 135px;
+        padding-right: 135px;
+    }
+    .col-service-why{
+        padding: 15px;
+    }
+    .footer-follow-cont{
+        display: flex;
+        align-items: center;
+    }
+}
+@media (max-device-width: 321px) and (max-width: 321px){
+    section#header{
+        height: 50%;
+        width: 100%;
+    }
+}
+@media (max-width: 768px){
+    section#header{
+        height: 85%;
+        width: 100%;
+    }
+    .service-in-desc{
+        margin: 50px auto;
+        text-align: center;
+    }
+    .service-in-desc-icon{
+        margin: 0 auto;
+    }
+    .hrule{
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .chart-cont{
+        padding-right: 0;
+        padding-left: 0;
+    }
+    .canvas#myChart{
+        width: 100%;
+        height: 100%;
+    }
+    .col-service-why{
+        margin: 20px auto;
+    }
+    .who-we-help-col{
+        margin: 20px 0;
+    }
+    .who-we-help-text .hrule{
+        margin-left: 0;
+        margin-right: 0;
+    }
+    section#mission{
+    padding: 30px;
+    }
+    footer{
+        padding: 20px;
+        text-align: center;
+    }
+    footer .row{
+        margin: 20px;
+    }
+    .footer-follow-cont{
+        display: inline;
+    }
+}
+@media (max-device-width: 776px) and (max-width: 776px){
+ul.nav.navbar-nav.navbar-right {
+    display: flex;
+    overflow: inherit;
+    float: right;
+    position: relative;
+    bottom: 63px !important;
+}
+}

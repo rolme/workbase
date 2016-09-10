@@ -25,11 +25,11 @@ Given(/^I am logged in$/) do
 
   click_button "Sign in"
 
-  visit root_path
+  visit workbase_index_path
 end
 
 When(/^I go to the homepage$/) do
-  visit root_path
+  visit workbase_index_path
 end
 
 

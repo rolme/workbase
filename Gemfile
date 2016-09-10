@@ -37,14 +37,18 @@ source 'https://rubygems.org' do
   # Javascript
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.5'
-  gem 'select2-rails'
   gem 'browserify-rails'
+  gem 'select2-rails'
+  gem 'chartkick'
 
   # Auditing
   gem 'paper_trail', '~> 5.2'
 
   # ActionCable
   gem 'redis'
+
+  # for background job
+  gem 'sidekiq'
 
   group :production do
     gem 'rails_stdout_logging'
@@ -73,6 +77,7 @@ source 'https://rubygems.org' do
     gem 'capybara'
     gem "teaspoon-jasmine"
     gem "coffee-script"
+    gem 'rails-controller-testing'
   end
 
   group :development do

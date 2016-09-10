@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+
+  get 'welcome/index'
+
   mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   mount ActionCable.server => '/cable'
 
@@ -22,10 +25,34 @@ Rails.application.routes.draw do
     end
   end
 
+  # api end points for ticket creation
+  namespace :api, defaults: { format: :json } do
+    namespace :v1 do
+      resource :tickets, only: [:create]
+    end
+  end
+
+  # for unauthenticated user actions
+  namespace :external do
+    resources :tickets, param: :slug, only: [] do
+      member do
+        put :toggle_close
+      end
+      collection do
+        get :customer
+      end
+      resources :comments, only: [:create]
+    end
+  end
+
   resources :clients, param: :slug
   resources :tickets, param: :slug do
     member do
       put :toggle_close
+    end
+    collection do
+      get :closed
+      get :deleted
     end
     resources :comments
   end
@@ -41,6 +68,7 @@ Rails.application.routes.draw do
     end
     member do
       get :checkin
+      post :search_unit
     end
   end
   resources :procurement
@@ -70,7 +98,7 @@ Rails.application.routes.draw do
     end
   end
   resources :workbase, only: [:index]
-  
+
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
 
@@ -80,5 +108,13 @@ Rails.application.routes.draw do
   get "/logout",   to: "session#destroy"
   get "/register", to: "registration#new"
 
-  root to: "workbase#index"
+  # password request
+  resources :passwords, only: [:new, :create] do
+    collection do
+      get :edit
+      put :update
+    end
+  end
+
+  root to: "welcome#index"
 end

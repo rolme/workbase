@@ -1,23 +1,24 @@
 .row
   nav.navbar.no-margin
     display
-    .navbar-header
-      button#menu-toggle.navbar-toggle.collapsed data-toggle="collapse" type="button" 
-        span.fa.fa-bars aria-hidden="true"
+      .navbar-header
+        button.navbar-toggle.collapsed data-toggle="collapse" type="button" 
+          span.fa.fa-bars aria-hidden="true"
     
-    #bs-example-navbar-collapse-1.collapse.navbar-collapse
+    .collapse.navbar-collapse
       ul.nav.navbar-nav
         li.active
-          button#menu-toggle-2.navbar-toggle.collapse.in data-toggle="collapse" 
+          button.navbar-toggle.collapse.in data-toggle="collapse" 
             span.fa.fa-bars aria-hidden="true" 
         li
           a href="#" = header
       ul.nav.navbar-nav.pull-right.right
-        li
-          a href="#"=  current_user.company_name
+        li.nav-item
+          a.nav-link href="#" = current_user.company_name
+
         li
           a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
-            span RP
+            span= current_user.get_logo_name
           ul.dropdown-menu.navbar-right#user-dropdown role="menu"
             li
               a href=profile_user_path(current_user)
@@ -26,9 +27,3 @@
             li
               a href=logout_path
                 = fa_icon("sign-out fw", text: "Logout")
-        li
-          a href="#" 
-            span.info
-              i.fa.fa-info
-    
-

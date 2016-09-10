@@ -19,7 +19,8 @@
         - @projects.each do |project|
           tr data-url=project_path(project)
             td
-              input type="checkbox"
+              a href=project
+                input type="checkbox"
             td data-content="Company" 
               = project.client_company_name
             td data-content="Name"  
@@ -35,9 +36,3 @@
               = number_to_currency(project.total_material_cost, format: "%n")
             td.text-center
               =  fa_icon('search-plus')
-              =< fa_icon('trash')
-      
-
-
-
-

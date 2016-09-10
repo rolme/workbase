@@ -1,10 +1,10 @@
 #sidebar-wrapper
-  ul#menu.sidebar-nav.nav-pills.nav-stacked
-    h4.logo
-      a href=root_path 
-        span.fa-stack.fa-lg
-          i.fa.fa-compass.fa-stack-1x
-        strong  eWB 
+  ul#menu.sidebar-nav.nav-stacked
+    li.logo-home
+      a href=workbase_index_path 
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-compass.fa-stack-1x.logo-color
+        strong eWORKBASE
     li class=get_active_class(controller_name, "clients")
       a href=clients_path
         span.fa-stack.fa-lg.pull-left
@@ -15,7 +15,6 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-folder.fa-stack-1x
         | Projects
-    
     li class=get_active_class(controller_name, "procurement")
       a href="#"
         span.fa-stack.fa-lg.pull-left
@@ -31,13 +30,20 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-flask.fa-stack-1x
         | Inventory
-    li class=get_active_class(controller_name, "warehouses")
-      a href=warehouses_path
-        span.fa-stack.fa-lg.pull-left
-          i.fa.fa-cube.fa-stack-1x
-        | Warehouse
     li class=get_active_class(controller_name, "")
       a href=logout_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-sign-out.fa-stack-1x
         | Logout
+  ul.sidebar-nav.nav-stacked.bottom-menu
+    - if current_user.admin?
+      li
+        a 
+          span.fa-stack.fa-lg.pull-left
+            i.fa.fa-cube.fa-stack-1x
+          | Add-ons Store
+    li
+      a 
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-gear.fa-stack-1x
+        | Settings
