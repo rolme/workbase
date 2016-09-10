@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160905072058) do
+ActiveRecord::Schema.define(version: 20160910073439) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -108,6 +108,26 @@ ActiveRecord::Schema.define(version: 20160905072058) do
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
     t.index ["company_status_id"], name: "index_companies_on_company_status_id", using: :btree
+  end
+
+  create_table "feature_settings", force: :cascade do |t|
+    t.string   "type"
+    t.integer  "type_id"
+    t.integer  "feature_id"
+    t.text     "settings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_settings_on_feature_id", using: :btree
+    t.index ["type", "type_id"], name: "index_feature_settings_on_type_and_type_id", using: :btree
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.decimal  "monthly_price", precision: 8, scale: 2
+    t.text     "settings"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
   end
 
   create_table "projects", force: :cascade do |t|
