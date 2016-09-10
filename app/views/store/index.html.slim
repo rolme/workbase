@@ -4,10 +4,10 @@
       .thumbnail.feature-card
         .image
         .caption
-          h4.title = feature.title
+          h4.title = feature.name
           hr.divider
           p.description = feature.description
-          - if feature.enabled
+          - if @settings.exists?(feature_id: feature.id)
             p.enabled = fa_icon('check-circle', text: "Enabled")
           - else
             p.disabled = fa_icon('circle-o', text: "Not Enabled")
