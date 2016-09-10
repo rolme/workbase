@@ -8,6 +8,8 @@ class Company < ApplicationRecord
   has_many :unit_categories
   has_many :units
   has_many :users
+  has_many :settings, class_name: CompanyFeatureSetting, foreign_key: :type_id
+  has_many :features, through: :settings, source: :feature
 
   validates :name, uniqueness: true
 end

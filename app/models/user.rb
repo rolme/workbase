@@ -10,6 +10,8 @@ class User < ApplicationRecord
   belongs_to :company
   belongs_to :security_question, optional: true
   has_many :comments
+  has_many :settings, class_name: UserFeatureSetting, foreign_key: :type_id
+  has_many :features, through: :settings, source: :feature
 
   validates_associated :company
   validates :email, uniqueness: true, email: true, domain: true
