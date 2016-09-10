@@ -2,7 +2,10 @@ class Unit < ApplicationRecord
   include SoftDeletable
   include Sluggable
 
-  attr_accessor :location_required, :upload_id , :checkout
+  attr_accessor :checkout,
+                :location_required,
+                :project_required,
+                :upload_id
 
   belongs_to :company
   belongs_to :location, optional: true
@@ -12,6 +15,9 @@ class Unit < ApplicationRecord
   before_update :check_item_checkout
   accepts_nested_attributes_for :upload
 
+  scope :without_project, -> {
+    where(project_id: nil)
+  }
   scope :in_inventory, -> {
     where.not(location_id: nil)
   }
@@ -60,17 +66,22 @@ class Unit < ApplicationRecord
            to: :location,
            prefix: true
 
-  delegate :warehouse_name,
-           :area_name,
-           to: :location
+  delegate :name,               # project_name
+           to: :project,
+           prefix: true
 
   delegate :label,              # unit_category_label
            to: :unit_category,
            prefix: true
 
+ delegate :warehouse_name,
+          :area_name,
+          to: :location
+
   validates :cost, numericality: true, presence: true
   validates :manufacturer, presence: true
   validates :location_id, presence: true, if: :location_required?
+  validates :project_id,  presence: true, if: :project_required?
 
   before_create :generate_qrcode
 
@@ -93,9 +104,14 @@ class Unit < ApplicationRecord
   end
 
 private
-  
+
   def previous_location
     Location.find_by(id: self.location_id_was)
+  end
+
+  # check when unit create with project
+  def project_required?
+    project_required
   end
 
   def attach_upload

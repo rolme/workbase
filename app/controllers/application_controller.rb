@@ -14,4 +14,8 @@ class ApplicationController < ActionController::Base
   def not_found
     render 'errors/404' and return
   end
+
+  def current_company
+    current_user.try(:company)
+  end
 end
