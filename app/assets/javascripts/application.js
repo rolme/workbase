@@ -23,6 +23,8 @@
 // $ npm install <javascript-module> --save
 ////////////////////////////////////////////////////////////////////////////////
 
+//= require chartkick
+
 import "babel-polyfill";
 
 // Ready Classes

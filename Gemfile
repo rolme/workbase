@@ -37,8 +37,9 @@ source 'https://rubygems.org' do
   # Javascript
   gem 'jquery-rails'
   gem 'jbuilder', '~> 2.5'
-  gem 'select2-rails'
   gem 'browserify-rails'
+  gem 'select2-rails'
+  gem 'chartkick'
 
   # Auditing
   gem 'paper_trail', '~> 5.2'

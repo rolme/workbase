@@ -1,10 +1,10 @@
 #sidebar-wrapper
   ul#menu.sidebar-nav.nav-pills.nav-stacked
     h4.logo
-      a href=root_path 
+      a href=root_path
         span.fa-stack.fa-lg
-          i.fa.fa-compass.fa-stack-1x
-        strong  eWB 
+          i.fa.fa-compass.fa-stack-1x.logo-color
+        strong= current_user.company_name
     li class=get_active_class(controller_name, "clients")
       a href=clients_path
         span.fa-stack.fa-lg.pull-left
@@ -15,14 +15,13 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-folder.fa-stack-1x
         | Projects
-    
     li class=get_active_class(controller_name, "procurement")
       a href="#"
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-cloud-download.fa-stack-1x
         | Procurement
     li class=get_active_class(controller_name, "tickets")
-      a href=tickets_path 
+      a href=tickets_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-ticket.fa-stack-1x
         | Tickets
@@ -34,8 +33,14 @@
     li class=get_active_class(controller_name, "store")
       a href=store_index_path
         span.fa-stack.fa-lg.pull-left
-          i.fa.fa-gears.fa-stack-1x
+          i.fa.fa-cube.fa-stack-1x
         | Store
+  ul.sidebar-nav.nav-pills.nav-stacked.bottom-menu
+    li
+      a
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-gear.fa-stack-1x
+        | Settings
     li class=get_active_class(controller_name, "")
       a href=logout_path
         span.fa-stack.fa-lg.pull-left
