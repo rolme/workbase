@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    resources :features
+  end
+
   # for unauthenticated user actions
   namespace :public do
     resources :tickets, param: :slug, only: [] do
