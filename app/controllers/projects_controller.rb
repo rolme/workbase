@@ -26,6 +26,21 @@ class ProjectsController < ApplicationController
     @project    = project
     @proposal   = ProposalAdapter.new(project.proposal)
     @attachment = Attachment.new
+
+    # get all units from current company
+    @units      = current_company.units.without_project.order(:location_id)
+  end
+
+  # add project unit from existing list
+  def add_unit
+    project = projects.find_by(slug: params[:project_slug])
+    unit    = Unit.find_by(slug: unit_params[:slug])
+    if unit && unit.update(project_id: project.id)
+      flash[:success] = 'Item added successfully!'
+    else
+      flash[:danger] = "Item not found"
+    end
+    redirect_to project
   end
 
 private
@@ -62,5 +77,9 @@ private
       :start_date,
       :title
     )
+  end
+
+  def unit_params
+    params.require(:unit).permit(:slug)
   end
 end

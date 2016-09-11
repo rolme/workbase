@@ -1,10 +1,11 @@
 #sidebar-wrapper
-  ul#menu.sidebar-nav.nav-pills.nav-stacked
-    h4.logo
+
+  ul#menu.sidebar-nav.nav-stacked
+    li.logo-home
       a href=workbase_index_path
-        span.fa-stack.fa-lg
+        span.fa-stack.fa-lg.pull-left
           i.fa.fa-compass.fa-stack-1x.logo-color
-        strong= current_user.company_name
+        strong eWORKBASE
     li class=get_active_class(controller_name, "clients")
       a href=clients_path
         span.fa-stack.fa-lg.pull-left
@@ -30,19 +31,20 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-flask.fa-stack-1x
         | Inventory
-    li class=get_active_class(controller_name, "store")
-      a href=store_index_path
-        span.fa-stack.fa-lg.pull-left
-          i.fa.fa-cube.fa-stack-1x
-        | Store
-  ul.sidebar-nav.nav-pills.nav-stacked.bottom-menu
-    li
-      a
-        span.fa-stack.fa-lg.pull-left
-          i.fa.fa-gear.fa-stack-1x
-        | Settings
     li class=get_active_class(controller_name, "")
       a href=logout_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-sign-out.fa-stack-1x
         | Logout
+
+  ul.sidebar-nav.nav-stacked.bottom-menu
+    li class=get_active_class(controller_name, "store")
+      a href=store_index_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-cube.fa-stack-1x
+        | Add-ons Store
+    li
+      a
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-gear.fa-stack-1x
+        | Settings

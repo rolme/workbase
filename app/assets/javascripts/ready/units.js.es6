@@ -9,6 +9,10 @@ export default class Units {
     this.form();
   }
 
+  new_project_unit() {
+    this.form();
+  }
+
   form() {
     new Uploader();
   }
