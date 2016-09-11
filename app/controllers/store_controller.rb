@@ -1,6 +1,6 @@
 class StoreController < ApplicationController
   def index
     @settings = current_user.company.settings
-    @features = Feature.all
+    @features = Feature.active.all
   end
 end
