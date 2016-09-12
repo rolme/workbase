@@ -19,7 +19,7 @@ class RegistrationForm
            prefix: true
 
 validates_presence_of :user_email,
-                      :user_password
+                      :user_password,
                       :password_confirmation
 
   def initialize
