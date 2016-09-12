@@ -1,3 +1,7 @@
 class ClientType < Registry
-  belongs_to :client
+
+  # get default type
+  def self.default
+    find_by(label: 'lead')
+  end
 end

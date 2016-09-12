@@ -83,7 +83,7 @@ SectionType.create([
 
 ClientType.create([
   { label: 'lead' },
-  { label: 'client' },
+  { label: 'customer' },
   { label: 'follow_up' }
 ])
 

@@ -11,7 +11,7 @@ class Client < ApplicationRecord
     order(:company_name, :first_name)
   }
 
-  before_create :client_type_deault
+  before_create :client_type_default
 
   validates :city,
             :email,
@@ -39,7 +39,7 @@ class Client < ApplicationRecord
   private
 
     # default client type
-    def client_type_deault
-      self.client_type = ClientType.find_by(label: 'lead')
+    def client_type_default
+      self.client_type = ClientType.default
     end
 end
