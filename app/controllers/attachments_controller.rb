@@ -1,5 +1,5 @@
 class AttachmentsController < ApplicationController
-  before_filter :set_project
+  before_action :set_project
 
   # GET /projects/:project_slug/attachments
   def index
