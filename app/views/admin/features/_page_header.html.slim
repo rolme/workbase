@@ -1,6 +1,11 @@
 .page-header
 
   ul.list-inline
+    - if links.include?(:dashboard_index)
+      li
+        a href=admin_dashboard_path
+          = fa_icon('list', text: "Back to the Dashboard")
+
     - if links.include?(:feature_index)
       li
         a href=admin_features_path

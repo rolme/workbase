@@ -13,8 +13,11 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+    get :dashboard, to: 'dashboard#index'
     resources :features
   end
+
+  get :settings, to: 'settings#index'
 
   # for unauthenticated user actions
   namespace :public do
@@ -84,7 +87,7 @@ Rails.application.routes.draw do
     end
   end
   resources :workbase, only: [:index]
-  resources :store, only: [:index]
+  get :store, to: 'store#index'
 
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
