@@ -8,6 +8,7 @@ class Company < ApplicationRecord
   has_many :unit_categories
   has_many :units
   has_many :users
+  has_many :clients
 
   validates :name, uniqueness: true
 end

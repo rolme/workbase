@@ -89,6 +89,12 @@ SecurityQuestion.create([
   { label: 'What was the model of your first car?' }
 ])
 
+EncounterType.create([
+  { label: 'phone' },
+  { label: 'meeting' },
+  { label: 'email' }
+])
+
 puts "done"
 
 puts ""
