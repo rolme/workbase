@@ -12,6 +12,7 @@
           th model
           th description
           th cost
+          th assigned project
           th Action
             
       tbody
@@ -29,6 +30,8 @@
               = unit.description
             td data-content="Cost"
               = number_to_currency(unit.cost, format: "%n")
+            td data-content="Assigned project"
+              = unit.project_name
             td.text-center
               =  fa_icon('search-plus')
               =< fa_icon('trash')

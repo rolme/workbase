@@ -1,0 +1,27 @@
+/! Modal
+#unitModal.modal.fade aria-labelledby="myModalLabel" role="dialog" tabindex="-1"
+  .modal-dialog role="document" 
+    .modal-content
+      .modal-header
+        button.close aria-label="Close" data-dismiss="modal" type="button" 
+          span aria-hidden="true"  ×
+        h4#myModalLabel.modal-title Add Unit
+      .modal-body.container-fluid
+
+        .row
+          .col-md-offset-1.col-md-10
+            ul.nav.nav-tabs role="tablist"
+              li.active role="presentation"
+                a href="#add_unit" aria-controls="add_unit" role="tab" data-toggle="tab"
+                  | Units
+
+            .tab-content
+              #add_unit.tab-pane.active
+                = form_tag project_add_unit_path(@project) do
+                  .form-group
+                    .col-sm-12
+                      = select_tag('unit[slug]', options_for_select(@units.collect{|u| [u.model, u.slug]}), {include_blank: 'Select unit', class: 'form-control'})
+                      br
+                  .form-group
+                    .col-sm-offset-2.col-sm-10.text-right
+                      = submit_tag 'Add', class: 'btn btn-primary submit'
