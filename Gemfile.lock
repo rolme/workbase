@@ -7,6 +7,14 @@ GIT
       activesupport (>= 4.0.0)
       mime-types (>= 1.16)
 
+GIT
+  remote: git@github.com:rolme/omnicontacts.git
+  revision: 5b5015ec2bb80097503eadbd82edec4979e06372
+  specs:
+    omnicontacts (0.3.9)
+      json
+      rack
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -178,9 +186,6 @@ GEM
     nokogiri (1.6.8)
       mini_portile2 (~> 2.1.0)
       pkg-config (~> 1.1.7)
-    omnicontacts (0.3.7)
-      json
-      rack
     paper_trail (5.2.0)
       activerecord (>= 3.0, < 6.0)
       activesupport (>= 3.0, < 6.0)
@@ -397,4 +402,4 @@ RUBY VERSION
    ruby 2.3.1p112
 
 BUNDLED WITH
-   1.12.5
+   1.13.0
