@@ -17,7 +17,7 @@ source 'https://rubygems.org' do
 
   # Image manipulation
   gem 'fog-aws'
-  gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+  gem 'carrierwave', git: 'git@github.com:carrierwaveuploader/carrierwave'
   gem 'carrierwave-video-thumbnailer'
   gem 'mini_magick'
 

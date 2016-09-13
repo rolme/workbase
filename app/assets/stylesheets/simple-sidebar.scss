@@ -1,5 +1,12 @@
 $sidebar-width: 200px;
 
+// TODO: This section will move into header-bar.scss
+.navbar.no-margin.header-bar {
+  border: 0px;
+  border-radius: 0px;
+  border-bottom: 1px solid black;
+}
+
 .collapse.navbar-collapse {
   padding-left: 5px;
 }
