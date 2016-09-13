@@ -1,0 +1,38 @@
+= render "page_header", header: 'Client: Types', links: [:index, :add_client_type]
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th name
+          th created
+          th
+      tbody
+        - @client_types.active.each do |client_type|
+          tr data-url=edit_client_type_path(client_type)
+            td = client_type.label
+            td = client_type.created_at
+            td.text-right
+              a.btn.btn-default.btn-sm> href=edit_client_type_path(client_type)
+                =  fa_icon('edit')
+
+- if @client_types.deleted.present?
+  .row
+    .col-sm-12
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th name
+            th deleted
+            th
+        tbody
+          - @client_types.deleted.each do |client_type|
+            tr
+              td = client_type.label
+              td = client_type.deleted_at
+              td.text-right
+                a.btn.btn-default.btn-sm> href=restore_client_type_path(client_type)
+                  =  fa_icon('arrow-up')
+                a.btn.btn-warning.btn-sm< href=client_type_path(client_type) data-confirm="This will permanently delete this item. Are you sure?" data-method="delete" rel="nofollow"
+                  =  fa_icon('trash')

@@ -104,6 +104,10 @@ Rails.application.routes.draw do
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
 
+  resources :client_types, param: :slug do
+    get :restore, on: :member
+  end
+
   resources :login, only: [:index]
   post "/emulate", to: "session#emulate"
   post "/login",   to: "session#create"

@@ -8,6 +8,23 @@ class Company < ApplicationRecord
   has_many :unit_categories
   has_many :units
   has_many :users
+  has_many :client_types
 
   validates :name, uniqueness: true
+
+  after_create :default_client_types
+
+
+  private
+
+  # create labels for company clients 
+  def default_client_types
+    self.client_types.create([
+      { label: 'lead' },
+      { label: 'prospect' },
+      { label: 'qualified' },
+      { label: 'potential' },
+      { label: 'customer' },
+    ])
+  end
 end

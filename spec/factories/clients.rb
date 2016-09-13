@@ -11,5 +11,6 @@ FactoryGirl.define do
     last_name "Contact"
     phone "12345678"
     fax "5555555555"
+    client_type
   end
 end

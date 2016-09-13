@@ -14,6 +14,7 @@
           th email
           th address
           th projects
+          th type
           th Action
             
       tbody
@@ -33,6 +34,14 @@
               = client.address
             td data-content="Count"
               = client.projects.count
+            td data-content="Type"
+              = client.client_type&.label
+              - if client.client_type&.deleted?
+                small
+                  | (deleted: 
+                  a href=restore_client_type_path(client.client_type)
+                    | restore
+                  | )
             td.text-center
               =  fa_icon('search-plus')
               =< fa_icon('trash')

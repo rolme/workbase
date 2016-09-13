@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   include SoftDeletable
 
   belongs_to :company
+  belongs_to :client_type
 
   has_many :projects
 

@@ -58,7 +58,8 @@ private
         :phone,
         :state,
         :street,
-        :zipcode
+        :zipcode,
+        :client_type_id
       )
   end
 
