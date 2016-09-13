@@ -6,7 +6,7 @@ RSpec.describe RegistrationForm, type: :model do
   it 'should not save without an email' do
     params = {
       company_name: "",
-      email: "register@testmail.com",
+      email: "",
       password: "1234"
     }
 
@@ -41,7 +41,8 @@ RSpec.describe RegistrationForm, type: :model do
     params = {
       company_name: "Company",
       email: "new-test@testmail.com",
-      password: "1234"
+      password: "1234",
+      password_confirmation: "1234"
     }
 
     expect(registration.submit(params)).to eql(false)
@@ -51,7 +52,8 @@ RSpec.describe RegistrationForm, type: :model do
     params = {
       company_name: "Company",
       email: "register@testmail.com",
-      password: "1234"
+      password: "1234",
+      password_confirmation: "1234"
     }
 
     expect(!!registration.submit(params)).to eql(true)
@@ -61,7 +63,8 @@ RSpec.describe RegistrationForm, type: :model do
     params = {
       company_name: "Company",
       email: "register@testmail.com",
-      password: "1234"
+      password: "1234",
+      password_confirmation: "1234"
     }
 
     user = registration.submit(params)
@@ -72,7 +75,8 @@ RSpec.describe RegistrationForm, type: :model do
     params = {
       company_name: "Company",
       email: "register@testmail.com",
-      password: "1234"
+      password: "1234",
+      password_confirmation: "1234"
     }
 
     user = registration.submit(params)

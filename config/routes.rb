@@ -46,6 +46,10 @@ Rails.application.routes.draw do
   end
 
   resources :clients, param: :slug
+
+  # callback path
+  get 'auth/:provider/callback', to: 'clients#callback', as: :callback
+
   resources :tickets, param: :slug do
     member do
       put :toggle_close
@@ -86,6 +90,7 @@ Rails.application.routes.draw do
   resources :registration, only: [:create] do
     get :confirm_email
     get :confirmation, on: :collection
+    post :confirm_user_company
   end
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection

@@ -1,5 +1,6 @@
 FactoryGirl.define do
   factory :client do
+    client_type { ClientType.first || association(:client_type) }
     company { Company.first || association(:company) }
     company_name "Client Company"
     street "123 Client St"
@@ -11,6 +12,5 @@ FactoryGirl.define do
     last_name "Contact"
     phone "12345678"
     fax "5555555555"
-    client_type
   end
 end

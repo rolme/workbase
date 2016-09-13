@@ -153,6 +153,12 @@ Unit.create([
   { unit_category_id: UnitCategory.find_by(label: 'mouse').id, manufacturer: 'Hp', model: nil, description: 'Wireless Optical Laser Mouse', client_description: 'Wireless Optical Laser Mouse', cost: 20.0, procurement_status: 'processing', company: company }
 ])
 
+ClientType.create([
+  { label: 'lead', company_id: Company },
+  { label: 'customer', company_id: Company },
+  { label: 'follow_up', company_id: Company }
+])
+
 puts ">> adding client..."
 client = Client.create(company_name: 'Freight King, Inc.', street: '1143 Pacific St.', city: 'Union City', state: 'CA', zipcode: '94587', first_name: 'Kuldip', last_name: 'Badwal', phone: '4085995730', fax: '4084251616', email: 'info@freightking.us', company: company)
 

@@ -2,12 +2,12 @@
   h1 Register
   = form_for :registration, url: registration_index_path do |f|
     .form-group
-      label.sr-only for="email-input" Company
-      = f.text_field :company_name, { class: "form-control", placeholder: "Company Name", id: "email-input" }
-    .form-group
       label.sr-only for="email-input" Email
       = f.email_field :email, { class: "form-control", placeholder: "Email Address", id: "email-input" }
     .form-group<
       label.sr-only for="password-input" Password
       = f.password_field :password, { class: "form-control", placeholder: "Password", id: "password-input" }
+    .form-group<
+      label.sr-only for="password-input" Password confirmation
+      = f.password_field :password_confirmation, { class: "form-control", placeholder: "Confirm password", id: "password-input" }
     button.btn.btn-default< type="submit" class="btn btn-default" Create
