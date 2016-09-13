@@ -50,8 +50,8 @@ source 'https://rubygems.org' do
   # for background job
   gem 'sidekiq'
 
-  # for import contacts 
-  gem 'omnicontacts'
+  # for import contacts
+  gem 'omnicontacts', git: 'git@github.com:rolme/omnicontacts.git'
 
   group :production do
     gem 'rails_stdout_logging'
