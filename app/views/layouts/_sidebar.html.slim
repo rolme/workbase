@@ -10,6 +10,13 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-users.fa-stack-1x
         | Clients
+      .submenu
+        ul
+          li class=get_active_class(controller_name, "encounters")
+            a href="#"  
+              span.fa-stack.fa-lg.pull-left
+                i.fa.fa-plus-square
+              | Encounters
     li class=get_active_class(controller_name, "projects")
       a href=projects_path
         span.fa-stack.fa-lg.pull-left
