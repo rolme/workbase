@@ -1,3 +1,5 @@
 = render "tickets/page_header", header: 'Active Tickets', links: [:add_ticket, :closed_tickets, :deleted_tickets]
 
+= render "layouts/flash"
+
 = render 'tickets/ticket_list'
