@@ -54,3 +54,10 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-gear.fa-stack-1x
         | Settings
+      .submenu
+        ul
+          li class=get_active_class(controller_name, "client_types")
+            a href=client_types_path  
+              span.fa-stack.fa-lg.pull-left
+                i.fa.fa-plus-square
+              | ClientTypes
