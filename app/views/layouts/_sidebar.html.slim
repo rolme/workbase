@@ -32,11 +32,18 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-ticket.fa-stack-1x
         | Tickets
-    li class=get_active_class(controller_name, "inventory")
+    li class=(get_active_class(controller_name, "inventory") || get_active_class(controller_name, "warehouses"))
       a href=inventory_index_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-flask.fa-stack-1x
         | Inventory
+      .submenu
+        ul
+          li class=get_active_class(controller_name, "warehouses")
+            a href=warehouses_path  
+              span.fa-stack.fa-lg.pull-left
+                i.fa.fa-cube
+              | Warehouses
     li class=get_active_class(controller_name, "")
       a href=logout_path
         span.fa-stack.fa-lg.pull-left
