@@ -17,12 +17,12 @@ source 'https://rubygems.org' do
 
   # Image manipulation
   gem 'fog-aws'
-  gem 'carrierwave', github: 'carrierwaveuploader/carrierwave'
+  gem 'carrierwave', '~> 0.11.0'
   gem 'carrierwave-video-thumbnailer'
   gem 'mini_magick'
 
   # WYSIWYG
-  gem 'bootsy'
+  gem 'bootsy', '~> 2.3.0'
 
   # Email
   gem 'valid_email'
