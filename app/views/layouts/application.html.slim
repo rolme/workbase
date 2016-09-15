@@ -23,4 +23,5 @@ html lang="en"
       #page-content-wrapper
         .container-fluid.min-360
           = render "layouts/header_bar", header: controller_name.try(:capitalize)
-          = yield
+          .page-content
+            = yield

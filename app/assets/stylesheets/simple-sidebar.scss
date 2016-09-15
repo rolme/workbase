@@ -32,7 +32,7 @@ body {
   height: 100%;
   margin-left: -$sidebar-width;
   overflow-y: auto;
-  overflow-x: hidden;
+  overflow-x: visible;
   background: #3B4952;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -335,16 +335,21 @@ body {
 }
 #sidebar-wrapper ul >li .submenu{
   display: none;
-}
-#sidebar-wrapper ul >li:hover .submenu {
   background: #999999 none repeat scroll 0 0;
   height: 100%;
-  left: 200px;
+  left: 50px;
   position: fixed;
-  top: 0;
+  top: 50px;
   width: 200px;
-  display: block;
   padding-top: 60px;
+}
+
+.toggled #sidebar-wrapper ul >li .submenu{
+  left: 200px;
+}
+
+#sidebar-wrapper ul >li.active .submenu {
+  display: block;
 }
 #sidebar-wrapper .submenu ul{
   margin: 0;
@@ -362,6 +367,15 @@ body {
 #sidebar-wrapper .submenu ul li.active a{
   background-color: #F7F8FB;
   color: #3B4952;
+}
+.dashboard .toggled-content{
+  padding-left: 200px;
+}
+.sidebar-nav li.logo-home{
+  line-height: 50px;
+}
+.sidebar-nav li.logo-home span.fa-stack{
+  margin-top: 7px;
 }
 
 @media(min-width:768px) {
@@ -386,7 +400,7 @@ body {
     width: 50px;
   }
   #wrapper.sidebar-toggle #sidebar-wrapper:hover {
-    width: $sidebar-width;
+    
   }
 
 
@@ -468,8 +482,21 @@ body {
 
 // second nav media css
 @media screen and (max-width: 767px){
-  #sidebar-wrapper ul >li:hover .submenu {
+  #sidebar-wrapper ul >li.active .submenu {
     left: 150px;
     width: 150px;
+    display: none;
+  }
+  .toggled #sidebar-wrapper ul >li.active .submenu {
+    display: block;
+  }
+  .dashboard .toggled-content{
+    padding-left: 0px;
+  }
+  .toggled .toggled-content{
+    padding-left: 110px;
+  }
+  #wrapper #page-content-wrapper{
+    top: -15px;
   }
 }
