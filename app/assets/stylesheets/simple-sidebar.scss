@@ -2,6 +2,7 @@ $sidebar-width: 200px;
 
 .collapse.navbar-collapse {
   padding-left: 5px;
+  border-bottom: solid thin #999999;
 }
 
 body {
@@ -31,8 +32,7 @@ body {
   width: 0;
   height: 100%;
   margin-left: -$sidebar-width;
-  overflow-y: auto;
-  overflow-x: visible;
+  overflow: hidden;
   background: #3B4952;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
@@ -91,7 +91,6 @@ body {
   text-decoration: none;
   color: #fff;
   background: rgba(255,255,255,0.2);
-  border-left: #109DFF 2px solid;
 }
 
 .sidebar-nav li a:active,
@@ -216,10 +215,6 @@ body {
   vertical-align: middle;
 }
 
-.mini-container {
-  margin-left: 2%;
-  width: 96%;
-}
 
 .shift-right{
   float: right;
@@ -333,15 +328,19 @@ body {
 #sidebar-wrapper ul >li:hover a{
   border-radius: 0;
 }
-#sidebar-wrapper ul >li .submenu{
+#sidebar-wrapper ul >li .submenu {
   display: none;
   background: #999999 none repeat scroll 0 0;
   height: 100%;
   left: 50px;
   position: fixed;
-  top: 50px;
+  top: 63px;
   width: 200px;
-  padding-top: 60px;
+  padding-top: 15px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 .toggled #sidebar-wrapper ul >li .submenu{
@@ -372,7 +371,7 @@ body {
   padding-left: 200px;
 }
 .sidebar-nav li.logo-home{
-  line-height: 50px;
+  line-height: 63px;
 }
 .sidebar-nav li.logo-home span.fa-stack{
   margin-top: 7px;

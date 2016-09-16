@@ -1,89 +1,90 @@
-= render "page_header", header: @client.contact_name, client: @client, links: [:new, :edit, :index]
+- @links = [:new, :edit, :index]
 
 .row
-  .col-sm-12.mini-container
-    .row
-      .panel.panel-default
-        .panel-heading Contact
-        .panel-body
-          .row
-            label.col-sm-offset-2.col-sm-2 Company
-            .col-sm-8
-              = @client.company_name
-          .row
-            label.col-sm-offset-2.col-sm-2 Name
-            .col-sm-8
-              = @client.contact_name
+  .col-lg-12
+    h4 Client Details
+.row
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading Contact
+      .panel-body
+        .row
+          label.col-sm-offset-2.col-sm-2 Company
+          .col-sm-8
+            = @client.company_name
+        .row
+          label.col-sm-offset-2.col-sm-2 Name
+          .col-sm-8
+            = @client.contact_name
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Phone
-            .col-sm-8
-              = number_to_phone @client.phone
+        .row
+          label.col-sm-offset-2.col-sm-2 Phone
+          .col-sm-8
+            = number_to_phone @client.phone
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Fax
-            .col-sm-8
-              = number_to_phone @client.fax
+        .row
+          label.col-sm-offset-2.col-sm-2 Fax
+          .col-sm-8
+            = number_to_phone @client.fax
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Email
-            .col-sm-8
-              = mail_to @client.email
+        .row
+          label.col-sm-offset-2.col-sm-2 Email
+          .col-sm-8
+            = mail_to @client.email
 
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Adress
-            .col-sm-8 = @client.street
+        .row
+          label.col-sm-offset-2.col-sm-2 Adress
+          .col-sm-8 = @client.street
 
-          .row
-            .col-sm-offset-4.col-sm-8 #{@client.city}, #{@client.state}
+        .row
+          .col-sm-offset-4.col-sm-8 #{@client.city}, #{@client.state}
 
-          .row
-            .col-sm-offset-4.col-sm-8 = @client.zipcode
+        .row
+          .col-sm-offset-4.col-sm-8 = @client.zipcode
 
 .row
-  .col-sm-12.mini-container
-    .row
-      .panel.panel-default
-        .panel-heading
-          .row
-            .col-sm-8 Projects
-            .col-sm-4.text-right
-              a.btn.btn-default.btn-sm href=new_project_path(c: @client.slug)
-                = fa_icon('th-list', text: 'New')
-        .panel-body
-          .table-responsive id="#page-wrap" 
-            table.table
-              thead
-                tr
-                  th
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading
+        .row
+          .col-sm-8 Projects
+          .col-sm-4.text-right
+            a.btn.btn-default.btn-sm href=new_project_path(c: @client.slug)
+              = fa_icon('th-list', text: 'New')
+      .panel-body
+        .table-responsive id="#page-wrap"
+          table.table
+            thead
+              tr
+                th
+                  input type="checkbox"
+                th Company
+                th Name
+                th Created at
+                th Start date
+                th End date
+                th Value
+                th Action
+
+            tbody
+              - @client.projects.each do |project|
+                tr data-url=project_path(project)
+                  td
                     input type="checkbox"
-                  th Company
-                  th Name
-                  th Created at
-                  th Start date
-                  th End date
-                  th Value
-                  th Action
-                    
-              tbody
-                - @client.projects.each do |project|
-                  tr data-url=project_path(project)
-                    td
-                      input type="checkbox"
-                    td data-content="Company" 
-                      = project.client_company_name
-                    td data-content="Name"  
-                      = project.name
-                    td data-content="Created at"
-                      = project.created_at.in_time_zone("Pacific Time (US & Canada)")
-                    td data-content="Start date"
-                      = project.start_date
-                    td data-content="End date"
-                      = project.end_date
+                  td data-content="Company"
+                    = project.client_company_name
+                  td data-content="Name"
+                    = project.name
+                  td data-content="Created at"
+                    = project.created_at.in_time_zone("Pacific Time (US & Canada)")
+                  td data-content="Start date"
+                    = project.start_date
+                  td data-content="End date"
+                    = project.end_date
 
-                    td.text-center data-content="Value"
-                      = number_to_currency(project.total_material_cost, format: "%n")
-                    td.text-center
-                      =  fa_icon('search-plus')
-                      =< fa_icon('trash')
+                  td.text-center data-content="Value"
+                    = number_to_currency(project.total_material_cost, format: "%n")
+                  td.text-center
+                    =  fa_icon('search-plus')
+                    =< fa_icon('trash')

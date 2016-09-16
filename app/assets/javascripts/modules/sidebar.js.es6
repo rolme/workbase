@@ -1,6 +1,5 @@
 export default class Sidebar {
   constructor() {
-    $("#wrapper").toggleClass("sidebar-toggle");
     this.handleMinimizedNavBarToggleClick();
     this.handleNavBarToggleClick();
     this.handleSubNavBarToggle();
