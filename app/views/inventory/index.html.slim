@@ -1,57 +1,64 @@
-= render "inventory/page_header", header: 'Inventory', links: [:category_index, :warehouse_index]
+- @links = [:category_index, :warehouse_index]
 
 .row
-  .table-responsive id="#page-wrap" 
-    table.table
-      thead
-        tr
-          th 
-            input type="checkbox"
-          th category
-          th manufacturer
-          th model
-          th description
-          th cost
-          th assigned project
-          th Action
-            
-      tbody
-        - @units.each do |unit|
-          tr data-url=unit_path(unit)
-            td
-              input type="checkbox"
-            td data-content="Category" 
-              = unit.unit_category_label
-            td data-content="Manufacturer"  
-              = unit.manufacturer
-            td data-content="Model"
-              = unit.model
-            td data-content="Description"
-              = unit.description
-            td data-content="Cost"
-              = number_to_currency(unit.cost, format: "%n")
-            td data-content="Assigned project"
-              = unit.project_name
-            td.text-center
-              =  fa_icon('search-plus')
-              =< fa_icon('trash')
+  .col-xs-12
+    h4 Inventory
+    hr
 
 .row
-  .tb-head
-    h4 Browse a Warehouse
-  .table-responsive id="#page-wrap"
-    table.table
-      thead
-        tr
-          th 
-            input type="checkbox"
-          th Name
-          th Action
-      tbody
-        - @warehouses.each do |warehouse|
-          tr data-url=inventory_path(warehouse)
-            td 
+  .col-xs-12
+    .table-responsive id="#page-wrap"
+      table.table
+        thead
+          tr
+            th
               input type="checkbox"
-            td data-content="Name"= warehouse.name
-            td.text-center
-              =  fa_icon('search-plus')
+            th category
+            th manufacturer
+            th model
+            th description
+            th cost
+            th assigned project
+            th Action
+
+        tbody
+          - @units.each do |unit|
+            tr data-url=unit_path(unit)
+              td
+                input type="checkbox"
+              td data-content="Category"
+                = unit.unit_category_label
+              td data-content="Manufacturer"
+                = unit.manufacturer
+              td data-content="Model"
+                = unit.model
+              td data-content="Description"
+                = unit.description
+              td data-content="Cost"
+                = number_to_currency(unit.cost, format: "%n")
+              td data-content="Assigned project"
+                = unit.project_name
+              td.text-center
+                =  fa_icon('search-plus')
+                =< fa_icon('trash')
+
+.row
+  .col-xs-12
+    .tb-head
+      h4 Browse a Warehouse
+    .table-responsive id="#page-wrap"
+      table.table
+        thead
+          tr
+            th
+              input type="checkbox"
+            th Name
+            th Action
+        tbody
+          - @warehouses.each do |warehouse|
+            tr data-url=inventory_path(warehouse)
+              td
+                input type="checkbox"
+              td data-content="Name"= warehouse.name
+              td.text-center
+                =  fa_icon('search-plus')
