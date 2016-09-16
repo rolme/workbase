@@ -1,3 +1,10 @@
-= render 'page_header', header: "Inventory: New Unit", unit: @unit, links: []
+- @links = []
 
-= render 'form', unit: @unit, unit_categories: @unit_categories, locations: @locations, url: nil
+.row
+  .col-xs-12
+    h4 Inventory: New Unit
+    hr
+
+.row
+  .col-xs-12
+    = render 'form', unit: @unit, unit_categories: @unit_categories, locations: @locations, url: nil
