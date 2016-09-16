@@ -20,4 +20,10 @@
       li
         a href=edit_client_path(@client)
           = fa_icon('edit', text: "Edit")
+
+    /!import contact
+    - if links.include?(:import)
+      li
+        a href="/contacts/gmail"
+          = fa_icon('cloud-download', text: "Import contacts")
   hr

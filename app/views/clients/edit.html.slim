@@ -1,3 +1,9 @@
-= render "page_header", header: @client.contact_name, client: @client, links: [:new, :show, :index]
+- @links = [:new, :show, :index]
 
-= render "form", client: @client
+.row
+  .col-lg-12
+    h4 = "Editing Client: #{@client.contact_name}"
+
+.row
+  .col-lg-12
+    = render "form", client: @client

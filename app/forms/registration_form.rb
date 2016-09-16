@@ -6,7 +6,8 @@ class RegistrationForm
 
   attr_accessor :email,
                 :password,
-                :name
+                :name,
+                :password_confirmation
 
   delegate :email,
            :password,
@@ -19,7 +20,7 @@ class RegistrationForm
 
 validates_presence_of :user_email,
                       :user_password,
-                      :company_name
+                      :password_confirmation
 
   def initialize
     @company = Company.new
@@ -30,9 +31,10 @@ validates_presence_of :user_email,
     @company.name  = params[:company_name] || name
     @user.email    = params[:email] || email
     @user.password = params[:password] || password
+    @user.password_confirmation = params[:password_confirmation] || password_confirmation
     @user.company  = @company
 
-    unless valid? && @user.save
+    unless @user.valid? && @user.save
       @user.errors.full_messages.each do |msg|
         if msg == 'Company is invalid'
           errors[:base] << @user.company.errors.full_messages

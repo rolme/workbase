@@ -81,6 +81,12 @@ SectionType.create([
   { label: 'materials' }
 ])
 
+ClientType.create([
+  { label: 'lead' },
+  { label: 'customer' },
+  { label: 'follow_up' }
+])
+
 SecurityQuestion.create([
   { label: 'What is the name of your first pet?' },
   { label: 'What is the name of your favorite sports team?' },

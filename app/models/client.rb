@@ -3,6 +3,7 @@ class Client < ApplicationRecord
   include SoftDeletable
 
   belongs_to :company
+  belongs_to :client_type
 
   has_many :projects
   has_many :encounters
@@ -10,6 +11,8 @@ class Client < ApplicationRecord
   scope :sorted, -> {
     order(:company_name, :first_name)
   }
+
+  before_create :client_type_default
 
   validates :city,
             :email,
@@ -21,6 +24,11 @@ class Client < ApplicationRecord
             :zipcode,
             presence: true
 
+  delegate :id,             # client_type_id
+           :label,          # client_type_label
+           to: :client_type,
+           prefix: true
+
   def contact_name
     "#{first_name} #{last_name}"
   end
@@ -28,4 +36,11 @@ class Client < ApplicationRecord
   def address
     "#{street}, #{city}, #{state} #{zipcode}"
   end
+
+  private
+
+    # default client type
+    def client_type_default
+      self.client_type = ClientType.default
+    end
 end

@@ -1,4 +1,11 @@
-= render "tickets/page_header", header: 'Ticket: New', links: [:ticket_index]
+- @links = [:ticket_index]
 
-= render "form", ticket: @ticket
+.row
+  .col-xs-12
+    h4 Create a Ticket
+    hr
+
+.row
+  .col-xs-12
+    = render "form", ticket: @ticket
 

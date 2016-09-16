@@ -1,0 +1,29 @@
+.submenu
+  ul
+    - if @links.include?(:new)
+      li
+        a href=new_client_path
+          = fa_icon('plus-square', text: "Add a Client")
+
+    - if @links.include?(:index)
+      li
+        a href=clients_path
+          = fa_icon('list', text: "Back to Client List")
+
+    - if @links.include?(:show)
+      li
+        a href=client_path(@client)
+          = fa_icon('search-plus', text: "Client Details")
+
+    - if @links.include?(:edit)
+      li
+        a href=edit_client_path(@client)
+          = fa_icon('edit', text: "Edit this Client")
+
+    - if @links.include?(:import)
+      li
+        a href="/contacts/gmail"
+          = fa_icon('cloud-download', text: "Import contacts")
+    li
+      a href="#"
+        = fa_icon('cloud-download', text: "Encounters")
