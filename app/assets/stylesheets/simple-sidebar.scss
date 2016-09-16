@@ -123,7 +123,7 @@ body {
 .dashboard nav .navbar-toggle{
   font-size: 24px;
   color: #888;
-  padding: 0px 10px;
+  padding: 3px 10px;
   float: left;
   border: none;
   margin-right: 0;
@@ -136,7 +136,7 @@ body {
 .dashboard nav ul.navbar-nav > li > a {
   color: #333;
   font-size: 18px;
-  padding-top: 15px;
+  padding-top: 18px;
 }
 .dashboard nav ul.right > li button{
   margin-top: 0;
@@ -334,7 +334,7 @@ body {
   height: 100%;
   left: 50px;
   position: fixed;
-  top: 63px;
+  top: 60px;
   width: 200px;
   padding-top: 15px;
   -webkit-transition: all 0.5s ease;
@@ -375,6 +375,19 @@ body {
 }
 .sidebar-nav li.logo-home span.fa-stack{
   margin-top: 7px;
+}
+
+.dashboard.sidebar-toggle #sidebar-wrapper{
+  overflow-x: hidden;
+}
+
+//inline css fix
+.top-nav-color {
+  background-color: white;  
+}
+
+#page-content-wrapper .page-content {
+  padding-top: 65px;
 }
 
 @media(min-width:768px) {
