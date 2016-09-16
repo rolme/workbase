@@ -1,11 +1,11 @@
 doctype html
-html lang="en" 
+html lang="en"
   head
-    meta charset="utf-8" 
-    meta content="IE=edge" http-equiv="X-UA-Compatible" 
-    meta content="width=device-width, initial-scale=1" name="viewport" 
-    meta content="" name="description" 
-    meta content="" name="author" 
+    meta charset="utf-8"
+    meta content="IE=edge" http-equiv="X-UA-Compatible"
+    meta content="width=device-width, initial-scale=1" name="viewport"
+    meta content="" name="description"
+    meta content="" name="author"
 
     title Workbase
     = csrf_meta_tags
@@ -14,8 +14,8 @@ html lang="en"
     = action_cable_meta_tag
 
     link href="http://fonts.googleapis.com/css?family=Ubuntu" rel="stylesheet"
-    
-    
+
+
   body data-controller=controller_name data-action=action_name
     #wrapper.dashboard.sidebar-toggle
       = render "layouts/sidebar", menu_name: controller_name
@@ -23,5 +23,5 @@ html lang="en"
       #page-content-wrapper
         .container-fluid.min-360
           = render "layouts/header_bar", header: controller_name.try(:capitalize)
-          .page-content
+          .page-content style="padding-top: 65px;"
             = yield
