@@ -24,7 +24,7 @@
           = fa_icon('edit', text: "Edit Unit")
 
     - if @links.include?(:new_units)
-      li.shift-down
+      li
         a href=new_unit_path
           = fa_icon('plus-square', text: "Add Units")
       li.shift-right
