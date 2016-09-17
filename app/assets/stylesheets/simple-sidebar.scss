@@ -23,6 +23,10 @@ body {
 #wrapper.toggled {
   padding-left: $sidebar-width;
   overflow: scroll;
+
+  .navbar.navbar-fixed-top {
+    left: 200px;
+  }
 }
 
 #sidebar-wrapper {
@@ -215,7 +219,6 @@ body {
   vertical-align: middle;
 }
 
-
 .shift-right{
   float: right;
 }
@@ -383,7 +386,7 @@ body {
 
 //inline css fix
 .top-nav-color {
-  background-color: white;  
+  background-color: white;
 }
 
 #page-content-wrapper {
@@ -396,10 +399,14 @@ body {
 .navbar.navbar-fixed-top {
   left: 50px;
   border-width: 0px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 // top header logo fix
-.logo-home { 
+.logo-home {
   .fa-stack {
     margin-top: 5px;
     font-size: 24px;
