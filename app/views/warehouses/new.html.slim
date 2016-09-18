@@ -1,4 +1,11 @@
-= render "page_header", header: 'Warehouse: New', links: [:inventory_index, :warehouse_index]
+- @links = [:inventory_index, :warehouse_index]
 
-= render "form", warehouse: @warehouse
+.row
+  .col-xs-12
+    h4 Warehouse: New
+    hr
+
+.row
+  .col-xs-12
+    = render "form", warehouse: @warehouse
 

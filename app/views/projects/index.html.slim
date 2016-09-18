@@ -1,38 +1,44 @@
-= render "page_header", header: 'Projects', links: [:new]
+- @links = [:new]
 
 .row
-  .table-responsive id="#page-wrap" 
-    table.table
-      thead
-        tr
-          th
-            input type="checkbox"
-          th Company
-          th Name
-          th Created at
-          th Start date
-          th End date
-          th Value
-          th Action
-            
-      tbody
-        - @projects.each do |project|
-          tr data-url=project_path(project)
-            td
-              a href=project
-                input type="checkbox"
-            td data-content="Company" 
-              = project.client_company_name
-            td data-content="Name"  
-              = project.name
-            td data-content="Created at"
-              = project.created_at.in_time_zone("Pacific Time (US & Canada)")
-            td data-content="Start date"
-              = project.start_date
-            td data-content="End date"
-              = project.end_date
+  .col-lg-12
+    h4 Project List
+    hr
 
-            td.text-center data-content="Value"
-              = number_to_currency(project.total_material_cost, format: "%n")
-            td.text-center
-              =  fa_icon('search-plus')
+.row
+  .col-lg-12
+    .table-responsive id="#page-wrap"
+      table.table
+        thead
+          tr
+            th
+              input type="checkbox"
+            th Company
+            th Name
+            th Created at
+            th Start date
+            th End date
+            th Value
+            th Action
+
+        tbody
+          - @projects.each do |project|
+            tr data-url=project_path(project)
+              td
+                a href=project
+                  input type="checkbox"
+              td data-content="Company"
+                = project.client_company_name
+              td data-content="Name"
+                = project.name
+              td data-content="Created at"
+                = project.created_at.in_time_zone("Pacific Time (US & Canada)")
+              td data-content="Start date"
+                = project.start_date
+              td data-content="End date"
+                = project.end_date
+
+              td.text-center data-content="Value"
+                = number_to_currency(project.total_material_cost, format: "%n")
+              td.text-center
+                =  fa_icon('search-plus')

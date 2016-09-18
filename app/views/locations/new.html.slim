@@ -1,3 +1,9 @@
-= render "page_header", header: "#{@warehouse.name}: New Location"
+- @links = [:inventory_index, :show_warehouse]
+.row
+  .col-xs-12
+    h4 = "#{@warehouse.name}: New Location"
+    hr
 
-= render "form", warehouse: @warehouse, location: @location
+.row
+  .col-xs-12
+    = render "form", warehouse: @warehouse, location: @location

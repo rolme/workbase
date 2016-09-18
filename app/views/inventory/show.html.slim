@@ -1,41 +1,47 @@
-= render "inventory/page_header", header: "Inventory: #{@area.name}", area: @area, links: [:inventory_index, :add_units, :checkin_units]
+- @links = [:inventory_index, :add_units, :checkin_units]
 
 .row
-  .table-responsive id="#page-wrap" 
-    - unless @units.empty?
-      table.table
-        thead
-          tr
-            th 
-              input type="checkbox"
-            th count
-            th manufacturer
-            th model
-            th description
-            th subtotal
-            - if @area.warehouse?
-              th location
-            th
-        tbody
-          - @units.each do |unit|
-            tr data-url=list_units_path(h: unit.unit_hash)
-              td
+  .col-xs-12
+    h4 = "Inventory: #{@area.name}"
+    hr
+
+.row
+  .col-xs-12
+    .table-responsive id="#page-wrap"
+      - unless @units.empty?
+        table.table
+          thead
+            tr
+              th
                 input type="checkbox"
-              td data-content="Count"
-                = unit.count
-              td data-content="Manufacturer"
-                = unit.manufacturer
-              td data-content="Model"
-                = unit.model
-              td data-content="Description"
-                = unit.description
-              td data-content="Subtotal"
-                = number_to_currency(unit.subtotal, format: "%n")
+              th count
+              th manufacturer
+              th model
+              th description
+              th subtotal
               - if @area.warehouse?
-                td data-content="Location"
-                  = unit.location.name
-              td.text-center
-                =  fa_icon('search-plus')
-    - else
-      p Empty
+                th location
+              th
+          tbody
+            - @units.each do |unit|
+              tr data-url=list_units_path(h: unit.unit_hash)
+                td
+                  input type="checkbox"
+                td data-content="Count"
+                  = unit.count
+                td data-content="Manufacturer"
+                  = unit.manufacturer
+                td data-content="Model"
+                  = unit.model
+                td data-content="Description"
+                  = unit.description
+                td data-content="Subtotal"
+                  = number_to_currency(unit.subtotal, format: "%n")
+                - if @area.warehouse?
+                  td data-content="Location"
+                    = unit.location.name
+                td.text-center
+                  =  fa_icon('search-plus')
+      - else
+        p Empty
 
