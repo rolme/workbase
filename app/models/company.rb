@@ -2,15 +2,16 @@ class Company < ApplicationRecord
   include SoftDeletable
 
   has_many :areas
-  has_many :warehouses
+  has_many :clients
   has_many :locations
   has_many :tickets
   has_many :unit_categories
   has_many :units
   has_many :users
+  has_many :warehouses
 
   validates :name, uniqueness: true
-  
+
   before_validation(on: :create) do
     default_company_name
   end
