@@ -1,7 +1,7 @@
 .submenu
   ul
     - if @links.include?(:manage_categories)
-      li.shift-down
+      li
         a href=unit_categories_path
           = fa_icon('th-large', text: "Categories")
     - if @links.include?(:warehouse_index)

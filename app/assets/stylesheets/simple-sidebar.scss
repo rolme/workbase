@@ -22,10 +22,10 @@ body {
 
 #wrapper.toggled {
   padding-left: $sidebar-width;
-  overflow: scroll;
+  overflow: hidden;
 
   .navbar.navbar-fixed-top {
-    left: 200px;
+    left: $sidebar-width;
   }
 }
 
