@@ -1,4 +1,8 @@
-= render "page_header", header: 'Encounter', encounter: @encounter, links: [:new, :edit, :index]
+- @links = [:clients_index, :encounters_index, :encounters_index, :edit_encounter]
+
+.row
+  .col-lg-12
+    h4 Encounter Details
 
 .row
   .col-sm-12.mini-container

@@ -1,0 +1,18 @@
+.submenu
+  ul
+    - if @links.include?(:clients_index)
+      li
+        a href=clients_path
+          = fa_icon('barcode', text: "Back to Clients")
+    - if @links.include?(:encounters_index)
+      li
+        a href=encounters_path
+          = fa_icon('list', text: "Encounter List")
+    - if @links.include?(:add_encounters)
+      li
+        a href=new_encounter_path
+          = fa_icon('plus-square', text: "Add a Encounter")
+    - if @links.include?(:edit_encounter)
+      li
+        a href=edit_encounter_path
+          = fa_icon('pencil', text: "Edit this Encounter")

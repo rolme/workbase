@@ -1,4 +1,8 @@
-index.html.slim= render "encounters/page_header", header: 'Encounter', links: [:new]
+- @links = [:clients_index, :add_encounters]
+
+.row
+  .col-lg-12
+    h4 Encounter List
 
 .row
   .table-responsive id="#page-wrap" 

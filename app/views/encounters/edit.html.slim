@@ -1,3 +1,9 @@
-= render "page_header", header: "Encounter", encounter: @encounter, links: [:new, :show, :index]
+- @links = [:clients_index, :encounters_index, :add_encounters]
 
-= render "form", encounter: @encounter
+.row
+  .col-lg-12
+    h4 Editing Encounter
+
+.row
+  .col-lg-12
+    = render "form", encounter: @encounter
