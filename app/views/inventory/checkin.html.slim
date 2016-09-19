@@ -1,4 +1,9 @@
-= render "page_header", header: "Inventory: #{@area.name} - Check In", area: @area, links: [:new_units, :index]
+- @links = [:new_units, :index]
+
+.row
+  .col-sm-12
+    h4 = "Inventory: #{@area.name} - Check In"
+    hr
 
 .row
   .col-sm-offset-2.col-sm-8
@@ -10,12 +15,9 @@
             .col-sm-5
               = text_field_tag :name, "" , class: 'form-control', placeholder: ""
             .col-sm-4
-              = select_tag(:location_id,options_for_select(@locations.map{|c| [c.name,c.id]}, selected: params[:location_id] ) ,class: 'form-control')
+              = select_tag(:location_id,options_for_select([@locations].flatten.map{|c| [c.name,c.id]}, selected: params[:location_id] ) ,class: 'form-control')
             .col-sm-3
               input.btn.btn-primary data-disable-with=("Search") name="commit" type="submit" value=("Search") /
-
-
-hr
 
 .row
   .col-sm-12

@@ -1,18 +1,14 @@
-= render "layouts/flash"
-.page-header
-  .row
-    .col-md-10.col-sm-10
-      h1
-        => fa_icon('th-list', text: "#{@project.name}")
-        small #{@project.client_contact_name} - #{@project.client_company_name}
-  ul.list-inline
-    li
-      a href=projects_path
-        = fa_icon('list', text: "List")
-  hr
+- @links = [:index]
 
 .row
-  .col-md-offset-1.col-md-10
+  .col-lg-12
+    h4
+      => fa_icon('th-list', text: "#{@project.name}")
+      small #{@project.client_contact_name} - #{@project.client_company_name}
+    hr
+
+.row
+  .col-lg-12
     ul.nav.nav-tabs role="tablist"
       li.active role="presentation"
         a href="#attachments" aria-controls="attachments" role="tab" data-toggle="tab"
@@ -32,7 +28,7 @@
         / TODO: http://www.dropzonejs.com/bootstrap.html
         br
         - if @project.attachments.empty?
-          | Empty
+          | No Attachments
         - else
           - @project.attachments.each_slice(4).each do |attachment_slice|
             .row
@@ -55,7 +51,9 @@
         hr
         = form_for @attachment, url: project_attachments_path(@project), html: { multipart: true } do |f|
           .form-group
-            = f.file_field :asset, class: 'form-control'
+            = f.label :asset, class: "btn btn-primary btn-file"
+              |Add an Attachment
+              = f.file_field :asset, style: "display: none;"
             = f.text_field :description, placeholder: "short description", class: 'form-control'
           = f.button "Upload", class: "btn btn-default btn-sm"
 
@@ -85,7 +83,7 @@
                     =< fa_icon('trash')
         hr
         /! Button trigger modal
-        buton.btn.btn-default.btn-xs.pull-right data-target="#unitModal" data-toggle="modal" type="button" 
+        buton.btn.btn-default.btn-xs.pull-right data-target="#unitModal" data-toggle="modal" type="button"
           | Add unit
 
         = link_to new_project_unit_units_path(project_slug: @project), class: 'btn btn-default btn-xs pull-right' do

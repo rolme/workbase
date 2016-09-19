@@ -1,5 +1,11 @@
-= render "tickets/page_header", header: 'Active Tickets', links: [:add_ticket, :closed_tickets, :deleted_tickets]
+- @links = [:add_ticket, :closed_tickets, :deleted_tickets]
 
-= render "layouts/flash"
+.row
+  .col-xs-12
+    h4 Active Tickets
+    hr
 
-= render 'tickets/ticket_list'
+.row
+  .col-xs-12
+    = render 'tickets/ticket_list'
+

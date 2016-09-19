@@ -1,38 +1,42 @@
-= render "page_header", header: 'Clients', links: [:new, :import]
-
+- @links = [:new, :import]
 
 .row
-  .table-responsive id="#page-wrap" 
-    table.table
-      thead
-        tr
-          th 
-            input type="checkbox"
-          th company
-          th contact
-          th phone
-          th email
-          th address
-          th projects
-          th Action
-            
-      tbody
-        - @clients.each do |client|
-          tr data-url=client_path(client)
-            td
+  .col-lg-12
+    h4 Client List
+
+.row
+  .col-lg-12
+    .table-responsive id="#page-wrap"
+      table.table
+        thead
+          tr
+            th
               input type="checkbox"
-            td data-content="Company Name" 
-              = client.company_name
-            td data-content="Contact Name"  
-              = client.contact_name
-            td data-content="Phone"
-              = number_to_phone(client.phone)
-            td data-content="Email"
-              = client.email
-            td data-content="Address"
-              = client.address
-            td data-content="Count"
-              = client.projects.count
-            td.text-center
-              =  fa_icon('search-plus')
-              =< fa_icon('trash')
+            th company
+            th contact
+            th phone
+            th email
+            th address
+            th projects
+            th Action
+
+        tbody
+          - @clients.each do |client|
+            tr data-url=client_path(client)
+              td
+                input type="checkbox"
+              td data-content="Company Name"
+                = client.company_name
+              td data-content="Contact Name"
+                = client.contact_name
+              td data-content="Phone"
+                = number_to_phone(client.phone)
+              td data-content="Email"
+                = client.email
+              td data-content="Address"
+                = client.address
+              td data-content="Count"
+                = client.projects.count
+              td.text-center
+                =  fa_icon('search-plus')
+                =< fa_icon('trash')

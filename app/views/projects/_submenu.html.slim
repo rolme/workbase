@@ -1,0 +1,21 @@
+.submenu
+  ul
+    - if @links.include?(:new)
+      li
+        a href=new_project_path
+          = fa_icon('plus-square', text: "Create a Project")
+
+    - if @links.include?(:index)
+      li
+        a href=projects_path
+          = fa_icon('list', text: "Back to Project List")
+
+    - if @links.include?(:show)
+      li
+        a href=project_path(@project)
+          = fa_icon('search-plus', text: "Project Details")
+
+    - if @links.include?(:edit)
+      li
+        a href=edit_project_path(@project)
+          = fa_icon('edit', text: "Edit this Project")
