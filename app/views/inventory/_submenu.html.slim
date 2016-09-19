@@ -1,7 +1,7 @@
 .submenu
   ul
     - if @links.include?(:manage_categories)
-      li.shift-down
+      li
         a href=unit_categories_path
           = fa_icon('th-large', text: "Categories")
     - if @links.include?(:warehouse_index)
@@ -24,7 +24,7 @@
           = fa_icon('edit', text: "Edit Unit")
 
     - if @links.include?(:new_units)
-      li.shift-down
+      li
         a href=new_unit_path
           = fa_icon('plus-square', text: "Add Units")
       li.shift-right

@@ -22,7 +22,11 @@ body {
 
 #wrapper.toggled {
   padding-left: $sidebar-width;
-  overflow: scroll;
+  overflow: hidden;
+
+  .navbar.navbar-fixed-top {
+    left: $sidebar-width;
+  }
 }
 
 #sidebar-wrapper {
@@ -215,7 +219,6 @@ body {
   vertical-align: middle;
 }
 
-
 .shift-right{
   float: right;
 }
@@ -371,7 +374,7 @@ body {
   padding-left: 200px;
 }
 .sidebar-nav li.logo-home{
-  line-height: 63px;
+  line-height: 61px;
 }
 .sidebar-nav li.logo-home span.fa-stack{
   margin-top: 7px;
@@ -383,11 +386,43 @@ body {
 
 //inline css fix
 .top-nav-color {
-  background-color: white;  
+  background-color: white;
 }
 
-#page-content-wrapper .page-content {
-  padding-top: 65px;
+#page-content-wrapper {
+  .page-content {
+    padding-top: 65px;
+  }
+}
+
+//navbar top header
+.navbar.navbar-fixed-top {
+  left: 50px;
+  border-width: 0px;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+// top header logo fix
+.logo-home {
+  .fa-stack {
+    margin-top: 5px;
+    font-size: 24px;
+    left: -5px;
+  }
+}
+
+//inventory search form
+.inventory-search .inventory-form {
+  input.form-control {
+    float: left;
+    width: 175px;
+  }
+  button.search-inventory {
+    margin-left: 15px;
+  }
 }
 
 @media(min-width:768px) {
@@ -494,6 +529,7 @@ body {
     left: 150px;
     width: 150px;
     display: none;
+    top: 56px;
   }
   .toggled #sidebar-wrapper ul >li.active .submenu {
     display: block;
@@ -506,5 +542,17 @@ body {
   }
   #wrapper #page-content-wrapper{
     top: -15px;
+  }
+
+  .sidebar-nav {
+    li.logo-home{
+      line-height: 56px;
+    }
+  }
+
+  #wrapper.toggled {
+    #sidebar-wrapper {
+      overflow: auto;
+    }
   }
 }

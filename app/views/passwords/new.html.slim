@@ -1,9 +1,10 @@
-= render "layouts/flash"
-
-.col-md-offset-4.col-md-4
-  h1 Reset password
-  = form_tag passwords_path do
-    .form-group
-      label.sr-only for="email-input" Email
-      = email_field_tag 'user[email]', nil, class: "form-control", placeholder: "Email Address", id: "email-input"
-    button.btn.btn-default< type="submit" class="btn btn-default" Send reset password instructions
+section#header
+  #content.col-xs-12
+    .main-cont
+      .col-md-offset-4.col-md-4
+        h3 RESET PASSWORD
+        = form_tag passwords_path do
+          .form-group
+            label.sr-only for="email-input" Email
+            = email_field_tag 'user[email]', nil, class: "form-control", placeholder: "Email Address", id: "email-input"
+          button.btn.btn-warning< type="submit" Send reset password instructions

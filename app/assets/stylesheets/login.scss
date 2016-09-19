@@ -1,0 +1,87 @@
+@import "bootstrap";
+@import 'https://fonts.googleapis.com/css?family=Open+Sans:400,600';
+@import 'https://fonts.googleapis.com/css?family=Ubuntu:300,400,700';
+
+@font-face {
+  font-family: 'Avenir';
+  src: url('fonts/Avenir.ttc');
+}
+
+body {
+    background-image: url("landing/bg-pattern.jpg");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    color: white;
+}
+
+.navbar-brand{
+    font-family: 'Ubuntu', sans-serif;
+    color: #fff;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+}
+.navbar-brand:hover{
+    color: #efefef;
+}
+
+.navbar-cstm {
+    background-color: rgba(0,0,0,0);
+    background-repeat: repeat;
+    border-bottom: 0 !important;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    margin-bottom: 0 !important;
+}
+
+.nav>li>a, p>a{
+    color: #fff;
+}
+.nav>li>a.active,p>a.active{
+    font-weight: 700;
+}
+.nav>li>a:focus, .nav>li>a:hover, p>a:focus, p>a:hover{
+    background: initial;
+    text-shadow: initial;
+    color: #fff;
+}
+
+.alert.alert-dismissible {
+    margin-top: 50px;
+}
+
+#content {
+    h3 {
+        font-family: 'Ubuntu', sans-serif;
+    }
+}
+
+.header-title {
+    font-family: 'Ubuntu', sans-serif;
+    text-align: center;
+    font-size: 34px;
+    font-weight: 700;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 30px;
+}
+
+section#header{
+    padding-top: 50px;
+    height: 100%;
+    width: 100%;
+}
+
+@media (min-width: 800px){
+    section#header{
+        height: 100%;
+        width: 100%;
+    }
+    .main-cont{
+        max-width: 940px;
+        margin: 0 auto;
+    }
+}
