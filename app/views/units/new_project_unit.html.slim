@@ -1,3 +1,10 @@
-= render 'page_header', header: "New Unit", unit: @unit, links: []
+- @links = []
 
-= render 'form', unit: @unit, unit_categories: @unit_categories, locations: @locations, url: create_project_unit_units_path
+.row
+  .col-xs-12
+    h4 New Unit
+    hr
+
+.row
+  .col-xs-12
+    = render 'form', unit: @unit, unit_categories: @unit_categories, locations: @locations, url: create_project_unit_units_path

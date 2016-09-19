@@ -1,4 +1,9 @@
-= render "warehouses/page_header", header: "Warehouse: #{@warehouse.name}", warehouse: @warehouse, links: [:inventory_index, :warehouse_index, :edit_warehouse, :add_location]
+- @links = [:inventory_index, :warehouse_index, :edit_warehouse, :add_location]
+
+.row
+  .col-xs-12
+    h4 = "Showing Warehouse: #{@warehouse.name}"
+    hr
 
 .row
   .col-xs-12

@@ -1,15 +1,18 @@
-.col-md-offset-4.col-md-4
-  h1 Login
-  = form_for :login, {class: "form-inline"} do |f|
-    .form-group
-      label.sr-only for="email-input" Email
-      = f.email_field :email, { class: "form-control", placeholder: "Email", id: "email-input" }
-    .form-group
-      label.sr-only for="password-input" Password
-      = f.password_field :password, { class: "form-control", placeholder: "Password", id: "password-input" }
-    .checkbox<
-      label
-        input type="checkbox" Remember me
-    button.btn.btn-default< type="submit" class="btn btn-default" Sign in
-    p
-      = link_to "Forgot password?", new_password_path
+section#header
+  #content.col-xs-12
+    .main-cont
+      .col-md-offset-4.col-md-4
+        h3 LOGIN
+        = form_for :login, {class: "form-inline"} do |f|
+          .form-group
+            label.sr-only for="email-input" Email
+            = f.email_field :email, { class: "form-control", placeholder: "Email", id: "email-input" }
+          .form-group
+            label.sr-only for="password-input" Password
+            = f.password_field :password, { class: "form-control", placeholder: "Password", id: "password-input" }
+          .checkbox<
+            label
+              input type="checkbox" Remember me
+          button.btn.btn-default< type="submit" class="btn btn-warning" Sign in
+          p style="margin-top: 10px;"
+            = link_to "Forgot password?", new_password_path

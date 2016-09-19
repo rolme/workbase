@@ -1,36 +1,42 @@
-= render 'page_header', header: "Inventory: #{@units.first.manufacturer}", links: [:new_units]
+- @links = [:new_units]
 
 .row
-  .table-responsive id="#page-wrap"
-    table.table
-      thead
-        tr
-          th 
-            input type="checkbox"
-          th uuid
-          th manufacturer
-          th model
-          th description
-          th cost
-          th location
-          th
-      tbody
-        - @units.each do |unit|
-          tr data-url=unit_path(unit)
-            td 
+  .col-xs-12
+    h4 = "Inventory: #{@units.first.manufacturer}"
+    hr
+
+.row
+  .col-xs-12
+    .table-responsive id="#page-wrap"
+      table.table
+        thead
+          tr
+            th
               input type="checkbox"
-            td data-content= "UUID"
-              = unit.uuid
-            td data-content="Manufacturer"
-              = unit.manufacturer
-            td data-content="Model"
-              = unit.model
-            td data-content="Description"
-              = unit.description
-            td data-content="Cost"
-              = number_to_currency(unit.cost, format: "%n")
-            td data-content="Area"
-              = unit.area_name
-            td.text-center
-              a href=edit_unit_path(unit)
-                = fa_icon('edit')
+            th uuid
+            th manufacturer
+            th model
+            th description
+            th cost
+            th location
+            th
+        tbody
+          - @units.each do |unit|
+            tr data-url=unit_path(unit)
+              td
+                input type="checkbox"
+              td data-content= "UUID"
+                = unit.uuid
+              td data-content="Manufacturer"
+                = unit.manufacturer
+              td data-content="Model"
+                = unit.model
+              td data-content="Description"
+                = unit.description
+              td data-content="Cost"
+                = number_to_currency(unit.cost, format: "%n")
+              td data-content="Area"
+                = unit.area_name
+              td.text-center
+                a href=edit_unit_path(unit)
+                  = fa_icon('edit')

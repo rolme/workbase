@@ -1,33 +1,40 @@
-= render 'page_header', header: "Inventory: #{@unit.uuid}", unit: @unit, links: [:unit_index, :new_units, :edit_unit]
+- @links = [:unit_index, :new_units, :edit_unit]
 
 .row
-  .mini-container
-    .row
-      .col-sm-8
-        dl.dl-horizontal
-          dt.label-space UUID:
-          dd = @unit.uuid
-          dt.label-space Model:
-          dd = @unit.model
-          dt.label-space Manufacturer:
-          dd = @unit.manufacturer
-          - if @unit.location_id.blank? && @unit.procurement_status.present?
-            dt.label-space Procuement Status:
-            dd = @unit.procurement_status
-          dt.label-space Unit Category:
-          dd = @unit.unit_category_label
-          dt.label-space Description:
-          dd = @unit.description
-          dt.label-space Client Description:
-          dd = @unit.client_description
-          dt.label-space cost:
-          dd = number_to_currency(@unit.cost)
-          dt.label-space location:
-          dd
-            - if @unit.location.present?
-              a href=inventory_path(@unit.location) = @unit.area_name
-            - else
-              | n/a
+  .col-xs-12
+    h4 = "Inventory: #{@unit.uuid}"
+    hr
 
-      .col-sm-4
-        = image_tag @unit.qrcode
+.row
+  .col-xs-12
+    .row
+      .mini-container
+        .row
+          .col-sm-8
+            dl.dl-horizontal
+              dt.label-space UUID:
+              dd = @unit.uuid
+              dt.label-space Model:
+              dd = @unit.model
+              dt.label-space Manufacturer:
+              dd = @unit.manufacturer
+              - if @unit.location_id.blank? && @unit.procurement_status.present?
+                dt.label-space Procuement Status:
+                dd = @unit.procurement_status
+              dt.label-space Unit Category:
+              dd = @unit.unit_category_label
+              dt.label-space Description:
+              dd = @unit.description
+              dt.label-space Client Description:
+              dd = @unit.client_description
+              dt.label-space cost:
+              dd = number_to_currency(@unit.cost)
+              dt.label-space location:
+              dd
+                - if @unit.location.present?
+                  a href=inventory_path(@unit.location) = @unit.area_name
+                - else
+                  | n/a
+
+          .col-sm-4
+            = image_tag @unit.qrcode
