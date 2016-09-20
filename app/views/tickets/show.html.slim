@@ -5,6 +5,8 @@
     h4 = "Showing Ticket: #{@ticket.title}"
     hr
 
+= render "layouts/flash"
+
 .row data-ticket-slug=@ticket.slug
   .col-sm-9
     .panel.panel-default
