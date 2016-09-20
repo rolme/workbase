@@ -1,7 +1,7 @@
 class Company < ApplicationRecord
   include SoftDeletable
 
-  belongs_to :company_status
+  belongs_to :company_status, optional: true
 
   has_many :areas
   has_many :clients
