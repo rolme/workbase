@@ -11,7 +11,9 @@ class Client < ApplicationRecord
     order(:company_name, :first_name)
   }
 
-  before_create :client_type_default
+  before_validation(on: :create) do
+    default_client_type
+  end
 
   validates :city,
             :email,
@@ -36,10 +38,10 @@ class Client < ApplicationRecord
     "#{street}, #{city}, #{state} #{zipcode}"
   end
 
-  private
+private
 
-    # default client type
-    def client_type_default
-      self.client_type = ClientType.default
-    end
+  def default_client_type
+    self.client_type = ClientType.default
+  end
+
 end

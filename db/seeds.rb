@@ -1,13 +1,6 @@
 require 'faker'
 
 puts "Adminstrative Setup... "
-Company.create(name: "Workbase")
-workbase = Company.find_by(name: 'Workbase')
-WorkbaseEmployee.create([
-  { email: "admin@workbase.com", password: "test", password_confirmation: "test", first_name: 'Roland', last_name: 'Parnaso', company: workbase }
-])
-User.update_all(confirmed: true, confirmation_token: nil)
-
 State.create([
   { name: "Alabama", abbreviation: "AL" },
   { name: "Alaska", abbreviation: "AK" },
@@ -63,6 +56,7 @@ State.create([
 ])
 
 CompanyStatus.create([
+  { label: 'system' },
   { label: 'trial' },
   { label: 'active' },
   { label: 'inactive' }
@@ -81,12 +75,6 @@ SectionType.create([
   { label: 'materials' }
 ])
 
-ClientType.create([
-  { label: 'lead' },
-  { label: 'customer' },
-  { label: 'follow_up' }
-])
-
 SecurityQuestion.create([
   { label: 'What is the name of your first pet?' },
   { label: 'What is the name of your favorite sports team?' },
@@ -94,6 +82,7 @@ SecurityQuestion.create([
   { label: 'What city did you meet your significant other?' },
   { label: 'What was the model of your first car?' }
 ])
+
 
 # name: string, description: string, monthly_price: decimal, settings: text
 Feature.create([
@@ -104,6 +93,19 @@ Feature.create([
 project_mgmt = Feature.create({ name: 'Project Management', description: 'Summo accusam mentitum te cum, postea legimus sed ei, laudem invenire per at. Affert nemore in eum. Ut eam omnes tacimates definitiones. Vix in vidit nostro scribentur, id sumo euismod duo. Solum vituperata ad nam, mundi iriure accommodare ad vis.', monthly_price: 25.0, settings: '' })
 inventory_mgmt = Feature.create({ name: 'Inventory Management', description: 'Ad integre consulatu nec. Vim an graece definiebas. Modo facete inermis cu eam. Duo populo doctus audire ne, hinc atqui scripta usu an. Ad est summo facete, duis summo numquam pri id.', monthly_price: 25.0, settings: '' })
 issue_tracking = Feature.create({ name: 'Issue Tracking', description: 'Eos id magna laboramus repudiandae, ius ad mundi dolorum meliore. His an sensibus conclusionemque. Sit malis labore comprehensam et, et inani viderer vis. Ceteros accusamus his id, usu ea errem torquatos expetendis.', monthly_price: 25.0, settings: '' })
+
+Company.create(name: "Workbase", company_status: CompanyStatus.find_by(label: 'system'))
+workbase = Company.find_by(name: 'Workbase')
+WorkbaseEmployee.create([
+  { email: "admin@workbase.com", password: "test", password_confirmation: "test", first_name: 'Roland', last_name: 'Parnaso', company: workbase }
+])
+User.update_all(confirmed: true, confirmation_token: nil)
+
+ClientType.create([
+  { label: 'lead' },
+  { label: 'customer' },
+  { label: 'follow_up' }
+])
 
 puts "done"
 
