@@ -1,7 +1,7 @@
 .row
   - @features.each do |feature|
     .col-sm-6.col-md-4
-      .thumbnail.feature-card
+      .thumbnail.feature-card data-url=(@settings.exists?(feature_id: feature.id) ? edit_feature_setting_path(feature) : '#')
         .image
         .caption
           h4.title = feature.name

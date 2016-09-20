@@ -1,0 +1,24 @@
+.row
+  .col-xs-12
+    h4 = "Settings for #{@feature.name}"
+    hr
+
+.row
+  .col-xs-12
+    p
+      b Company Settings
+
+    - if @company_settings.present? && @company_settings.settings.present?
+      p = @company_settings.settings.inspect
+    - else
+      p.text-muted No settings
+
+.row
+  .col-xs-12
+    p
+      b User Settings
+
+    - if @user_settings.present? && @user_settings.settings.present?
+      p = @user_settings.settings.inspect
+    - else
+      p.text-muted No settings

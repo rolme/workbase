@@ -17,7 +17,8 @@ Rails.application.routes.draw do
     resources :features
   end
 
-  get :settings, to: 'settings#index'
+  # TODO: Determine if we are going the 'settings' or 'feature settings' route
+  get '/settings', to: 'settings#index'
 
   # for unauthenticated user actions
   namespace :public do
@@ -88,6 +89,7 @@ Rails.application.routes.draw do
   end
   resources :workbase, only: [:index]
   get :store, to: 'store#index'
+  resources :feature_settings
 
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
