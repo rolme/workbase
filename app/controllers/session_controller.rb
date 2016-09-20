@@ -5,7 +5,7 @@ class SessionController < ApplicationController
   # POST /login
   def create
     user = User.find_by(email: login_params["email"])
-    if user && user.authenticate(login_params[:password])
+    if user && user.confirmed && user.authenticate(login_params[:password])
       session[:current_user_id] = session[:login_user_id] = user.id
       redirect_to workbase_index_path
     else

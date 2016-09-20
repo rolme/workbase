@@ -1,5 +1,4 @@
 #sidebar-wrapper
-
   ul#menu.sidebar-nav.nav-stacked
     li.logo-home
       a href=workbase_index_path
@@ -11,11 +10,15 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-users.fa-stack-1x
         | Clients
+        - if controller_name == "clients"
+          = render 'clients/submenu'
     li class=get_active_class(controller_name, "projects")
       a href=projects_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-folder.fa-stack-1x
         | Projects
+        - if controller_name == "projects"
+          = render 'projects/submenu'
     li class=get_active_class(controller_name, "procurement")
       a href="#"
         span.fa-stack.fa-lg.pull-left
@@ -26,11 +29,21 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-ticket.fa-stack-1x
         | Tickets
-    li class=get_active_class(controller_name, "inventory")
+        - if controller_name == "tickets"
+          = render 'tickets/submenu'
+    li class=get_active_class(controller_name, "inventory") class=get_active_class(controller_name, "warehouses") class=get_active_class(controller_name, "units") class=get_active_class(controller_name, "locations")
       a href=inventory_index_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-flask.fa-stack-1x
         | Inventory
+        - if controller_name == "inventory"
+          = render 'inventory/submenu'
+        - elsif controller_name == "warehouses"
+          = render 'warehouses/submenu'
+        - elsif controller_name == "locations"
+          = render 'locations/submenu'
+        - elsif controller_name == "units"
+          = render 'units/submenu'
     li class=get_active_class(controller_name, "")
       a href=logout_path
         span.fa-stack.fa-lg.pull-left

@@ -36,6 +36,30 @@ class ClientsController < ApplicationController
     @client = client
   end
 
+  # callback for contact import
+  def callback
+    @contacts = request.env['omnicontacts.contacts']
+    if @contacts
+      @contacts.each do |contact|
+        client = Client.new(company_id: current_user.company_id,
+                            city: contact[:city],
+                            email: contact[:email],
+                            first_name: contact[:first_name],
+                            last_name: contact[:last_name],
+                            phone: contact[:phone_number],
+                            state: contact[:region],
+                            street: contact[:address_1],
+                            zipcode: contact[:postcode],
+                            company_name: contact[:company])
+        client.save(validate: false)
+      end
+      flash[:success] = 'Contacts import successfully!'
+    else
+      flash[:danger] = 'Contacts not found!'
+    end
+    redirect_to clients_path
+  end
+
 private
 
   def clients

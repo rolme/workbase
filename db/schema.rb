@@ -83,6 +83,7 @@ ActiveRecord::Schema.define(version: 20160911062118) do
     t.datetime "deleted_at"
     t.datetime "created_at",       null: false
     t.datetime "updated_at",       null: false
+    t.integer  "client_type_id"
     t.index ["client_status_id"], name: "index_clients_on_client_status_id", using: :btree
     t.index ["company_id"], name: "index_clients_on_company_id", using: :btree
     t.index ["slug"], name: "index_clients_on_slug", using: :btree

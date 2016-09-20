@@ -1,3 +1,10 @@
-= render 'page_header', header: "Inventory: #{@unit.uuid}", unit: @unit, links: [:unit_index, :show_unit]
+- @links = [:unit_index, :show_unit]
 
-= render 'form', unit: @unit, unit_categories: @unit_categories, locations: @locations, url: nil
+.row
+  .col-xs-12
+    h4 = "Inventory: #{@unit.uuid}"
+    hr
+
+.row
+  .col-xs-12
+    = render 'form', unit: @unit, unit_categories: @unit_categories, locations: @locations, url: nil

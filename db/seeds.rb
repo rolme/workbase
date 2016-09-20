@@ -81,6 +81,12 @@ SectionType.create([
   { label: 'materials' }
 ])
 
+ClientType.create([
+  { label: 'lead' },
+  { label: 'customer' },
+  { label: 'follow_up' }
+])
+
 SecurityQuestion.create([
   { label: 'What is the name of your first pet?' },
   { label: 'What is the name of your favorite sports team?' },
@@ -172,7 +178,8 @@ Unit.create([
 ])
 
 puts ">> adding client..."
-client = Client.create(company_name: 'Freight King, Inc.', street: '1143 Pacific St.', city: 'Union City', state: 'CA', zipcode: '94587', first_name: 'Kuldip', last_name: 'Badwal', phone: '4085995730', fax: '4084251616', email: 'info@freightking.us', company: company)
+client = Client.create(company_name: 'Freight King, Inc.', street: '1143 Pacific St.', city: 'Union City', state: 'CA', zipcode: '94587', first_name: 'Kuldip', last_name: 'Badwal', phone: '4085995730', fax: '4084251616', email: 'info@freightking.us', company_id: company.id)
+
 
 puts ">> creating project for client..."
 project = Project.new(name: 'Video Surveillance Installation', start_date: DateTime.now, end_date: nil, client: client, company: company)

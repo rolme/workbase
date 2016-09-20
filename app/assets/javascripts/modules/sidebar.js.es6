@@ -2,6 +2,7 @@ export default class Sidebar {
   constructor() {
     this.handleMinimizedNavBarToggleClick();
     this.handleNavBarToggleClick();
+    this.handleSubNavBarToggle();
   }
 
   handleMinimizedNavBarToggleClick() {
@@ -36,5 +37,13 @@ export default class Sidebar {
         }
       }
     );
+  }
+
+  handleSubNavBarToggle() {
+    if ($(".toggled .sidebar-nav li.active div").hasClass("submenu")) {
+      $(".page-content").addClass("toggled-content");
+    }else if($(".dashboard  .sidebar-nav li.active div").hasClass("submenu")) {
+      $(".page-content").addClass("toggled-content");
+    }
   }
 }

@@ -1,3 +1,10 @@
-= render "tickets/page_header", header: 'Closed Tickets', links: [:ticket_index, :deleted_tickets]
+- @links = [:ticket_index, :deleted_tickets]
 
-= render 'tickets/ticket_list'
+.row
+  .col-xs-12
+    h4 Closed Tickets
+    hr
+
+.row
+  .col-xs-12
+    = render 'tickets/ticket_list'
