@@ -3,13 +3,13 @@ class Company < ApplicationRecord
 
   has_many :areas
   has_many :clients
+  has_many :features, through: :settings, source: :feature
   has_many :locations
+  has_many :settings, class_name: CompanyFeatureSetting, foreign_key: :type_id
   has_many :tickets
   has_many :unit_categories
   has_many :units
   has_many :users
-  has_many :settings, class_name: CompanyFeatureSetting, foreign_key: :type_id
-  has_many :features, through: :settings, source: :feature
   has_many :warehouses
 
   validates :name, uniqueness: true
