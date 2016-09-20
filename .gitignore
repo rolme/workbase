@@ -16,6 +16,6 @@ dump.rdb
 /public/uploads/**
 /node_modules
 
-
 /vendor/cache/
 /log/
+/*.deb

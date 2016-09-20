@@ -1,13 +1,6 @@
 require 'faker'
 
 puts "Adminstrative Setup... "
-Company.create(name: "Workbase")
-workbase = Company.find_by(name: 'Workbase')
-WorkbaseEmployee.create([
-  { email: "admin@workbase.com", password: "test", password_confirmation: "test", first_name: 'Roland', last_name: 'Parnaso', company: workbase }
-])
-User.update_all(confirmed: true, confirmation_token: nil)
-
 State.create([
   { name: "Alabama", abbreviation: "AL" },
   { name: "Alaska", abbreviation: "AK" },
@@ -63,6 +56,7 @@ State.create([
 ])
 
 CompanyStatus.create([
+  { label: 'system' },
   { label: 'trial' },
   { label: 'active' },
   { label: 'inactive' }
@@ -81,12 +75,6 @@ SectionType.create([
   { label: 'materials' }
 ])
 
-ClientType.create([
-  { label: 'lead' },
-  { label: 'customer' },
-  { label: 'follow_up' }
-])
-
 SecurityQuestion.create([
   { label: 'What is the name of your first pet?' },
   { label: 'What is the name of your favorite sports team?' },
@@ -99,6 +87,19 @@ EncounterType.create([
   { label: 'phone' },
   { label: 'meeting' },
   { label: 'email' }
+])
+
+Company.create(name: "Workbase", company_status: CompanyStatus.find_by(label: 'system'))
+workbase = Company.find_by(name: 'Workbase')
+WorkbaseEmployee.create([
+  { email: "admin@workbase.com", password: "test", password_confirmation: "test", first_name: 'Roland', last_name: 'Parnaso', company: workbase }
+])
+User.update_all(confirmed: true, confirmation_token: nil)
+
+ClientType.create([
+  { label: 'lead' },
+  { label: 'customer' },
+  { label: 'follow_up' }
 ])
 
 puts "done"

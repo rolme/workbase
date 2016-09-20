@@ -13,7 +13,7 @@ Scenario: A user can view the tickets index
 Scenario: A user can create a ticket
   Given I am logged in
   And I click the link "Tickets"
-  And I click the link "Add Ticket"
+  And I click the link "Add a Ticket"
   And I fill in the following:
     | Title      | Description              |
     | New Ticket | A new ticket description |
