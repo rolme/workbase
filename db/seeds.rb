@@ -90,12 +90,6 @@ WorkbaseEmployee.create([
 ])
 User.update_all(confirmed: true, confirmation_token: nil)
 
-ClientType.create([
-  { label: 'lead' },
-  { label: 'customer' },
-  { label: 'follow_up' }
-])
-
 puts "done"
 
 puts ""
@@ -158,12 +152,6 @@ Unit.create([
   { unit_category_id: UnitCategory.find_by(label: 'battery backup').id, manufacturer: 'Cyberpower', model: nil, description: '500va UPS battery backup floor unit', client_description: 'UPS Battery Backup Unit', cost: 50.0, location_id: location.id, company: company },
   { unit_category_id: UnitCategory.find_by(label: 'power supply box').id, manufacturer: 'WBOX', model: '0E-1205AD9', description: '8-port power supply box AC 12V ptc', client_description: '8-Port Power Supply Box', cost: 50.0, location_id: location.id, company: company },
   { unit_category_id: UnitCategory.find_by(label: 'mouse').id, manufacturer: 'Hp', model: nil, description: 'Wireless Optical Laser Mouse', client_description: 'Wireless Optical Laser Mouse', cost: 20.0, procurement_status: 'processing', company: company }
-])
-
-ClientType.create([
-  { label: 'lead', company_id: Company },
-  { label: 'customer', company_id: Company },
-  { label: 'follow_up', company_id: Company }
 ])
 
 puts ">> adding client..."

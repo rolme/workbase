@@ -1,3 +1,5 @@
+require 'client_types'
+
 class Company < ApplicationRecord
   include SoftDeletable
 
@@ -35,13 +37,8 @@ class Company < ApplicationRecord
 
   # create labels for company clients 
   def default_client_types
-    self.client_types.create([
-      { label: 'lead' },
-      { label: 'prospect' },
-      { label: 'qualified' },
-      { label: 'potential' },
-      { label: 'customer' },
-    ])
+    factory = Factory::ClientTypes.new(self)
+    factory.generate_defaults!
   end
   
   def random_name
