@@ -29,7 +29,7 @@ Given(/^I am logged in$/) do
 end
 
 When(/^I go to the homepage$/) do
-  visit workbase_index_path
+  visit root_path
 end
 
 

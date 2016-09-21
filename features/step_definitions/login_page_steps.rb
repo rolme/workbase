@@ -10,5 +10,10 @@ Given(/^the following users exist:$/) do |table|
     # Use the registration form
     form = RegistrationForm.new
     form.submit(row)
+    # Now find the user and confirm their registration
+    user = User.find_by(email: row[:email])
+    user.confirmed = true
+    user.confirmation_token = nil
+    user.save
   end
 end
