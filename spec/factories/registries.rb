@@ -7,7 +7,7 @@ FactoryGirl.define do
 
   factory :client_type, class: ClientType do
     label "Lead"
-    company_id Company.last
+    company { Company.last || association(:company) }
     position "MyString"
     deleted_at "2016-08-03 20:42:06"
   end
