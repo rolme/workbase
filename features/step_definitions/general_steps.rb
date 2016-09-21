@@ -32,6 +32,9 @@ When(/^I go to the homepage$/) do
   visit root_path
 end
 
+When(/^I go to the dashboard$/) do
+  visit workbase_index_path
+end
 
 When(/^I go to the register page$/) do
   visit register_path
