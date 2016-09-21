@@ -9,7 +9,7 @@
           .form-group
             = f.label(:client, nil, class: "col-sm-2 control-label #{'error' if encounter.errors[:client_id]}")
             .col-sm-10
-              = f.select(:client_id, @clients.collect{ |c| [c.contact_name, c.slug] }, { include_blank: true }, { class: 'form-control' })
+              = f.select(:client_id, options_for_select(@clients.collect{ |c| [c.contact_name, c.slug]}, f.object&.client&.slug), { include_blank: true }, { class: 'form-control' })
           .form-group
             = f.label(:date, nil, class: "col-sm-2 control-label #{'error' if encounter.errors[:encounter_date]}")
             .col-sm-10

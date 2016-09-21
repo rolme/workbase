@@ -5,32 +5,31 @@
     h4 Encounter Details
 
 .row
-  .col-sm-12.mini-container
-    .row
-      .panel.panel-default
-        .panel-heading Encounter
-        .panel-body
-          .row
-            label.col-sm-offset-2.col-sm-2 Name
-            .col-sm-8
-              = @encounter.client.contact_name
+  .col-lg-12
+    .panel.panel-default
+      .panel-heading Encounter
+      .panel-body
+        .row
+          label.col-sm-offset-2.col-sm-2 Name
+          .col-sm-8
+            = @encounter.client.contact_name
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Date
-            .col-sm-8
-              = @encounter.encounter_date
+        .row
+          label.col-sm-offset-2.col-sm-2 Date
+          .col-sm-8
+            = @encounter.encounter_date
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Duration
-            .col-sm-8
-              = @encounter.duration
-              |  Hours
+        .row
+          label.col-sm-offset-2.col-sm-2 Duration
+          .col-sm-8
+            = @encounter.duration
+            |  Hours
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Medium
-            .col-sm-8
-              = @encounter.encounter_type&.label
+        .row
+          label.col-sm-offset-2.col-sm-2 Medium
+          .col-sm-8
+            = @encounter.encounter_type&.label
 
-          .row
-            label.col-sm-offset-2.col-sm-2 Notes
-            .col-sm-8 = @encounter.notes
+        .row
+          label.col-sm-offset-2.col-sm-2 Notes
+          .col-sm-8 = @encounter.notes
