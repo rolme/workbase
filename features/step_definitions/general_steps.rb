@@ -56,10 +56,13 @@ Then(/^I should see "([^"]*)"$/) do |arg1|
   expect(page).to have_content(arg1)
 end
 
+Then(/^I should not see "([^"]*)"$/) do |arg1|
+  expect(page).to have_no_content(arg1)
+end
+
 When(/^I go to the login page$/) do
   visit login_path
 end
-
 
 When(/^I fill in the following:$/) do |table|
   # table is a Cucumber::MultilineArgument::DataTable
