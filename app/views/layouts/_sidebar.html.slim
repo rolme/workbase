@@ -5,13 +5,15 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-compass.fa-stack-1x.logo-color
         strong eWORKBASE
-    li class=get_active_class(controller_name, "clients")
+    li class=get_active_class(controller_name, "clients") class=get_active_class(controller_name, "client_types")
       a href=clients_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-users.fa-stack-1x
         | Clients
         - if controller_name == "clients"
           = render 'clients/submenu'
+        - elsif controller_name == "client_types"
+          = render 'client_types/submenu'
     li class=get_active_class(controller_name, "projects")
       a href=projects_path
         span.fa-stack.fa-lg.pull-left

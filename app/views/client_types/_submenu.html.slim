@@ -1,0 +1,18 @@
+.submenu
+  ul
+    - if @links.include?(:clients_index)
+      li
+        a href=clients_path
+          = fa_icon('barcode', text: "Back to Clients")
+    - if @links.include?(:client_types_index)
+      li
+        a href=client_types_path
+          = fa_icon('list', text: "ClientTypes List")
+    - if @links.include?(:add_client_type)
+      li
+        a href=new_client_type_path
+          = fa_icon('plus-square', text: "Add a ClientType")
+    - if @links.include?(:edit_client_type)
+      li
+        a href=edit_client_type_path
+          = fa_icon('pencil', text: "Edit this ClientType")

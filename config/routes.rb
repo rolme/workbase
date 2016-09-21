@@ -45,7 +45,13 @@ Rails.application.routes.draw do
     end
   end
 
-  resources :clients, param: :slug
+  resources :clients, param: :slug do
+    collection do
+      resources :client_types, param: :slug do
+        get :restore, on: :member
+      end
+    end
+  end
 
   # callback path
   get 'auth/:provider/callback', to: 'clients#callback', as: :callback
@@ -108,10 +114,6 @@ Rails.application.routes.draw do
 
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
-
-  resources :client_types, param: :slug do
-    get :restore, on: :member
-  end
 
   resources :login, only: [:index]
   post "/emulate", to: "session#emulate"
