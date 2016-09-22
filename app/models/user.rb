@@ -12,6 +12,7 @@ class User < ApplicationRecord
   has_many :comments
   has_many :settings, class_name: UserFeatureSetting, foreign_key: :type_id
   has_many :features, through: :settings, source: :feature
+  has_many :encounters
 
   validates_associated :company
   validates :email, uniqueness: true, email: true, domain: true

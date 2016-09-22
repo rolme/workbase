@@ -6,6 +6,7 @@ class Client < ApplicationRecord
   belongs_to :client_type
 
   has_many :projects
+  has_many :encounters
 
   scope :sorted, -> {
     order(:company_name, :first_name)

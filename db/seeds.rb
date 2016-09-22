@@ -83,6 +83,11 @@ SecurityQuestion.create([
   { label: 'What was the model of your first car?' }
 ])
 
+EncounterType.create([
+  { label: 'phone' },
+  { label: 'meeting' },
+  { label: 'email' }
+])
 
 # name: string, description: string, monthly_price: decimal, settings: text
 Feature.create([
