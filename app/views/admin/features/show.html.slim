@@ -1,0 +1,10 @@
+= render "admin/features/page_header", feature: @feature, header: 'Features', links: [:feature_index, :edit_feature, :delete_feature]
+
+.row
+  .col-xs-12
+    .panel.panel-default
+      .panel-body
+        p = @feature.name
+        p = @feature.description
+        p = @feature.monthly_price
+        p = @feature.settings

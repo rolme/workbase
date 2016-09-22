@@ -10,6 +10,7 @@ module NavigationHelper
   end
 
   def get_active_class(contoller_name, menu)
+    return if menu.empty?
     "active" if contoller_name == menu
   end
 

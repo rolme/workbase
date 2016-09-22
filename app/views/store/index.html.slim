@@ -1,0 +1,17 @@
+.row
+  - if @features.empty?
+    .col-xs-12
+      p No site features enabled
+  - else
+    - @features.each do |feature|
+      .col-sm-6.col-md-4
+        .thumbnail.feature-card data-url=(@settings.exists?(feature_id: feature.id) ? edit_feature_setting_path(feature) : '#')
+          .image
+          .caption
+            h4.title = feature.name
+            hr.divider
+            p.description = feature.description
+            - if @settings.exists?(feature_id: feature.id)
+              p.enabled = fa_icon('check-circle', text: "Enabled")
+            - else
+              p.disabled = fa_icon('circle-o', text: "Not Enabled")

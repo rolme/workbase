@@ -1,7 +1,7 @@
 Feature: A User must login
 
 Scenario: User is redirected to the login page
-  When I go to the homepage
+  When I go to the dashboard
   Then I should see the login form
 
 Scenario: A new user can register
@@ -23,4 +23,4 @@ Scenario: User can log in
     | Email                  | Password |
     | demo-admin@test.com    | demo     |
   And I click "Sign in"
-  Then I should see "Invalid email"
+  Then I should see "Test Company"

@@ -51,15 +51,22 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-sign-out.fa-stack-1x
         | Logout
+
   ul.sidebar-nav.nav-stacked.bottom-menu
     - if current_user.admin?
-      li
-        a
+      li class=get_active_class(controller_name, "dashboard")
+        a href=admin_dashboard_path
           span.fa-stack.fa-lg.pull-left
-            i.fa.fa-cube.fa-stack-1x
-          | Add-ons Store
-    li
-      a
+            i.fa.fa-gears.fa-stack-1x
+          | Admin
+
+    li class=get_active_class(controller_name, "store")
+      a href=store_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-cube.fa-stack-1x
+        | Add-ons Store
+    li class=get_active_class(controller_name, "settings")
+      a href=settings_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-gear.fa-stack-1x
         | Settings

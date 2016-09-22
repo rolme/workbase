@@ -32,6 +32,7 @@ import "babel-polyfill";
 // These will be used to trigger corresponding javascript based on the
 // controller and action.
 import Workbase from "ready/workbase.js.es6";
+import Store from "ready/store.js.es6";
 import Projects from "ready/projects.js.es6";
 import Units from "ready/units.js.es6";
 

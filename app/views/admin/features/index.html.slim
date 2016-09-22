@@ -1,0 +1,14 @@
+= render "admin/features/page_header", header: 'Features', links: [:dashboard_index, :add_feature]
+
+table.table.table-striped.table-hover
+  thead
+    tr
+      th Name
+      th Price
+      th Available
+  tbody
+    - @features.each do |feature|
+      tr data-url=admin_feature_path(feature) class=(feature.deleted? ? 'danger' : '')
+        td = feature.name
+        td = feature.monthly_price
+        td = !feature.deleted?

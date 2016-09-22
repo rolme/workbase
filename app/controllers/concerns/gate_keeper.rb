@@ -22,7 +22,7 @@ module GateKeeper
   end
 
   def current_user
-    @_current_user ||= session[:current_user_id] && User.find_by(id: session[:current_user_id])
+    @_current_user ||= session[:current_user_id] && User.includes(:company).find_by(id: session[:current_user_id])
   end
 
   def login_user

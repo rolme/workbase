@@ -125,6 +125,27 @@ ActiveRecord::Schema.define(version: 20160912071803) do
     t.index ["slug"], name: "index_encounters_on_slug", using: :btree
   end
 
+  create_table "feature_settings", force: :cascade do |t|
+    t.string   "type"
+    t.integer  "type_id"
+    t.integer  "feature_id"
+    t.text     "settings"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["feature_id"], name: "index_feature_settings_on_feature_id", using: :btree
+    t.index ["type", "type_id"], name: "index_feature_settings_on_type_and_type_id", using: :btree
+  end
+
+  create_table "features", force: :cascade do |t|
+    t.string   "name"
+    t.string   "description"
+    t.decimal  "monthly_price", precision: 8, scale: 2
+    t.text     "settings"
+    t.datetime "created_at",                            null: false
+    t.datetime "updated_at",                            null: false
+    t.datetime "deleted_at"
+  end
+
   create_table "projects", force: :cascade do |t|
     t.integer  "company_id"
     t.integer  "client_id"

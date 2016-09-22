@@ -1,0 +1,30 @@
+.feature-card {
+  padding: 0;
+  cursor: pointer;
+
+  .image {
+    padding: 0;
+    height: 200px;
+    background-color: lightgrey;
+  }
+  .caption {
+    height: 200px;
+    overflow: hidden;
+
+    .title {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .divider {
+      margin-top: 5px;
+      margin-bottom: 5px;
+    }
+    .enabled {
+      color: green;
+    }
+    .disabled {
+      color: lightgrey;
+      font-style: italic;
+    }
+  }
+}

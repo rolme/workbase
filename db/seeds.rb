@@ -89,6 +89,16 @@ EncounterType.create([
   { label: 'email' }
 ])
 
+# name: string, description: string, monthly_price: decimal, settings: text
+Feature.create([
+  { name: 'Contact Management', description: 'Est an agam assum probatus. Ei eum nisl viris. Appareat deserunt electram ne vix, eam ei eros facer eloquentiam, stet delectus no his. Ne sit minim legimus, vidit suavitate pri ex. Duo aeque omittantur ne, at partem albucius iudicabit eum. Usu magna congue veritus ei, his an antiopam interesset.', monthly_price: 25.0, settings: '' },
+  { name: 'Customer Relationship Management', description: 'Mel mentitum posidonium ex, id eos iusto invidunt, sea novum numquam id. Vis an interpretaris vituperatoribus, impetus graecis salutatus quo te. Quis quaerendum cu cum, dicant oblique adipiscing his cu. Dicam laudem dictas id ius, quem erat et vix, usu inani ceteros cu. At nec legere cetero feugiat.', monthly_price: 25.0, settings: '' },
+  { name: 'Procurement Management', description: 'Nobis utamur debitis at est, vel in fugit alienum, no malorum sensibus nam. Eros sensibus eu qui, feugiat commune accommodare sed ea. Has cu ignota invenire constituam, nam ea prima labitur reprehendunt. Ex decore corpora vis, labitur debitis vituperata mei cu, his an tale discere.', monthly_price: 25.0, settings: '' },
+])
+project_mgmt = Feature.create({ name: 'Project Management', description: 'Summo accusam mentitum te cum, postea legimus sed ei, laudem invenire per at. Affert nemore in eum. Ut eam omnes tacimates definitiones. Vix in vidit nostro scribentur, id sumo euismod duo. Solum vituperata ad nam, mundi iriure accommodare ad vis.', monthly_price: 25.0, settings: '' })
+inventory_mgmt = Feature.create({ name: 'Inventory Management', description: 'Ad integre consulatu nec. Vim an graece definiebas. Modo facete inermis cu eam. Duo populo doctus audire ne, hinc atqui scripta usu an. Ad est summo facete, duis summo numquam pri id.', monthly_price: 25.0, settings: '' })
+issue_tracking = Feature.create({ name: 'Issue Tracking', description: 'Eos id magna laboramus repudiandae, ius ad mundi dolorum meliore. His an sensibus conclusionemque. Sit malis labore comprehensam et, et inani viderer vis. Ceteros accusamus his id, usu ea errem torquatos expetendis.', monthly_price: 25.0, settings: '' })
+
 Company.create(name: "Workbase", company_status: CompanyStatus.find_by(label: 'system'))
 workbase = Company.find_by(name: 'Workbase')
 WorkbaseEmployee.create([
@@ -112,6 +122,14 @@ admin   = Admin.create(first_name: 'Michael', last_name: 'Aguda', email: "demo-a
 user    = User.create(first_name: 'Joseph', last_name: 'Estrella', email: "demo-user@city101.net", password: "demo", password_confirmation: "demo", company: company)
 user2   = User.create(first_name: 'Yam', last_name: 'Zara', email: 'walmozara@gmail.com', password: "demo", password_confirmation: "demo", company: company)
 User.update_all(confirmed: true, confirmation_token: nil)
+
+# Let's enable project management, inventory, and tickets for city101
+# FeatureSetting(type: string, type_id: integer, feature_id: integer, settings: text)
+company.settings.create([
+  { feature: project_mgmt},
+  { feature: inventory_mgmt},
+  { feature: issue_tracking},
+])
 
 puts ">> adding tickets ..."
 Ticket.create!(title: 'Houston, we\'ve had a problem', description: 'There is no video feed from the exterior camera at the rear door.', company_id: company.id, submitted_by_name: 'John Swigert', submitted_by_email: 'john@city101.com', submitted_by_company: 'City 101')
@@ -198,6 +216,9 @@ company = Company.create({name: 'Tri-City Health Center'})
 puts ">> adding users..."
 admin   = Admin.create(first_name: 'Wilfredo', last_name: 'Lacro', email: "demo@tri-cityhealth.org", password: "demo", password_confirmation: "demo", company: company)
 User.update_all(confirmed: true, confirmation_token: nil)
+
+# Let's enable inventory mgmt for tri-city
+company.settings.create({ feature: inventory_mgmt })
 
 puts ">> adding meta data"
 ProposalStatus.create([
