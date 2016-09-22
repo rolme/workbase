@@ -83,6 +83,12 @@ SecurityQuestion.create([
   { label: 'What was the model of your first car?' }
 ])
 
+EncounterType.create([
+  { label: 'phone' },
+  { label: 'meeting' },
+  { label: 'email' }
+])
+
 Company.create(name: "Workbase", company_status: CompanyStatus.find_by(label: 'system'))
 workbase = Company.find_by(name: 'Workbase')
 WorkbaseEmployee.create([
