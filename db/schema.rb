@@ -51,20 +51,6 @@ ActiveRecord::Schema.define(version: 20160912071803) do
     t.index ["slug"], name: "index_attachments_on_slug", using: :btree
   end
 
-  create_table "bootsy_image_galleries", force: :cascade do |t|
-    t.string   "bootsy_resource_type"
-    t.integer  "bootsy_resource_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "bootsy_images", force: :cascade do |t|
-    t.string   "image_file"
-    t.integer  "image_gallery_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "clients", force: :cascade do |t|
     t.integer  "company_id"
     t.string   "slug"

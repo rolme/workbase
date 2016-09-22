@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   mount ActionCable.server => '/cable'
 
   # api end points for ticket creation

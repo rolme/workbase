@@ -21,9 +21,6 @@ source 'https://rubygems.org' do
   gem 'carrierwave-video-thumbnailer'
   gem 'mini_magick'
 
-  # WYSIWYG
-  gem 'bootsy'
-
   # Email
   gem 'valid_email'
 
@@ -51,7 +48,7 @@ source 'https://rubygems.org' do
   gem 'sidekiq'
 
   # for import contacts
-  gem 'omnicontacts', git: 'git@github.com:rolme/omnicontacts.git'
+  gem 'omnicontacts', github: 'rolme/omnicontacts'
 
   group :production do
     gem 'rails_stdout_logging'

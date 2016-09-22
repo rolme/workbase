@@ -39,7 +39,7 @@ br
       .panel-body
         - if section.style == 'WYSIWYG'
           = form_for [project, project.proposal, section] do |f|
-            = f.bootsy_area :data, class: 'form-control'
+            = f.textarea :data, class: 'form-control'
 
             hr
               = f.submit nil, class: 'button btn btn-primary btn-xs pull-right'

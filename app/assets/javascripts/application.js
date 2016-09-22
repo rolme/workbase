@@ -15,7 +15,6 @@
 //= require bootstrap-sprockets
 //= require bootstrap-datepicker
 //= require select2-full
-//= require bootsy
 //= require_tree .
 //= require_tree ./channels
 ////////////////////////////////////////////////////////////////////////////////
