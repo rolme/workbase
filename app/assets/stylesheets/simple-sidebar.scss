@@ -1,8 +1,14 @@
 $sidebar-width: 200px;
+$header-navbar-height: 40px;
+$logo-home-height: $header-navbar-height - 1px;
 
-.collapse.navbar-collapse {
+.navbar {
   padding-left: 5px;
-  border-bottom: solid thin #999999;
+  min-height: $header-navbar-height;
+  height: $header-navbar-height;
+
+  button { padding: 0px; }
+  li { height: $header-navbar-height; }
 }
 
 body {
@@ -81,7 +87,7 @@ body {
 
 .sidebar-nav li {
   text-indent: 15px;
-  line-height: 40px;
+  line-height: $header-navbar-height;
   margin: 0;
 }
 
@@ -120,16 +126,14 @@ body {
   margin:0;
 }
 
-.dashboard nav.navbar-default{
+.dashboard nav.navbar-default {
   background: #F7F8FB;
 }
 
-.dashboard nav .navbar-toggle{
-  font-size: 24px;
+.dashboard nav .navbar-toggle {
   color: #888;
-  padding: 3px 10px;
+  padding: 0px 10px;
   float: left;
-  border: none;
   margin-right: 0;
 }
 .dashboard nav .navbar-toggle:hover,
@@ -137,25 +141,27 @@ body {
 .dashboard nav .navbar-toggle:active{
   background: none;
 }
-.dashboard nav ul.navbar-nav > li > a {
+.dashboard .navbar-nav > li > a {
   color: #333;
-  font-size: 18px;
-  padding-top: 18px;
+  padding: 10px;
 }
-.dashboard nav ul.right > li button{
-  margin-top: 0;
+.dashboard nav ul.right > li.dropdown a {
+  padding-top: 5px;
+  padding-bottom: 7px;
+
+  span{
+    width: 28px;
+    height: 28px;
+    color: #fff;
+    text-align: center;
+    line-height: 28px;
+    background: #1f7ead;
+    display: block;
+    border-radius: 100%;
+    font-size: 12px;
+  }
 }
-.dashboard nav ul.right > li a span{
-  width: 28px;
-  height: 28px;
-  color: #fff;
-  text-align: center;
-  line-height: 28px;
-  background: #1f7ead;
-  display: block;
-  border-radius: 100%;
-  font-size: 12px;
-}
+
 .dashboard nav ul.right > li > a {
   font-size: 16px;
   outline: none;
@@ -262,17 +268,19 @@ body {
 .sidebar-nav > li.active > a,
 .sidebar-nav > li.active > a:hover,
 .sidebar-nav > li.active > a:focus {
-  background-color: #F7F8FB;
+  background-color: #999;
   color: #3B4952;
 }
 
-.sidebar-nav > li.logo-home > a,
-.sidebar-nav > li.logo-home > a:hover,
-.sidebar-nav > li.logo-home > a:focus {
-  background-color: #109DFF;
-  color: #FEDC00;
-  text-decoration: none;
-  border-left: #109DFF 0px solid;
+.sidebar-nav > li.logo-home {
+  border-bottom: 1px solid #ddd;
+  line-height: 39px;
+
+  a, a:hover, a:focus {
+    background-color: #109DFF;
+    color: #FEDC00;
+    text-decoration: none;
+  }
 }
 
 .dashboard nav ul.right > li button {
@@ -337,9 +345,8 @@ body {
   height: 100%;
   left: 50px;
   position: fixed;
-  top: 60px;
+  top: $header-navbar-height;
   width: 200px;
-  padding-top: 15px;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
@@ -353,31 +360,30 @@ body {
 #sidebar-wrapper ul >li.active .submenu {
   display: block;
 }
+
 #sidebar-wrapper .submenu ul{
   margin: 0;
   padding: 0;
   display: block !important;
 }
+
 #sidebar-wrapper .submenu ul li{
   list-style: none;
   display: block;
 }
+
 #sidebar-wrapper .submenu ul li a{
   color: #fff;
   text-decoration: none;
 }
+
 #sidebar-wrapper .submenu ul li.active a{
   background-color: #F7F8FB;
   color: #3B4952;
 }
+
 .dashboard .toggled-content{
   padding-left: 200px;
-}
-.sidebar-nav li.logo-home{
-  line-height: 61px;
-}
-.sidebar-nav li.logo-home span.fa-stack{
-  margin-top: 7px;
 }
 
 .dashboard.sidebar-toggle #sidebar-wrapper{
@@ -386,7 +392,7 @@ body {
 
 //inline css fix
 .top-nav-color {
-  background-color: white;
+  background-color: #f5f5f5;
 }
 
 #page-content-wrapper {
@@ -398,20 +404,11 @@ body {
 //navbar top header
 .navbar.navbar-fixed-top {
   left: 50px;
-  border-width: 0px;
+  border-bottom: 1px solid #ddd;
   -webkit-transition: all 0.5s ease;
   -moz-transition: all 0.5s ease;
   -o-transition: all 0.5s ease;
   transition: all 0.5s ease;
-}
-
-// top header logo fix
-.logo-home {
-  .fa-stack {
-    margin-top: 5px;
-    font-size: 24px;
-    left: -5px;
-  }
 }
 
 //inventory search form
@@ -542,12 +539,6 @@ body {
   }
   #wrapper #page-content-wrapper{
     top: -15px;
-  }
-
-  .sidebar-nav {
-    li.logo-home{
-      line-height: 56px;
-    }
   }
 
   #wrapper.toggled {
