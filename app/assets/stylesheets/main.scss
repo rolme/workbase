@@ -5,7 +5,6 @@ $logo-home-height: $header-navbar-height - 1px;
 
 @import "navbar";
 @import "sidebar";
-@import "submenu";
 
 @media(min-width:768px) {
   #content {

@@ -19,7 +19,7 @@
 nav {
   ul.right {
     li {
-      .open ul.dropdown-menu {
+      &.open ul.dropdown-menu {
         right: 15px;
         left: auto;
       }
