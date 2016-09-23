@@ -24,8 +24,10 @@
       li
         a href="/contacts/gmail"
           = fa_icon('cloud-download', text: "Import contacts")
+
+    - if @links.include?(:encounters)
     li
-      a href="#"
+      a href=encounters_path
         = fa_icon('cloud-download', text: "Encounters")
     li
       a href=client_types_path

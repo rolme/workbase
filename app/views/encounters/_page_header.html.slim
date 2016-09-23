@@ -1,0 +1,22 @@
+.page-header
+
+  ul.list-inline
+    - if links.include?(:new)
+      li
+        a href=new_encounter_path
+          = fa_icon('plus-square', text: "Add")
+    - if links.include?(:index)
+      li
+        a href=encounters_path
+          = fa_icon('list', text: "List")
+
+    - if links.include?(:show)
+      li
+        a href=encounter_path(@encounter)
+          = fa_icon('search-plus', text: "Details")
+
+    - if links.include?(:edit)
+      li
+        a href=edit_encounter_path(@encounter)
+          = fa_icon('edit', text: "Edit")
+  hr

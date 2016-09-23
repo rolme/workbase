@@ -16,7 +16,7 @@
         li.nav-item
           a.nav-link href="#" = current_user.company_name
 
-        li
+        li.nav-item.dropdown
           a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
             span= current_user.get_logo_name
           ul.dropdown-menu.navbar-right#user-dropdown role="menu"

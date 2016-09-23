@@ -1,0 +1,2 @@
+class EncounterType < Registry
+end

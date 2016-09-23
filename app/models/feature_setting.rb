@@ -1,0 +1,2 @@
+class FeatureSetting < ApplicationRecord
+end

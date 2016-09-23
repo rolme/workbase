@@ -1,0 +1,27 @@
+.page-header
+
+  ul.list-inline
+    - if links.include?(:dashboard_index)
+      li
+        a href=admin_dashboard_path
+          = fa_icon('list', text: "Back to the Dashboard")
+
+    - if links.include?(:feature_index)
+      li
+        a href=admin_features_path
+          = fa_icon('list', text: "Back to Features")
+
+    - if links.include?(:add_feature)
+      li
+        a href=new_admin_feature_path
+          = fa_icon('plus-square', text: "Add a Feature")
+
+    - if links.include?(:edit_feature)
+      li
+        a href=edit_admin_feature_path(feature)
+          = fa_icon('edit', text: "Edit this Feature")
+
+    - if links.include?(:delete_feature)
+      li
+        a href=admin_feature_path(feature) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+          = fa_icon('trash', text: "Delete this feature")

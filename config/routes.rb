@@ -2,7 +2,6 @@ Rails.application.routes.draw do
 
   get 'welcome/index'
 
-  mount Bootsy::Engine => '/bootsy', as: 'bootsy'
   mount ActionCable.server => '/cable'
 
   # api end points for ticket creation
@@ -12,28 +11,16 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :admin do
+    get :dashboard, to: 'dashboard#index'
+    resources :features
+  end
+
+  # TODO: Determine if we are going the 'settings' or 'feature settings' route
+  get '/settings', to: 'settings#index'
+
   # for unauthenticated user actions
   namespace :public do
-    resources :tickets, param: :slug, only: [] do
-      member do
-        put :toggle_close
-      end
-      collection do
-        get :customer
-      end
-      resources :comments, only: [:create]
-    end
-  end
-
-  # api end points for ticket creation
-  namespace :api, defaults: { format: :json } do
-    namespace :v1 do
-      resource :tickets, only: [:create]
-    end
-  end
-
-  # for unauthenticated user actions
-  namespace :external do
     resources :tickets, param: :slug, only: [] do
       member do
         put :toggle_close
@@ -50,6 +37,7 @@ Rails.application.routes.draw do
       resources :client_types, param: :slug do
         get :restore, on: :member
       end
+      resources :encounters, param: :slug
     end
   end
 
@@ -111,6 +99,8 @@ Rails.application.routes.draw do
     end
   end
   resources :workbase, only: [:index]
+  get :store, to: 'store#index'
+  resources :feature_settings
 
   # for image save(drag&drop)
   resources :uploads, only: [:create, :destroy, :show]
