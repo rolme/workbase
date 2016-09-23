@@ -1,0 +1,95 @@
+@media(min-width:768px) {
+  #content.sidebar-expanded {
+    .navbar.navbar-fixed-top {
+      left: $sidebar-width;
+    }
+  }
+}
+
+.navbar {
+  padding-left: 5px;
+  min-height: $header-navbar-height;
+  height: $header-navbar-height;
+  margin: 0px;
+
+  button { padding: 0px; }
+  li { height: $header-navbar-height; }
+}
+
+nav {
+  ul.right {
+    li {
+      .open ul.dropdown-menu {
+        right: 15px;
+        left: auto;
+      }
+
+      a {
+        font-size: 16px;
+        outline: none;
+
+        span.info {
+          background: none;
+          border: #aaa solid 1px;
+          color: #aaa;
+          font-size: 15px;
+        }
+      }
+
+      button { margin-top: 10px; }
+    }
+
+    li.dropdown a {
+      padding-top: 5px;
+      padding-bottom: 7px;
+
+      span{
+        width: 28px;
+        height: 28px;
+        color: #fff;
+        text-align: center;
+        line-height: 28px;
+        background: #1f7ead;
+        display: block;
+        border-radius: 100%;
+        font-size: 12px;
+      }
+    }
+  }
+
+  .navbar-default {
+    background: #F7F8FB;
+  }
+
+  .navbar-nav > li > a {
+    color: #333;
+    padding: 10px;
+  }
+
+  .navbar-toggle {
+    color: #888;
+    padding: 0px 10px;
+    float: left;
+    margin-right: 0;
+
+    &:hover, &:focus, &:active {
+      background: none;
+    }
+  }
+}
+
+//navbar top header
+.navbar.navbar-fixed-top {
+  left: 50px;
+  border-bottom: 1px solid #ddd;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+// second nav sidebar
+//inline css fix
+.top-nav-color {
+  background-color: #f5f5f5;
+}
