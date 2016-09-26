@@ -1,0 +1,3 @@
+class StringValue < MetaValue
+end
+

@@ -9,4 +9,19 @@ class Metadatum < ApplicationRecord
             :metadatum_type_id,
             presence: true
   validates :name, uniqueness: { scope: :company_id }
+
+  def meta_type
+    case self.name
+    when 'select'
+      'select_tag'
+    when 'text'
+      'text_tag'
+    when 'text_area'
+      'text_area_tag'
+    when 'check_box'
+      'check_box_tag'
+    when 'radio_button'
+      'radio_button_tag'
+    end
+  end
 end

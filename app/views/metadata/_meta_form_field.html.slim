@@ -1,0 +1,5 @@
+- current_company.metadata.each do |metadatum|
+  .form-group
+    = label_tag(metadatum.name, nil, class: "col-sm-2 control-label")
+    .col-sm-10
+      = text_field_tag("client[metadata][#{metadatum.name}]", client.meta_field_value(metadatum.id), class: "form-control")
