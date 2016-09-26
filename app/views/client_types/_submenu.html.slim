@@ -1,9 +1,9 @@
 .submenu
   ul
-    - if @links.include?(:clients_index)
+    - if @links.include?(:settings)
       li
-        a href=clients_path
-          = fa_icon('barcode', text: "Back to Clients")
+        a href=settings_path
+          = fa_icon('barcode', text: "Back to Settings")
     - if @links.include?(:client_types_index)
       li
         a href=client_types_path
