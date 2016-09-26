@@ -68,7 +68,5 @@ private
   end
 
   def update_meta_value
-
-    end
   end
 end
