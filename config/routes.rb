@@ -17,7 +17,15 @@ Rails.application.routes.draw do
   end
 
   # TODO: Determine if we are going the 'settings' or 'feature settings' route
-  get '/settings', to: 'settings#index'
+  # get '/settings', to: 'settings#index'
+
+  resources :settings, only: [:index] do
+    collection do
+      resources :metadata, param: :slug do
+        get :restore, on: :member
+      end
+    end
+  end
 
   # for unauthenticated user actions
   namespace :public do

@@ -1,0 +1,6 @@
+.submenu
+  ul
+    - if @links.include?(:metadata_index)
+      li
+        a href=metadata_path
+          = fa_icon('barcode', text: "Metdata List")

@@ -65,8 +65,12 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-cube.fa-stack-1x
         | Add-ons Store
-    li class=get_active_class(controller_name, "settings")
+    li class=get_active_class(controller_name, "settings") class=get_active_class(controller_name, "metadata")
       a href=settings_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-gear.fa-stack-1x
         | Settings
+        - if controller_name == "settings"
+          = render 'settings/submenu'
+        - elsif controller_name == "metadata"
+          = render 'metadata/submenu'

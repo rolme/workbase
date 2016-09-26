@@ -13,6 +13,7 @@ class Company < ApplicationRecord
   has_many :units
   has_many :users
   has_many :warehouses
+  has_many :metadata
 
   validates :name, uniqueness: true
 

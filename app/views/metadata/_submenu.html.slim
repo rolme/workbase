@@ -1,0 +1,18 @@
+.submenu
+  ul
+    - if @links.include?(:settings)
+      li
+        a href=settings_path
+          = fa_icon('list', text: "Settings")
+    - if @links.include?(:metadata_index)
+      li
+        a href=metadata_path
+          = fa_icon('barcode', text: "Metdata List")
+    - if @links.include?(:add_metadata)
+      li
+        a href=new_metadatum_path
+          = fa_icon('plus-square', text: "Add a Metadata")
+    - if @links.include?(:edit_metadata)
+      li
+        a href=edit_metadatum_path
+          = fa_icon('pencil', text: "Edit Metadata")
