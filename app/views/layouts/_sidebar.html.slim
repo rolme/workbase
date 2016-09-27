@@ -26,6 +26,13 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-cloud-download.fa-stack-1x
         | Procurement
+    li class=get_active_class(controller_name, "tasks")
+      a href=tasks_path
+        span.fa-stack.fa-lg.pull-left
+          i.fa.fa-sticky-note.fa-stack-1x
+        | Tasks
+        - if controller_name == "tasks"
+          = render 'tasks/submenu'
     li class=get_active_class(controller_name, "tickets")
       a href=tickets_path
         span.fa-stack.fa-lg.pull-left

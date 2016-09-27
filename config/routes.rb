@@ -95,6 +95,7 @@ Rails.application.routes.draw do
     get :confirmation, on: :collection
     post :confirm_user_company
   end
+  resources :tasks, param: :slug
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection
     get :new_project_unit, on: :collection
