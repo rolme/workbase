@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160912071803) do
+ActiveRecord::Schema.define(version: 20160925041849) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -209,6 +209,25 @@ ActiveRecord::Schema.define(version: 20160912071803) do
     t.datetime "updated_at",   null: false
   end
 
+  create_table "tasks", force: :cascade do |t|
+    t.string   "slug"
+    t.integer  "company_id"
+    t.string   "title"
+    t.integer  "priority",     default: 0
+    t.integer  "position",     default: 0
+    t.integer  "assignee_id"
+    t.datetime "due_at"
+    t.datetime "completed_at"
+    t.datetime "deleted_at"
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+    t.index ["assignee_id"], name: "index_tasks_on_assignee_id", using: :btree
+    t.index ["company_id"], name: "index_tasks_on_company_id", using: :btree
+    t.index ["position"], name: "index_tasks_on_position", using: :btree
+    t.index ["priority"], name: "index_tasks_on_priority", using: :btree
+    t.index ["slug"], name: "index_tasks_on_slug", using: :btree
+  end
+
   create_table "tickets", force: :cascade do |t|
     t.string   "slug"
     t.string   "title"
@@ -316,6 +335,7 @@ ActiveRecord::Schema.define(version: 20160912071803) do
   add_foreign_key "proposals", "companies"
   add_foreign_key "proposals", "projects"
   add_foreign_key "sections", "proposals"
+  add_foreign_key "tasks", "companies"
   add_foreign_key "units", "companies"
   add_foreign_key "users", "companies"
 end
