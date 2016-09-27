@@ -135,6 +135,12 @@ puts ">> adding tickets ..."
 Ticket.create!(title: 'Houston, we\'ve had a problem', description: 'There is no video feed from the exterior camera at the rear door.', company_id: company.id, submitted_by_name: 'John Swigert', submitted_by_email: 'john@city101.com', submitted_by_company: 'City 101')
 Ticket.create!(title: 'Forgot Login Information', description: 'Please assist with password reset.', company_id: company.id, status: 2, viewed_by: admin.id, assigned_to: user.id, submitted_by_name: 'John Swigert', submitted_by_email: 'john@city101.com', submitted_by_company: 'City 101')
 
+puts ">> adding tasks ..."
+Task.create(company: company, title: 'Follow up with John Swigert RE: video feed', position: 2, due_at: 1.week.from_now)
+Task.create(company: company, title: 'Create position listing on career site', priority: 2, position: 1, due_at: 1.week.from_now)
+Task.create(company: company, title: 'Inquire about additional storage spaces', priority: 1, position: 0, due_at: 1.day.ago, completed_at: 1.day.ago)
+
+
 puts ">> adding meta data"
 ProposalStatus.create([
   { label: 'draft', company: company },
