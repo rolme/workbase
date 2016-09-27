@@ -20,9 +20,10 @@
 
 // custom controller based styles
 @import "clients";
+@import "dropzone";
 @import "projects";
-@import "workbase";
+@import "store";
+@import "tasks";
 @import "tickets";
 @import "units";
-@import "store";
-@import "dropzone";
+@import "workbase";
