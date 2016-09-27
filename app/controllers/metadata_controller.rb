@@ -30,11 +30,17 @@ class MetadataController < ApplicationController
 
   # PATCH /settings/metadata/:slug
   def update
+    if @metadatum.update(metadatum_params)
+      @metadata = metadata
+      render :index
+    else
+      flash[:danger] = @metadatum.errors.full_messages
+      render 'edit'
+    end
   end
 
   # DELETE /settings/metadata/:slug
   def destroy
-
     if @metadatum.deleted?
       @metadatum.destroy
     else
@@ -56,7 +62,8 @@ class MetadataController < ApplicationController
   def metadatum_params
     params.require(:metadatum)
       .permit(:metadatum_type_id,
-        :name
+        :name,
+        :default_value => []
         )
   end
 
