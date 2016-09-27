@@ -83,7 +83,9 @@ Rails.application.routes.draw do
     get :confirmation, on: :collection
     post :confirm_user_company
   end
-  resources :tasks, param: :slug
+  resources :tasks, param: :slug do
+    get :as_json, on: :collection
+  end
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection
     get :new_project_unit, on: :collection
