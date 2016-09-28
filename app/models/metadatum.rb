@@ -16,12 +16,12 @@ class Metadatum < ApplicationRecord
   validate :default_array_value, if: :field_type_select?
 
   def field_type
-    metadatum_type.label    
+    metadatum_type.label
   end
 
   private
   def field_type_select?
-    metadatum_type.label == 'select'
+    metadatum_type && metadatum_type.label == 'select'
   end
 
   def default_array_value

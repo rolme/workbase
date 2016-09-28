@@ -84,7 +84,7 @@ private
         :street,
         :zipcode,
         :client_type_id,
-        :metadata => current_company.metadata&.collect(&:name) # company metadata field permit
+        :metadata => current_company.metadata.active&.collect(&:name) # company metadata field permit
       )
   end
 

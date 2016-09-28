@@ -23,11 +23,13 @@ module Metadatable
 
   # save meta value with client
   def save_meta_value
-    company.metadata.each do |md|
+    company.metadata.active.each do |md|
       case md.field_type
       when 'select'
         meta_value = select_values.where(metadatum_id: md.id).first_or_initialize
       when 'textfield'
+        meta_value = text_values.where(metadatum_id: md.id).first_or_initialize
+      when 'textarea'
         meta_value = text_values.where(metadatum_id: md.id).first_or_initialize
       when 'checkbox'
         meta_value = checkbox_values.where(metadatum_id: md.id).first_or_initialize
