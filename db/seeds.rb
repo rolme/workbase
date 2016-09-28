@@ -106,12 +106,6 @@ WorkbaseEmployee.create([
 ])
 User.update_all(confirmed: true, confirmation_token: nil)
 
-ClientType.create([
-  { label: 'lead' },
-  { label: 'customer' },
-  { label: 'follow_up' }
-])
-
 puts "done"
 
 puts ""

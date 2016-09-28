@@ -4,4 +4,6 @@ class Registry < ApplicationRecord
   include Sortable
 
   belongs_to :company, optional: true
+
+  validates :label, presence: true
 end
