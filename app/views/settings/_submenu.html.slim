@@ -4,3 +4,7 @@
       li
         a href=metadata_path
           = fa_icon('barcode', text: "Metadata")
+    - if @links.include?(:client_types)
+      li
+        a href=client_types_path
+          = fa_icon('plus-square', text: "ClientTypes")

@@ -1,0 +1,151 @@
+@media(min-width:768px) {
+  #sidebar {
+    z-index: 1000;
+    position: fixed;
+    left: $sidebar-width;
+    width: 0;
+    height: 100%;
+    margin-left: -$sidebar-width;
+    overflow: hidden;
+    background: #3B4952;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
+    -o-transition: all 0.5s ease;
+    transition: all 0.5s ease;
+  }
+
+  #content.sidebar-expanded #sidebar {
+    width: $sidebar-width;
+
+    ul >li .submenu {
+      left: $sidebar-width;
+    }
+  }
+
+  #content.sidebar-minimized #sidebar {
+    width: 50px;
+  }
+}
+
+#sidebar:hover {
+  overflow-x: auto;
+}
+#sidebar ul >li:hover a{
+  border-radius: 0;
+}
+#sidebar ul li .submenu {
+  display: none;
+  background: #999999 none repeat scroll 0 0;
+  height: 100%;
+  left: 50px;
+  position: fixed;
+  top: $header-navbar-height;
+  width: $submenu-width;
+  -webkit-transition: all 0.5s ease;
+  -moz-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+#sidebar ul >li.active .submenu {
+  display: block;
+}
+
+#sidebar .submenu ul{
+  margin: 0;
+  padding: 0;
+  display: block !important;
+}
+
+#sidebar .submenu ul li{
+  list-style: none;
+  display: block;
+}
+
+#sidebar .submenu ul li a{
+  color: #fff;
+  text-decoration: none;
+}
+
+#sidebar .submenu ul li.active a{
+  background-color: #F7F8FB;
+  color: #3B4952;
+}
+
+/* Sidebar Styles */
+
+.sidebar-nav {
+  position: absolute;
+  top: 0;
+  width: $sidebar-width;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  margin-top: 0;
+}
+
+.sidebar-nav.nav-stacked > li {
+  margin-top: 0px;
+}
+
+.sidebar-nav li {
+  text-indent: 15px;
+  line-height: $header-navbar-height;
+  margin: 0;
+}
+
+.sidebar-nav li a {
+  display: block;
+  text-decoration: none;
+  color: #999999;
+}
+
+.sidebar-nav li a:hover {
+  text-decoration: none;
+  color: #fff;
+  background: rgba(255,255,255,0.2);
+}
+
+.sidebar-nav li a:active,
+.sidebar-nav li a:focus {
+  text-decoration: none;
+}
+
+.sidebar-nav > .sidebar-brand {
+  height: 65px;
+  font-size: 18px;
+  line-height: 60px;
+}
+
+.sidebar-nav > .sidebar-brand a {
+  color: #999999;
+}
+
+.sidebar-nav > .sidebar-brand a:hover {
+  color: #fff;
+  background: none;
+}
+
+.lab-inventory {
+  position: relative;
+  right: 144px;
+  top: 42px;
+}
+
+.sidebar-nav > li.active > a,
+.sidebar-nav > li.active > a:hover,
+.sidebar-nav > li.active > a:focus {
+  background-color: #999;
+  color: #3B4952;
+}
+
+.sidebar-nav > li.logo-home {
+  border-bottom: 1px solid #ddd;
+  line-height: 39px;
+
+  a, a:hover, a:focus {
+    background-color: #109DFF;
+    color: #FEDC00;
+    text-decoration: none;
+  }
+}

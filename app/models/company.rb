@@ -1,3 +1,5 @@
+require 'client_types'
+
 class Company < ApplicationRecord
   include SoftDeletable
 
@@ -14,8 +16,11 @@ class Company < ApplicationRecord
   has_many :users
   has_many :warehouses
   has_many :metadata
+  has_many :client_types
 
   validates :name, uniqueness: true
+
+  after_create :default_client_types
 
   before_validation(on: :create) do
     default_company_name
@@ -33,6 +38,12 @@ class Company < ApplicationRecord
     self.name = random_name if name.blank?
   end
 
+  # create labels for company clients 
+  def default_client_types
+    factory = Factory::ClientTypes.new(self)
+    factory.generate_defaults!
+  end
+  
   def random_name
     (0...8).map { ('a'..'z').to_a[rand(26)] }.join
   end

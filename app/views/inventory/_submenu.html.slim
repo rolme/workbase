@@ -1,13 +1,15 @@
 .submenu
   ul
-    - if @links.include?(:manage_categories)
+    - if @links.include?(:category_index)
       li
         a href=unit_categories_path
           = fa_icon('th-large', text: "Categories")
+
     - if @links.include?(:warehouse_index)
       li
         a href=warehouses_path
           = fa_icon('cube', text: "Warehouses")
+
     - if @links.include?(:inventory_index)
       li
         a href=inventory_index_path

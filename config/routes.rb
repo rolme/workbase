@@ -24,6 +24,10 @@ Rails.application.routes.draw do
       resources :metadata, param: :slug do
         get :restore, on: :member
       end
+
+      resources :client_types, param: :slug do
+        get :restore, on: :member
+      end
     end
   end
 

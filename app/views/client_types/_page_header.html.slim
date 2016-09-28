@@ -1,0 +1,14 @@
+.page-header
+  h1 = fa_icon('barcode', text: header)
+
+  ul.list-inline
+    - if links.include?(:index)
+      li
+        a href=client_types_path
+          = fa_icon('list', text: "List")
+    - if links.include?(:add_client_type)
+      li
+        a href=new_client_type_path
+          = fa_icon('plus-square', text: "Add Client Type")
+
+  hr
