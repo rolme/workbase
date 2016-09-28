@@ -1,0 +1,81 @@
+@media screen and (max-width: 767px){
+
+  #content nav .navbar-toggle{
+    margin-left: 10px;
+  }
+  #content table{
+    width: 92%;
+  }
+  /* Force table to not be like tables anymore */
+  table, thead, tbody, th, td, tr {
+    display: block;
+  }
+
+  .shift-right{
+    float: none;
+  }
+  .submit-project{
+    float:left !important;
+    margin-left: 15px;
+  }
+
+  thead tr {
+    position: absolute;
+    top: -9999px;
+    left: -9999px;
+  }
+  tr { border: 1px solid #ccc; }
+
+  #content table.table tbody > tr > td {
+    /* Behave  like a "row" */
+    border: none;
+    border-bottom: 1px solid #eee;
+    position: relative;
+    padding-left: 36%;
+    line-height: 30px;
+  }
+  td:before {
+    /* Now like a table header */
+    position: absolute;
+    /* Top/left values mimic padding */
+    top: 6px;
+    left: 6px;
+    width: 36%;
+    padding-right: 10px;
+    white-space: nowrap;
+  }
+  table td:before { content: attr(data-content); font-weight: bold; }
+
+}
+
+// second nav media css
+@media screen and (max-width: 767px){
+  #sidebar ul >li.active .submenu {
+    left: 150px;
+    width: 150px;
+    display: none;
+    top: 56px;
+  }
+
+  .toggled #sidebar ul >li.active .submenu {
+    display: block;
+  }
+
+  #content .toggled-content{
+    padding-left: 0px;
+  }
+
+  .toggled .toggled-content{
+    padding-left: 110px;
+  }
+
+  #content #page-content-wrapper{
+    top: -15px;
+  }
+
+  #content.toggled {
+    #sidebar {
+      overflow: auto;
+    }
+  }
+}
