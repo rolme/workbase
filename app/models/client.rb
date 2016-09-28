@@ -27,10 +27,10 @@ class Client < ApplicationRecord
             :zipcode,
             presence: true
 
-  delegate :id,             # client_type_id
-           :label,          # client_type_label
-           to: :client_type,
-           prefix: true
+  # delegate :id,             # client_type_id
+  #          :label,          # client_type_label
+  #          to: :client_type,
+  #          prefix: true
 
   def contact_name
     "#{first_name} #{last_name}"
