@@ -24,6 +24,7 @@ class Client < ApplicationRecord
             :state,
             :street,
             :zipcode,
+            :client_type_id,
             presence: true
 
   delegate :id,             # client_type_id
@@ -42,7 +43,7 @@ class Client < ApplicationRecord
 private
 
   def default_client_type
-    self.client_type = ClientType.default
+    self.client_type = company.client_types&.default
   end
 
 end
