@@ -1,11 +1,20 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
-import TaskApp from '../tasks/components/TaskApp';
+import { render } from 'react-dom';
+import { Provider } from 'react-redux';
+import ConfigureStore from '../tasks/store/configure_store';
+import TaskApp from '../tasks/components/task_app';
 
-export default class Tasks {
+class Tasks {
   index() {
     let tasks = $('#task-app').data('tasks');
-    ReactDOM.render(<TaskApp tasks={tasks} />, document.getElementById('task-app'));
+    const store = ConfigureStore({ tasks }); // this provides default state
+
+    render(
+      <Provider store={store}>
+        <TaskApp tasks={tasks} />
+      </Provider>,
+      document.getElementById('task-app')
+    );
   }
 }
 

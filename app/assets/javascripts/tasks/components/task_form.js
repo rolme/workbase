@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import * as TaskActions from '../actions/TaskActions';
+import * as TaskActions from '../actions/task_actions';
 
-export default class TaskForm extends Component {
+class TaskForm extends Component {
   constructor() {
     super();
     this.addTask = this.addTask.bind(this);
@@ -45,3 +45,5 @@ export default class TaskForm extends Component {
     );
   }
 }
+
+export default TaskForm;
