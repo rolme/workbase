@@ -25,7 +25,7 @@ module Metadatable
   def save_meta_value
     company.metadata.active.each do |md|
       case md.field_type
-      when 'select'
+      when 'dropdown'
         meta_value = select_values.where(metadatum_id: md.id).first_or_initialize
       when 'textfield'
         meta_value = text_values.where(metadatum_id: md.id).first_or_initialize
@@ -40,7 +40,7 @@ module Metadatable
       when 'number'
         meta_value = number_values.where(metadatum_id: md.id).first_or_initialize
       end
-      meta_value.value = metadata[md.name]
+      meta_value.value = metadata[md.label]
       meta_value.save
     end
   end

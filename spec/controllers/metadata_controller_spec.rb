@@ -10,14 +10,14 @@ RSpec.describe MetadataController, type: :controller do
 
   describe "POST #create" do
     it 'does not create metadatum' do
-      params = { metadatum: {name: nil, metadatum_type_id: nil}}
+      params = { metadatum: {label: nil, metadatum_type_id: nil}}
       post :create, params: params 
       expect(false).to eql(false)
     end
 
     it 'create metadatum' do
       metadatum_type = FactoryGirl.create(:metadatum_type)
-      params = { metadatum: {name: 'test', metadatum_type_id: metadatum_type.id}}
+      params = { metadatum: {label: 'test', metadatum_type_id: metadatum_type.id}}
       post :create, params: params
       expect(true).to eql(true)
     end
@@ -27,7 +27,7 @@ RSpec.describe MetadataController, type: :controller do
     it 'does not update ' do
       metadatum_type = FactoryGirl.create(:metadatum_type)
       metadatum = FactoryGirl.create(:metadatum)
-      params = {slug: metadatum.slug, metadatum: { name: nil} }
+      params = {slug: metadatum.slug, metadatum: { label: nil} }
       post :update, params: params
       expect(response).to render_template(:edit)
     end
@@ -35,10 +35,10 @@ RSpec.describe MetadataController, type: :controller do
     it 'update metadatum' do
       metadatum_type = FactoryGirl.create(:metadatum_type)
       metadatum = FactoryGirl.create(:metadatum)
-      params = {slug: metadatum.slug, metadatum: { name: 'testarea'} }
+      params = {slug: metadatum.slug, metadatum: { label: 'testarea'} }
       post :update, params: params
       metadatum = Metadatum.find_by(id: metadatum.id)
-      expect(metadatum.name).to eql('testarea')
+      expect(metadatum.label).to eql('testarea')
     end
   end
 
