@@ -7,22 +7,22 @@ Scenario: A user sees the settings page
 Scenario: A user can view the settings index
   Given I am logged in
   And I click the link "Settings"
-  And I click the link "Metadata"
-  And I click the link "Add a Metadata"
-  Then I should see "Metadata List"
+  And I click the link "ClientInfo"
+  And I click the link "Add a ClientInfo"
+  Then I should see "ClientInfo List"
 
 Scenario: A comapny can create a metadatum
   Given I am logged in
   And I click the link "Settings"
-  And I click the link "Metadata"
-  And I click the link "Add a Metadata"
-  Then I should see "Metadata List"
+  And I click the link "ClientInfo"
+  And I click the link "Add a ClientInfo"
+  Then I should see "ClientInfo List"
   Then a field type is selected
   And I fill in the following:
     |  Meta Name              |
     |  birthdate             | 
   And I click "Create Metadatum"
-  Then I should see "Add a Metadata"
+  Then I should see "Add a ClientInfo"
   And I click the link "Clients" 
   And I click the link "Add a Client"
   Then a client type is selected
