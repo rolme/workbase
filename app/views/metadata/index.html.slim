@@ -8,6 +8,8 @@
         tr
           th label
           th filed type
+          th placeholder
+          th default
           th created
           th
       tbody
@@ -15,6 +17,8 @@
           tr data-url=edit_metadatum_path(md)
             td = md.label
             td = md.metadatum_type&.label
+            td = md.placeholder
+            td = md.default&.join(' ')
             td = md.created_at
             td.text-right
               a.btn.btn-default.btn-sm> href=edit_metadatum_path(md)
@@ -28,6 +32,8 @@
           tr
             th label
             th filed type
+            th placeholder
+            th default
             th deleted
             th
         tbody
@@ -35,6 +41,8 @@
             tr
               td = md.label
               td = md.metadatum_type&.label
+              td = md.placeholder
+              td = md.default&.join(' ')
               td = md.deleted_at
               td.text-right
                 a.btn.btn-default.btn-sm> href=restore_metadatum_path(md)

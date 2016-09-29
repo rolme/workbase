@@ -17,10 +17,11 @@ Scenario: A comapny can create a metadatum
   And I click the link "Metadata"
   And I click the link "Add a Metadata"
   Then I should see "Metadata List"
+  Then I should see "Placeholder"
   Then a field type is selected
   And I fill in the following:
-    |  Label              |
-    |  birthdate             | 
+    |  Label              | Placeholder |
+    |  birthdate             | test |
   And I click "Create Metadatum"
   Then I should see "Add a Metadata"
   And I click the link "Clients" 

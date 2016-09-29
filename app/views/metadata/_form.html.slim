@@ -2,19 +2,30 @@
   .col-md-offset-2.col-md-8
     = form_for metadatum, html: {class: 'form-horizontal'} do |f|
       .form-group
-        = f.label :metadatum_type_id, 'Field type', class: 'col-sm-2 col-md-1 control-label'
+        = f.label :metadatum_type_id, 'Field type', class: 'col-sm-2 col-md-2 control-label'
         .col-sm-10
-          = f.select(:metadatum_type_id, MetadatumType.all.collect{|md| [md.label, md.id] }, { include_blank: true }, { class: "form-control #{'error' if metadatum.errors[:metadatum_type_id]}" })
+          = f.select(:metadatum_type_id, MetadatumType.all.collect{|md| [md.label, md.id] }, { prompt: 'select field type..' }, { class: "meta-select-type form-control #{'error' if metadatum.errors[:metadatum_type_id]}" })
       .form-group
-        = f.label :label, 'Label', class: 'col-sm-2 col-md-1 control-label'
+        = f.label :label, 'Label', class: 'col-sm-2 col-md-2 control-label'
         .col-sm-10
-          = f.text_field :label, class: "form-control #{'error' if metadatum.errors[:label]}"
-      .form-group.meta-options
-        = f.label :default, 'Default', class: 'col-sm-2 col-md-1 control-label'
+          = f.text_field :label, placeholder: 'field label', class: "form-control #{'error' if metadatum.errors[:label]}"
+      .form-group.meta-placeholder class="#{hide_placeholder(metadatum.field_type)}"
+        = f.label :placeholder, 'Placeholder', class: 'col-sm-2 col-md-2 control-label'
         .col-sm-10
-          = f.text_field :default, multiple: true, class: "form-control #{'error' if metadatum.errors[:default]}"
+          = f.text_field :placeholder, placeholder: 'placeholder', class: "form-control #{'error' if metadatum.errors[:placeholder]}"
+      .form-group.number-range class="#{hide_number_range(metadatum.field_type)}"
+        = f.label :min, 'StartRange', class: 'col-sm-2 col-md-2 control-label'
+        .col-sm-4
+          = f.text_field :min, placeholder: 'start range', class: "form-control #{'error' if metadatum.errors[:min]}"
+        = f.label :max, 'EndRange', class: 'col-sm-2 col-md-2 control-label'
+        .col-sm-4
+          = f.text_field :max, placeholder: 'end range', class: "form-control #{'error' if metadatum.errors[:max]}"
+      .form-group.meta-options class="#{hide_select_option(metadatum.field_type)}"
+        = f.label :default, 'Default', class: 'col-sm-2 col-md-2 control-label'
+        .col-sm-10
+          = f.text_field :default, placeholder: 'dropdown option', multiple: true, class: "form-control #{'error' if metadatum.errors[:default]}"
           p
-            small separate multiple value with space for dropdown options
+            small separate multiple value with space for dropdown option
       .form-group
         = f.submit nil, class: 'btn btn-primary btn-sm'
         - if metadatum.id.present?

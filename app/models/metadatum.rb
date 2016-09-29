@@ -16,17 +16,18 @@ class Metadatum < ApplicationRecord
   validate :default_array_value, if: :field_type_select?
 
   def field_type
-    metadatum_type.label
+    metadatum_type&.label
   end
 
   private
   def field_type_select?
-    metadatum_type && metadatum_type.label == 'dropdown'
+    metadatum_type && field_type == 'dropdown'
   end
 
   def default_array_value
     if compact_value.blank?
-      errors.add(:default, 'separate multiple value with space')
+      errors.add(:dropdown, 'option, separate multiple value with space')
+      errors.add(:dropdown, 'option cann\'t be blank')
     else
       self.default = default.first&.split(' ')
     end

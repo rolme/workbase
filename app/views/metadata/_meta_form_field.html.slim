@@ -6,4 +6,7 @@
                      name: "client[metadata][#{md.label}]", 
                      value: client.metadatum_value(md.id), 
                      css: 'form-control',
-                     default_value: md.default)
+                     default_value: md.default,
+                     placeholder: md.placeholder,
+                     min: md.min,
+                     max: md.max)

@@ -63,6 +63,9 @@ class MetadataController < ApplicationController
     params.require(:metadatum)
       .permit(:metadatum_type_id,
         :label,
+        :min,
+        :max,
+        :placeholder,
         :default => []
         )
   end
