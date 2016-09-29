@@ -6,14 +6,14 @@
     table.table.table-striped.table-hover
       thead
         tr
-          th name
+          th label
           th filed type
           th created
           th
       tbody
         - @metadata.active.each do |md|
           tr data-url=edit_metadatum_path(md)
-            td = md.name
+            td = md.label
             td = md.metadatum_type&.label
             td = md.created_at
             td.text-right
@@ -26,14 +26,14 @@
       table.table.table-striped.table-hover
         thead
           tr
-            th name
+            th label
             th filed type
             th deleted
             th
         tbody
           - @metadata.deleted.each do |md|
             tr
-              td = md.name
+              td = md.label
               td = md.metadatum_type&.label
               td = md.deleted_at
               td.text-right
