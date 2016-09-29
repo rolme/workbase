@@ -1,0 +1,9 @@
+- current_company.metadata.active.each do |md|
+  .form-group
+    = label_tag(md.name, nil, class: "col-sm-2 control-label")
+    .col-sm-10
+        = meta_field(type: md.field_type,
+                     name: "client[metadata][#{md.name}]", 
+                     value: client.metadatum_value(md.id), 
+                     css: 'form-control',
+                     default_value: md.default_value)

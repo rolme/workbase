@@ -1,5 +1,9 @@
 .submenu
   ul
+    - if @links.include?(:metadata_index)
+      li
+        a href=metadata_path
+          = fa_icon('barcode', text: "Metadata")
     - if @links.include?(:client_types)
       li
         a href=client_types_path

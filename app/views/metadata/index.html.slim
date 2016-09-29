@@ -1,0 +1,43 @@
+- @links = [:settings, :add_metadata]
+= render 'layouts/flash'
+
+.row
+  .col-sm-12
+    table.table.table-striped.table-hover
+      thead
+        tr
+          th name
+          th filed type
+          th created
+          th
+      tbody
+        - @metadata.active.each do |md|
+          tr data-url=edit_metadatum_path(md)
+            td = md.name
+            td = md.metadatum_type&.label
+            td = md.created_at
+            td.text-right
+              a.btn.btn-default.btn-sm> href=edit_metadatum_path(md)
+                =  fa_icon('edit')
+
+- if @metadata.deleted.present?
+  .row
+    .col-sm-12
+      table.table.table-striped.table-hover
+        thead
+          tr
+            th name
+            th filed type
+            th deleted
+            th
+        tbody
+          - @metadata.deleted.each do |md|
+            tr
+              td = md.name
+              td = md.metadatum_type&.label
+              td = md.deleted_at
+              td.text-right
+                a.btn.btn-default.btn-sm> href=restore_metadatum_path(md)
+                  =  fa_icon('arrow-up')
+                a.btn.btn-warning.btn-sm< href=metadatum_path(md) data-confirm="This will permanently delete this item. Are you sure?" data-method="delete" rel="nofollow"
+                  =  fa_icon('trash')

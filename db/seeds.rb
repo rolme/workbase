@@ -106,6 +106,18 @@ WorkbaseEmployee.create([
 ])
 User.update_all(confirmed: true, confirmation_token: nil)
 
+ClientType.create([
+  { label: 'lead' },
+  { label: 'customer' },
+  { label: 'follow_up' }
+])
+
+# meta data types
+meta_types = %w{textfield textarea select date datetime checkbox number}
+meta_types.each do |meta_type|
+  MetadatumType.create(label: meta_type)
+end
+
 puts "done"
 
 puts ""

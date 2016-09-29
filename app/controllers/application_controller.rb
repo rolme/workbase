@@ -5,6 +5,8 @@ class ApplicationController < ActionController::Base
 
   before_action :set_paper_trail_whodunnit
 
+  helper_method :current_company
+  
   # Public: Display an authentication error to the user
   def auth_error(message)
     @error_message = message
