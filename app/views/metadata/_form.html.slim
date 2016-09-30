@@ -16,7 +16,7 @@
           p
             small separate multiple value with space for dropdown options
       .form-group
-        = f.submit nil, class: 'btn btn-primary btn-sm'
+        = f.submit "#{sumit_button_label} Field", class: 'btn btn-primary btn-sm'
         - if metadatum.id.present?
           a.btn.btn-warning.btn-sm< href=metadatum_path(metadatum) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
             =  fa_icon('trash', text: 'DELETE')
