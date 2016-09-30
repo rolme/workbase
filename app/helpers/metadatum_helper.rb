@@ -7,7 +7,7 @@ module MetadatumHelper
       text_field_tag(options[:name], options[:value], class: options[:css])
     when 'textarea'
       text_area_tag(options[:name], options[:value], class: options[:css])
-    when 'select'
+    when 'dropdown'
       select_tag(options[:name], options_for_select(options[:default_value], options[:value]), { include_blank: true, class: options[:css] })
     when 'date'
       date_field_tag(options[:name], date_formate(options[:value]), class: options[:css])

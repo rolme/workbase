@@ -19,7 +19,7 @@ Scenario: A comapny can create a metadatum
   Then I should see "ClientInfo List"
   Then a field type is selected
   And I fill in the following:
-    |  Meta Name              |
+    |  Label              |
     |  birthdate             | 
   And I click "Create Metadatum"
   Then I should see "Add a ClientInfo"

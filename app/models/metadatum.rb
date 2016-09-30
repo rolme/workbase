@@ -8,10 +8,10 @@ class Metadatum < ApplicationRecord
   belongs_to :company
   belongs_to :metadatum_type
 
-  validates :name,
+  validates :label,
             :metadatum_type_id,
             presence: true
-  validates :name, uniqueness: { scope: :company_id }
+  validates :label, uniqueness: { scope: :company_id }
 
   validate :default_array_value, if: :field_type_select?
 
@@ -21,19 +21,19 @@ class Metadatum < ApplicationRecord
 
   private
   def field_type_select?
-    metadatum_type && metadatum_type.label == 'select'
+    metadatum_type && metadatum_type.label == 'dropdown'
   end
 
   def default_array_value
     if compact_value.blank?
-      errors.add(:default_value, 'separate multiple value with space')
+      errors.add(:default, 'separate multiple value with space')
     else
-      self.default_value = default_value.first&.split(' ')
+      self.default = default.first&.split(' ')
     end
   end
 
   # check if blank string in array
   def compact_value
-    default_value.reject{|v| v if v.blank?}
+    default.reject{|v| v if v.blank?}
   end
 end
