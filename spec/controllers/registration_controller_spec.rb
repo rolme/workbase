@@ -14,7 +14,8 @@ RSpec.describe RegistrationController, type: :controller do
     it "does not confirm a user with an invalid token" do
       user = registration.submit
       get :confirm_email, params: { registration_id: user.confirmation_token + "invalid" }
-      expect(false).to eql(false)
+      user = User.find_by(id: user.id)
+      expect(user.confirmed).to eql(false)
     end
   end
 
@@ -24,7 +25,8 @@ RSpec.describe RegistrationController, type: :controller do
     it "should not confirm user" do
       user = registration.submit
       get :confirm_user_company, params: { registration_id: user.confirmation_token + "invalid", registration: {company_name: 'Testcompany'} },format: :js
-      expect(false).to eql(false)
+      user = User.find_by(id: user.id)
+      expect(user.confirmed).to eql(false)
     end
 
     it "should not save company" do
