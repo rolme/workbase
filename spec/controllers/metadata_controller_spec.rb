@@ -12,14 +12,14 @@ RSpec.describe MetadataController, type: :controller do
     it 'does not create metadatum' do
       params = { metadatum: {label: nil, metadatum_type_id: nil}}
       post :create, params: params 
-      expect(false).to eql(false)
+      expect(response).to render_template(:new)
     end
 
     it 'create metadatum' do
       metadatum_type = FactoryGirl.create(:metadatum_type)
       params = { metadatum: {label: 'test', metadatum_type_id: metadatum_type.id}}
       post :create, params: params
-      expect(true).to eql(true)
+      expect(response).to render_template(:index)
     end
   end
 

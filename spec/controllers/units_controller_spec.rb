@@ -20,14 +20,14 @@ RSpec.describe UnitsController, type: :controller do
     it 'should not create unit' do
       unit_category = FactoryGirl.create(:unit_category)
       post :create_project_unit, params: {project_slug: "erwerwe", unit: {client_description: 'test', cost: 100, description: 'test', location_id: nil, manufacturer: 'test', model: 'test', unit_category_id: unit_category.id}}
-      expect(false).to eq(false)
+      expect(flash[:danger].blank?).to eq(false)
     end
 
     it 'should create unit with project assigned' do
       project = FactoryGirl.create(:project)
       unit_category = FactoryGirl.create(:unit_category)
       post :create_project_unit, params: {project_slug: project.slug, unit: {client_description: 'test', cost: 100, description: 'test', location_id: nil, manufacturer: 'test', model: 'test', unit_category_id: unit_category.id}}
-      expect(true).to eq(true)
+      expect(flash[:success].blank?).to eq(false)
     end
   end
 end

@@ -15,7 +15,7 @@ RSpec.describe EncountersController, type: :controller do
 
       params = { encounter: { client_id: client.id, encounter_date: nil, duration: nil, encounter_type_id: encounter_type.id, notes: nil} } 
       post :create, params: params 
-      expect(false).to eql(false)
+      expect(Encounter.count).to eql(0)
     end
 
     it 'Should not create encounter with partial params' do
@@ -24,7 +24,7 @@ RSpec.describe EncountersController, type: :controller do
 
       params = { encounter: { client_id: client.slug, encounter_date: nil, duration: nil, encounter_type_id: encounter_type.id, notes: nil} } 
       post :create, params: params 
-      expect(false).to eql(false)
+      expect(Encounter.count).to eql(0)
     end
 
     it 'Should create encounter' do
@@ -33,7 +33,7 @@ RSpec.describe EncountersController, type: :controller do
 
       params = { encounter: { client_id: client.slug, encounter_date: '12/09/2016', duration: 1, encounter_type_id: encounter_type.id, notes: "test notes"} }
       post :create, params: params 
-      expect(true).to eql(true)
+      expect(Encounter.count).to eql(1)
     end
   end
 
@@ -72,8 +72,9 @@ RSpec.describe EncountersController, type: :controller do
       encounter = Encounter.first
 
       params = {slug: encounter.slug, encounter: { client_id: client.slug, encounter_date: '13/09/2016', duration: 1, encounter_type_id: encounter_type.id, notes: "test notes update"} }
-      post :update, params: params 
-      expect(true).to eql(true)
+      post :update, params: params
+      encounter = Encounter.first
+      expect(encounter.notes).to eql('test notes update')
     end
   end
 

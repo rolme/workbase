@@ -34,6 +34,7 @@ import Workbase from "ready/workbase.js.es6";
 import Store from "ready/store.js.es6";
 import Projects from "ready/projects.js.es6";
 import Units from "ready/units.js.es6";
+import Metadata from "ready/metadata.js.es6";
 
 // Based on Garber Irish javascript execution pattern.
 // https://gist.github.com/danielgreen/5677251
