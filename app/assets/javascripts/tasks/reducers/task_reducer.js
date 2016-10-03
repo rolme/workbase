@@ -19,6 +19,11 @@ export default function taskReducer(state = [], action) {
         Object.assign({}, action.task)
       ];
 
+    case types.DELETE_TASK:
+      return [
+        ...state.filter(task => task.slug !== action.task_slug)
+      ];
+
     default:
       return state;
   }

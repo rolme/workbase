@@ -15,8 +15,8 @@ export function startEditing(task) {
   return { type: types.START_EDITING, task };
 }
 
-export function deleteTask(task_) {
-  return { type: types.DELETE_TASK, task };
+export function removeTask(task_slug) {
+  return { type: types.DELETE_TASK, task_slug };
 }
 
 export function loadTasksSuccess(tasks) {
@@ -37,6 +37,16 @@ export function loadTasks() {
   return function(dispatch) {
     return TaskApi.getAllTasks().then(response => {
       dispatch(loadTasksSuccess(response.data));
+    }).catch(error => {
+      throw(error);
+    });
+  }
+}
+
+export function deleteTask(task, props) {
+  return function(dispatch) {
+    return TaskApi.deleteTask(task, props).then(response => {
+      dispatch(removeTask(response.data.slug));
     }).catch(error => {
       throw(error);
     });

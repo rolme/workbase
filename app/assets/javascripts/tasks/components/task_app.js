@@ -39,7 +39,7 @@ class TaskApp extends Component {
   }
 
   deleteTask(task) {
-    this.props.actions.deleteTask(task);
+    this.props.actions.deleteTask(task, { authenticity_token: this.state.authenticity_token });
   }
 
   render() {

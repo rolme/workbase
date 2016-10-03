@@ -28,6 +28,12 @@ class Internal::TasksController < ApplicationController
     end
   end
 
+  def destroy
+    task = tasks.find_by(slug: params[:slug])
+    task.delete
+    render json: { slug: params[:slug], message: 'Task deleted', status: 200 }
+  end
+
 private
 
   def tasks

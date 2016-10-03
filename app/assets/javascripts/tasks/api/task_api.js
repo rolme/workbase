@@ -6,6 +6,9 @@ const TaskApi = {
   },
   updateTask(task, props) {
     return axios.put(`/internal/tasks/${task.slug}`, props);
+  },
+  deleteTask(task, props) {
+    return axios.delete(`/internal/tasks/${task.slug}`, { data: props });
   }
 }
 
