@@ -10,9 +10,12 @@ class TaskApp extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      order: 'title', // default order column
-      editing: null, // slug of task being edited
+      tasks: [],                // initial tasks loaded
+      order: 'title',           // default order column
+      editing: null,            // slug of task being edited
       authenticity_token: null, // authenticity token
+      is_loading: false,
+      message: null,              // any status message for the user
     }
 
     this.handleClick = this.handleClick.bind(this);
@@ -43,7 +46,8 @@ class TaskApp extends Component {
   }
 
   render() {
-    const { tasks } = this.props;
+    const { tasks, is_loading, message } = this.props;
+
     // sort task list
     const sortedTasks = [...tasks].sort((a,b) => {
       let field = this.state.order;
@@ -57,8 +61,17 @@ class TaskApp extends Component {
 
     return (
       <div id='TaskList'>
+        {message != null
+          ? <div className="alert alert-warning" role="alert">{message}</div>
+          : ''
+        }
         <h4>
-          <button className="btn btn-default pull-right" onClick={this.handleClick}>Refresh List</button>
+          <button style={{ width: 120 }} className="btn btn-default pull-right" onClick={this.handleClick}>
+            {is_loading
+              ? <i className="fa fa-refresh fa-spin fa-fw"></i>
+              : 'Refresh List'
+            }
+          </button>
         </h4>
         <p className="text-muted"><em>Your current tasks are listed below.</em></p>
         <TaskList tasks={sortedTasks} toggleCompleted={this.toggleCompleted} startEditing={this.startEditing} deleteTask={this.deleteTask}/>
@@ -75,7 +88,9 @@ TaskApp.propTypes = {
 // ownProps are the props passed to the component
 function mapStateToProps(state, ownProps) {
   return {
-    tasks: state.tasks
+    tasks: state.tasks,
+    is_loading: state.general.is_loading,
+    message: state.general.message,
   };
 }
 

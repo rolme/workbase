@@ -19,8 +19,16 @@ export function removeTask(task_slug) {
   return { type: types.DELETE_TASK, task_slug };
 }
 
+export function loadingTasks() {
+  return { type: types.LOADING_TASKS };
+}
+
 export function loadTasksSuccess(tasks) {
   return { type: types.LOAD_TASKS_SUCCESS, tasks };
+}
+
+export function loadTasksError(error) {
+  return { type: types.LOAD_TASKS_ERROR, error };
 }
 
 export function toggleCompleted(task, props) {
@@ -35,10 +43,11 @@ export function toggleCompleted(task, props) {
 
 export function loadTasks() {
   return function(dispatch) {
+    dispatch(loadingTasks());
     return TaskApi.getAllTasks().then(response => {
       dispatch(loadTasksSuccess(response.data));
     }).catch(error => {
-      throw(error);
+      dispatch(loadTasksError(error));
     });
   }
 }
