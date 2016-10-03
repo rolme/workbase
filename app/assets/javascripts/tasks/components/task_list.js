@@ -1,7 +1,7 @@
 import React, { PropTypes } from 'react';
 import TaskItem from './task_item';
 
-const TaskList = ({ tasks }) => {
+const TaskList = ({ tasks, toggleCompleted, startEditing, deleteTask }) => {
   return (
     <table className="table table-striped table-hover task-table">
       <thead>
@@ -14,7 +14,7 @@ const TaskList = ({ tasks }) => {
       </thead>
       <tbody>
         {tasks.map(task =>
-          <TaskItem key={task.slug} task={task} />
+          <TaskItem key={task.slug} task={task} startEditing={startEditing} deleteTask={deleteTask} toggleCompleted={toggleCompleted} />
         )}
       </tbody>
     </table>
@@ -22,7 +22,10 @@ const TaskList = ({ tasks }) => {
 }
 
 TaskList.propTypes = {
-  tasks: PropTypes.array.isRequired
+  tasks: PropTypes.array.isRequired,
+  toggleCompleted: PropTypes.func.isRequired,
+  startEditing: PropTypes.func.isRequired,
+  deleteTask: PropTypes.func.isRequired,
 };
 
 export default TaskList;

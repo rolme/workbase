@@ -16,6 +16,11 @@ Rails.application.routes.draw do
     resources :features
   end
 
+  # internal namespace can be used by the react front end
+  namespace :internal do
+    resources :tasks, param: :slug
+  end
+
   # TODO: Determine if we are going the 'settings' or 'feature settings' route
   get '/settings', to: 'settings#index'
 
