@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import * as TaskActions from '../actions/task_actions';
 
 import TaskList from './task_list';
-import TaskForm from './task_form';
 
 class TaskApp extends Component {
   constructor(props, context) {
@@ -12,16 +11,19 @@ class TaskApp extends Component {
     this.state = {
       tasks: [],                // initial tasks loaded
       order: 'title',           // default order column
-      editing: null,            // slug of task being edited
-      authenticity_token: null, // authenticity token
+      is_editing: null,         // slug of task being edited
+      is_creating: false,       // are we adding a new task
       is_loading: false,
-      message: null,              // any status message for the user
+      message: null,            // any status message for the user
+      authenticity_token: null, // authenticity token
     }
 
     this.handleClick = this.handleClick.bind(this);
     this.toggleCompleted = this.toggleCompleted.bind(this);
     this.startEditing = this.startEditing.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
+    this.createNew = this.createNew.bind(this);
+    this.saveTask = this.saveTask.bind(this);
   }
 
   componentDidMount() {
@@ -41,12 +43,20 @@ class TaskApp extends Component {
     this.props.actions.startEditing(task);
   }
 
+  createNew() {
+    this.props.actions.createNew();
+  }
+
+  saveTask(task_props) {
+    this.props.actions.createTask(task_props, { authenticity_token: this.state.authenticity_token })
+  }
+
   deleteTask(task) {
     this.props.actions.deleteTask(task, { authenticity_token: this.state.authenticity_token });
   }
 
   render() {
-    const { tasks, is_loading, message } = this.props;
+    const { tasks, is_loading, is_creating, message } = this.props;
 
     // sort task list
     const sortedTasks = [...tasks].sort((a,b) => {
@@ -66,15 +76,20 @@ class TaskApp extends Component {
           : ''
         }
         <h4>
-          <button style={{ width: 120 }} className="btn btn-default pull-right" onClick={this.handleClick}>
-            {is_loading
-              ? <i className="fa fa-refresh fa-spin fa-fw"></i>
-              : 'Refresh List'
-            }
+          <button className="btn btn-xs btn-success pull-right" onClick={this.createNew}>Add</button>
+          <button style={{ width: 120, marginRight: 5 }} className="btn btn-xs btn-default pull-right" onClick={this.handleClick}>
+            {is_loading && <i className="fa fa-refresh fa-spin fa-fw"></i>}
+            Refresh List
           </button>
         </h4>
         <p className="text-muted"><em>Your current tasks are listed below.</em></p>
-        <TaskList tasks={sortedTasks} toggleCompleted={this.toggleCompleted} startEditing={this.startEditing} deleteTask={this.deleteTask}/>
+        <TaskList
+            tasks={sortedTasks}
+            toggleCompleted={this.toggleCompleted}
+            isCreating={is_creating}
+            saveTask={this.saveTask}
+            startEditing={this.startEditing}
+            deleteTask={this.deleteTask} />
       </div>
     );
   }
@@ -89,8 +104,10 @@ TaskApp.propTypes = {
 function mapStateToProps(state, ownProps) {
   return {
     tasks: state.tasks,
-    is_loading: state.general.is_loading,
-    message: state.general.message,
+    is_loading: state.is_loading,
+    is_editing: state.is_editing,
+    is_creating: state.is_creating,
+    message: state.message,
   };
 }
 

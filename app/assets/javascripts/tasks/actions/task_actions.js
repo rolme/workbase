@@ -7,6 +7,10 @@ export function createTask(task) {
   return { type: types.CREATE_TASK, task };
 }
 
+export function createNew() {
+  return { type: types.ADD_NEW_TASK_FORM };
+}
+
 export function updateTask(task) {
   return { type: types.UPDATE_TASK, task };
 }

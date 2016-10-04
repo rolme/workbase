@@ -1,7 +1,8 @@
 import React, { PropTypes } from 'react';
 import TaskItem from './task_item';
+import EmptyTaskItem from './empty_task_item';
 
-const TaskList = ({ tasks, toggleCompleted, startEditing, deleteTask }) => {
+const TaskList = ({ tasks, toggleCompleted, isCreating, saveTask, startEditing, deleteTask }) => {
   return (
     <table className="table table-striped table-hover task-table">
       <thead>
@@ -13,6 +14,7 @@ const TaskList = ({ tasks, toggleCompleted, startEditing, deleteTask }) => {
         </tr>
       </thead>
       <tbody>
+        {isCreating && <EmptyTaskItem saveTask={saveTask}/>}
         {tasks.map(task =>
           <TaskItem key={task.slug} task={task} startEditing={startEditing} deleteTask={deleteTask} toggleCompleted={toggleCompleted} />
         )}
@@ -24,6 +26,7 @@ const TaskList = ({ tasks, toggleCompleted, startEditing, deleteTask }) => {
 TaskList.propTypes = {
   tasks: PropTypes.array.isRequired,
   toggleCompleted: PropTypes.func.isRequired,
+  isCreating: PropTypes.bool.isRequired,
   startEditing: PropTypes.func.isRequired,
   deleteTask: PropTypes.func.isRequired,
 };
