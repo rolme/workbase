@@ -4,7 +4,7 @@ import * as types from '../actions/action_types';
 // defaults to no tasks
 export default function taskReducer(state = [], action) {
   switch (action.type) {
-    case types.CREATE_TASK:
+    case types.POST_TASK_SUCCESS:
       return [
         ...state,
         Object.assign({}, action.task)

@@ -9,6 +9,9 @@ const TaskApi = {
   },
   deleteTask(task, props) {
     return axios.delete(`/internal/tasks/${task.slug}`, { data: props });
+  },
+  createTask(task) {
+    return axios.post(`/internal/tasks`, task);
   }
 }
 

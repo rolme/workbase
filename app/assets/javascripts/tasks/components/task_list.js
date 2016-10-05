@@ -2,7 +2,7 @@ import React, { PropTypes } from 'react';
 import TaskItem from './task_item';
 import EmptyTaskItem from './empty_task_item';
 
-const TaskList = ({ tasks, toggleCompleted, isCreating, saveTask, startEditing, deleteTask }) => {
+const TaskList = ({ tasks, toggleCompleted, isCreating, startEditing, deleteTask }) => {
   return (
     <table className="table table-striped table-hover task-table">
       <thead>
@@ -14,7 +14,7 @@ const TaskList = ({ tasks, toggleCompleted, isCreating, saveTask, startEditing, 
         </tr>
       </thead>
       <tbody>
-        {isCreating && <EmptyTaskItem saveTask={saveTask}/>}
+        {isCreating && <EmptyTaskItem />}
         {tasks.map(task =>
           <TaskItem key={task.slug} task={task} startEditing={startEditing} deleteTask={deleteTask} toggleCompleted={toggleCompleted} />
         )}

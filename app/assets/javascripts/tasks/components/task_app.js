@@ -23,7 +23,6 @@ class TaskApp extends Component {
     this.startEditing = this.startEditing.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
     this.createNew = this.createNew.bind(this);
-    this.saveTask = this.saveTask.bind(this);
   }
 
   componentDidMount() {
@@ -45,10 +44,6 @@ class TaskApp extends Component {
 
   createNew() {
     this.props.actions.createNew();
-  }
-
-  saveTask(task_props) {
-    this.props.actions.createTask(task_props, { authenticity_token: this.state.authenticity_token })
   }
 
   deleteTask(task) {
@@ -87,7 +82,6 @@ class TaskApp extends Component {
             tasks={sortedTasks}
             toggleCompleted={this.toggleCompleted}
             isCreating={is_creating}
-            saveTask={this.saveTask}
             startEditing={this.startEditing}
             deleteTask={this.deleteTask} />
       </div>

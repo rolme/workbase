@@ -1,38 +1,49 @@
 import * as types from './action_types';
 import TaskApi from '../api/task_api';
 
-// action creator
-export function createTask(task) {
-  // returns an action
-  return { type: types.CREATE_TASK, task };
-}
 
+////////////////////////////////////////////////////////////////  Create Actions
+
+
+// action creator
 export function createNew() {
+  // returns an action
   return { type: types.ADD_NEW_TASK_FORM };
 }
 
-export function updateTask(task) {
-  return { type: types.UPDATE_TASK, task };
+export function createTask(task) {
+  return function(dispatch) {
+    dispatch(postingTask());
+    return TaskApi.createTask(task).then(response => {
+      dispatch(postTaskSuccess(response.data));
+    }).catch(error => {
+      dispatch(postTaskError(error.message));
+    });
+  }
 }
+
+export function postingTask() {
+  return { type: types.POST_TASK };
+}
+
+export function postTaskSuccess(task) {
+  return { type: types.POST_TASK_SUCCESS, task };
+}
+
+export function postTaskError(message) {
+  return { type: types.POST_TASK_ERROR, message };
+}
+
+
+//////////////////////////////////////////////////////////////////  Edit Actions
+
 
 export function startEditing(task) {
   return { type: types.START_EDITING, task };
 }
 
-export function removeTask(task_slug) {
-  return { type: types.DELETE_TASK, task_slug };
-}
-
-export function loadingTasks() {
-  return { type: types.LOADING_TASKS };
-}
-
-export function loadTasksSuccess(tasks) {
-  return { type: types.LOAD_TASKS_SUCCESS, tasks };
-}
-
-export function loadTasksError(error) {
-  return { type: types.LOAD_TASKS_ERROR, error };
+export function updateTask(task) {
+  return { type: types.UPDATE_TASK, task };
 }
 
 export function toggleCompleted(task, props) {
@@ -45,6 +56,28 @@ export function toggleCompleted(task, props) {
   }
 }
 
+
+////////////////////////////////////////////////////////////////  Delete Actions
+
+
+export function removeTask(task_slug) {
+  return { type: types.DELETE_TASK, task_slug };
+}
+
+export function deleteTask(task, props) {
+  return function(dispatch) {
+    return TaskApi.deleteTask(task, props).then(response => {
+      dispatch(removeTask(response.data.slug));
+    }).catch(error => {
+      throw(error);
+    });
+  }
+}
+
+
+/////////////////////////////////////////////////////////////////  Fetch Actions
+
+
 export function loadTasks() {
   return function(dispatch) {
     dispatch(loadingTasks());
@@ -56,12 +89,14 @@ export function loadTasks() {
   }
 }
 
-export function deleteTask(task, props) {
-  return function(dispatch) {
-    return TaskApi.deleteTask(task, props).then(response => {
-      dispatch(removeTask(response.data.slug));
-    }).catch(error => {
-      throw(error);
-    });
-  }
+export function loadingTasks() {
+  return { type: types.LOADING_TASKS };
+}
+
+export function loadTasksSuccess(tasks) {
+  return { type: types.LOAD_TASKS_SUCCESS, tasks };
+}
+
+export function loadTasksError(error) {
+  return { type: types.LOAD_TASKS_ERROR, error };
 }
