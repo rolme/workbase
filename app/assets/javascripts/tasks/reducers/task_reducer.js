@@ -14,6 +14,7 @@ export default function taskReducer(state = [], action) {
       return action.tasks;
 
     case types.UPDATE_TASK:
+    case types.PUT_TASK_SUCCESS:
       return [
         ...state.filter(task => task.slug !== action.task.slug),
         Object.assign({}, action.task)

@@ -51,7 +51,7 @@ class TaskApp extends Component {
   }
 
   render() {
-    const { tasks, is_loading, is_creating, message } = this.props;
+    const { tasks, is_loading, is_editing, is_creating, message } = this.props;
 
     // sort task list
     const sortedTasks = [...tasks].sort((a,b) => {
@@ -82,6 +82,7 @@ class TaskApp extends Component {
             tasks={sortedTasks}
             toggleCompleted={this.toggleCompleted}
             isCreating={is_creating}
+            isEditing={is_editing}
             startEditing={this.startEditing}
             deleteTask={this.deleteTask} />
       </div>

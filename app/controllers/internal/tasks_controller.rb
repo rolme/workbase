@@ -18,6 +18,7 @@ class Internal::TasksController < ApplicationController
 
   def update
     task = tasks.find_by(slug: params[:slug])
+    task.update_attributes(task_params)
 
     task.completed_at = params[:completed_at] == true ? Time.now : nil
 

@@ -42,16 +42,36 @@ export function startEditing(task) {
   return { type: types.START_EDITING, task };
 }
 
-export function updateTask(task) {
+export function stopEditing() {
+  return { type: types.STOP_EDITING };
+}
+
+export function putTaskSuccess(task) {
+  return { type: types.PUT_TASK_SUCCESS, task };
+}
+
+export function putTaskError(message) {
+  return { type: types.PUT_TASK_ERROR, message };
+}
+
+export function updateTask(task, props) {
+  return function(dispatch) {
+    return TaskApi.updateTask(task, props).then(response => {
+      dispatch(putTaskSuccess(response.data));
+      dispatch(stopEditing());
+    }).catch(error => {
+      dispatch(putTaskError(error.message))
+    });
+  }
   return { type: types.UPDATE_TASK, task };
 }
 
 export function toggleCompleted(task, props) {
   return function(dispatch) {
     return TaskApi.updateTask(task, props).then(response => {
-      dispatch(updateTask(response.data));
+      dispatch(putTaskSuccess(response.data));
     }).catch(error => {
-      throw(error);
+      dispatch(putTaskError(error.message))
     });
   }
 }
