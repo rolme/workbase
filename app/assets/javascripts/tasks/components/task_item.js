@@ -7,8 +7,8 @@ const TaskItem = ({ task, toggleCompleted, startEditing, deleteTask }) => {
     <tr className={ completed ? "task-completed" : ""}>
       <td><input type="checkbox" defaultChecked={completed} value={task.slug} onChange={(e) => toggleCompleted(task, e.target.checked)} /></td>
       <td className="task-title">{task.title}</td>
-      <td className="task-due-date">{task.due_at}</td>
-      <td className="task-actions">
+      <td style={{ width: 116, textAlign: 'center' }} className="task-due-date">{task.due_at}</td>
+      <td style={{ width: 80 }}  className="task-actions">
         <i className="fa fa-pencil-square-o" onClick={() => startEditing(task)} aria-hidden="true"></i>
         <i className="fa fa-trash" onClick={() => deleteTask(task)} aria-hidden="true"></i>
       </td>

@@ -48,9 +48,13 @@ class EditTaskItem extends Component {
     return (
       <tr>
         <td></td>
-        <td className="task-title"><input name="title" defaultValue={task.title} ref="title" placeholder="Enter a description" /></td>
-        <td className="task-due-date"><input name="due_date" defaultValue={task.due_at} ref="due_date" placeholder="MM/DD/YYYY" /></td>
-        <td className="task-actions">
+        <td className="task-title">
+          <input style={{ width: '100%' }} name="title" defaultValue={task.title} ref="title" placeholder="Enter a description" />
+        </td>
+        <td style={{ width: 116, textAlign: 'center' }} className="task-due-date">
+          <input style={{ width: 100, textAlign: 'center' }}name="due_date" defaultValue={task.due_at} ref="due_date" placeholder="MM/DD/YYYY" />
+        </td>
+        <td style={{ width: 80 }} className="task-actions">
           <input type="hidden" name="slug" defaultValue={task.slug} ref="slug" />
           <i className="fa fa-save" aria-hidden="true" onClick={this.updateTask}></i>
           <i className="fa fa-ban" aria-hidden="true" onClick={this.stopEditing}></i>
