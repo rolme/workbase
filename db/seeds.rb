@@ -113,6 +113,12 @@ ClientType.create([
   { label: 'follow_up' }
 ])
 
+# meta data types
+meta_types = %w{textfield textarea dropdown date datetime checkbox number}
+meta_types.each do |meta_type|
+  MetadatumType.create(label: meta_type)
+end
+
 puts "done"
 
 puts ""

@@ -1,0 +1,22 @@
+.row
+  .col-md-offset-2.col-md-8
+    = form_for metadatum, html: {class: 'form-horizontal'} do |f|
+      .form-group
+        = f.label :metadatum_type_id, 'Field type', class: 'col-sm-2 col-md-1 control-label'
+        .col-sm-10
+          = f.select(:metadatum_type_id, MetadatumType.all.collect{|md| [md.label, md.id] }, { include_blank: true }, { class: "form-control #{'error' if metadatum.errors[:metadatum_type_id]}" })
+      .form-group
+        = f.label :label, 'Label', class: 'col-sm-2 col-md-1 control-label'
+        .col-sm-10
+          = f.text_field :label, class: "form-control #{'error' if metadatum.errors[:label]}"
+      .form-group.meta-options
+        = f.label :default, 'Default', class: 'col-sm-2 col-md-1 control-label'
+        .col-sm-10
+          = f.text_field :default, multiple: true, class: "form-control #{'error' if metadatum.errors[:default]}"
+          p
+            small separate multiple value with space for dropdown options
+      .form-group
+        = f.submit nil, class: 'btn btn-primary btn-sm'
+        - if metadatum.id.present?
+          a.btn.btn-warning.btn-sm< href=metadatum_path(metadatum) data-confirm="Are you sure?" data-method="delete" rel="nofollow"
+            =  fa_icon('trash', text: 'DELETE')

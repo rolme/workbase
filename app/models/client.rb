@@ -1,6 +1,7 @@
 class Client < ApplicationRecord
   include Sluggable
   include SoftDeletable
+  include Metadatable
 
   belongs_to :company
   belongs_to :client_type
@@ -24,12 +25,13 @@ class Client < ApplicationRecord
             :state,
             :street,
             :zipcode,
+            :client_type_id,
             presence: true
 
-  delegate :id,             # client_type_id
-           :label,          # client_type_label
-           to: :client_type,
-           prefix: true
+  # delegate :id,             # client_type_id
+  #          :label,          # client_type_label
+  #          to: :client_type,
+  #          prefix: true
 
   def contact_name
     "#{first_name} #{last_name}"
@@ -42,7 +44,6 @@ class Client < ApplicationRecord
 private
 
   def default_client_type
-    self.client_type = ClientType.default
+    self.client_type = company.client_types&.default
   end
-
 end

@@ -7,6 +7,10 @@
         .panel-heading Contact
         .panel-body
           .form-group
+            = f.label(:client_type, nil, class: "col-sm-2 control-label #{'error' if client.errors[:client_type_id]}")
+            .col-sm-10
+              = f.select(:client_type_id, client.company.client_types.collect{ |s| [s.label, s.id] }, { include_blank: true }, { class: 'form-control' })
+          .form-group
             = f.label(:company_name, nil, class: "col-sm-2 control-label #{'error' if client.errors[:company_name]}")
             .col-sm-10
               = f.text_field(:company_name, placeholder: 'company name', class: 'form-control')
@@ -53,6 +57,13 @@
             = f.label(:zipcode, nil, class: "col-sm-2 control-label #{'error' if client.errors[:zipcode]}")
             .col-sm-4
               = f.text_field(:zipcode, placeholder: '55555', class: 'form-control')
+
+      /! meta form field 
+      .panel.panel-default
+        .panel-heading
+        .panel-body
+          = render 'metadata/meta_form_field', client: client
+
       .form-group
         .col-sm-offset-2.col-sm-10.text-right
           = f.submit nil, class: 'btn btn-primary'

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160925041849) do
+ActiveRecord::Schema.define(version: 20160929071341) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -130,6 +130,37 @@ ActiveRecord::Schema.define(version: 20160925041849) do
     t.datetime "created_at",                            null: false
     t.datetime "updated_at",                            null: false
     t.datetime "deleted_at"
+  end
+
+  create_table "meta_values", force: :cascade do |t|
+    t.integer  "client_id"
+    t.integer  "metadatum_id"
+    t.string   "text_value"
+    t.boolean  "boolean_value"
+    t.string   "type"
+    t.string   "slug"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+    t.integer  "integer_value"
+    t.date     "date_value"
+    t.datetime "datetime_value"
+    t.text     "array_value",    default: [],              array: true
+    t.index ["client_id"], name: "index_meta_values_on_client_id", using: :btree
+    t.index ["metadatum_id"], name: "index_meta_values_on_metadatum_id", using: :btree
+  end
+
+  create_table "metadata", force: :cascade do |t|
+    t.integer  "company_id"
+    t.integer  "metadatum_type_id"
+    t.string   "label"
+    t.string   "slug"
+    t.datetime "deleted_at"
+    t.datetime "created_at",                     null: false
+    t.datetime "updated_at",                     null: false
+    t.integer  "position"
+    t.text     "default",           default: [],              array: true
+    t.index ["company_id"], name: "index_metadata_on_company_id", using: :btree
   end
 
   create_table "projects", force: :cascade do |t|
@@ -330,6 +361,9 @@ ActiveRecord::Schema.define(version: 20160925041849) do
   add_foreign_key "areas", "companies"
   add_foreign_key "attachments", "projects"
   add_foreign_key "clients", "companies"
+  add_foreign_key "meta_values", "clients"
+  add_foreign_key "meta_values", "metadata"
+  add_foreign_key "metadata", "companies"
   add_foreign_key "projects", "clients"
   add_foreign_key "projects", "companies"
   add_foreign_key "proposals", "companies"

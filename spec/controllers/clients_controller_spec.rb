@@ -31,4 +31,19 @@ RSpec.describe ClientsController, type: :controller do
     expect(client.blank?).to eql(false)
 
   end
+
+
+  describe "POST #create" do
+    it 'create client with meta field' do
+      client_type = FactoryGirl.create(:client_type)
+      metadatum_type = FactoryGirl.create(:metadatum_type)
+      metadatum = FactoryGirl.create(:metadatum)
+      params =  {client_type_id: client_type.id, company_name: "test company", first_name: "test name", last_name: "test lname", phone: "98754654", fax: "1132311", email: "testemail@mailinator.com", street: "indore", city: "indore", state: "AK", zipcode: "54545", metadata: {test: "test123"}}
+      post :create, params: {client: params}
+
+      client = Client.first
+      meta_value = client.meta_values.first
+      expect(meta_value.value).to eql('test123')
+    end
+  end
 end

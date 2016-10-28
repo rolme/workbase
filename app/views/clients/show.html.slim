@@ -43,6 +43,14 @@
         .row
           .col-sm-offset-4.col-sm-8 = @client.zipcode
 
+        /! meta value
+        - @client.meta_values.each do |meta_value|
+          .row
+            label.col-sm-offset-2.col-sm-2 = meta_value.metadatum&.label&.humanize
+            .col-sm-8 
+              = meta_value.value&.is_a?(Array) ? meta_value.value.join(',') : meta_value.value
+
+
 .row
   .col-lg-12
     .panel.panel-default

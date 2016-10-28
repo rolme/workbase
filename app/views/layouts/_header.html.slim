@@ -1,14 +1,14 @@
 .row
-  nav.navbar.no-margin.navbar-fixed-top.top-nav-color
+  nav.navbar.navbar-fixed-top
     display
       .navbar-header
-        button.navbar-toggle.collapsed data-toggle="collapse" type="button"
+        button#sidebar-toggle.navbar-toggle.collapsed data-toggle="collapse" type="button"
           span.fa.fa-bars aria-hidden="true"
 
     .collapse.navbar-collapse
       ul.nav.navbar-nav
         li.active
-          button.navbar-toggle.collapse.in data-toggle="collapse"
+          button#sidebar-toggle.navbar-toggle.collapse.in data-toggle="collapse"
             span.fa.fa-bars aria-hidden="true"
         li
           a href="#" = header
@@ -19,7 +19,7 @@
         li.nav-item.dropdown
           a.dropdown-toggle href="#" data-toggle="dropdown" role="button" aria-expanded="false"
             span= current_user.get_logo_name
-          ul.dropdown-menu.navbar-right#user-dropdown role="menu"
+          ul.dropdown-menu.navbar-right role="menu"
             li
               a href=profile_user_path(current_user)
                 = fa_icon("user hw", text: "Profile")

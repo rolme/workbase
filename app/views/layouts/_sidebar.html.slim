@@ -1,4 +1,4 @@
-#sidebar-wrapper
+#sidebar-content
   ul#menu.sidebar-nav.nav-stacked
     li.logo-home
       a href=workbase_index_path
@@ -72,8 +72,14 @@
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-cube.fa-stack-1x
         | Add-ons Store
-    li class=get_active_class(controller_name, "settings")
+    li class=get_active_class(controller_name, "settings") class=get_active_class(controller_name, "metadata") class=get_active_class(controller_name, "client_types")
       a href=settings_path
         span.fa-stack.fa-lg.pull-left
           i.fa.fa-gear.fa-stack-1x
         | Settings
+        - if controller_name == "settings"
+          = render 'settings/submenu'
+        - elsif controller_name == "metadata"
+          = render 'metadata/submenu'
+        - elsif controller_name == "client_types"
+          = render 'client_types/submenu'

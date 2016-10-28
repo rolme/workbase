@@ -56,3 +56,14 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+Before do 
+  # meta data types
+  meta_types = %w{textfield}
+  meta_types.each do |meta_type|
+    MetadatumType.create(label: meta_type)
+  end
+
+State.create([
+  { name: "Alaska", abbreviation: "AK" }
+])
+end

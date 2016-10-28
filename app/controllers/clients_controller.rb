@@ -5,7 +5,7 @@ class ClientsController < ApplicationController
   end
 
   def new
-    @client = Client.new(company_id: current_user.company_id)
+    @client = Client.new(company_id: current_user.company_id, client_type: current_company.client_types&.default)
   end
 
   def create
@@ -82,7 +82,9 @@ private
         :phone,
         :state,
         :street,
-        :zipcode
+        :zipcode,
+        :client_type_id,
+        :metadata => current_company.metadata.active&.collect(&:label) # company metadata field permit
       )
   end
 

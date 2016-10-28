@@ -1,0 +1,2 @@
+class MetadatumType < Registry
+end
