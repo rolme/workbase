@@ -30,7 +30,7 @@ class EditTaskItem extends Component {
     let props = {
       // slug: this.refs.slug.value.trim(),
       title:  this.refs.title.value.trim(),
-      due_at: this.refs.due_date.value.trim(),
+      due_at: this.refs.due_at.value.trim(),
       authenticity_token: this.state.authenticity_token,
     };
 
@@ -52,7 +52,7 @@ class EditTaskItem extends Component {
           <input style={{ width: '100%' }} name="title" defaultValue={task.title} ref="title" placeholder="Enter a description" />
         </td>
         <td style={{ width: 116, textAlign: 'center' }} className="task-due-date">
-          <input style={{ width: 100, textAlign: 'center' }}name="due_date" defaultValue={task.due_at} ref="due_date" placeholder="MM/DD/YYYY" />
+          <input style={{ width: 100, textAlign: 'center' }}name="due_at" defaultValue={task.due_at} ref="due_at" placeholder="MM/DD/YYYY" />
         </td>
         <td style={{ width: 80 }} className="task-actions">
           <input type="hidden" name="slug" defaultValue={task.slug} ref="slug" />

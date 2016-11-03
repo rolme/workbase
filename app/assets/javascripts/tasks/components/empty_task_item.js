@@ -28,7 +28,7 @@ class EmptyTaskItem extends Component {
     // build the task props from the inputs
     let props = {
       title:  this.refs.title.value.trim(),
-      due_at: this.refs.due_date.value.trim(),
+      due_at: this.refs.due_at.value.trim(),
       authenticity_token: this.state.authenticity_token,
     };
 
@@ -42,7 +42,7 @@ class EmptyTaskItem extends Component {
       <tr>
         <td></td>
         <td className="task-title"><input name="title" ref="title" placeholder="Enter a description" /></td>
-        <td className="task-due-date"><input name="due_date" ref="due_date" placeholder="MM/DD/YYYY" /></td>
+        <td className="task-due-date"><input name="due_at" ref="due_at" placeholder="MM/DD/YYYY" /></td>
         <td className="task-actions">
           <i className="fa fa-save" aria-hidden="true" onClick={this.saveTask}></i>
         </td>
