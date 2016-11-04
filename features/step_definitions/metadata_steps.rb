@@ -1,12 +1,12 @@
-Then(/^a field type is selected$/) do 
-  page.select('textfield', from: 'Field type')
+Then(/^a field type is selected$/) do
+  page.select('textfield', from: 'Field type').first
 end
 
-Then(/^a client type is selected$/) do 
+Then(/^a client type is selected$/) do
   page.select('lead', from: 'client[client_type_id]')
 end
 
-Then(/^a state is selected$/) do 
+Then(/^a state is selected$/) do
   page.select('Alaska', from: 'State')
 end
 
