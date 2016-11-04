@@ -19,6 +19,7 @@ class TaskApp extends Component {
     }
 
     this.handleClick = this.handleClick.bind(this);
+    this.dismissMessage = this.dismissMessage.bind(this);
     this.toggleCompleted = this.toggleCompleted.bind(this);
     this.startEditing = this.startEditing.bind(this);
     this.deleteTask = this.deleteTask.bind(this);
@@ -32,6 +33,10 @@ class TaskApp extends Component {
 
   handleClick() {
     this.props.actions.loadTasks();
+  }
+
+  dismissMessage() {
+    this.props.actions.dismissMessage();
   }
 
   toggleCompleted(task, checked) {
@@ -67,7 +72,10 @@ class TaskApp extends Component {
     return (
       <div id='TaskList'>
         {message != null
-          ? <div className="alert alert-warning" role="alert">{message}</div>
+          ? <div className="alert alert-warning alert-dismissible" role="alert">
+              <button type="button" className="close" onClick={this.dismissMessage} aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              {message}
+            </div>
           : ''
         }
         <h4>

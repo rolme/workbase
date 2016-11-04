@@ -39,6 +39,8 @@ export function messageReducer(state = null, action) {
     case types.POST_TASK_ERROR:
     case types.PUT_TASK_ERROR:
       return 'Task could not be saved';
+    case types.CLEAR_MESSAGE:
+      return null;
     default:
       return state;
   }

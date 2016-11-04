@@ -120,3 +120,10 @@ export function loadTasksSuccess(tasks) {
 export function loadTasksError(error) {
   return { type: types.LOAD_TASKS_ERROR, error };
 }
+
+
+/////////////////////////////////////////////////////////////////  Other Actions
+
+export function dismissMessage() {
+  return { type: types.CLEAR_MESSAGE };
+}
