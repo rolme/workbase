@@ -1,5 +1,8 @@
 require 'faker'
 
+puts "Create internal system app token... "
+App.create(name: 'system', token: '9Pwk2FbhBgy8CHfMmNKryiSu', url: 'localhost', access: 'full')
+
 puts "Adminstrative Setup... "
 State.create([
   { name: "Alabama", abbreviation: "AL" },
