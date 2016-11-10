@@ -48,6 +48,10 @@ When(/^I click the link "([^"]*)"$/) do |arg1|
   click_link arg1
 end
 
+When(/^I click the "([^"]*)" icon/) do |arg1|
+  find(:css, "i.fa.fa-#{arg1}").click
+end
+
 Given(/^I confirm the dialog$/) do
   page.driver.browser.switch_to.alert.accept
 end

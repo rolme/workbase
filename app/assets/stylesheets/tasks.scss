@@ -1,0 +1,15 @@
+.task-table {
+  margin-top: 30px;
+
+  .task-completed {
+    text-decoration: line-through;
+  }
+
+  .task-actions {
+    text-align: right;
+
+    i.fa {
+      margin-left: 10px;
+    }
+  }
+}

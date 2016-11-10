@@ -13,4 +13,8 @@ class Task < ApplicationRecord
 
   scope :for_company, ->(company) { where(company_id: company.id) }
   scope :incomplete, ->() { where(completed_at: nil) }
+
+  def due_at
+    self[:due_at]&.strftime("%m/%d/%Y")
+  end
 end
