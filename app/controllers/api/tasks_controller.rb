@@ -1,4 +1,4 @@
-class Internal::TasksController < ApplicationController
+class Api::TasksController < Api::ApplicationController
 
   def index
     task_list = tasks
