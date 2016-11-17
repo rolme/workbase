@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   # api end points for ticket creation
   namespace :api, defaults: { format: :json } do
+    # not v1, for internal use by the react front end
+    resources :tasks, param: :slug
+
     namespace :v1 do
       resource :tickets, only: [:create]
     end
@@ -95,7 +98,11 @@ Rails.application.routes.draw do
     get :confirmation, on: :collection
     post :confirm_user_company
   end
-  resources :tasks, param: :slug
+
+  resources :tasks, param: :slug do
+    get :as_json, on: :collection
+  end
+
   resources :units, param: :slug, except: [:index] do
     get :list, on: :collection
     get :new_project_unit, on: :collection
