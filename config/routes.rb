@@ -6,6 +6,9 @@ Rails.application.routes.draw do
 
   # api end points for ticket creation
   namespace :api, defaults: { format: :json } do
+    # not v1, for internal use by the react front end
+    resources :tasks, param: :slug
+
     namespace :v1 do
       resource :tickets, only: [:create]
     end
@@ -14,11 +17,6 @@ Rails.application.routes.draw do
   namespace :admin do
     get :dashboard, to: 'dashboard#index'
     resources :features
-  end
-
-  # internal namespace can be used by the react front end
-  namespace :internal do
-    resources :tasks, param: :slug
   end
 
   # TODO: Determine if we are going the 'settings' or 'feature settings' route

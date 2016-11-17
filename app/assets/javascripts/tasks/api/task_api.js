@@ -2,16 +2,16 @@ import axios from 'axios';
 
 const TaskApi = {
   getAllTasks() {
-    return axios("/internal/tasks");
+    return axios("/api/tasks");
   },
   updateTask(task, props) {
-    return axios.put(`/internal/tasks/${task.slug}`, props);
+    return axios.put(`/api/tasks/${task.slug}`, props);
   },
   deleteTask(task, props) {
-    return axios.delete(`/internal/tasks/${task.slug}`, { data: props });
+    return axios.delete(`/api/tasks/${task.slug}`, { data: props });
   },
   createTask(task) {
-    return axios.post(`/internal/tasks`, task);
+    return axios.post(`/api/tasks`, task);
   }
 }
 

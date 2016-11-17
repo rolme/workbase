@@ -1,4 +1,4 @@
-class Internal::TasksController < ApplicationController
+class Api::TasksController < ApplicationController
 
   def index
     task_list = tasks
@@ -7,6 +7,7 @@ class Internal::TasksController < ApplicationController
 
   def create
     task = Task.new(task_params)
+    task.due_at = Date.strptime(task_params[:due_at], '%m/%d/%Y') if task_params[:due_at].present?
     task.company = current_user.company
 
     if task.save
@@ -18,7 +19,9 @@ class Internal::TasksController < ApplicationController
 
   def update
     task = tasks.find_by(slug: params[:slug])
-    task.update_attributes(task_params)
+    task.assign_attributes(task_params)
+    # the due_at param will be posted as MM/DD/YYYY but needs to be DD/MM/YYYY in order to save
+    task.due_at = Date.strptime(task_params[:due_at], '%m/%d/%Y') if task_params[:due_at].present?
 
     task.completed_at = params[:completed_at] == true ? Time.now : nil
 

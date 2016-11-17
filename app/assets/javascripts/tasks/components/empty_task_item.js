@@ -15,6 +15,11 @@ class EmptyTaskItem extends Component {
   }
 
   componentDidMount() {
+    $('.datepicker').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      clearBtn: true,
+    });
     this.setState(
         Object.assign(
             {},
@@ -41,9 +46,11 @@ class EmptyTaskItem extends Component {
     return (
       <tr>
         <td></td>
-        <td className="task-title"><input name="title" ref="title" placeholder="Enter a description" /></td>
-        <td className="task-due-date"><input name="due_at" ref="due_at" placeholder="MM/DD/YYYY" /></td>
-        <td className="task-actions">
+        <td className="task-title">
+          <input className="form-control" style={{ width: '100%' }} name="title" ref="title" placeholder="Enter a description" /></td>
+        <td className="task-due-date">
+          <input className="form-control datepicker" style={{ width: 100, textAlign: 'center' }} name="due_at" ref="due_at" placeholder="MM/DD/YYYY" /></td>
+        <td style={{ width: 80 }} className="task-actions">
           <i className="fa fa-save" aria-hidden="true" onClick={this.saveTask}></i>
         </td>
       </tr>

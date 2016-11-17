@@ -16,6 +16,11 @@ class EditTaskItem extends Component {
   }
 
   componentDidMount() {
+    $('.datepicker').datepicker({
+      autoclose: true,
+      todayHighlight: true,
+      clearBtn: true,
+    });
     this.setState(
         Object.assign(
             {},
@@ -49,10 +54,10 @@ class EditTaskItem extends Component {
       <tr>
         <td></td>
         <td className="task-title">
-          <input style={{ width: '100%' }} name="title" defaultValue={task.title} ref="title" placeholder="Enter a description" />
+          <input className="form-control" style={{ width: '100%' }} name="title" defaultValue={task.title} ref="title" placeholder="Enter a description" />
         </td>
         <td style={{ width: 116, textAlign: 'center' }} className="task-due-date">
-          <input style={{ width: 100, textAlign: 'center' }}name="due_at" defaultValue={task.due_at} ref="due_at" placeholder="MM/DD/YYYY" />
+          <input className="form-control datepicker" style={{ width: 100, textAlign: 'center' }} name="due_at" defaultValue={task.due_at} ref="due_at" placeholder="MM/DD/YYYY" />
         </td>
         <td style={{ width: 80 }} className="task-actions">
           <input type="hidden" name="slug" defaultValue={task.slug} ref="slug" />
