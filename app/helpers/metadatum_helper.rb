@@ -29,4 +29,13 @@ module MetadatumHelper
   def datetime_formate(datetime)
     datetime&.strftime('%Y-%m-%dT%H:%M:%S')
   end
+
+  def sumit_button_label
+    case params[:action]
+    when 'new'
+      'Create'
+    when 'edit'
+      'Update'
+    end
+  end
 end

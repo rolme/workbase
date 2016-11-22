@@ -7,12 +7,12 @@
     - if @links.include?(:metadata_index)
       li
         a href=metadata_path
-          = fa_icon('barcode', text: "Metadata List")
+          = fa_icon('barcode', text: "Back to Client Info")
     - if @links.include?(:add_metadata)
       li
         a href=new_metadatum_path
-          = fa_icon('plus-square', text: "Add a Metadata")
+          = fa_icon('plus-square', text: "Add a Client Info")
     - if @links.include?(:edit_metadata)
       li
         a href=edit_metadatum_path
-          = fa_icon('pencil', text: "Edit Metadata")
+          = fa_icon('pencil', text: "Edit Client Info")
